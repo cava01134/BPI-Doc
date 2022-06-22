@@ -100,20 +100,23 @@
      const messages = {
          en: {
              "Sipeed Wiki": "Sipeed Wiki - Documentation",
-             Hardware: "Hardware",
-             Software: "Software",
+             BitV1: "WebBit",
+             BitV2: "WebBit V2",
  
-             maix_title: "Maix AI",
-             maix_brief: "Edge AI so easy! Deploy AI programs quickly on various hardware platforms",
-             maix_i_brief: "MCU with AI HashRate, extremely affordable",
-             maix_ii_brief: "SOC with AI HashRate, can run Linux system",
-             maixpy_brief: "Embedded AI developed by MicroPython, easy and fast",
-             maixpy3_brief: "Embedded AI developed by Python3, easy and fast, cross-platform",
-             maixpy_speech_brief: "Real-time speech recognition library designed for embedded, tiny with high-precision, multi-platform support",
-             maix_i_url: "/hardware/en/maix/index.html",
-             maix_ii_url: "/hardware/en/maixII/index.html",
-             maixpy_url: "/soft/maixpy/en/index.html",
-             maixpy3_url: "/soft/maixpy3/en/index.html",
+             Bit_title: "WebBit",
+             Bit_brief: "WebBit comes with a wealth of sensors, only one board is needed to achieve virtual and real interaction and connection, and realize a variety of IoT applications.",
+             BitV1_doc_brief: "Just getting started? Check it out here",
+             BitV1_dev_brief: "Want to learn more? Click here",
+             BitV2_doc_brief: "ESP32-S2, native USB",
+             Webduino_brief: "Graphic programming, easier to get started with",WebAI_title: "WebAI",
+             WebAI_brief: "With the image training platform, you can immediately experience the complete process of training AI. With Google Teachable Machine and Colab, you can realize AIOT in unexpected ways.",
+             WebAI_doc_title: "User Manual",
+             WebAI_doc_brief: "Quick start? Click here",
+             WebAI_prog: "Graphics Programming",
+             WebAI_train: "Graphics training platform",
+             BitV1_doc_url: "/WebBit_doc/en/index.html",
+             BitV2_dev_url: "/WebBit_dev/en/index.html",
+             Webduino_url: "https://webbit.webduino.io/blockly/?demo=default",
  
              maixhub_title: "Maixhub",
              maixhub_brief: "Model online training, conversion, sharing, firmware online compile etc.",
@@ -181,20 +184,25 @@
          },
          zh: {
              "Sipeed Wiki": "Sipeed Wiki - 文档和资料",
-             Hardware: "硬件",
-             Software: "软件",
+             BitV1: "WebBit",
+             BitV2: "WebBit V2",
  
-             maix_title: "Maix AI",
-             maix_brief: "边缘 AI, 如此简单！快速地在各种硬件平台部署 AI 程序",
-             maix_i_brief: "带 AI 算力 MCU, 极致性价比",
-             maix_ii_brief: "带 AI 算力 SOC, 内置 Linux 系统，可用 MaixPy3 进行开发",
-             maixpy_brief: "MicroPython 开发嵌入式 AI， 简单快速",
-             maixpy3_brief: "Python3 开发嵌入式 AI， 简单快速跨平台",
-             maixpy_speech_brief: "为嵌入式设计的实时语音识别库，小巧且精度高，多平台支持",
-             maix_i_url: "/hardware/zh/maix/index.html",
-             maix_ii_url: "/hardware/zh/maixII/index.html",
-             maixpy_url: "/soft/maixpy/zh/index.html",
-             maixpy3_url: "/soft/maixpy3/zh/index.html",
+             Bit_title: "WebBit",
+             Bit_brief: "WebBit 自带丰富传感器，只需要一块板子就能达成虚实互动串连，实现多样化的物联网应用。",
+             BitV1_doc_brief: "刚入手？可以看看这里",
+             BitV1_dev_brief: "想更深入了解？点击这里",
+             BitV2_doc_brief: "ESP32-S2，原生USB",
+             Webduino_brief: "图形编程，上手更方便",
+             WebAI_title: "WebAI",
+             WebAI_brief: "配合图像训练平台，立即体验训练AI的完整流程，配合Google Teachable Machine、Colab，让您用意想不到的方法实现AIOT。",
+             WebAI_doc_title: "用户手册",
+             WebAI_doc_brief: "快速上手？点击这里",
+             WebAI_prog: "图形编程",
+             WebAI_train: "图形训练平台",
+             BitV1_doc_url: "/WebBit_doc/zh/index.html",
+             BitV1_dev_url: "/WebBit_dev/zh/index.html",
+             BitV2_doc_url: "/WebBit_V2_doc/zh/index.html",
+             Webduino_url: "https://webbit.webduino.io/blockly/?demo=default",
  
              maixhub_title: "Maixhub",
              maixhub_brief: "模型在线训练、转换、分享，固件在线生成等",
@@ -262,39 +270,33 @@
      ///////////////////// translate end /////////////////////
      ///////////////////// config start /////////////////////
      const products = [{
-         title: "maix_title",
-         brief: "maix_brief",
+         title: "Bit_title",
+         brief: "Bit_brief",
          img: "/soft/maixpy3/zh/assets/images/load.gif",
          video: "/hardware/zh/maixII/M2A/MaixSense/assets/M2A-1.mp4",
          bg: "#dbdbdb",
-         left_label: "Hardware",
-         right_label: "Software",
+         left_label: "BitV1",
+         right_label: "BitV2",
          left: [{
-                 name: "Maix-I",
-                 url: "maix_i_url",
-                 brief: "maix_i_brief"
+                 name: "使用手册",
+                 url: "BitV1_doc_url",
+                 brief: "BitV1_doc_brief"
              },
              {
-                 name: "Maix-II",
-                 url: "maix_ii_url",
-                 brief: "maix_ii_brief",
+                 name: "开发手册",
+                 url: "BitV1_dev_url",
+                 brief: "BitV1_dev_brief",
                  new: true
              }
          ],
          right: [{
-                 name: "MaixPy",
-                 url: "maixpy_url",
-                 brief: "maixpy_brief"
+                 name: "使用手册",
+                 url: "BitV2_doc_url",
+                 brief: "BitV2_doc_brief"
              },{
-                 name: "MaixPy3",
-                 url: "maixpy3_url",
-                 brief: "maixpy3_brief",
-                 new: true
-             },{
-                 name: "Maix-Speech",
-                 url: "https://github.com/sipeed/Maix-Speech",
-                 brief: "maixpy_speech_brief",
-                 new_tab: true,
+                 name: "Webduino编程平台",
+                 url: "Webduino_url",
+                 brief: "Webduino_brief",
                  new: true
              }
          ]
