@@ -1,37 +1,59 @@
 {
+    "class": "language_zh",
     "locale": "zh_CN",
     "navbar": {
-        "title": "teedoc",
+        "title": "BPI Steam",
         "logo": {
-            "alt": "teedoc logo",
+            "alt": "BPI logo",
             "src": "/static/image/logo.png"
         },
         "home_url": "/",
         "items": [
             {
-                "url": "/get_started/zh/",
-                "label": "安装使用",
+                "url": "/",
+                "label": "首页",
                 "position": "left"
             },
             {
-                "url": "/develop/zh/",
-                "label": "开发",
+                "id": "WebBit",
+                "label": "WebBit",
+                "position": "left",
+                "items": [
+                    {
+                        "id": "Doc",
+                        "url": "/WebBit_doc/zh/",
+                        "label": "使用手册"
+                    },
+                    {
+                        "id": "Dev",
+                        "url": "/WebBit_dev/zh/",
+                        "label": "开发手册"
+                    }
+                ]
+            },
+            {
+                "url": "/WebAI/zh/",
+                "label": "WebAI",
                 "position": "left"
             },
             {
-                "url": "/blog/",
-                "label": "博客",
+                "url": "/Q-Car/zh/",
+                "label": "Q-Car",
                 "position": "left"
             },
             {
-                "url": "https://github.com/neutree/teedoc",
-                "label": "github",
-                "target": "_blank",
-                "position": "right"
+                "url": "/Triode-Car/zh/",
+                "label": "Triode-Car",
+                "position": "left"
+            },
+            {
+                "url": "/About/zh/",
+                "label": "关于我们",
+                "position": "left"
             },
             {
                 "id": "language",
-                "label": "Language: ",
+                "label": "language: ",
                 "position": "right",
                 "type": "language"
             }
@@ -43,18 +65,24 @@
                 "label": "链接",
                 "items": [
                     {
-                        "label": "网站使用 teedoc 生成",
-                        "url": "https://teedoc.neucrack.com",
+                        "label": "Banana Pi",
+                        "url": "https://www.banana-pi.org.cn",
                         "target": "_blank"
                     },
                     {
-                        "label": "Copyright © 2021 Neucrack",
-                        "url": "https://neucrack.com",
+                        "label": "Wiki",
+                        "url": "http://wiki.banana-pi.org/Main_Page",
                         "target": "_blank"
                     },
                     {
-                        "label": "网站地图",
-                        "url": "/sitemap.xml"
+                        "label": "Webduino",
+                        "url": "https://webduino.com.cn/site/zh_cn/index.html",
+                        "target": "_blank"
+                    },
+                    {
+                        "label": "淘宝",
+                        "url": "https://shop108780008.taobao.com/",
+                        "target": "_blank"
                     }
                 ]
             },
@@ -62,41 +90,52 @@
                 "label": "源码",
                 "items": [
                     {
-                        "label": "github",
-                        "url": "https://github.com/neutree/teedoc",
-                        "target": "_blank"
-                    },
-                    {
-                        "label": "gitee",
-                        "url": "https://gitee.com/teedoc/teedoc",
-                        "target": "_blank"
-                    },
-                    {
                         "label": "本网站源文件",
-                        "url": "https://github.com/teedoc/teedoc.github.io",
+                        "url": "https://github.com/BPI-STEAM/BPI-Doc",
                         "target": "_blank"
+                    },
+                    {
+                        "label": "BananaPi源文件",
+                        "url": "https://github.com/BPI-SINOVOIP",
+                        "target": "_blank"
+                    }
+                ]
+            },
+            {
+                "label": "联系我们",
+                "items": [
+                    {
+                        "label": "电话: +86 0755-26475332"
+                    },
+                    {
+                        "label": "商业支持: sales@sinovoip.com.cn (销售部）"
+                    },
+                    {
+                        "label": "技术支持: support@sinovoip.com.cn (技术部）"
+                    },
+                    {
+                        "label": "地址: 广东省松山湖高新技术产业开发区融易大厦 7 楼"
                     }
                 ]
             }
         ],
         "bottom": [
             {
-                "label": "渝ICP备19015320号",
-                "url": "https://beian.miit.gov.cn",
-                "target": "_blank"
-            },
-            {
-                "label": "粤公网安备44030602004109号",
-                "url": "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030602004109",
+                "label": "Copyright © 2021 Banana Pi",
+                "url": "https://www.banana-pi.org.cn",
                 "target": "_blank"
             }
         ]
     },
     "plugins": {
-        "teedoc-plugin-ad-hint": {
+        "teedoc-plugin-search":{
             "config": {
-                "label": "☆",
-                "content": "这是一个支持国际化的消息示例</br>喜欢项目请<a target=\"_blank\" href=\"https://github.com/teedoc/teedoc\">点下 ☆ star </a>哦~🦀🦀"
+                "search_hint": "搜索",
+                "input_hint": "输入关键词，多关键词空格隔开",
+                "loading_hint": "正在加载，请稍候。。。",
+                "download_err_hint": "下载文件失败，请刷新重试或检查网络",
+                "other_docs_result_hint": "来自其它文档的结果",
+                "curr_doc_result_hint": "当前文档搜索结果"
             }
         }
     },
