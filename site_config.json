@@ -1,0 +1,167 @@
+{
+    "site_name": "BPI-Steam",
+    "site_slogon": "BananaPi Steam Education Team",
+    "site_root_url": "/",
+    "site_domain": "bpi-steam.com",
+    "site_protocol": "https",
+    "config_template_dir": "config",
+    "source": "https://github.com/BPI-STEAM/BPI-Doc/blob/main",
+    "route": {
+        "docs": {
+            "/Q-Car/zh/": "docs/Q-Car/zh",
+            "/Triode-Car/zh/": "docs/Triode-Car/zh",
+            "/WebBit_dev/zh/": "docs/WebBit_dev/zh",
+            "/WebBit_doc/zh/": "docs/WebBit_doc/zh",
+            "/WebAI/zh/": "docs/WebAI/zh",
+            "/About/zh/": "docs/About/zh"
+        },
+        "pages": {
+            "/": "pages/index/zh"
+        },
+        "assets": {
+            "/static/": "static",
+            "/Q-Car/zh/assets/":"docs//Q-Car/zh/assets",
+            "/Triode-Car/zh/assets/": "docs/Triode-Car/zh/assets",
+            "/WebAI/zh-tw/assets/": "docs/WebAI/zh-tw/assets",
+            "/WebAI/zh/assets/": "docs/WebAI/zh/assets",
+            "/WebBit_dev/zh/assets/": "docs/WebBit_dev/zh/assets",
+            "/WebBit_doc/zh/assets/": "docs/WebBit_doc/zh/assets"
+        },
+        "/blog/": "blog"
+    },
+    "translate": {
+        "docs": {
+            "/Q-Car/zh/": [
+                {
+                    "url": "/Q-Car/en/",
+                    "src": "docs/Q-Car/en"
+                },
+                {
+                    "url": "/Q-Car/zh-tw/",
+                    "src": "docs/Q-Car/zh-tw"
+                }
+            ],
+            "/Triode-Car/zh/": [
+                {
+                    "url": "/Triode-Car/zh-tw/",
+                    "src": "docs/Triode-Car/zh-tw"
+                },
+                {
+                    "url": "/Triode-Car/en/",
+                    "src": "docs/Triode-Car/en"
+                }
+            ],
+            "/WebBit_dev/zh/": [
+                {
+                    "url": "/WebBit_dev/zh-tw/",
+                    "src": "docs/WebBit_dev/zh-tw"
+                },
+                {
+                    "url": "/WebBit_dev/en/",
+                    "src": "docs/WebBit_dev/en"
+                }
+            ],
+            "/WebBit_doc/zh/": [
+                {
+                    "url": "/WebBit_doc/zh-tw/",
+                    "src": "docs/WebBit_doc/zh-tw"
+                },
+                {
+                    "url": "/WebBit_doc/en/",
+                    "src": "docs/WebBit_doc/en"
+                }
+            ],
+            "/WebAI/zh/": [
+                {
+                    "url": "/WebAI/zh-tw/",
+                    "src": "docs/WebAI/zh-tw"
+                },
+                {
+                    "url": "/WebAI/en/",
+                    "src": "docs/WebAI/en"
+                }
+            ],
+            "/About/zh/": [
+                {
+                    "url": "/About/zh-tw/",
+                    "src": "docs/About/zh-tw"
+                },
+                {
+                    "url": "/About/en/",
+                    "src": "docs/About/en"
+                }
+            ]
+        },
+        "pages": {
+            "/": [
+                {
+                    "url": "/zh-tw/",
+                    "src": "pages/index/zh-tw"
+                },
+                {
+                    "url": "/en/",
+                    "src": "pages/index/en"
+                }
+            ]
+        }
+    },
+    "executable": {
+        "python": "python3",
+        "pip": "pip3"
+    },
+    "plugins": {
+        "teedoc-plugin-markdown-parser":{
+            "from": "pypi",
+            "config": {
+                "toc_depth": 3
+            }
+        },
+        "teedoc-plugin-google-translate":{
+            "from": "pypi",
+            "config": {
+                "doc_types": ["blog", "page", "doc"]
+            }
+        },
+        "teedoc-plugin-theme-default":{
+            "from": "pypi",
+            "config": {
+                "dark": true,
+                "env":{
+                    "main_color": "#6391ed"
+                },
+                "css": "/static/css/custom.css",
+                "js": "/static/js/custom.js"
+            }
+        },
+        "teedoc-plugin-search":{
+            "from": "pypi",
+            "config": {
+                "search_hint": "Search"
+            }
+        },
+        "teedoc-plugin-baidu-tongji":{
+            "from": "pypi",
+            "config": {
+                "code": "789a62aac0b25ad52089ddb4f85128cd"
+            }
+        },
+        "teedoc-plugin-comments-gitalk": {
+            "from": "pypi",
+            "config": {
+                "env": {
+                    "clientID": "a49cf8907bbf60cd5e06",
+                    "clientSecret": "830239001737febb2419f5446f9a8518d240833b",
+                    "repo": "BPI-Doc",
+                    "owner": "BPI-STEAM",
+                    "admin": ["BigQubot", ""],
+                    "main_color": "#FF6B63",
+                    "second_color": "#e25d55"
+                }
+            }
+        }
+    },
+    "rebuild_changes_delay": 0,
+    "robots":{
+        "User-agent": "*"
+    }
+}
