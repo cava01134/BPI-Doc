@@ -3,110 +3,56 @@
     "navbar": {
         "title": "wiki",
         "logo": {
-            "alt": "sipeed wiki logo",
-            "src": "/static/image/logo.svg"
+            "alt": "Banana Pi logo",
+            "src": "/static/image/logo.png"
         },
         "home_url": "/",
         "items": [
             {
-                "label": "产品",
+                "url": "/",
+                "label": "首页",
+                "position": "left"
+            },
+            {
+                "id": "WebBit",
+                "label": "WebBit",
                 "position": "left",
-                "type": "list",
-                "url":"/hardware/zh/",
                 "items": [
                     {
-                        "url": "/hardware/zh/maix/index.html",
-                        "label": "Maix-I"
-                    },
-                    
-                    {
-                        "url": "/hardware/zh/maixII/index.html",
-                        "label": "Maix-II"
+                        "id": "Doc",
+                        "url": "/WebBit_doc/zh/",
+                        "label": "使用手册"
                     },
                     {
-                        "url": "/hardware/zh/lichee/index.html",
-                        "label": "Lichee Pi"
-                    },
-                    {
-                        "url": "/hardware/zh/tang/index.html",
-                        "label": "Tang"
-                    },
-                    {
-                        "url": "/hardware/zh/longan/Nano/Longan_nano.html",
-                        "label": "Longan"
-                    },
-                    {
-                        "url":"/hardware/zh/modules_spmod/spmod_extender.html",
-                        "label":"SP-Mod"
+                        "id": "Dev",
+                        "url": "/WebBit_dev/zh/",
+                        "label": "开发手册"
                     }
                 ]
             },
             {
-                "label": "软件文档",
-                "position": "left",
-                "type": "list",
-                "items": [
-                    {
-                        "url": "/soft/maixpy/zh/index.html",
-                        "label": "MaixPy"
-                    },
-                    {
-                        "url": "/soft/maixpy3/zh/index.html",
-                        "label": "MaixPy3"
-                    },
-                    {
-                        "url": "/soft/Lichee/zh/index.html",
-                        "label": "Lichee"
-                    }
-                ]
-            },
-            
-            {
-                "label": "云服务",
-                "position": "left",
-                "type":"list",
-                "items":[
-                    {
-                        "label":"AI 训练平台",
-                        "url":"https://www.maixhub.com",
-                        "target": "_blank"
-                    },
-                    {
-                        "label":"下载中心",
-                        "url":"https://dl.sipeed.com/",
-                        "target": "_blank"
-                    }
-                ]
-            },
-            {
-                "label": "在线社群",
-                "url": "/community.html",
+                "url": "/WebAI/zh/",
+                "label": "WebAI",
                 "position": "left"
             },
             {
-                "url": "/store.html",
-                "label": "线上商城",
+                "url": "/Q-Car/zh/",
+                "label": "Q-Car",
                 "position": "left"
             },
             {
-                "label":"贡献文档",
-                "url":"/share_docs/zh/",
+                "url": "/Triode-Car/zh/",
+                "label": "Triode-Car",
                 "position": "left"
             },
             {
-                "label":"最新动态",
-                "url":"/news/",
-                "position":"left"
-            },
-            {
-                "label": "Github ",
-                "position": "right",
-                "url": "https://github.com/sipeed",
-                "target": "_blank"
+                "url": "/About/zh/",
+                "label": "关于我们",
+                "position": "left"
             },
             {
                 "id": "language",
-                "label": "Language: ",
+                "label": "language: ",
                 "position": "right",
                 "type": "language"
             }
@@ -118,43 +64,24 @@
                 "label": "链接",
                 "items": [
                     {
-                        "label": "Sipeed",
-                        "url": "https://www.sipeed.com",
+                        "label": "Banana Pi",
+                        "url": "https://www.banana-pi.org.cn",
                         "target": "_blank"
                     },
                     {
-                        "label": "BBS 论坛",
-                        "url": "https://bbs.sipeed.com/",
+                        "label": "Wiki",
+                        "url": "http://wiki.banana-pi.org/Main_Page",
                         "target": "_blank"
                     },
                     {
-                        "label": "Maixhub",
-                        "url": "https://maixhub.sipeed.com/",
+                        "label": "Webduino",
+                        "url": "https://webduino.com.cn/site/zh_cn/index.html",
                         "target": "_blank"
                     },
                     {
-                        "label": "Sipeed 淘宝",
-                        "url": "https://sipeed.taobao.com/",
+                        "label": "淘宝",
+                        "url": "https://shop108780008.taobao.com/",
                         "target": "_blank"
-                    },
-                    {
-                        "label": "网站使用 teedoc 生成",
-                        "url": "https://github.com/neutree/teedoc",
-                        "target": "_blank"
-                    }
-                ]
-            },
-            {
-                "label": "网站统计",
-                "items": [
-                    {
-                        "label": "百度统计",
-                        "url": "https://tongji.baidu.com/web/welcome/ico?s=9cb07365544a53067c56c346c838181a",
-                        "target": "_blank"
-                    },
-                    {
-                        "label": "网站地图",
-                        "url": "/sitemap.xml"
                     }
                 ]
             },
@@ -162,38 +89,14 @@
                 "label": "源码",
                 "items": [
                     {
-                        "label": "文档源文件",
-                        "url": "https://github.com/sipeed/sipeed_wiki",
+                        "label": "本网站源文件",
+                        "url": "https://github.com/BPI-STEAM/BPI-Doc",
                         "target": "_blank"
                     },
                     {
-                        "label": "开源项目源码",
-                        "url": "https://github.com/sipeed",
+                        "label": "BananaPi源文件",
+                        "url": "https://github.com/BPI-SINOVOIP",
                         "target": "_blank"
-                    }
-                ]
-            },
-            {
-                "label": "关注我们",
-                "items": [
-                    {
-                        "label": "github",
-                        "url": "https://github.com/sipeed",
-                        "target":"_blank"
-                    },
-                    {
-                        "label": "twitter",
-                        "url": "https://twitter.com/SipeedIO",
-                        "target":"_blank"
-                    },
-                    {
-                        "label": "淘宝",
-                        "url": "https://sipeed.taobao.com/",
-                        "target":"_blank"
-                    },
-                    {
-                        "label": "更多",
-                        "url": "/community.html"
                     }
                 ]
             },
@@ -201,30 +104,24 @@
                 "label": "联系我们",
                 "items": [
                     {
-                        "label": "电话: +86 0755-27808509"
+                        "label": "电话: +86 0755-26475332"
                     },
                     {
-                        "label": "商业支持: support@sipeed.com"
+                        "label": "商业支持: sales@sinovoip.com.cn (销售部）"
                     },
                     {
-                        "label": "地址: 深圳市宝安区新湖路4008号蘅芳科技办公大厦A座-2101C"
+                        "label": "技术支持: support@sinovoip.com.cn (技术部）"
                     },
                     {
-                        "label": "加入我们",
-                        "url": "/join_us.html"
+                        "label": "地址: 广东省松山湖高新技术产业开发区融易大厦 7 楼"
                     }
                 ]
             }
         ],
         "bottom": [
             {
-                "label": "©2018-2021 深圳矽速科技有限公司",
-                "url": "https://www.sipeed.com",
-                "target": "_blank"
-            },
-            {
-                "label": "粤ICP备19015433号-1",
-                "url": "https://beian.miit.gov.cn/#/Integrated/index",
+                "label": "Copyright © 2021 Banana Pi",
+                "url": "https://www.banana-pi.org.cn",
                 "target": "_blank"
             }
         ]
