@@ -253,11 +253,11 @@
     background-color: #1f1f1f;
 }
 #sidebar .active > a, #navbar .active > a, #navbar .active_parent > a {
-    background-color: ##225378;
+    background-color: #225378;
     color: #ffffff;
 }
 #sidebar li > a:hover, #sidebar li.active_parent > a:hover, #navbar li > a:hover, #navbar .sub_items > a:hover {
-    background-color: ##225378;
+    background-color: #225378;
     color: #ffffff;
 }
 
@@ -277,7 +277,7 @@
     border-left: 0.1em solid #24292e;
 }
 blockquote {
-    border-left: 4px solid ##225378;
+    border-left: 4px solid #225378;
 }
 .title_pic {
     padding-top: 30px;
@@ -307,7 +307,7 @@ blockquote {
     display: table;
 }
 th {
-    background-color: ##225378;
+    background-color: #225378;
     border: 2px solid #d8524b;
 }
 #navbar .site_logo {
