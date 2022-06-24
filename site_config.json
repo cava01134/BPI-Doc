@@ -158,37 +158,27 @@
         "teedoc-plugin-baidu-tongji":{
             "from": "pypi",
             "config": {
-                "code": "9cb07365544a53067c56c346c838181a"
+                "code": "789a62aac0b25ad52089ddb4f85128cd"
             }
         },
         "teedoc-plugin-google-analytics":{
             "from": "pypi",
             "config": {
-                "id": "UA-119047820-5"
+                "id": "G-MRHWDDNYB6"
             }
         },
         "teedoc-plugin-comments-gitalk": {
             "from": "pypi",
             "config": {
                 "env": {
-                    "clientID": "13d7605e4abe8192405c",
-                    "clientSecret": "105f1bf3dee8f3b8c0cecfcfbdb1c273a3babb12",
-                    "repo": "sipeed_wiki",
-                    "owner": "sipeed",
-                    "admin": ["Neutree", "STRfarfar"],
-                    "main_color": "#225378",
+                    "clientID": "a49cf8907bbf60cd5e06",
+                    "clientSecret": "830239001737febb2419f5446f9a8518d240833b",
+                    "repo": "BPI-Doc",
+                    "owner": "BPI-STEAM",
+                    "admin": ["BigQubot", ""],
+                    "main_color": "#FF6B63",
                     "second_color": "#e25d55"
                 }
-            }
-        },
-        "teedoc-plugin-ad-hint": {
-            "from": "pypi",
-            "config": {
-                "type": "hint",
-                "label": "☆",
-                "content": "新版 MaixHub beta 测试版已上线，支持在线标注、一键部署，更稳定的网络和流畅的体验，并增加 Maix-II-Dock 支持<br/><a href='https://maix.sipeed.com'>快来体验吧！</a>",
-                "show_after_s": 432000,
-                "date": "2022-06-01 14:00"
             }
         },
         "teedoc-plugin-assets": {
