@@ -1,22 +1,19 @@
 {
-    "site_name": "Sipeed Wiki",
-    "site_slogon": "",
+    "site_name": "BPI-Steam",
+    "site_slogon": "BananaPi Steam Education Team",
     "site_root_url": "/",
-    "site_domain": "wiki.sipeed.com",
+    "site_domain": "bpi-steam.com",
     "site_protocol": "https",
     "config_template_dir": "config",
-    "source": "https://github.com/sipeed/sipeed_wiki/blob/main",
+    "source": "https://github.com/BPI-STEAM/BPI-Doc/blob/main",
     "route": {
         "docs": {
-            "/hardware/zh/": "docs/hardware/zh",
-            "/soft/longan/zh/": "docs/soft/longan/zh",
-            "/hardware/maixface/zh/": "docs/hardware/maixface/zh",
-            "/soft/Lichee/zh/": "docs/soft/Lichee/zh",
-            "/soft/Tang/zh/": "docs/soft/Tang/zh",
-            "/soft/maixpy/zh/": "docs/soft/maixpy/zh",
-            "/soft/maixpy3/zh/": "docs/soft/maixpy3/zh",
-            "/soft/maixduino/zh/":"docs/soft/maixduino/zh",
-            "/share_docs/zh/": "share_docs/zh"
+            "/Q-Car/zh/": "docs/Q-Car/zh",
+            "/Triode-Car/zh/": "docs/Triode-Car/zh",
+            "/WebBit_dev/zh/": "docs/WebBit_dev/zh",
+            "/WebBit_doc/zh/": "docs/WebBit_doc/zh",
+            "/WebAI/zh/": "docs/WebAI/zh",
+            "/About/zh/": "docs/About/zh"
             
         },
         "pages": {
@@ -24,16 +21,12 @@
         },
         "assets": {
             "/static/": "static",
-            "/hardware/assets/": "docs/hardware/assets",
-            "/soft/longan/assets/": "docs/soft/longan/assets",
-            "/hardware/maixface/assets/": "docs/hardware/maixface/assets",
-            "/soft/Lichee/assets/": "docs/soft/Lichee/assets",
-            "/soft/Tang/assets/": "docs/soft/Tang/assets",
-            "/soft/maixpy/assets/": "docs/soft/maixpy/assets",
-            "/soft/maixpy3/assets/": "docs/soft/maixpy3/assets",
-            "/soft/maixduino/assets/":"docs/soft/maixduino/assets",
-            "/share_docs/assets":"share_docs/assets"
-
+            "/Q-Car/zh/assets/":"docs//Q-Car/zh/assets",
+            "/Triode-Car/zh/assets/": "docs/Triode-Car/zh/assets",
+            "/WebAI/zh-tw/assets/": "docs/WebAI/zh-tw/assets",
+            "/WebAI/zh/assets/": "docs/WebAI/zh/assets",
+            "/WebBit_dev/zh/assets/": "docs/WebBit_dev/zh/assets",
+            "/WebBit_doc/zh/assets/": "docs/WebBit_doc/zh/assets"
         },
         "blog": {
             "/news/": "news"
@@ -41,40 +34,73 @@
     },
     "translate": {
         "docs": {
-            "/hardware/zh/": [
+            "/Q-Car/zh/": [
                 {
-                    "url": "/hardware/en/",
-                    "src": "docs/hardware/en"
+                    "url": "/Q-Car/en/",
+                    "src": "docs/Q-Car/en"
+                },
+                {
+                    "url": "/Q-Car/zh-tw/",
+                    "src": "docs/Q-Car/zh-tw"
                 }
             ],
-            "/soft/longan/zh/": [{
-                    "url": "/soft/longan/en/",
-                    "src": "docs/soft/longan/en"
+            "/Triode-Car/zh/": [
+                {
+                    "url": "/Triode-Car/zh-tw/",
+                    "src": "docs/Triode-Car/zh-tw"
+                },
+                {
+                    "url": "/Triode-Car/en/",
+                    "src": "docs/Triode-Car/en"
                 }
             ],
-            "/hardware/maixface/zh/": [{
-                    "url": "/hardware/maixface/en/",
-                    "src": "docs/hardware/maixface/en"
+            "/WebBit_dev/zh/": [
+                {
+                    "url": "/WebBit_dev/zh-tw/",
+                    "src": "docs/WebBit_dev/zh-tw"
+                },
+                {
+                    "url": "/WebBit_dev/en/",
+                    "src": "docs/WebBit_dev/en"
                 }
             ],
-            "/soft/maixpy/zh/": [{
-                    "url": "/soft/maixpy/en/",
-                    "src" : "docs/soft/maixpy/en"
+            "/WebBit_doc/zh/": [
+                {
+                    "url": "/WebBit_doc/zh-tw/",
+                    "src": "docs/WebBit_doc/zh-tw"
+                },
+                {
+                    "url": "/WebBit_doc/en/",
+                    "src": "docs/WebBit_doc/en"
                 }
             ],
-            "/soft/Tang/zh/": [{
-                "url": "/soft/Tang/en/",
-                "src" : "docs/soft/Tang/en"
+            "/WebAI/zh/": [
+                {
+                    "url": "/WebAI/zh-tw/",
+                    "src": "docs/WebAI/zh-tw"
+                },
+                {
+                    "url": "/WebAI/en/",
+                    "src": "docs/WebAI/en"
                 }
             ],
-            "/share_docs/zh/": [{
-                "url": "/share_docs/en/",
-                "src" : "share_docs/en"
+            "/About/zh/": [
+                {
+                    "url": "/About/zh-tw/",
+                    "src": "docs/About/zh-tw"
+                },
+                {
+                    "url": "/About/en/",
+                    "src": "docs/About/en"
                 }
             ]
         },
         "pages": {
             "/": [
+                {
+                    "url": "/zh-tw/",
+                    "src": "pages/index/zh-tw"
+                },
                 {
                     "url": "/en/",
                     "src": "pages/index/en"
