@@ -1,15 +1,15 @@
 {
-    "locale": "zh_CN",
+    "locale": "zh_tw",
     "navbar": {
         "title": "wiki",
         "logo": {
             "alt": "Banana Pi logo",
             "src": "/static/image/logo.png"
         },
-        "home_url": "/",
+        "home_url": "/zh_tw/",
         "items": [
             {
-                "url": "/",
+                "url": "/zh_tw/",
                 "label": "首頁",
                 "position": "left"
             },
@@ -20,33 +20,33 @@
                 "items": [
                     {
                         "id": "Doc",
-                        "url": "/WebBit_doc/zh/",
+                        "url": "/WebBit_doc/zh_tw/",
                         "label": "使用手冊"
                     },
                     {
                         "id": "Dev",
-                        "url": "/WebBit_dev/zh/",
+                        "url": "/WebBit_dev/zh_tw/",
                         "label": "開發手冊"
                     }
                 ]
             },
             {
-                "url": "/WebAI/zh/",
+                "url": "/WebAI/zh_tw/",
                 "label": "WebAI",
                 "position": "left"
             },
             {
-                "url": "/Q-Car/zh/",
+                "url": "/Q-Car/zh_tw/",
                 "label": "Q-Car",
                 "position": "left"
             },
             {
-                "url": "/Triode-Car/zh/",
+                "url": "/Triode-Car/zh_tw/",
                 "label": "Triode-Car",
                 "position": "left"
             },
             {
-                "url": "/About/zh/",
+                "url": "/About/zh_tw/",
                 "label": "關於我們",
                 "position": "left"
             },
