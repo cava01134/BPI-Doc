@@ -23,7 +23,7 @@
             "/static/": "static",
             "/Q-Car/zh/assets/":"docs//Q-Car/zh/assets",
             "/Triode-Car/zh/assets/": "docs/Triode-Car/zh/assets",
-            "/WebAI/zh-tw/assets/": "docs/WebAI/zh-tw/assets",
+            "/WebAI/zh_tw/assets/": "docs/WebAI/zh_tw/assets",
             "/WebAI/zh/assets/": "docs/WebAI/zh/assets",
             "/WebBit_dev/zh/assets/": "docs/WebBit_dev/zh/assets",
             "/WebBit_doc/zh/assets/": "docs/WebBit_doc/zh/assets"
@@ -40,14 +40,14 @@
                     "src": "docs/Q-Car/en"
                 },
                 {
-                    "url": "/Q-Car/zh-tw/",
-                    "src": "docs/Q-Car/zh-tw"
+                    "url": "/Q-Car/zh_tw/",
+                    "src": "docs/Q-Car/zh_tw"
                 }
             ],
             "/Triode-Car/zh/": [
                 {
-                    "url": "/Triode-Car/zh-tw/",
-                    "src": "docs/Triode-Car/zh-tw"
+                    "url": "/Triode-Car/zh_tw/",
+                    "src": "docs/Triode-Car/zh_tw"
                 },
                 {
                     "url": "/Triode-Car/en/",
@@ -56,8 +56,8 @@
             ],
             "/WebBit_dev/zh/": [
                 {
-                    "url": "/WebBit_dev/zh-tw/",
-                    "src": "docs/WebBit_dev/zh-tw"
+                    "url": "/WebBit_dev/zh_tw/",
+                    "src": "docs/WebBit_dev/zh_tw"
                 },
                 {
                     "url": "/WebBit_dev/en/",
@@ -66,8 +66,8 @@
             ],
             "/WebBit_doc/zh/": [
                 {
-                    "url": "/WebBit_doc/zh-tw/",
-                    "src": "docs/WebBit_doc/zh-tw"
+                    "url": "/WebBit_doc/zh_tw/",
+                    "src": "docs/WebBit_doc/zh_tw"
                 },
                 {
                     "url": "/WebBit_doc/en/",
@@ -76,8 +76,8 @@
             ],
             "/WebAI/zh/": [
                 {
-                    "url": "/WebAI/zh-tw/",
-                    "src": "docs/WebAI/zh-tw"
+                    "url": "/WebAI/zh_tw/",
+                    "src": "docs/WebAI/zh_tw"
                 },
                 {
                     "url": "/WebAI/en/",
@@ -86,8 +86,8 @@
             ],
             "/About/zh/": [
                 {
-                    "url": "/About/zh-tw/",
-                    "src": "docs/About/zh-tw"
+                    "url": "/About/zh_tw/",
+                    "src": "docs/About/zh_tw"
                 },
                 {
                     "url": "/About/en/",
@@ -98,8 +98,8 @@
         "pages": {
             "/": [
                 {
-                    "url": "/zh-tw/",
-                    "src": "pages/index/zh-tw"
+                    "url": "/zh_tw/",
+                    "src": "pages/index/zh_tw"
                 },
                 {
                     "url": "/en/",

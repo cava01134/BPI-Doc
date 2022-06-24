@@ -4,7 +4,7 @@ Webduino Blockly Bit 体验版是 Webduino 所研发出来的图像化编辑工�
 
 打开链接：[Webduino Blockly Bit 体验版](https://webduino.com.cn/link.html?lang=zh-hans&type=blockly)
 
-> 更多 Webduino Blockly 功能请参考：[Webduino Blockly 基本操作](https://tutorials.webduino.io/zh-tw/docs/basic/blockly/blockly-tutorial-01.html)、[Webduino Blockly 特殊功能](https://tutorials.webduino.io/zh-tw/docs/basic/blockly/blockly-tutorial-02.html)、[连动多块开发板](https://tutorials.webduino.io/zh-tw/docs/basic/blockly/multi-board.html)。
+> 更多 Webduino Blockly 功能请参考：[Webduino Blockly 基本操作](https://tutorials.webduino.io/zh_tw/docs/basic/blockly/blockly-tutorial-01.html)、[Webduino Blockly 特殊功能](https://tutorials.webduino.io/zh_tw/docs/basic/blockly/blockly-tutorial-02.html)、[连动多块开发板](https://tutorials.webduino.io/zh_tw/docs/basic/blockly/multi-board.html)。
 
 ## 工具接口说明
 
