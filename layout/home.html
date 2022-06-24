@@ -104,20 +104,27 @@
              BitV2: "WebBit V2",
  
              Bit_title: "WebBit",
+             Doc: "Manual",
+             Dev: "Development Manual",
              Bit_brief: "WebBit comes with a wealth of sensors, only one board is needed to achieve virtual and real interaction and connection, and realize a variety of IoT applications.",
              BitV1_doc_brief: "Just getting started? Check it out here",
              BitV1_dev_brief: "Want to learn more? Click here",
              BitV2_doc_brief: "ESP32-S2, native USB",
-             Webduino_brief: "Graphic programming, easier to get started with",WebAI_title: "WebAI",
+             Webduino_brief: "Graphic programming, easier to get started with",
+             BitV1_doc_url: "/WebBit_doc/en/",
+             BitV2_dev_url: "/WebBit_dev/en/",
+             Webduino_url: "https://webbit.webduino.io/blockly/?demo=default",
+ 
+             WebAI_title: "WebAI",
              WebAI_brief: "With the image training platform, you can immediately experience the complete process of training AI. With Google Teachable Machine and Colab, you can realize AIOT in unexpected ways.",
              WebAI_doc_title: "User Manual",
              WebAI_doc_brief: "Quick start? Click here",
              WebAI_prog: "Graphics Programming",
              WebAI_train: "Graphics training platform",
-             BitV1_doc_url: "/WebBit_doc/en/",
-             BitV2_dev_url: "/WebBit_dev/en/",
-             Webduino_url: "https://webbit.webduino.io/blockly/?demo=default",
- 
+             WebAI_doc_url: "/WebAI/zh/",
+             WebAI_Prog_url: "https://ai-blockly.webduino.io/#/",
+             WebAI_Train_url: "https://vision.webduino.io/",
+
              maixhub_title: "Maixhub",
              maixhub_brief: "Model online training, conversion, sharing, firmware online compile etc.",
              maixhub_models: "Model center",
@@ -188,22 +195,28 @@
              BitV2: "WebBit V2",
  
              Bit_title: "WebBit",
+             Doc: "使用手册",
+             Dev: "开发手册",
              Bit_brief: "WebBit 自带丰富传感器，只需要一块板子就能达成虚实互动串连，实现多样化的物联网应用。",
              BitV1_doc_brief: "刚入手？可以看看这里",
              BitV1_dev_brief: "想更深入了解？点击这里",
              BitV2_doc_brief: "ESP32-S2，原生USB",
              Webduino_brief: "图形编程，上手更方便",
+             BitV1_doc_url: "/WebBit_doc/zh/",
+             BitV1_dev_url: "/WebBit_dev/zh/",
+             BitV2_doc_url: "/WebBit_V2_doc/zh/",
+             Webduino_url: "https://webbit.webduino.io/blockly/?demo=default",
+             
              WebAI_title: "WebAI",
              WebAI_brief: "配合图像训练平台，立即体验训练AI的完整流程，配合Google Teachable Machine、Colab，让您用意想不到的方法实现AIOT。",
              WebAI_doc_title: "用户手册",
              WebAI_doc_brief: "快速上手？点击这里",
              WebAI_prog: "图形编程",
              WebAI_train: "图形训练平台",
-             BitV1_doc_url: "/WebBit_doc/zh/",
-             BitV1_dev_url: "/WebBit_dev/zh/",
-             BitV2_doc_url: "/WebBit_V2_doc/zh/",
-             Webduino_url: "https://webbit.webduino.io/blockly/?demo=default",
- 
+             WebAI_doc_url: "/WebAI/zh/",
+             WebAI_Prog_url: "https://ai-blockly.webduino.io/#/",
+             WebAI_Train_url: "https://vision.webduino.io/",
+
              maixhub_title: "Maixhub",
              maixhub_brief: "模型在线训练、转换、分享，固件在线生成等",
              maixhub_models: "模型中心",
@@ -277,19 +290,19 @@
          left_label: "BitV1",
          right_label: "BitV2",
          left: [{
-                 name: "使用手册",
+                 name: "Doc",
                  url: "BitV1_doc_url",
                  brief: "BitV1_doc_brief"
              },
              {
-                 name: "开发手册",
+                 name: "Dev",
                  url: "BitV1_dev_url",
                  brief: "BitV1_dev_brief",
                  new: true
              }
          ],
          right: [{
-                 name: "使用手册",
+                 name: "Doc",
                  url: "BitV2_doc_url",
                  brief: "BitV2_doc_brief"
              },{
@@ -300,29 +313,23 @@
              }
          ]
          },{
-         title: "maixhub_title",
-         brief: "maixhub_brief",
-         img: "/soft/maixpy3/zh/assets/images/main.png",
+         title: "WebAI_title",
+         brief: "WebAI_brief",
+         img: "/static/image/WebAI_400x.png",
          bg: "white",
          left: [{
-                 name: "maixhub_models",
-                 url: "https://maixhub.com/",
-                 brief: "maixhub_models_brief",
+                 name: "WebAI_doc_title",
+                 url: "WebAI_doc_url",
+                 brief: "WebAI_brief",
                  new_tab: true
              },{
-                 name: "maixhub_train",
-                 url: "https://maixhub.com/ModelTraining",
-                 brief: "maixhub_train_brief",
+                 name: "WebAI_prog",
+                 url: "WebAI_Prog_url",
+                 brief: "WebAI_brief",
                  new_tab: true
              },{
-                 name: "maixhub_compile",
-                 url: "https://maixhub.com/onlineCompiler",
-                 brief: "maixhub_compile_brief",
-                 new_tab: true
-             },{
-                 name: "maixhub_convert",
-                 url: "https://maixhub.com/modelConvert",
-                 brief: "maixhub_convert_brief",
+                 name: "WebAI_train",
+                 url: "WebAI_Train_url",
                  new_tab: true
              }
          ]
