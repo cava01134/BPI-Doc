@@ -1,18 +1,10 @@
-# Sipeed wiki source code
+# BPI-Steam Document source code
 =====
 
-Related site: [wiki.sipeed.com](https://wiki.sipeed.com)
+Related site: [https://bpi-steam.com/](https://bpi-steam.com/)
 
 If you want change document or add one, do the following choice.
 
 ## Fix error
 
 If you find any error on wiki page, just fix it on github and **Commit changes**, thanks for correcting.
-
-## Share article 
-
-We are glad that people share their article on our wiki page
-
-Choose one language below to start to know how to share article.
-
-[中文](./share_docs/zh/readme.md) [English](./share_docs/en/readme.md)
