@@ -13,6 +13,7 @@
             "/WebBit_dev/zh/": "docs/WebBit_dev/zh",
             "/WebBit_doc/zh/": "docs/WebBit_doc/zh",
             "/WebAI/zh/": "docs/WebAI/zh",
+            "/Leaf_S3_doc/zh/": "docs/Leaf_S3_doc/zh",
             "/About/zh/": "docs/About/zh"
             
         },
@@ -21,7 +22,8 @@
         },
         "assets": {
             "/static/": "static",
-            "/Q-Car/zh/assets/":"docs//Q-Car/zh/assets",
+            "/Q-Car/zh/assets/":"docs/Q-Car/zh/assets",
+            "/Leaf_S3_doc/zh/assets/":"docs/Leaf_S3_doc/zh/assets",
             "/Triode-Car/zh/assets/": "docs/Triode-Car/zh/assets",
             "/WebAI/zh_tw/assets/": "docs/WebAI/zh_tw/assets",
             "/WebAI/zh/assets/": "docs/WebAI/zh/assets",
@@ -52,6 +54,16 @@
                 {
                     "url": "/Triode-Car/en/",
                     "src": "docs/Triode-Car/en"
+                }
+            ],
+            "/Leaf_S3_doc/zh/": [
+                {
+                    "url": "/Leaf_S3_doc/zh_tw/",
+                    "src": "docs/Leaf_S3_doc/zh_tw"
+                },
+                {
+                    "url": "/Leaf_S3_doc/en/",
+                    "src": "docs/Leaf_S3_doc/en"
                 }
             ],
             "/WebBit_dev/zh/": [
