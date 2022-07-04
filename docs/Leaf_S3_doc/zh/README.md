@@ -8,12 +8,6 @@
 
 BPI-Leaf-S3板载ESP32-S3芯片，支持 2.4 GHz Wi-Fi 和低功耗蓝牙 (Bluetooth® LE) 双模无线通信，外围兼容低功耗硬件设计，深度睡眠模式下功耗仅为10uA。
 
-支持USB和外接3.7V锂电池两种供电方式，可实现双电源下自动切换电源功能，并支持USB充电方式。体积小巧，接口方便，上手简单，可直接应用于物联网低功耗项目。
-
-BPI-Leaf-S3开发板在软件方面支持ESP-IDF、Arduino、MicroPython等多种方式进行编程开发 。
-
-BPI-Leaf-S3开发板上标记了与芯片对应的所有IO管脚，且IO管脚顺序与Espressif ESP32-S3-DevKitC-1开发板一致，开发者可根据实际需求，可将DevKitC-1支持的外围设备添加到BPI-Leaf-S3上，也可将开发板插在面包板上使用。
-
 ## 使用 MicroPython 编程
 
 通过烧写 MicroPython 固件，就可以在开发板中使用 Python 语言进行编程。
@@ -34,7 +28,7 @@ BPI-Leaf-S3开发板上标记了与芯片对应的所有IO管脚，且IO管脚�
 
 - [GitHub: BPI-Leaf-S3 开发板原理图PDF](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/sch/BPI-Leaf-S3-Chip-V0.1A.pdf) 
 
-- [ESP32-S3 技术规格书](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/Example/Arduino)
+- [ESP32-S3 技术规格书](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_cn.pdf)
 
 - [ESP32-S3 技术参考手册](https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_cn.pdf)
 

@@ -1,14 +1,6 @@
-# 【 BPI-Leaf-S3 开发板 】
+# 【 开发板介绍 】
 
-## 介绍
-
-![](../assets/images/BPI-Leaf-S3_banner.jpg)
-
-香蕉派Leaf系列是专为物联网设计的低功耗微控制器开发板。
-
-BPI-Leaf-S3板载ESP32-S3芯片，支持 2.4 GHz Wi-Fi 和低功耗蓝牙 (Bluetooth® LE) 双模无线通信，外围兼容低功耗硬件设计，深度睡眠模式下功耗仅为10uA。
-
-支持USB和外接3.7V锂电池两种供电方式，可实现双电源下自动切换电源功能，并支持USB充电方式。体积小巧，接口方便，上手简单，可直接应用于物联网低功耗项目。
+BPI-Leaf-S3板载ESP32-S3芯片，支持 2.4 GHz Wi-Fi 和低功耗蓝牙 (Bluetooth® LE) 双模无线通信。板子支持USB和外接3.7V锂电池两种供电方式，可实现双电源下自动切换电源功能，并支持USB充电方式。体积小巧，接口方便，上手简单，可直接应用于物联网低功耗项目。
 
 BPI-Leaf-S3开发板在软件方面支持ESP-IDF、Arduino、MicroPython等多种方式进行编程开发 。
 
@@ -21,7 +13,7 @@ BPI-Leaf-S3开发板上标记了与芯片对应的所有IO管脚，且IO管脚�
 - Ultra-low power 10uA
 - 2.4G WIFI ，Bluetooth 5 ，Bluetooth mesh
 - GPIO , ADC , TOUCH , PWM , I2C , SPI , RMT , I2S , UART , LCD，CAMERA ，USB , JTAG
-- 1* 4pin I2C连接座
+- 1 * 4pin I2C连接座
 - 1 * USB Type-C
 - 1 * 2pin 电池连接座，支持充电
 - 1 * 全彩色LED
@@ -35,9 +27,6 @@ BPI-Leaf-S3开发板上标记了与芯片对应的所有IO管脚，且IO管脚�
 ### 硬件规格
 
 <table>
-   <tr>
-      <td></td>
-   </tr>
    <tr>
       <td>BPI-Leaf-S3 规格表</td>
    </tr>
