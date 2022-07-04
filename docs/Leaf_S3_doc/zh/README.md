@@ -1,6 +1,6 @@
 # 【 BPI-Leaf-S3 开发板 】
 
-## 一、介绍
+## 介绍
 
 ![](assets/images/BPI-Leaf-S3_banner.jpg)
 
@@ -14,7 +14,7 @@ BPI-Leaf-S3开发板在软件方面支持ESP-IDF、Arduino、MicroPython等多�
 
 BPI-Leaf-S3开发板上标记了与芯片对应的所有IO管脚，且IO管脚顺序与Espressif ESP32-S3-DevKitC-1开发板一致，开发者可根据实际需求，可将DevKitC-1支持的外围设备添加到BPI-Leaf-S3上，也可将开发板插在面包板上使用。
 
-## 二、关键特性
+## 关键特性
 
 - ESP32-S3，Xtensa® 32 bit LX7
 - 片外 PSRAM , FLASH
@@ -26,7 +26,7 @@ BPI-Leaf-S3开发板上标记了与芯片对应的所有IO管脚，且IO管脚�
 - 1 * 2pin 电池连接座，支持充电
 - 1 * 全彩色LED
 
-## 三、硬件
+## 硬件
 
 ### 接口示意图
 
@@ -233,7 +233,7 @@ BPI-Leaf-S3开发板上标记了与芯片对应的所有IO管脚，且IO管脚�
 管脚间距兼容万能板（洞洞板、点阵板），面包板，便于调试应用。
 
 
-## 四、软件
+## 软件
 
 ### ESP-IDF
 
@@ -269,7 +269,9 @@ ESP-IDF 是乐鑫官方推出的物联网开发框架，支持 Windows、Linux �
 
 需要在设备管理器中确认接口，固件下载模式与普通模式下的接口序号可能是不一样的。
 
-## 五、MicroPython
+## MicroPython
+
+![](assets/images/Mircopython.png)
 
 MicroPython实现了大部分Python 3 特性和语法，易学易上手，验证程序效果无需编译直接下载进芯片运行。
 
@@ -281,7 +283,9 @@ MicroPython实现了大部分Python 3 特性和语法，易学易上手，验证
 
 - [MicroPython固件下载与烧录](https://wiki.banana-pi.org/Micropython_%E5%9B%BA%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E7%83%A7%E5%BD%95)
 
-## 七、Arduino
+## Arduino
+
+![](assets/images/Arduino_logo_1200x350.png)
 
 Arduino 是一个开源嵌入式软硬件开发平台，用来供用户制作可交互式的嵌入式项目。
 
@@ -291,7 +295,7 @@ Arduino 是一个开源嵌入式软硬件开发平台，用来供用户制作可
 
 - [Arduino-ESP32 APIs](https://docs.espressif.com/projects/arduino-esp32/en/latest/libraries.html#apis)
 
-## 八、资料与资源
+## 资料与资源
 
 - [GitHub: BPI-Leaf-S3 开发板原理图PDF](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/sch/BPI-Leaf-S3-Chip-V0.1A.pdf) 
 
@@ -299,7 +303,7 @@ Arduino 是一个开源嵌入式软硬件开发平台，用来供用户制作可
 
 - [ESP32-S3 技术参考手册](https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_cn.pdf)
 
-## 九、样品购买
+## 样品购买
 
 - [官方速卖通](https://www.aliexpress.com/item/1005004428945296.html?spm=5261.ProductManageOnline.0.0.48af4edfYbyEoI)
 
