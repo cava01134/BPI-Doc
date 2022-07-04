@@ -188,8 +188,8 @@
                     "repo": "BPI-Doc",
                     "owner": "BPI-STEAM",
                     "admin": ["BigQubot", ""],
-                    "main_color": "#FF6B63",
-                    "second_color": "#e25d55"
+                    "main_color": "#006DB8",
+                    "second_color": "#225378"
                 }
             }
         },

@@ -1,89 +1,312 @@
-# Web:AI 介绍
+# 【 BPI-Leaf-S3 开发板 】
 
-Web:AI 使用 AI 芯片 ( K210 ) 以及 Wi-Fi 芯片 ( ESP8285 )，能够做出人脸追踪，影像分类，物件追踪，语音辨识，QRcode扫描等应用，只需要一块开发板就能让AI人工智能融入生活。
+## 介绍
 
-不论是联网或是离线，只要通过[Webduino 教育平台](https://account.webduino.io/dashboard)，就能够用最简单的方式上手AIoT人工智能物联网。
+![](../assets/images/BPI-Leaf-S3_banner.jpg)
 
-## 产品内容
+香蕉派Leaf系列是专为物联网设计的低功耗微控制器开发板。
 
-除了 Web:AI 开发板外，也包含了扬声器和 USB 线，让开发板能够立即使用扬声器播放音频效；另外更附赠了教学示例卡，只要进入QRcode模式进行二维码识别，就能马上使用内建的程序示例，搭配小怪兽卡做出各种不同的互动效果。
-- Web:AI 开发板
-- USB 线
-- 扬声器
-- 教学示例卡 ( 部分示例需要搭配扬声器及登月小车 )
-- 小怪兽卡
+BPI-Leaf-S3板载ESP32-S3芯片，支持 2.4 GHz Wi-Fi 和低功耗蓝牙 (Bluetooth® LE) 双模无线通信，外围兼容低功耗硬件设计，深度睡眠模式下功耗仅为10uA。
 
-![](../assets/images/upload_f9d0e0034687439edf1e2b51711b90d9.jpg)
+支持USB和外接3.7V锂电池两种供电方式，可实现双电源下自动切换电源功能，并支持USB充电方式。体积小巧，接口方便，上手简单，可直接应用于物联网低功耗项目。
 
-## Web:AI 开发板
+BPI-Leaf-S3开发板在软件方面支持ESP-IDF、Arduino、MicroPython等多种方式进行编程开发 。
+
+BPI-Leaf-S3开发板上标记了与芯片对应的所有IO管脚，且IO管脚顺序与Espressif ESP32-S3-DevKitC-1开发板一致，开发者可根据实际需求，可将DevKitC-1支持的外围设备添加到BPI-Leaf-S3上，也可将开发板插在面包板上使用。
+
+## 关键特性
+
+- ESP32-S3，Xtensa® 32 bit LX7
+- 片外 PSRAM , FLASH
+- Ultra-low power 10uA
+- 2.4G WIFI ，Bluetooth 5 ，Bluetooth mesh
+- GPIO , ADC , TOUCH , PWM , I2C , SPI , RMT , I2S , UART , LCD，CAMERA ，USB , JTAG
+- 1* 4pin I2C连接座
+- 1 * USB Type-C
+- 1 * 2pin 电池连接座，支持充电
+- 1 * 全彩色LED
+
+## 硬件
+
+### 接口示意图
+
+![](../assets/images/Leaf-S3_board.png)
 
 ### 硬件规格
 
-Web:AI 开发板硬件内含摄像镜头和LCD屏幕，可即使做出影像互动；板载的麦克风与扬声器插座能够做出录音，播放音频等语音互动；和 Web:Bit 兼容的金手指引脚可以直接接上 Web:Bit 扩充版，用于连接各类传感器，控制器等外设，完美达成AI与IoT的结合。
+<table>
+   <tr>
+      <td></td>
+   </tr>
+   <tr>
+      <td>BPI-Leaf-S3 规格表</td>
+   </tr>
+   <tr>
+      <td>SoC主控芯片</td>
+      <td>ESP32-S3，Xtensa® 32 位 LX7 双核处理器</td>
+   </tr>
+   <tr>
+      <td>主频</td>
+      <td>240MHz MAX</td>
+   </tr>
+   <tr>
+      <td>工作温度</td>
+      <td>-40℃~+85℃</td>
+   </tr>
+   <tr>
+      <td>片上 ROM</td>
+      <td>384 KB</td>
+   </tr>
+   <tr>
+      <td>片上 SRAM</td>
+      <td>320 KB</td>
+   </tr>
+   <tr>
+      <td>片外 FLASH ROM</td>
+      <td>8MB</td>
+   </tr>
+   <tr>
+      <td>片外 PSRAM</td>
+      <td>2MB</td>
+   </tr>
+   <tr>
+      <td>WIFI</td>
+      <td>IEEE 802.11 b/g/n ，2.4Ghz频带，150Mbps</td>
+   </tr>
+   <tr>
+      <td>蓝牙</td>
+      <td>Bluetooth 5 ，Bluetooth mesh</td>
+   </tr>
+   <tr>
+      <td>GPIO</td>
+      <td>BPI-Leaf-S3已引出36个可用GPIO</td>
+   </tr>
+   <tr>
+      <td>ADC</td>
+      <td>2 × 12 位 SAR ADC，支持 20 个模拟通道输入</td>
+   </tr>
+   <tr>
+      <td>TOUCH 电容式触摸传感器</td>
+      <td>14</td>
+   </tr>
+   <tr>
+      <td>SPI</td>
+      <td>4</td>
+   </tr>
+   <tr>
+      <td>I2C</td>
+      <td>2，支持主机或从机模式</td>
+   </tr>
+   <tr>
+      <td>I2S</td>
+      <td>2，串行立体声数据的输入输出</td>
+   </tr>
+   <tr>
+      <td>LCD</td>
+      <td>1，支持 8 位 ~16 位并行 RGB、I8080、MOTO6800 接口</td>
+   </tr>
+   <tr>
+      <td>CAMERA</td>
+      <td>1，支持 8 位 ~16 位 DVP 图像传感器接口</td>
+   </tr>
+   <tr>
+      <td>UART</td>
+      <td>3 ，支持异步通信（RS232 和RS485）和 IrDA</td>
+   </tr>
+   <tr>
+      <td>PWM</td>
+      <td>8 路独立通道，14位精度</td>
+   </tr>
+   <tr>
+      <td>MCPWM</td>
+      <td>2</td>
+   </tr>
+   <tr>
+      <td>USB</td>
+      <td>1 × 全速USB 2.0 OTG，Type-C母口</td>
+   </tr>
+   <tr>
+      <td>USB Serial/JTAG 控制器</td>
+      <td>1，USB 全速标准，CDC-ACM ，JTAG</td>
+   </tr>
+   <tr>
+      <td>温度传感器</td>
+      <td>1，测量范围为–20 °C 到 110 °C，用于监测芯片内部温度</td>
+   </tr>
+   <tr>
+      <td>SD/MMC</td>
+      <td>1 × SDIO主机接口，具有2个卡槽，支持SD卡3.0和3.01，SDIO 3.0，CE-ATA 1.1，MMC 4.41，eMMC 4.5和4.51</td>
+   </tr>
+   <tr>
+      <td>TWAI® 控制器</td>
+      <td>1 ，兼容 ISO11898-1（CAN 规范 2.0）</td>
+   </tr>
+   <tr>
+      <td>通用 DMA 控制器</td>
+      <td>5 个接收通道和 5 个发送通道</td>
+   </tr>
+   <tr>
+      <td>RMT</td>
+      <td>4 通道发射，4通道接收，共享 384 x 32-bit 的 RAM</td>
+   </tr>
+   <tr>
+      <td>脉冲计数器</td>
+      <td>4个脉冲计数控制器（单元），每个单元有2个独立的通道</td>
+   </tr>
+   <tr>
+      <td>定时器</td>
+      <td>4 × 54 位通用定时器，16 位时钟预分频器，1 × 52 位系统定时器，3 × 看门狗定时器</td>
+   </tr>
+   <tr>
+      <td>外部晶振</td>
+      <td>40Mhz</td>
+   </tr>
+   <tr>
+      <td>RTC 和低功耗管理</td>
+      <td>电源管理单元 (PMU)+ 超低功耗协处理器 (ULP)</td>
+   </tr>
+   <tr>
+      <td>低功耗电流</td>
+      <td>10uA</td>
+   </tr>
+   <tr>
+      <td>工作电压</td>
+      <td>3.3V</td>
+   </tr>
+   <tr>
+      <td>输入电压</td>
+      <td>3.3V~5.5V</td>
+   </tr>
+   <tr>
+      <td>最大放电电流</td>
+      <td>2A@3.3V DC/DC</td>
+   </tr>
+   <tr>
+      <td>USB充电</td>
+      <td>支持</td>
+   </tr>
+   <tr>
+      <td>最大充电电流</td>
+      <td>500mA</td>
+   </tr>
+   <tr>
+      <td>可控全彩色LED</td>
+      <td>1</td>
+   </tr>
+</table>
 
-- 尺寸：51.6 x 67mm
-- LCD 屏幕：8bit MCU 2.3"，分辨率 320x240
-- 电源输入:
-    - Micro USB ( 5VDC / 2A )
-    - 锂电池插座 ( 3.7~4.2V )
-- CPU：双核 64bit RISC-V，内建浮点运算器、神经网络处理器，标准频率 400MHz
-- 鏡頭：500万像素
-- 插座：金手指兼容 ( Web:Bit / micro:bit )、TF card、扬声器、锂电池
-- 按钮：L 按钮、R 按钮、Reset 按钮
-- 无线网络：内建 ESP8285 模组，支持 2.4G 802.11.b/g/n
-- 音频：内建 MEMS 麦克风，扬声器插座支持 3W 扬声器输出
 
-![](../assets/images/upload_690adf72aa0b8a3d0fc4f3a0f8c726ed.jpg)
+### 硬件尺寸
 
-### 腳位定義
 
-有关 Web:AI 的引脚和使用的芯片如下：
+![](../assets/images/Leaf-S3_board_dimension.png)
 
-![](../assets/images/upload_86f5831686be2d9682c479ea7d912837.png)
+<table>
+   <tr>
+      <td>BPI-Leaf-S3 尺寸表</td>
+   </tr>
+   <tr>
+      <td>管脚间距</td>
+      <td>2.54mm</td>
+   </tr>
+   <tr>
+      <td>安装孔间距</td>
+      <td>23mm/ 62.25mm</td>
+   </tr>
+   <tr>
+      <td>安装孔尺寸</td>
+      <td>内径2mm/外径3mm</td>
+   </tr>
+   <tr>
+      <td>主板尺寸</td>
+      <td>26 × 65.25(mm)/1.02 x 2.57(inches)</td>
+   </tr>
+   <tr>
+      <td>板厚</td>
+      <td>1.2mm</td>
+   </tr>
+   <tr>
+      <td></td>
+   </tr>
+</table>
 
-### 主芯片 ( K210 ) & Wi-Fi 芯片 ( ESP8285 )
+管脚间距兼容万能板（洞洞板、点阵板），面包板，便于调试应用。
 
-![](../assets/images/upload_44609bc24a5a34baf5a7e554ef92bd8e.png)
 
-### 开发板指示灯
+## 软件
 
-![](../assets/images/upload_5f90a5b39c8911dddb7cd8cb5aa26dc9.png)
+### ESP-IDF
 
-- 蓝灯：通电中，不论是接电池或是电源都会闪烁。
-- 黃灯：电源开时灯亮，电源关时熄灭。
-- 紅灯：电池缺电。
-- 綠灯：电池蓄满或没接上电池。
+![](../assets/images/Esp-idf-logo.png)
 
-## Webduino 教育平台
+ESP-IDF 是乐鑫官方推出的物联网开发框架，支持 Windows、Linux 和 macOS 操作系统。
 
-Web:AI 的开发和程序编程可以通过图形编程平台以及IDE来进行，图形编程平台可以让人从最简单的方式入门程序编程；而IDE则是能够让有编程基础的人编写程序代码并下载到开发板上。
+建议开发者通过集成开发环境 (IDE) 安装 ESP-IDF:
 
-### 操作环境
+- [GitHub: ESP-IDF Eclipse 插件安装与使用指南](https://github.com/espressif/idf-eclipse-plugin/blob/master/README_CN.md)
 
-首先进入 [Webduino 教育平台](https://account.webduino.io/dashboard)。
+- [ESP-IDF VSCode 插件 ](https://marketplace.visualstudio.com/items?itemName=espressif.esp-idf-extension) | [GitHub: 安装与使用指南](https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/tutorial/toc.md) | [bilibili：ESP-IDF VSCode 插件快速操作指南](https://www.bilibili.com/video/BV17p4y167uN)
 
-![](../assets/images/upload_13e1bb76387fb4c6eab824e71951a4b8.png)
+或者根据操作系统选择对应的手动安装流程:
 
-### Web:AI 图形编程
+- [Windows 平台工具链的标准设置](https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32s3/get-started/windows-setup.html)
 
-选择「Web:AI 图形编程」，进入图形编程平台。
+- [Linux 和 macOS 平台工具链的标准设置](https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32s3/get-started/linux-macos-setup.html)
 
-   >- 链接：[图形编程平台](https://ai-blockly.webduino.io/)。
+或者根据操作系统选择对应的手动安装流程:
 
-   ![](../assets/images/upload_18082d1a3d97ce4893aafb92a70997eb.png)
+- [API 参考](https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32s3/api-reference/index.html#api)
 
-### Webduino 影像训练平台
+- [API 指南](https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32s3/api-guides/index.html#api)
 
-选择「Webduino 影像训练平台」。
+为了使你的BPI-Leaf-S3开发板可以通过USB-CDC刷写FLASH，需要设置开发板为固件下载模式。
 
->- 关于影像训练平台的使用，欢迎参考：[三、影像训练](https://bpi-steam.com/WebAI/zh/Train/Train.html)。
+有两种操作方法：
 
-   ![](../assets/images/upload_48339186b99e357a04e4f64061681b4b.png)
+1.通过USB连接到电脑，按住BOOT键，再按一下RESET键并松开，最后松开BOOT键。
 
-### MaixPy IDE 下载
+2.在断开供电的条件下按住BOOT键，再通过USB连接到电脑，最后松开BOOT键。
 
-选择「MaixPy IDE 下载」。
+需要在设备管理器中确认接口，固件下载模式与普通模式下的接口序号可能是不一样的。
 
->- 关于IDE的开发使用，欢迎参考：[四、使用 IDE 开发 Web:AI](https://bpi-steam.com/WebAI/zh/IDE/Dev.html)。
+## MicroPython
 
-   ![](../assets/images/upload_443f3bd4facb8552328c0e336bf3d4d7.png)
+![](../assets/images/Mircopython.png)
+
+MicroPython实现了大部分Python 3 特性和语法，易学易上手，验证程序效果无需编译直接下载进芯片运行。
+
+无论是否有编程基础，MicroPython的上手难度绝对远低于其他编程语言，其代码易读性高，且开源社区有多年积累的丰富资源，就如同Python一样拥有极强的生命力与应用价值。
+
+- [GitHub: MicroPython快速上手](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/tree/main/Example/MicroPython-zh#1%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B)
+
+- [MicroPython运行环境搭建(Thonny IDE)](https://wiki.banana-pi.org/Micropython_%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA)
+
+- [MicroPython固件下载与烧录](https://wiki.banana-pi.org/Micropython_%E5%9B%BA%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E7%83%A7%E5%BD%95)
+
+## Arduino
+
+![](../assets/images/Arduino_logo_1200x350.png)
+
+Arduino 是一个开源嵌入式软硬件开发平台，用来供用户制作可交互式的嵌入式项目。
+
+- [Arduino IDE 下载地址](https://www.arduino.cc/en/software) | [安装并配置Arduino-ESP32运行环境](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html#installing)
+
+- [GitHub: BPI-Leaf-S3 Arduino快速上手](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/Example/Arduino)
+
+- [Arduino-ESP32 APIs](https://docs.espressif.com/projects/arduino-esp32/en/latest/libraries.html#apis)
+
+## 资料与资源
+
+- [GitHub: BPI-Leaf-S3 开发板原理图PDF](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/sch/BPI-Leaf-S3-Chip-V0.1A.pdf) 
+
+- [ESP32-S3 技术规格书](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/Example/Arduino)
+
+- [ESP32-S3 技术参考手册](https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_cn.pdf)
+
+## 样品购买
+
+- [官方速卖通](https://www.aliexpress.com/item/1005004428945296.html?spm=5261.ProductManageOnline.0.0.48af4edfYbyEoI)
+
+- [官方淘宝](https://item.taobao.com/item.htm?spm=a2126o.success.0.0.29034831FGnLQW&id=677287234553)
+
+- OEM&OEM 定制服务 ： sales@banana-pi.com

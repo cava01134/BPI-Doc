@@ -36,6 +36,11 @@
                 "position": "left"
             },
             {
+                "url": "/Leaf_S3_doc/en/",
+                "label": "Leaf_S3_doc",
+                "position": "left"
+            },
+            {
                 "url": "/Q-Car/en/",
                 "label": "Q-Car",
                 "position": "left"
@@ -119,8 +124,8 @@
     ],
     "bottom": [
         {
-            "label": "Copyright © 2021 Banana Pi",
-            "url": "http://www.banana-pi.org",
+            "label": "Copyright © 2022 Banana Pi",
+            "url": "https://bpi-steam.com/",
             "target": "_blank"
         }
     ]
