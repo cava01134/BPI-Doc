@@ -1,72 +1,72 @@
 items:
-- label: 1. Unpacking Leaf-S3 development board
+-   label: 1. Unpacking Leaf-S3 development board
     items:
-    - label: Introduction of Leaf-S3
+    -   label: Introduction of Leaf-S3
         file: Unboxing/Introduction.md
-    - label: get started quickly (for the first time, please see here)
+    -   label: get started quickly (for the first time, please see here)
         file: Unboxing/Gettingstart.md
-- label: 2. Programming with MicroPython
+-   label: 2. Programming with MicroPython
     items:
-    - label: MicroPython environment construction
+    -   label: MicroPython environment construction
         file: Programming/Environment.md
-    - label: Micropython firmware download and burning
+    -   label: Micropython firmware download and burning
         file: Programming/Firmware.md
-    - label: Basic Tutorial
+    -   label: Basic Tutorial
         items:
-        - label: variable
+        -   label: variable
             file: Programming/Basic/Variables.md
-        - label: logic
+        -   label: logic
             file: Programming/Basic/Logic.md
-        - label: loop
+        -   label: loop
             file: Programming/Basic/Loops.md
-        - label: math
+        -   label: math
             file: Programming/Basic/Math.md
-        - label: text
+        -   label: text
             file: Programming/Basic/Text.md
-        - label: array
+        -   label: array
             file: Programming/Basic/Lists.md
-        - label: function
+        -   label: function
             file: Programming/Basic/Functions.md
-    - label: advanced features
+    -   label: advanced features
         items:
-        - label: file read and write
+        -   label: file read and write
             file: Programming/Advanced/FileRW.md
-        - label: QR code scanning
+        -   label: QR code scanning
             file: Programming/Advanced/QRCode.md
-        - label: color tracking
+        -   label: color tracking
             file: Programming/Advanced/Color.md
-        - label: face tracking
+        -   label: face tracking
             file: Programming/Advanced/Face.md
-        - label: image classification
+        -   label: image classification
             file: Programming/Advanced/Image.md
-        - label: object tracking
+        -   label: object tracking
             file: Programming/Advanced/Object.md
-        - label: speech recognition
+        -   label: speech recognition
             file: Programming/Advanced/Speech.md
-        - label: detect
-    - label: Web:AI
+        -   label: detect
+    -   label: Web:AI
         items:
-        - label: development board
+        -   label: development board
             file: Programming/WebAI/Board.md
-        - label: LCD screen
+        -   label: LCD screen
             file: Programming/WebAI/LCD.md
-        - label: button switch
+        -   label: button switch
             file: Programming/WebAI/Button.md
-        - label: microphone
+        -   label: microphone
             file: Programming/WebAI/Mic.md
-        - label: I/O pin
+        -   label: I/O pin
             file: Programming/WebAI/IO.md
-    - label: extension
+    -   label: extension
         items:
-        - label: webcast
+        -   label: webcast
             file: Programming/Expand/MQTT.md
-        - label: Servo
+        -   label: Servo
             file: Programming/Expand/Servo.md
-        - label: speaker
+        -   label: speaker
             file: Programming/Expand/Speaker.md
-- label: 3. Programming with Arduino
+-   label: 3. Programming with Arduino
     file: Train/Train.md
-- label: Fourth, use IDE to develop Web:AI
+-   label: Fourth, use IDE to develop Web:AI
     file: IDE/Dev.md
-- label: 5. Control MoonCar
+-   label: 5. Control MoonCar
     file: MoonCar/MoonCar.md
