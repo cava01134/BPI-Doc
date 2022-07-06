@@ -3,21 +3,15 @@ items:
     items:
     -   label: Leaf-S3 介绍
         file: Unboxing/Introduction.md
-    -   label: 初始化设定 (第一次使用请看这里)
-        file: Unboxing/Initialization.md
-    -   label: 安裝版更新固件
-        file: Unboxing/Update.md
-    -   label: 开发板 Wi-Fi 设定
-        file: Unboxing/SettingWIFI.md
-    -   label: 操作模式
-        file: Unboxing/Mode.md
-    -   label: 教学示例卡使用教学
-        file: Unboxing/Card.md
--   label: 二、Web:AI 图形编程
+    -   label: 快速上手 (第一次使用请看这里)
+        file: Unboxing/Gettingstart.md
+-   label: 二、使用MicroPython编程
     items:
-    -   label: 图形编程平台介绍
-        file: Programming/Introduction.md
-    -   label: 基础功能
+    -   label: MicroPython环境搭建
+        file: Programming/Environment.md
+    -   label: Micropython 固件下载与烧录
+        file: Programming/Firmware.md
+    -   label: 基础教程
         items:
         -   label: 变量
             file: Programming/Basic/Variables.md
@@ -70,7 +64,7 @@ items:
             file: Programming/Expand/Servo.md
         -   label: 扬声器
             file: Programming/Expand/Speaker.md
--   label: 三、影像训练
+-   label: 三、使用 Arduino 编程
     file: Train/Train.md
 -   label: 四、使用 IDE 开发 Web:AI
     file: IDE/Dev.md
