@@ -1,81 +1,59 @@
-# 初始化设定 ( 第一次使用请看这里 )
+# Hello World
 
-Web:AI 开发板的固件分为2种芯片的固件，分別是主芯片 ( K210 ) 和 Wi-Fi 芯片 ( ESP8285 )。
-第一次使用 Web:AI 开发板之前，需要先设定 Wi-Fi 及对芯片进行固件更新，將开发板固件升级到最新版本，才能顺利使用最全面的功能。
+我们可以从输出一段“Hello World”文字开始，以此作为了解和学习MicroPython的第一步。
 
-#### [Wi-Fi 设定页面](https://webai.webduino.io) ( 需要通过电脑的Chrome浏览器打开此网页 )
+> 本文所述操作基于Thonny IDE，需要先完成对Thonny IDE的配置，与开发板建立连接。[Thonny IDE运行环境搭建可以参考这里](../Programming/Environment.md)。
 
-## 教学影片
+## 使用REPL
 
-欢迎参考下方教学影片：
+**REPL**即**Read-Eval-Print-Loop**的缩写名词，译为 **读取-求值-输出-循环**。
 
-<iframe src="https://www.youtube.com/embed/ZSGkZUQQXcI" allowfullscreen width="100%" style="aspect-ratio:728/410;border:none " ></iframe>
+我们可以通过实际操作来明白它的意思。
 
-## 教学步骤：Wi-Fi 设定
+将已经安装了MicroPython固件的开发板连接电脑，运行Thonny IDE并正确配置后，在Shell窗口中将出现这样的文本内容：
 
-当拿到 Web:AI 开发板后，只要按照教学步骤或上方影片一步步操作，就可以完成初始化设定咯!
+```
+MicroPython v1.17 on 2022-01-09; ESP32S3 module with ESP32S3
+Type "help()" for more information.
+>>> 
+```
 
-1. 首先使用电脑打开 Chrome 浏览器进入 [Wi-Fi 设定页面](https://webai.webduino.io)。
+注意最后一行的`>>>`提示符，我们可以直接在这后面输入算式或是代码，按下键盘`enter`回车键就会立即在下一行得到输出结果。
 
-    > 如果 Chrome 版本低于 89，需要先將浏览器更新到最新版本!
+```python
+>>> 1+2
+3
+>>> print("Hello World")
+Hello World
+>>> 
+```
 
-2. 將 Web:AI 开发板通过 USB 数据线连接到电脑。
+现在可以很直观的理解了，它会读取我们输入的信息，执行运算求值，输出结果，然后等待我们后续的输入，一直循环这个过程，这也是**REPL**又被译为**交互式解释器**的原因，我们可以直接通过输入代码来和硬件交互，没有像传统的C语言那样需要在中间执行编译的过程，我们输入的信息没有经过编译就传输给芯片自行解释并运行了，这本是Python语言的一大重要特性，MicroPython完美继承了它。
 
-3. 按下「点击开始设定」。
-    ![](../assets/images/upload_02a4681ffc6dfd1aa921e27afe17f2f5.png)
+如果仅仅是使用MicroPython REPL，很多具有串口信息收发功能的软件都可以操作，感兴趣的话可以试试各种串口工具，这可以令人更深刻的理解 “没有中间执行编译的过程” 的意思。
 
-4. 点击「开始连接」。
+>关于REPL的应用，更详尽全面的内容可以参考[MicroPython文档：REPL](https://docs.micropython.org/en/latest/reference/repl.html)
 
-    ![](../assets/images/upload_792d00f7981cf19f3ffad15bf3930abf.png)
+## 代码编辑器
 
-5. 选择连接 Web:AI 的 USB，点击「连接」。
+Thonny IDE当然不仅仅可以进行REPL的操作，作为python代码编辑器，本职功能还是有的。
 
-    ![](../assets/images/upload_4892028c07de2478564d8705933f5580.png)
+新建一个文件并在其编辑区内输入代码。
 
-6. 电脑连接上 Web:AI 后会出现开发板的 Device ID 和现在的固件版本。
+```python
+print(1+2)
+print("Hello World")
+```
 
-    ![](../assets/images/upload_44766cf13211c94964896050340ceb25.jpg)
+完成代码编辑后，点击**保存**，可以选择将文件保存到MicroPython设备中，这将直接将整个文件的数据传输到flash中。可将文件命名为`main.py`，设备会在每次上电或复位后执行有这个文件名的程序，而其他名称的文件仅在被`main.py`调用时或是我们在Thonny中点击**运行**时被执行。
 
+![](../assets/images/Quick_Start.png)
 
-7. 在 Wi-Fi 连接画面，选择 Wi-Fi 并输入密码，按下「储存连接」。
+现在点击**运行**，同样是无需编译的，在Shell中会立即得到结果。
 
-    ![](../assets/images/upload_ddcfed56e5b16ca8494e8c37dc6b9bed.jpg)
+```
+3
+Hello World
+```
 
-8. 成功完成 Wi-Fi 设定!
-
-    ![](../assets/images/upload_4938d84b09b19e6ff298bb8808661543.jpg)
-
-> 如果需要进行固件更新，则要接着进行后续步骤。
-
-## 教学步骤：更新固件
-
-1. 设定完 Wi-Fi 后，如果画面有「已有新版本，点击更新」，代表有新版本可以更新。
-
-   点击「更新固件」。
-
-    ![](../assets/images/upload_417de60a4f044c3973890328c1ce6987.png)
-
-2. 等待固件更新，开发板屏幕会显示更新进度，在此期间请勿中断USB连接或是停止供电。
-
-    ![](../assets/images/upload_73e353a9e9a08eb82c1884c0b2c8bba2.png)
-    ![](../assets/images/upload_d1a8539e1deef8d0c520d7bfc5fb2b0e.png)
-
-3. 更新完成后，重新开机就可以开始使用 Web:AI 了!
-
-    ![](../assets/images/upload_8dbf16901021d914270ba5134b478694.png)
-
-## 小提醒
-
-- 当开发板LCD屏幕呈现下图所示的**相同内容**时，才能在 Wi-Fi 设定页面进行初始化设定。
-
-    ![](../assets/images/upload_9c75be672cbd440d6ee3fdb4f04b77c9.png)
-
-- 想要再次设定 Wi-Fi 时，请先将开发板 [恢复预设状态](https://bpi-steam.com/WebAI/zh/Unboxing/Mode.html#%E5%9B%9E%E5%BE%A9%E9%A0%90%E8%A8%AD%E7%8B%80%E6%85%8B)，当开发板显示和上图相同时就可以进行操作。
-
-- 如果通过上述步骤无法更新固件，可以參考：[安装版更新固件](https://bpi-steam.com/WebAI/zh/Unboxing/Update.html) 来完成设定!
-
-- 如果设定页面文字显示为「网络：人工智能」，如下图，代表 Chrome 浏览器有经过网页自动翻译。网页自动翻译可能会造成 Wi-Fi 设定出错，需要将语言设定到「英文」并重新加载网页才能正常使用。
-
-    ![](../assets/images/upload_f35bd1f701c2304cac254c885f1ef660.jpg)
-
-    ![](../assets/images/upload_698b723317d3f9e955ac643af178d3fe.jpg)
+另外也可以尝试REPL的键盘控制快捷键**ctrl+D**软件复位，可以看到复位后程序立即执行并打印出信息。
