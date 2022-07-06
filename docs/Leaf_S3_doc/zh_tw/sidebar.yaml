@@ -1,87 +1,72 @@
 items:
--   label: 一、開箱 Web:AI 開發板
+-   label: 一、开箱 Leaf-S3 开发板
     items:
-    -   label: Web:AI 介紹
+    -   label: Leaf-S3 介绍
         file: Unboxing/Introduction.md
-        items:
-        -   label: 產品內容
-            file: Unboxing/Introduction.md#-1
-        -   label: Web:AI 開發板
-        -   label: Webduino 教育平台
-    -   label: 初始化設定 ( 第一次使用請看這裡 )
-        file: Unboxing/Initialization.md
-    -   label: 安裝版更新韌體
-        file: Unboxing/Update.md
-    -   label: 開發板 Wi-Fi 設定
-        file: Unboxing/SettingWIFI.md
-    -   label: 操作模式
-        file: Unboxing/Mode.md
-        items:
-        -   label: 主程式模式
-        -   label: QRcode 模式
-        -   label: 回復預設狀態
-    -   label: 教學範例卡使用教學
-        file: Unboxing/Card.md
--   label: 二、Web:AI 程式積木
+    -   label: 快速上手 (第一次使用请看这里)
+        file: Unboxing/Gettingstart.md
+-   label: 二、使用MicroPython编程
     items:
-    -   label: 程式積木平台介紹
-        file: Programming/Introduction.md
-    -   label: 基礎功能
+    -   label: MicroPython环境搭建
+        file: Programming/Environment.md
+    -   label: Micropython 固件下载与烧录
+        file: Programming/Firmware.md
+    -   label: 基础教程
         items:
-        -   label: 變數
+        -   label: 变量
             file: Programming/Basic/Variables.md
         -   label: 逻辑
             file: Programming/Basic/Logic.md
-        -   label: 重複
+        -   label: 循环
             file: Programming/Basic/Loops.md
-        -   label: 數學式
+        -   label: 数学
             file: Programming/Basic/Math.md
-        -   label: 文字
+        -   label: 文本
             file: Programming/Basic/Text.md
-        -   label: 陣列
+        -   label: 数组
             file: Programming/Basic/Lists.md
-        -   label: 函式
+        -   label: 函数
             file: Programming/Basic/Functions.md
     -   label: 進階功能
         items:
-        -   label: 檔案讀寫
+        -   label: 文件读写
             file: Programming/Advanced/FileRW.md
-        -   label: 掃描條碼
+        -   label: 二维码扫描
             file: Programming/Advanced/QRCode.md
-        -   label: 顏色追蹤
+        -   label: 颜色追踪
             file: Programming/Advanced/Color.md
-        -   label: 人臉追蹤
+        -   label: 人脸追踪
             file: Programming/Advanced/Face.md
-        -   label: 影像分類
+        -   label: 影像分类
             file: Programming/Advanced/Image.md
-        -   label: 物件追蹤
+        -   label: 物件追踪
             file: Programming/Advanced/Object.md
-        -   label: 語音辨識
+        -   label: 语音辨识
             file: Programming/Advanced/Speech.md
-        -   label: 偵測
+        -   label: 侦测
     -   label: Web:AI
         items:
-        -   label: 開發板
+        -   label: 开发板
             file: Programming/WebAI/Board.md
-        -   label: LCD 螢幕
+        -   label: LCD 屏幕
             file: Programming/WebAI/LCD.md
-        -   label: 按鈕開關
+        -   label: 按钮开关
             file: Programming/WebAI/Button.md
-        -   label: 麥克風
+        -   label: 麦克风
             file: Programming/WebAI/Mic.md
-        -   label: I/O 引腳
+        -   label: I/O 脚位
             file: Programming/WebAI/IO.md
-    -   label: 擴充功能
+    -   label: 扩充功能
         items:
-        -   label: 網路廣播
+        -   label: 网络广播
             file: Programming/Expand/MQTT.md
-        -   label: 伺服馬達
+        -   label: 舵机
             file: Programming/Expand/Servo.md
-        -   label: 喇叭
+        -   label: 扬声器
             file: Programming/Expand/Speaker.md
--   label: 三、影像訓練
+-   label: 三、使用 Arduino 编程
     file: Train/Train.md
--   label: 四、使用 IDE 開發 Web:AI
+-   label: 四、使用 IDE 开发 Web:AI
     file: IDE/Dev.md
 -   label: 五、操控 MoonCar
     file: MoonCar/MoonCar.md
