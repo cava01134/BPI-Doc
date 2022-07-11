@@ -58,7 +58,7 @@ Thonny can be found quickly with Windows Search, or in the Start menu bar.
 
 Connect the development board to the computer via a USB cable.
 
-The red LED will light up when properly connected.
+The power indicator on the board will light up when properly connected.
 
 We need to know whether the development board is recognized by the computer, and find out which COM port is connected to (for serial communication, downloading programs, etc.).
 

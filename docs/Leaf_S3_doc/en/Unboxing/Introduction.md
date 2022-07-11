@@ -1,5 +1,10 @@
-# 【 BPI-Leaf-S3 Development Board 】
+# 【Introduction to development board】
 
+The BPI-Leaf-S3 has an onboard ESP32-S3 chip that supports 2.4 GHz Wi-Fi and Bluetooth® LE dual-mode wireless communication. The board supports two power supply modes: USB and external 3.7V lithium battery, which can realize automatic power switching function under dual power supply, and support USB charging mode. Small size, convenient interface, easy to use, and can be directly applied to low-power IoT projects.
+
+The BPI-Leaf-S3 development board supports ESP-IDF, Arduino, MicroPython and other methods for programming and development in terms of software.
+
+All IO pins corresponding to the chip are marked on the BPI-Leaf-S3 development board, and the order of the IO pins is consistent with the Espressif ESP32-S3-DevKitC-1 development board. Developers can support DevKitC-1 according to actual needs. The peripherals are added to the BPI-Leaf-S3, and the development board can also be plugged into the breadboard.
 
 ## key features
 
@@ -8,7 +13,7 @@
 - Ultra-low power 10uA
 - 2.4G WIFI, Bluetooth 5, Bluetooth mesh
 - GPIO , ADC , TOUCH , PWM , I2C , SPI , RMT , I2S , UART , LCD, CAMERA , USB , JTAG
-- 1* 4pin I2C connector
+- 1*4pin I2C connector
 - 1*USB Type-C
 - 1 * 2pin battery connector, support charging
 - 1 * Full Color LED
@@ -22,9 +27,6 @@
 ### Hardware Specifications
 
 <table>
-   <tr>
-      <td></td>
-   </tr>
    <tr>
       <td>BPI-Leaf-S3 Spec Sheet</td>
    </tr>
