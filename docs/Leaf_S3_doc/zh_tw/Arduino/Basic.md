@@ -21,7 +21,7 @@ BPI-Leaf-S3 開發板上的typec使用的是ESP32-S3的原生USB接口，而不�
 
 ![](../assets/images/Device_manager_1.jpg)
 
-## 點亮板載彩燈
+## 項目一 串口實驗
 
 在最開始的章節中，我們上傳了一個 Blink 閃爍程序來測試板子上的 LED 狀態燈。現在，我們使用 UART 串口，每秒打印一次計時數據。
 

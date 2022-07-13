@@ -21,7 +21,7 @@ Select this port in the IDE
 
 ![](../assets/images/Device_manager_1.jpg)
 
-## Light up the onboard lights
+## Project 1 Serial port experiment
 
 In the very first chapter, we uploaded a Blink program to test the LED status lights on the board. Now, we use the UART serial port and print the timing data every second.
 
