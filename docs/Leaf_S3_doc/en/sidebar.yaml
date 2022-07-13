@@ -19,9 +19,5 @@ items:
     items:
     -   label: Arduino environment construction
         file: Arduino/Environment.md
-    -   label: Micropython firmware download and burning
-        file: Arduino/Firmware.md
     -   label: basic function usage
         file: Arduino/Basic.md
-    -   label: use of advanced functions
-        file: Arduino/Advance.md

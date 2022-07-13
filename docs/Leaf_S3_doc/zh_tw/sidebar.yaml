@@ -19,9 +19,5 @@ items:
     items:
     -   label: Arduino環境搭建
         file: Arduino/Environment.md
-    -   label: Micropython 固件下載與燒錄
-        file: Arduino/Firmware.md
     -   label: 基礎功能使用
         file: Arduino/Basic.md
-    -   label: 進階功能使用
-        file: Arduino/Advance.md

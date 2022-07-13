@@ -26,6 +26,8 @@ BPI-Leaf-S3板载ESP32-S3芯片，支持 2.4 GHz Wi-Fi 和低功耗蓝牙 (Bluet
 
 ## 资料与资源
 
+- [官方WIKI](https://wiki.banana-pi.org/BPI-Leaf-S3_%E5%BC%80%E5%8F%91%E6%9D%BF) 
+
 - [GitHub: BPI-Leaf-S3 开发板原理图PDF](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/sch/BPI-Leaf-S3-Chip-V0.1A.pdf) 
 
 - [ESP32-S3 技术规格书](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_cn.pdf)
