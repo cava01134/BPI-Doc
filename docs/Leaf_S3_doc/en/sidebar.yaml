@@ -11,7 +11,7 @@ items:
         file: Programming/Environment.md
     -   label: Micropython firmware download and burning
         file: Programming/Firmware.md
-    - label: basic function usage
+    -   label: basic function usage
         file: Programming/Basic.md
 -   label: 3. Programming with Arduino
     items:
