@@ -13,8 +13,6 @@ items:
         file: Programming/Firmware.md
     -   label: 基礎功能使用
         file: Programming/Basic.md
-    -   label: 進階功能使用
-        file: Programming/Advance.md
 -   label: 三、使用 Arduino 編程
     items:
     -   label: Arduino環境搭建
