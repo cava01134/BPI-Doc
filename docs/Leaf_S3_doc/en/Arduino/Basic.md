@@ -44,7 +44,7 @@ code show as below:
 <details>
 <summary>Expand to view</summary>
 
-````
+<pre><code>
 void setup()
 {
   Serial.begin(115200); //Set serial communication baud rate
@@ -56,7 +56,7 @@ void loop()
   delay(1000); // delay 1 second
 }
 
-````
+</code></pre>
 </details>
 
 After the input is complete, click "Compile" to check the code for errors. After making sure there are no errors, you can start uploading. After clicking "Upload", the IDE will send the code to the Leaf-S3 motherboard. After the upload is complete, you need to press the reset button so that the code can run normally
@@ -93,7 +93,7 @@ code show as below:
 <details>
 <summary>Expand to view</summary>
 
-````
+<pre><code>
 #define LED_CHANNEL_0 0 //Set channel 0
 #define LED_TIMER_13_BIT 13 //Set 13-bit timer
 #define LED_BASE_FREQ 5000 //Set the timer frequency bit to 5000Hz
@@ -121,7 +121,7 @@ void loop() {
   delay(30);
 }
 
-````
+</code></pre>
 </details>
 
 After typing, click the "Compile" button to check the code for errors. After confirming that there are no errors, you can start uploading, click the "Upload" button . The IDE will send the code to the Leaf-S3 motherboard. After the upload is complete, you can see the LED light next to the Type-C start to "breathe"!
@@ -205,7 +205,7 @@ Leaf-S3 Motherboard X 1
 <details>
 <summary>Expand to view</summary>
 
-````
+<pre><code>
  void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
@@ -216,7 +216,7 @@ void loop() {
   delay(100);
 }
 
-````
+</code></pre>
 </details>
 
  After the input is complete, click "Compile" to check the code for errors. After making sure there are no errors, you can start uploading. After clicking "Upload", the IDE will send the code to the Leaf-S3 motherboard. After the upload is complete, open the serial monitor of the Arduino IDE, rotate the analog angle sensor, and you can see the value changes in the serial monitor, as shown in the following figure:
@@ -259,7 +259,7 @@ Open the Arduino IDE. Although it is possible to copy the code directly, we reco
 <details>
 <summary>Expand to view</summary>
 
-````
+<pre><code>
 #include <Wire.h>
    int UG2864Address = 0x3C;//OLED UG2864 device 7-bit address
  
@@ -498,7 +498,7 @@ void loop()
       while(1);
 }
 
-````
+</code></pre>
 </details>
 After the input is complete, click "Compile" to check the code for errors. After making sure there are no errors, you can start uploading. After clicking "Upload", the IDE will send the code to the Leaf-S3 motherboard. After the upload is complete, the OLED display will display the words "BananaPi banana-pi.org".
 
@@ -547,7 +547,7 @@ Open the Arduino IDE. Although it is possible to copy the code directly, we reco
 <details>
 <summary>Expand to view</summary>
 
-````
+<pre><code>
 /*!
  * read_data_spi.ino
  *
@@ -618,7 +618,7 @@ void loop()
 }
 
 
-````
+</code></pre>
 </details>
 
  After the input is complete, click "Compile" to check the code for errors. After making sure there are no errors, you can start uploading. After clicking "Upload", the IDE will send the code to the Leaf-S3 motherboard. Open the Arduino serial monitor, you can see the print information as follows:
@@ -648,7 +648,7 @@ Open the Arduino IDE. Although it is possible to copy the code directly, we reco
 <details>
 <summary>Expand to view</summary>
 
-````
+<pre><code>
 // NeoPixel Ring simple sketch (c) 2013 Shae Erisson
 // Released under the GPLv3 license to match the rest of the
 // Adafruit NeoPixel library

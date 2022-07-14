@@ -44,7 +44,7 @@ Leaf-S3 主板 X 1
 <details>
 <summary>展开查看</summary>
 
-```
+<pre><code>
 void setup() 
 {
   Serial.begin(115200);         //设置串口通信波特率
@@ -55,8 +55,7 @@ void loop()
   Serial.println(i++);          //i加一后输出i
   delay(1000);                  //延时1秒
 } 
-
-```
+</code></pre>
 </details>
 
 输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE 会把代码发送给 Leaf-S3 主板。上传完成之后，你需要按一下复位键，这样代码就能正常运行了
@@ -93,7 +92,7 @@ LED X 1 (建议串联一个电阻限流)
 <details>
 <summary>展开查看</summary>
 
-```
+<pre><code>
 #define LED_CHANNEL_0     0    //设置通道0 
 #define LED_TIMER_13_BIT  13   //设置13位定时器
 #define LED_BASE_FREQ     5000 //设置定时器频率位5000Hz 
@@ -121,7 +120,7 @@ void loop() {
   delay(30); 
 }
 
-```
+</code></pre>
 </details>
 
 输入完成后，点击“编译”按钮检查代码是否有错误。确定没有错误后可以开始上传了，点击“上传”按钮 。IDE 会把代码发送给 Leaf-S3 主板。上传完成后您就可以看见Type-C旁边的LED 灯开始“呼吸”了！
@@ -205,7 +204,7 @@ Leaf-S3 主板 X 1
 <details>
 <summary>展开查看</summary>
 
-```
+<pre><code>
  void setup() { 
   // put your setup code here, to run once: 
   Serial.begin(115200); 
@@ -216,7 +215,7 @@ void loop() {
   delay(100); 
 }
 
-```
+</code></pre>
 </details>
 
  输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后IDE 会把代码发送给 Leaf-S3 主板。上传完成后，打开 Arduino IDE 的串口监视器，旋转模拟角度传感器，可以看到串口监视器中的数值变化，如下图所示：
@@ -259,7 +258,7 @@ Leaf-S3 主板 X 1
 <details>
 <summary>展开查看</summary>
 
-```
+<pre><code>
 #include <Wire.h> 
    int UG2864Address = 0x3C;//OLED UG2864器件7位地址 
  
@@ -499,7 +498,7 @@ void loop()
 }
 
 
-```
+</code></pre>
 </details>
 
 输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  	会把代码发送给 Leaf-S3 主板。上传完成后，OLED 显示屏会显示“BananaPi banana-pi.org”字样。
@@ -549,7 +548,7 @@ Leaf-S3 主板 X 1
 <details>
 <summary>展开查看</summary>
 
-```
+<pre><code>
 /*!
  * read_data_spi.ino
  *
@@ -620,7 +619,7 @@ void loop()
 }
 
 
-```
+</code></pre>
 </details>
 
  输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  会把代码发送给 Leaf-S3 主板。打开 Arduino 串口监视器，可以看到打印信息如下： 
@@ -650,7 +649,7 @@ Leaf-S3 主板 X 1
 <details>
 <summary>展开查看</summary>
 
-```
+<pre><code>
 // NeoPixel Ring simple sketch (c) 2013 Shae Erisson
 // Released under the GPLv3 license to match the rest of the
 // Adafruit NeoPixel library
@@ -690,7 +689,7 @@ void loop() {
 
   // The first NeoPixel in a strand is #0, second is 1, all the way up
   // to the count of pixels minus one.
-  for(int i=0; i<NUMPIXELS; i++) { // For each pixel...
+  for(int i=0; i < NUMPIXELS; i++) { // For each pixel...
 
     // pixels.Color() takes RGB values, from 0,0,0 up to 255,255,255
     // Here we're using a moderately bright green color:
@@ -701,8 +700,7 @@ void loop() {
     delay(DELAYVAL); // Pause before next pass through loop
   }
 }
-
-```
+</code></pre>
 </details>
 
 输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  会把代码发送给 Leaf-S3 主板。复位后WS2812灯会开始亮绿灯，
@@ -745,7 +743,7 @@ Leaf-S3 主板 X 1
 <details>
 <summary>展开查看</summary>
 
-```
+<pre><code>
 void setup() { 
 }  
 void loop() { 
@@ -756,7 +754,7 @@ void loop() {
   } 
 } 
 
-```
+</code></pre>
 </details>
 
 输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  	会把代码发送给 Leaf-S3 主板。用示波器测试 GPIO17 口的电压，可以看到如下图所示的阶梯波形：
@@ -794,7 +792,7 @@ Leaf-S3 主板 X 1
 <details>
 <summary>展开查看</summary>
 
-```
+<pre><code>
  void setup() 
 { 
   Serial.begin(115200); 
@@ -806,7 +804,7 @@ void loop(){
   delay(100); 
 } 
 
-```
+</code></pre>
 </details>
 
 输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  会把代码发送给 Leaf-S3 主板。打开 Arduino IDE 串口监视器，并用手触摸 GPIO2（T2 对应的是GPIO2），可以看到会打印出的数据突然变小，如下图所示： 
