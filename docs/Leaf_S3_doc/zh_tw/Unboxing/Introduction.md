@@ -9,7 +9,7 @@ BPI-Leaf-S3開發板上標記了與芯片對應的所有IO管腳，且IO管腳�
 ## 關鍵特性
 
 - ESP32-S3，Xtensa® 32 bit LX7
-- 片外 PSRAM , FLASH
+- 片上外設 PSRAM , FLASH
 - Ultra-low power 10uA
 - 2.4G WIFI ，Bluetooth 5 ，Bluetooth mesh
 - GPIO , ADC , TOUCH , PWM , I2C , SPI , RMT , I2S , UART , LCD，CAMERA ，USB , JTAG
@@ -55,7 +55,7 @@ BPI-Leaf-S3開發板上標記了與芯片對應的所有IO管腳，且IO管腳�
       <td>8MB</td>
    </tr>
    <tr>
-      <td>片外 PSRAM</td>
+      <td>片上外設 PSRAM</td>
       <td>2MB</td>
    </tr>
    <tr>

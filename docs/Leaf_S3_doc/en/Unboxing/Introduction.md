@@ -9,7 +9,7 @@ All IO pins corresponding to the chip are marked on the BPI-Leaf-S3 development 
 ## key features
 
 - ESP32-S3, Xtensa® 32 bit LX7
-- Off-chip PSRAM, FLASH
+- On-Chip Peripherals PSRAM, FLASH
 - Ultra-low power 10uA
 - 2.4G WIFI, Bluetooth 5, Bluetooth mesh
 - GPIO , ADC , TOUCH , PWM , I2C , SPI , RMT , I2S , UART , LCD, CAMERA , USB , JTAG
@@ -55,7 +55,7 @@ All IO pins corresponding to the chip are marked on the BPI-Leaf-S3 development 
       <td>8MB</td>
    </tr>
    <tr>
-      <td>Off-chip PSRAM</td>
+      <td>On-Chip Peripherals PSRAM</td>
       <td>2MB</td>
    </tr>
    <tr>
