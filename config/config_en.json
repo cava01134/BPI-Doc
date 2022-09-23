@@ -41,6 +41,11 @@
                 "position": "left"
             },
             {
+                "url": "/PicoW_S3_doc/en/",
+                "label": "PicoW-S3",
+                "position": "left"
+            },
+            {
                 "url": "/Q-Car/en/",
                 "label": "Q-Car",
                 "position": "left"
