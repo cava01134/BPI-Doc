@@ -225,6 +225,6 @@ The pin spacing is compatible with universal boards (hole boards, dot matrix boa
 
 - [GitHub: BPI-Leaf-S3 Development Board Schematic PDF](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/sch/BPI-Leaf-S3-Chip- V0.1A.pdf)
 
-- [ESP32-S3 Specifications](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/Example/Arduino)
+- [ESP32-S3 Specifications](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_cn.pdf)
 
 - [ESP32-S3 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_cn.pdf)

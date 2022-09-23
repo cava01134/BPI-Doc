@@ -225,6 +225,6 @@ BPI-Leaf-S3开发板上标记了与芯片对应的所有IO管脚，且IO管脚�
 
 - [GitHub: BPI-Leaf-S3 开发板原理图PDF](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/sch/BPI-Leaf-S3-Chip-V0.1A.pdf) 
 
-- [ESP32-S3 技术规格书](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/Example/Arduino)
+- [ESP32-S3 技术规格书](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_cn.pdf)
 
 - [ESP32-S3 技术参考手册](https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_cn.pdf)
