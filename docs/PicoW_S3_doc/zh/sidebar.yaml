@@ -10,7 +10,7 @@ items:
     -   label: 配置使用环境(Mu编辑器)
         file: CircuitPython/config_mu-editor.md
     -   label: 基础功能使用
-        file: CircuitPython/gettingstart.md
+        file: CircuitPython/Basic.md
 -   label: 三、使用 Arduino 编程
     items:
     -   label: Arduino环境搭建
