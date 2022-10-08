@@ -3,8 +3,6 @@ items:
     items:
     -   label: PicoW-S3 介绍
         file: Unboxing/Introduction.md
-    -   label: 快速上手 (第一次使用请看这里)
-        file: Unboxing/Gettingstart.md
 -   label: 二、使用CircuitPython编程
     items:
     -   label: 配置使用环境(Mu编辑器)
