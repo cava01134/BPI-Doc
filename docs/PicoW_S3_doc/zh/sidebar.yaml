@@ -7,12 +7,10 @@ items:
         file: Unboxing/Gettingstart.md
 -   label: 二、使用CircuitPython编程
     items:
-    -   label: CircuitPython环境搭建
-        file: Programming/Environment.md
-    -   label: CircuitPython 固件下载与烧录
-        file: Programming/Firmware.md
+    -   label: 配置使用环境(Mu编辑器)
+        file: CircuitPython/config_mu-editor.md
     -   label: 基础功能使用
-        file: Programming/Basic.md
+        file: CircuitPython/gettingstart.md
 -   label: 三、使用 Arduino 编程
     items:
     -   label: Arduino环境搭建

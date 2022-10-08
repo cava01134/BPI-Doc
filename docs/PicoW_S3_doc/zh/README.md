@@ -6,6 +6,16 @@
 
 香蕉派BPI-PicoW是一款低功耗微控制器，专为物联网开发和Maker DIY设计的开发板。与 Raspberry Pi Pico 板尺寸相同，支持 2.4 GHz Wi-Fi 和 Bluetooth® LE 双模无线通信， 外设兼容低功耗硬件设计，深度睡眠模式下功耗仅为10uA。编程方面，PicoW-S3支持ESP-IDF、Arduino、micropython、CircuitPython 等多种方式
 
+## 使用 CircuitPython 编程
+
+> BPI-PicoW-S3出厂已安装tinyUF2与CircuitPython固件。
+
+![](assets/images/CircuitPython_Repo_header_logo.jpg)
+
+CircuitPython是旨在简化在单片机开发板上进行编程实验和学习的一种编程语言。
+
+配合Mu编辑器进行CircuitPython编程是最低难度的上手方法，安装软件，连接设备即可开始使用。
+
 ## 使用 MicroPython 编程
 
 通过烧写 MicroPython 固件，就可以在开发板中使用 Python 语言进行编程。
