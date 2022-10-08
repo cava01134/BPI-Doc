@@ -87,7 +87,7 @@ object <module 'board'> is of type module
 
 ## 输出
 
-### 使彩灯闪烁
+### 使WS2812彩灯闪烁
 
 1. 在Mu编辑器中点击**Load**按钮，选择CircuitPython开发板上的 code.py 文件，点击 **打开**，即可开始编辑 code.py 。
 
@@ -99,7 +99,6 @@ import board
 import neopixel
 
 pixels = neopixel.NeoPixel(board.NEOPIXEL, 1, brightness=0.1)
-# 
 
 while 1:
     pixels[0] = (255,0,0)
@@ -117,6 +116,8 @@ while 1:
 ```
 
 3. 点击**Save**按钮，编辑的内容将保存到CircuitPython开发板，代码无误的情况下，开发板上的彩色LED将循环闪烁 红绿蓝白。
+4. 在REPL中使用中断程序执行快捷键即可停止程序的运行。
+5. 代码也可直接粘贴到REPL中运行。
 
 > 后续所有示例都如此编辑code.py即可。
 
