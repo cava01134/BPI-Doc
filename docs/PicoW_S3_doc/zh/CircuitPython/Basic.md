@@ -117,7 +117,40 @@ while 1:
 
 3. 点击**Save**按钮，编辑的内容将保存到CircuitPython开发板，代码无误的情况下，开发板上的彩色LED将循环闪烁 红绿蓝白。
 4. 在REPL中使用中断程序执行快捷键即可停止程序的运行。
-5. 代码也可直接粘贴到REPL中运行。
+5. 代码也可直接复制粘贴到REPL中运行。
 
 > 后续所有示例都如此编辑code.py即可。
 
+### 使引脚输出高低电平，控制LED
+
+1. `board.LED`控制着PicoW-S3上的一颗单色LED发光二极管，高电平点亮，低电平熄灭。
+```py
+import board
+import digitalio
+ledpin = digitalio.DigitalInOut(board.LED)
+ledpin.direction = digitalio.Direction.OUTPUT
+ledpin.value = True
+```
+
+2. 或者这么做：
+```py
+import board
+import digitalio
+ledpin = digitalio.DigitalInOut(board.LED)
+ledpin.switch_to_output(value=True) # value=1
+```
+
+3. 让LED间隔0.5秒闪烁：
+```py
+import board
+import digitalio
+import time
+ledpin = digitalio.DigitalInOut(board.LED)
+while True:
+    ledpin.switch_to_output(value=1)
+    time.sleep(0.5)
+    ledpin.switch_to_output(value=0)
+    time.sleep(0.5)
+
+```
+4. 在REPL中使用中断程序执行快捷键即可停止程序的运行。
