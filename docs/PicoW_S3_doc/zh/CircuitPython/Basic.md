@@ -28,7 +28,7 @@ Hello World!
 2. 粘贴 `ctrl + shift + v`。
    使用鼠标左键在REPL中拖选需要复制的命令，键盘按下复制快捷键，再按下粘贴快捷键即可复制粘贴命令。
 3. 软复位 `ctrl + d`。
-4. 中断程序执行 `ctrl + c`。
+4. 中断 `ctrl + c`, 中断当前正在执行的程序，但不会重启复位。
 
 ### 查看内置模块
 
@@ -116,14 +116,14 @@ while 1:
 ```
 
 3. 点击**Save**按钮，编辑的内容将保存到CircuitPython开发板，代码无误的情况下，开发板上的彩色LED将循环闪烁 红绿蓝白。
-4. 在REPL中使用中断程序执行快捷键即可停止程序的运行。
+4. 在REPL中使用中断快捷键即可停止程序的运行。
 5. 代码也可直接复制粘贴到REPL中运行。
 
-> 后续所有示例都如此编辑code.py即可。
+> 后续所有示例都可如此编辑code.py文件或复制粘贴到REPL中运行。但在code.py文件中的程序代码执行完毕后，开发板会恢复未运行时的状态，不会保留状态，但在REPL中执行则会保留状态。
 
 ### 使引脚输出高低电平，控制LED
 
-1. `board.LED`控制着PicoW-S3上的一颗单色LED发光二极管，高电平点亮，低电平熄灭。
+1. `board.LED`控制着PicoW-S3上的一颗单色LED发光二极管，高电平点亮，低电平熄灭，在REPL中输入以下代码：
 ```py
 import board
 import digitalio
@@ -153,4 +153,32 @@ while True:
     time.sleep(0.5)
 
 ```
-4. 在REPL中使用中断程序执行快捷键即可停止程序的运行。
+4. 在REPL中使用中断快捷键即可停止程序的运行。
+
+### PWM输出，控制LED亮度
+
+1. 可通过控制PWM占空比来控制LED灯亮度，控制占空比从0%~100%，采用16位精度，十进制为 0~65535 ，16进制为 0~FFFF 。在REPL中输入以下代码：
+```py
+import board
+import pwmio
+ledpin = pwmio.PWMOut(board.LED, frequency=25000, duty_cycle=0)
+ledpin.duty_cycle = 32768  # mid-point 0-65535 = 50 % duty-cycle
+```
+2. 仅需在REPL中再次输入最后一行代码即可改变PWM占空比，使LED到最大亮度：
+```py
+ledpin.duty_cycle = 65535
+```
+3. 呼吸灯：
+```py
+import board
+import pwmio
+import time
+
+ledpin = pwmio.PWMOut(board.LED, frequency=25000, duty_cycle=0)
+
+while True:
+    for i in range(0, 65535, 1):
+        ledpin.duty_cycle = i
+    for i in range(65535, 0, -1):
+        ledpin.duty_cycle = i
+```
