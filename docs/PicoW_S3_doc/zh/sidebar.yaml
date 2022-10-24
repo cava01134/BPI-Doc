@@ -7,6 +7,10 @@ items:
     items:
     -   label: 配置使用环境(Mu编辑器)
         file: CircuitPython/config_mu-editor.md
+    -   label: 更新CircuitPython固件的方法
+        file: CircuitPython/update_circuitpython.md
+    -   label: 烧录tinyUF2固件的方法
+        file: CircuitPython/flash_tinyuf2.md
     -   label: 基础功能使用
         file: CircuitPython/Basic.md
 -   label: 三、使用 Arduino 编程

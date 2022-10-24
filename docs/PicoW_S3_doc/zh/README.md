@@ -8,7 +8,7 @@
 
 ## 使用 CircuitPython 编程
 
-> BPI-PicoW-S3出厂已安装tinyUF2与CircuitPython固件。
+> BPI-PicoW-S3出厂已安装tinyUF2与CircuitPython固件,推荐通过CircuitPython快速上手BPI-PicoW-S3开发板。
 
 ![](assets/images/CircuitPython_Repo_header_logo.jpg)
 
