@@ -60,13 +60,13 @@
 7. 通过以下命令清除flash，需要修改COM接口为对应的接口，此处为COM22。
 
    ```shell
-   python -m esptool --chip esp32s3 --port COM22 erase_flash
+   python -m esptool --chip esp32s3 --port COM22 --baud 460800 erase_flash
    ```
 
-8. 通过以下命令烧录固件，需要修改固件文件名为当前对应需要烧录的文件名。
+8. 通过以下命令烧录`combined.bin`固件，需要修改COM接口为对应的接口，此处为COM22。
 
    ```shell
-   python -m esptool --chip esp32s3 --port com22 --baud 460800 --before=default_reset --after=hard_reset write_flash -z 0x0 combined.bin
+   python -m esptool --chip esp32s3 --port COM22 --baud 460800 write_flash -z 0x0 combined.bin
    ```
 
 9. 完成后，手动按一次`Reset`按键，成功烧录的标志是彩灯为长绿灯，如果没有得到此结果，可以重试前两步命令。
