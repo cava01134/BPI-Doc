@@ -155,7 +155,7 @@ while True:
 ```
 4. 在REPL中使用中断快捷键即可停止程序的运行。
 
-5. 在REPL中输入`import board;help(board)`即可列出所有可控制的引脚。
+5. 在REPL中输入`import board;help(board)`即可列出所有可控制的引脚。`board.GP25` 与 `board.LED`完全相同。
 
 ### PWM输出，控制LED亮度
 

@@ -1,4 +1,5 @@
 # 更新CircuitPython固件的方法
+> 出厂已安装 tinyUF2 + CircuitPython固件，升级circuipython仅需双击复位键进入UF2 bootloader模式，无需擦除flash。
 > 本方法适用于已具备tinyUF2固件的开发板，如果开发板的flash被擦除或出现无法进入UF2模式的故障，则需先参考[烧录tinyUF2固件的方法](flash_tinyuf2.md)。
 1. 进入[BPI-PicoW-S3 CircuitPython 下载](https://circuitpython.org/board/bpi_picow_s3/)页面。
    ![](../assets/images/picow_s3_circuitpython_download.jpg)

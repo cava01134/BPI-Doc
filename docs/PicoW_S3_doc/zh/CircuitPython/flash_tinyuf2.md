@@ -1,4 +1,5 @@
 # 烧录tinyUF2固件的方法
+> 所有对flash的操作不可逆，注意提前备份代码等重要文件。
 ## 下载tinyUF2固件
 1. 进入[BPI-PicoW-S3 CircuitPython 下载](https://circuitpython.org/board/bpi_picow_s3/)页面。
 2. 在页面底部找到`Install, Repair, or Update UF2 Bootloader`栏目，点击最下方的`DOWNLOAD BOOTLOADER ZIP`按钮下载压缩包。
