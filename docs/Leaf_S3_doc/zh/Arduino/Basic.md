@@ -723,55 +723,7 @@ void loop() {
 
 设置灯的个数，如果您想连接更多WS2812，可以换一个IO，并修改灯的数量。 
 
-## 项目七 DAC
-
-DAC（数/模转换器），与项目三的 ADC 恰恰相反，DAC 是将数字信号转换成模拟信号输出。Leaf-S3 集成了两个 8-bit DAC 通道，这两个数字信号分别转换为两个模拟电压信号输出。DAC 电路由  	内置电阻串和 1 个缓冲器组成。并且这两个 DAC 可以作为参考电压使用，也可以作为其他电路的电源使用，是两个独立的 DAC。本项目将阐述如何使用 DAC 输出阶梯波形。
-
-### 所需元件
-
-Leaf-S3 主板 X 1
-
-![](../assets/images/Leaf-S3.png)
-
->注意：该项目不需要连接其他传感器。
-
-### 输入代码
-
-打开 Arduino IDE。尽管可以直接复制代码，我们还是建议您自己手动输入代码熟悉下。代码如下:
-
-
-<details>
-<summary>展开查看</summary>
-
-<pre><code>
-void setup() { 
-}  
-void loop() { 
-  // put your main code here, to run repeatedly: 
-  for(int i=0;i<10;i++){     dacWrite(17,i*25);     delay(200); 
-  } 
-  for(int j=10;j>0;j--){     dacWrite(17,j*25);     delay(200); 
-  } 
-} 
-
-</code></pre>
-</details>
-
-输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  	会把代码发送给 Leaf-S3 主板。用示波器测试 GPIO17 口的电压，可以看到如下图所示的阶梯波形：
-
-![](../assets/images/Lesson7-1.png)
-
-### 代码分析
-
-可以看到 Arduino 代码中，使用 DAC 是很方便的，只需要调用 dacWrite 函数，函数原型如下： 
-
-```
-void dacWrite(uint8_t pin, uint8_t value) 
-```
-
-其中，pin 脚为输出 DAC 的数字口，这里只能传递 17 或者 18；value 是输出的值，范围是 0~255，输出后对应的电压值是 0~Vcc。 
-
-## 项目八 触摸传感器
+## 项目七 触摸传感器
 
 Leaf-S3 提供了多达 10 个电容式传感器 GPIO，能够探测由手指或其他物品直接接触或接近而产生的电容差异。这种低噪声特性和电路的高灵敏度设计适用于较小的触摸板，可以直接用于触摸开关。本项目阐述了如何通过Arduino 代码获取 Leaf-S3 的触摸传感器状态，并打印状态。
 
