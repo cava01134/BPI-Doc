@@ -5,6 +5,8 @@ items:
         file: Unboxing/Introduction.md
 -   label: 二、使用CircuitPython编程
     items:
+    -   label: 已得到CircuitPython官方支持
+        file: CircuitPython/supported_by_circuitpython.md
     -   label: 配置使用环境(Mu编辑器)
         file: CircuitPython/config_mu-editor.md
     -   label: 更新CircuitPython固件的方法

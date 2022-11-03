@@ -166,7 +166,7 @@ import pwmio
 ledpin = pwmio.PWMOut(board.LED, frequency=25000, duty_cycle=0)
 ledpin.duty_cycle = 32768  # mid-point 0-65535 = 50 % duty-cycle
 ```
-2. 仅需在REPL中再次输入最后一行代码即可改变PWM占空比，使LED到最大亮度：
+2. 仅需在REPL中再次输入最后一行代码即可改变PWM占空比，使LED达到最大亮度：
 ```py
 ledpin.duty_cycle = 65535
 ```
@@ -184,3 +184,12 @@ while True:
     for i in range(65535, 0, -1):
         ledpin.duty_cycle = i
 ```
+
+## PWM输出，控制180度舵机
+
+以MG90S舵机为例，其他各种舵机参考其对应的使用手册，在以下代码中修改相应的参数。
+
+1. MG90S舵机关键参数：
+   * 控制角度，0° ~ 180°
+   * PWM 占空时长控制，500us ~ 2500us 对应 0° ~ 180°
+   * 
