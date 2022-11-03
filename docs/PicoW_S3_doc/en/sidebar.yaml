@@ -15,7 +15,7 @@ items:
         file: CircuitPython/Firmware.md
     -   label: basic function usage
         file: CircuitPython/Basic.md
--   label: 3. CircuitPython with Arduino
+-   label: 3. Code with Arduino
     items:
     -   label: Arduino environment construction
         file: Arduino/Environment.md
