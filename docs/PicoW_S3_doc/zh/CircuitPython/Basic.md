@@ -187,9 +187,72 @@ while True:
 
 ## PWM输出，控制180度舵机
 
+![](../assets/images/MG90S-Wiring-Diagram.jpg)
+
 以MG90S舵机为例，其他各种舵机参考其对应的使用手册，在以下代码中修改相应的参数。
 
 1. MG90S舵机关键参数：
    * 控制角度，0° ~ 180°
    * PWM 占空时长控制，500us ~ 2500us 对应 0° ~ 180°
-   * 
+   * 工作电压：4.8V 至 6V（典型值为 5V）
+   * 失速扭矩：1.8 kg/cm (4.8V)
+   * 最大失速扭矩：2.2 kg/cm (6V)
+   * 工作速度为 0.1s/60° (4.8V)
+2. 求取任意一个旋转角度所需的占空时长的表达式为：
+   ```
+    设y为占空时长，x为旋转角度
+    y=(2500-500)/180*x+500
+    y=(100*x+4500)/9
+    ```
+3. 根据参数，可以确定舵机角度由PWM波的高电平持续时长所控制，且由于舵机的控制必须由周期性的PWM波形控制，所以一个周期时长必须超过控制此舵机达到180°所需的占空时长，即超过2500us，则PWM频率要低于400hz。
+4. 设定PWM频率为200hz，则周期时长为5000us，对应控制此舵机旋转 0° ~ 180°的占空比为10% ~ 50% 。
+5. circuitpython的PWM占空比控制精度为16bit，100%占空比在 2进制中表达为 1111 1111 1111 1111，16进制表达为 FFFF，10进制表达为 65535。
+6. 求取任意一个旋转角度所需的占空比的表达式为：
+    ```
+    设y为占空比，x为旋转角度
+    y=((50-10)/180*x+10)/100*65535
+    y=(4369*x+196605)/30
+    ```
+7. 舵机与BPI-PicoW-S3的接线方式:
+   > BPI-PicoW-S3的VBS引脚可输出+5V；除GP0以外，所有GP引脚都可以用于输出PWM，仅需在程序中修改到对应引脚即可。
+
+   | 舵机 | BPI-PicoW-S3 |
+   | :----: | :----: |
+   | GND 棕色 | GND |
+   | +5V 红色 | VBS |
+   | PWM 橙色 | GP0 |
+
+
+8. 根据以上表达式与参数设计一个可以任意控制此舵机旋转角度的程序：
+    ```py
+    import board
+    import pwmio
+    import time
+    servo_1 = pwmio.PWMOut(board.GP0, frequency=200, duty_cycle=0)#200hz, one cycle 5000us
+
+    def get_duty_cycle(x):
+        return int((4369*x+196605)/30)
+
+    servo_1.duty_cycle = get_duty_cycle(90)# 90 degrees
+    ```
+9. 通过一个逻辑分析仪可以读出此程序所控制输出的PWM占空时长，与计算的数值应当相符。
+   ![](../assets/images/MG90S_pulseveiw_2.png)
+   ![](../assets/images/MG90S_pulseveiw_1.png)
+
+10. 使用列表设计一套连续的舵机动作：
+   ```py
+   import board
+   import pwmio
+   import time
+   servo_1 = pwmio.PWMOut(board.GP0, frequency=200, duty_cycle=0)#200hz, one cycle 5000us
+
+   def get_duty_cycle(x):
+       return int((4369*x+196605)/30) 
+
+   action_list1 = [0,45,90,135,180,0,180,45,135,90]
+
+   while True:
+       for i in action_list1:
+           servo_1.duty_cycle = get_duty_cycle(i)
+           time.sleep(0.5)
+   ```
