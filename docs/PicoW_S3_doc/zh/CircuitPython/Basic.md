@@ -256,3 +256,189 @@ while True:
            servo_1.duty_cycle = get_duty_cycle(i)
            time.sleep(0.5)
    ```
+
+## ADC输入，读取双轴摇杆坐标
+
+![](../assets/images/Dual-axis_joystick.jpg)
+
+这是一个常见的双轴XY摇杆模块，使用了两个电位器最为其核心器件，通过芯片的ADC 模/数转换器 读取它们各自的电压数值，即可将读数转化为其在XY坐标轴上的位置。
+
+| 双轴摇杆 | BPI-PicoW-S3 |
+| :----: | :----: |
+| GND  | GND |
+| +5V  | 3V3 |
+| VRx  | GP26_A0 |
+| VRY  | GP27_A1 |
+
+1. 在CircuitPython中提供的ADC精度是16bit，即最大值的16进制表达为 FFFF，10进制表达为 65535，对应的电压量程为0mv ~ 3300mv。BPI-PicoW-S3所使用的EPS32S3芯片实际ADC电压量程为0mv ~ 3100mv，所以实际应用时仅能测量到3100mv。
+
+2. 基础ADC读数，读取两个电位器的数值，转换为电压数值。
+```python
+import board,analogio,time
+
+x_axis_pin = analogio.AnalogIn(board.A0)
+y_axis_pin = analogio.AnalogIn(board.A1)
+
+while True:
+    x_axis = x_axis_pin.value
+    y_axis = y_axis_pin.value
+    # print((x_axis,y_axis))
+    x_value = x_axis / 65535 * 3300
+    y_value = y_axis / 65535 * 3300
+    print("{0}mv,{1}mv".format(x_value,y_value))
+    time.sleep(0.1)
+```
+
+3. 在Mu编辑器中，点击`Plotter`图标即可显示绘图仪，可以实时将REPL输出的数值显示为与时间相关的图表。
+![](../assets/images/circuitpython_plotter.png)
+   
+4. 静止摇杆获取零点数值，校准坐标零点。
+```python
+import board,analogio,time
+
+x_axis_pin = analogio.AnalogIn(board.A0)
+y_axis_pin = analogio.AnalogIn(board.A1)
+
+def get_zero(times =500, sleep = 0.01):
+    x_total = 0
+    y_total = 0
+    for i in range (times):
+        x_axis = x_axis_pin.value
+        y_axis = y_axis_pin.value
+        x_total += x_axis
+        y_total += y_axis
+        time.sleep(sleep)
+    x_zero = x_total // times
+    y_zero = y_total // times
+    return (x_zero,y_zero)
+
+zero = get_zero(times =500, sleep = 0.01)
+print(zero)
+
+while True:
+    x_axis = x_axis_pin.value - zero[0]
+    y_axis = y_axis_pin.value - zero[1]
+    print((x_axis,y_axis))
+    time.sleep(0.1)
+```
+4. 获取摇杆方向，这是双轴摇杆最常见的应用。
+```python
+import board,analogio,time
+
+x_axis_pin = analogio.AnalogIn(board.A0)
+y_axis_pin = analogio.AnalogIn(board.A1)
+
+direction_list = ["East","Southeast","South","Southwest","West","Northwest","North","Northeast","Centre"]
+
+def get_zero(times =500, sleep = 0.01):
+    x_total = 0
+    y_total = 0
+    for i in range (times):
+        x_axis = x_axis_pin.value
+        y_axis = y_axis_pin.value
+        x_total += x_axis
+        y_total += y_axis
+        time.sleep(sleep)
+    x_zero = x_total // times
+    y_zero = y_total // times
+    return (x_zero,y_zero)
+
+def get_direction(zero = (32767,32767)):
+    x_axis = x_axis_pin.value - zero[0]
+    y_axis = y_axis_pin.value - zero[1]
+    if x_axis >= 10000 and -10000 < y_axis < 10000:
+        return direction_list[0]
+    elif x_axis >= 10000 and y_axis <= -10000:
+        return direction_list[1]
+    elif -10000 < x_axis < 10000 and y_axis <= -10000:
+        return direction_list[2]
+    elif x_axis <= -10000 and y_axis <= -10000:
+        return direction_list[3]
+    elif x_axis <= -10000 and -10000 < y_axis < 10000:
+        return direction_list[4]
+    elif x_axis <= -10000 and y_axis >= 10000:
+        return direction_list[5]
+    elif -10000 < x_axis < 10000 and y_axis >= 10000:
+        return direction_list[6]
+    elif x_axis >=10000 and y_axis >= 10000:
+        return direction_list[7]
+    else :
+        return direction_list[8]
+
+zero = get_zero(times =50, sleep = 0.01)
+print(zero)
+
+while True:
+    x_axis = x_axis_pin.value - zero[0]
+    y_axis = y_axis_pin.value - zero[1]
+    print((x_axis,y_axis))
+    print(get_direction(zero = zero))
+    time.sleep(0.1)
+```
+5. 设置坐标精度等级，计算每级跨度，可以按需求消除抖动，增强数据的实用性。
+```python
+import board,analogio,time
+
+x_axis_pin = analogio.AnalogIn(board.A0)
+y_axis_pin = analogio.AnalogIn(board.A1)
+
+def get_zero(times =500, sleep = 0.01):
+    x_total = 0
+    y_total = 0
+    for i in range (times):
+        x_axis = x_axis_pin.value
+        y_axis = y_axis_pin.value
+        x_total += x_axis
+        y_total += y_axis
+        time.sleep(sleep)
+    x_zero = x_total // times
+    y_zero = y_total // times
+    return (x_zero,y_zero)
+
+def get_extremum(times =500, sleep = 0.01):
+    x_list = []
+    y_list = []
+    for i in range (times):
+        x_axis = x_axis_pin.value
+        y_axis = y_axis_pin.value
+        x_list.append(x_axis)
+        y_list.append(y_axis)
+        time.sleep(sleep)
+    x_extremum = (min(x_list),max(x_list))
+    y_extremum = (min(y_list),max(y_list))
+    return (x_extremum,y_extremum)
+    
+def get_spacing(level = 16 , zero =(32767,32767) ,x_extremum = (0,65535),y_extremum = (0,65535)):
+    x_temp_1 = (zero[0] - x_extremum[0]) // level
+    x_temp_2 = (x_extremum[1] - zero[0] ) // level
+    y_temp_1 = (zero[1] - y_extremum[0]) // level
+    y_temp_2 = (y_extremum[1] - zero[1] ) // level
+    x_spacing = (x_temp_1,x_temp_2)
+    y_spacing = (y_temp_1,y_temp_2)
+    return (x_spacing,y_spacing)
+
+def get_coordinates(zero = (32767,32767), x_spacing = (2048,2048),y_spacing = (2048,2048)):
+    x_value = x_axis_pin.value - zero[0]
+    y_value = y_axis_pin.value - zero[1]
+    if x_value >= 0:
+        x_axis = x_value // x_spacing[1]
+    else:
+        x_axis = - ((-x_value) // x_spacing[0])
+    if y_value >= 0:
+        y_axis = y_value // y_spacing[1]
+    else:
+        y_axis = - ((-y_value) // y_spacing[0])
+    return (x_axis,y_axis)
+    
+zero = get_zero(times =500, sleep = 0.01)
+print(zero)
+(x_extremum,y_extremum) = get_extremum(times = 500, sleep = 0.01)
+print((x_extremum, y_extremum))
+(x_spacing,y_spacing) = get_spacing(level = 128 , zero = zero, x_extremum = x_extremum,y_extremum = y_extremum)
+print((x_spacing, y_spacing))
+
+while True:
+    coordinates = get_coordinates(zero = zero, x_spacing = x_spacing, y_spacing = y_spacing)
+    print(coordinates)
+    time.sleep(0.1)
+```
