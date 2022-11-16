@@ -289,10 +289,10 @@ while True:
     time.sleep(0.1)
 ```
 
-3. 在Mu编辑器中，点击`Plotter`图标即可显示绘图仪，可以实时将REPL输出的数值显示为与时间相关的图表。
+3. 在Mu编辑器中，点击`Plotter`图标即可显示绘图仪，可以实时将REPL输出的数值显示为与时间相关的折线图。
 ![](../assets/images/circuitpython_plotter.png)
    
-4. 静止摇杆获取零点数值，校准坐标零点。
+4. 以下程序可实现校准坐标零点的功能。开始运行的前五秒，请静止摇杆等待获取零点数值。
 ```python
 import board,analogio,time
 
@@ -321,7 +321,7 @@ while True:
     print((x_axis,y_axis))
     time.sleep(0.1)
 ```
-5. 获取摇杆方向，这是双轴摇杆最常见的应用。
+5. 以下程序可获取摇杆方向，这是双轴摇杆最常见的应用。
 ```python
 import board,analogio,time
 
@@ -375,7 +375,7 @@ while True:
     print(get_direction(zero = zero))
     time.sleep(0.1)
 ```
-6. 设置坐标精度等级，计算每级跨度，可以按需求消除抖动，增强数据的实用性。
+6. 以下程序可设置坐标精度等级，计算每级跨度，可以按需求消除抖动，增强数据的实用性。
 ```python
 import board,analogio,time
 
