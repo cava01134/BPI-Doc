@@ -321,7 +321,7 @@ while True:
     print((x_axis,y_axis))
     time.sleep(0.1)
 ```
-4. 获取摇杆方向，这是双轴摇杆最常见的应用。
+5. 获取摇杆方向，这是双轴摇杆最常见的应用。
 ```python
 import board,analogio,time
 
@@ -375,7 +375,7 @@ while True:
     print(get_direction(zero = zero))
     time.sleep(0.1)
 ```
-5. 设置坐标精度等级，计算每级跨度，可以按需求消除抖动，增强数据的实用性。
+6. 设置坐标精度等级，计算每级跨度，可以按需求消除抖动，增强数据的实用性。
 ```python
 import board,analogio,time
 
