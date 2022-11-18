@@ -31,7 +31,7 @@
                     {
                         "id": "BitV2",
                         "url": "/WebBit_dev/zh_tw/",
-                        "label": "WebBit V2開發手冊"
+                        "label": "WebBit V2使用手冊"
                     }
                 ]
             },
@@ -63,8 +63,8 @@
                 ]
             },
             {
-                "id": "配件",
-                "label": "Acces",
+                "id": "Acces",
+                "label": "配件",
                 "position": "left",
                 "items": [
                     {

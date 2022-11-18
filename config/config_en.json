@@ -31,7 +31,7 @@
                     {
                         "id": "BitV2",
                         "url": "/WebBit_dev/en/",
-                        "label": "WebBit V2 Development Manual"
+                        "label": "WebBit V2 User Manual"
                     }
                 ]
             },
@@ -63,8 +63,8 @@
                 ]
             },
             {
-                "id": "Accessories",
-                "label": "Acces",
+                "id": "Acces",
+                "label": "Accessories",
                 "position": "left",
                 "items": [
                     {
