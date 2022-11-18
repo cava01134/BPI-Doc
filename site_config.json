@@ -16,7 +16,7 @@
             "/WebAI/zh/": "docs/WebAI/zh",
             "/Leaf_S3_doc/zh/": "docs/Leaf_S3_doc/zh",
             "/PicoW_S3_doc/zh/": "docs/PicoW_S3_doc/zh",
-            "/Pico_RP2040_doc/zh/": "docs/PicoW_S3_doc/zh",
+            "/Pico_RP2040_doc/zh/": "docs/Pico_RP2040_doc/zh",
             "/About/zh/": "docs/About/zh"
             
         },
@@ -28,7 +28,7 @@
             "/Q-Car/zh/assets/":"docs/Q-Car/zh/assets",
             "/Leaf_S3_doc/zh/assets/":"docs/Leaf_S3_doc/zh/assets",
             "/PicoW_S3_doc/zh/assets/":"docs/PicoW_S3_doc/zh/assets",
-            "/Pico_RP2040_doc/zh/assets/":"docs/PicoW_S3_doc/zh/assets",
+            "/Pico_RP2040_doc/zh/assets/":"docs/Pico_RP2040_doc/zh/assets",
             "/Triode-Car/zh/assets/": "docs/Triode-Car/zh/assets",
             "/WebAI/zh_tw/assets/": "docs/WebAI/zh_tw/assets",
             "/WebAI/zh/assets/": "docs/WebAI/zh/assets",
