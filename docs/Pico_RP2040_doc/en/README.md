@@ -1,49 +1,45 @@
-# 【 BPI-Leaf-S3 Development Board 】
+# 【 BPI-Pico-RP2040 Development Board 】
 
 ## introduce
 
-![](assets/images/BPI-Leaf-S3_banner.jpg)
+![](assets/images/BPI-Pico-RP2040_banner.png)
 
-The Banana Pi Leaf series is a low-power microcontroller development board designed for the Internet of Things.
+The Banana Pi Pico series is a low-power microcontroller development board designed for the Internet of Things.
 
-BPI-Leaf-S3 has an onboard ESP32-S3 chip, supports 2.4 GHz Wi-Fi and Bluetooth® LE dual-mode wireless communication, is compatible with low-power hardware design, and consumes only 10uA in deep sleep mode .
-
-It supports two power supply modes: USB and external 3.7V lithium battery, which can realize automatic power switching function under dual power supply, and supports USB charging mode. Small size, convenient interface, easy to use, and can be directly applied to low-power IoT projects.
-
-The BPI-Leaf-S3 development board supports ESP-IDF, Arduino, MicroPython and other methods for programming and development in terms of software.
-
-All IO pins corresponding to the chip are marked on the BPI-Leaf-S3 development board, and the order of the IO pins is consistent with the Espressif ESP32-S3-DevKitC-1 development board. Developers can support DevKitC-1 according to actual needs. The peripherals are added to the BPI-Leaf-S3, and the development board can also be plugged into the breadboard.
+BPI-Pico-RP2040 has RP2040 chip onboard, adopts Arm Cortex M0+ processor architecture, runs at 133 MHz, has 264K SRAM, and 2MB onboard storage space.
 
 ## Programming with MicroPython
 
-By flashing the MicroPython firmware, you can use the Python language for programming on the development board.
+By programming the MicroPython firmware, you can use the Python language for programming in the development board.
 
-Will provide rich sample code and professional IDE support (such as: VsCode, PyCharm).
+Rich sample codes and professional IDE support (such as: VsCode, PyCharm) will be provided.
 
 ![](assets/images/Mircopython.png)
 
 ## Programming with Arduino
 
-Provides software tools and best examples to get started with Arduino, lowering the barriers to entry into professional ESP32 embedded development.
+Provides software tools and best examples to get started with Arduino, lowering the barrier to entry for ESP32 embedded professional development.
 
 ![](assets/images/Arduino_logo_1200x350.png)
 
->Arduino will not explain too much basic content, please have the language development foundation of C/C++.
+>Arduino will not explain too much basic content, please have C/C++ language development foundation.
 
-## Information and resources
+## Materials and Resources
 
-- [WIKI](https://wiki.banana-pi.org/BPI-Leaf-S3)
+- [Official WIKI]()
 
-- [GitHub: BPI-Leaf-S3 Development Board Schematic PDF](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/sch/BPI-Leaf-S3-Chip- V0.1A.pdf)
+- [GitHub: BPI-Pico-RP2040 Development Board Schematic PDF]()
 
-- [ESP32-S3 Specifications](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/Example/Arduino)
+- [RP2040 Technical Specification](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf)
 
-- [ESP32-S3 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_cn.pdf)
+- [rp2040-product-brief.pdf](https://datasheets.raspberrypi.com/rp2040/rp2040-product-brief.pdf)
 
-## Sample purchase
+- [raspberry-pi-pico-python-sdk.pdf](https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf)
 
-- [Official AliExpress](https://www.aliexpress.com/item/1005004428945296.html?spm=5261.ProductManageOnline.0.0.48af4edfYbyEoI)
+## Sample Purchase
 
-- [Official Taobao](https://item.taobao.com/item.htm?spm=a2126o.success.0.0.29034831FGnLQW&id=677287234553)
+- [Official AliExpress]()
+
+- [Official Taobao]()
 
 - OEM&OEM customized service: sales@banana-pi.com
