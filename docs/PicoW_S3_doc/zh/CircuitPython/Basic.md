@@ -442,3 +442,74 @@ while True:
     print(coordinates)
     time.sleep(0.1)
 ```
+
+## 使用增量型旋转编码器
+1. 循环检测两个信号输入引脚的值，其中一个发生变化时同时输出两个引脚当前的值，当值都为1时输出一次计数值，计数值可作为判断编码器完成一次动作的依据。
+```python
+import board
+import digitalio
+
+dt = digitalio.DigitalInOut(board.GP0)
+clk = digitalio.DigitalInOut(board.GP1)
+dt.switch_to_input()
+clk.switch_to_input()
+dt_last_value = 0
+clk_last_value = 0
+count = 0
+
+while True:
+    if dt.value != dt_last_value or clk.value != clk_last_value:
+        dt_last_value = int(dt.value)
+        clk_last_value = int(clk.value)
+        print((dt_last_value,clk_last_value))
+        if (dt_last_value,clk_last_value) == (1,1):
+            print('--',count_1,'--')
+            count += 1
+```
+2. 经过上一步的测试与判断，确定了编码器顺时针旋转与逆时针旋转的动作，在两个引脚上输出的信号变化的规律与差异，由此可设计一个正转使计数+1，反转使计数-1的程序。
+```python
+import board
+import digitalio
+import time
+dt = digitalio.DigitalInOut(board.GP0)
+clk = digitalio.DigitalInOut(board.GP1)
+dt.switch_to_input()
+clk.switch_to_input()
+dt_last_value = 0
+clk_last_value = 0
+count = 0
+start_sign = 0
+clockwise_sign = 0
+while True:
+    if dt.value != dt_last_value or clk.value != clk_last_value:
+        dt_last_value = int(dt.value)
+        clk_last_value = int(clk.value)
+        print((dt_last_value,clk_last_value))
+        if start_sign == 0 and (dt_last_value,clk_last_value) == (0,0):
+            start_sign = 1
+        elif start_sign == 1:
+            if (dt_last_value,clk_last_value) == (1, 0):
+                clockwise_sign = 1
+            elif (dt_last_value,clk_last_value) == (0, 1):
+                clockwise_sign = -1
+            elif (dt_last_value,clk_last_value) == (1, 1):
+                count = count + clockwise_sign
+                clockwise_sign = 0
+                start_sign = 0
+                print('--',count,'--')
+```
+3. rotaryio 模块可直接实现上一步中的功能。（内部程序有所差异，但最终实现功能基本一致）。
+```python
+import rotaryio
+import board
+
+encoder = rotaryio.IncrementalEncoder(board.GP1,board.GP0) 
+last_position = 0
+
+while True:
+    position = encoder.position
+    if position != last_position:
+        print(position)
+    last_position = position
+
+```
