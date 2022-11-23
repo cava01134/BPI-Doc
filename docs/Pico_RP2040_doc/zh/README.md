@@ -1,12 +1,12 @@
-# 【 BPI-Leaf-S3 开发板 】
+# 【 BPI-Pico-RP2040 开发板 】
 
 ## 介绍
 
-![](assets/images/BPI-Leaf-S3_banner.jpg)
+![](assets/images/BPI-Pico-RP2040_banner.png)
 
-香蕉派Leaf系列是专为物联网设计的低功耗微控制器开发板。
+香蕉派Pico系列是专为物联网设计的低功耗微控制器开发板。
 
-BPI-Leaf-S3板载ESP32-S3芯片，支持 2.4 GHz Wi-Fi 和低功耗蓝牙 (Bluetooth® LE) 双模无线通信，外围兼容低功耗硬件设计，深度睡眠模式下功耗仅为10uA。
+BPI-Pico-RP2040板载RP2040芯片，采用Arm Cortex M0+处理器架构，运行频率为133 MHz，拥有264K SRAM，2MB板载存储空间。
 
 ## 使用 MicroPython 编程
 
@@ -26,18 +26,20 @@ BPI-Leaf-S3板载ESP32-S3芯片，支持 2.4 GHz Wi-Fi 和低功耗蓝牙 (Bluet
 
 ## 资料与资源
 
-- [官方WIKI](https://wiki.banana-pi.org/BPI-Leaf-S3_%E5%BC%80%E5%8F%91%E6%9D%BF) 
+- [官方WIKI]() 
 
-- [GitHub: BPI-Leaf-S3 开发板原理图PDF](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/blob/main/sch/BPI-Leaf-S3-Chip-V0.1A.pdf) 
+- [GitHub: BPI-Pico-RP2040 开发板原理图PDF]() 
 
-- [ESP32-S3 技术规格书](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_cn.pdf)
+- [RP2040 技术规格书](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf)
 
-- [ESP32-S3 技术参考手册](https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_cn.pdf)
+- [rp2040-product-brief.pdf](https://datasheets.raspberrypi.com/rp2040/rp2040-product-brief.pdf)
+
+- [raspberry-pi-pico-python-sdk.pdf](https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf)
 
 ## 样品购买
 
-- [官方速卖通](https://www.aliexpress.com/item/1005004428945296.html?spm=5261.ProductManageOnline.0.0.48af4edfYbyEoI)
+- [官方速卖通]()
 
-- [官方淘宝](https://item.taobao.com/item.htm?spm=a2126o.success.0.0.29034831FGnLQW&id=677287234553)
+- [官方淘宝]()
 
 - OEM&OEM 定制服务 ： sales@banana-pi.com

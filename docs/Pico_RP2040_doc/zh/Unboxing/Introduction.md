@@ -23,14 +23,52 @@ BPI-Pico-RP2040是 Banana Pi 推出的一款搭载RP2040芯片的微控制器开
 
 ### 接口示意图
 
-
-### 硬件规格
-
+![](../assets/images/BPI-Pico-RP2040-V0.2-IO.jpg)
 
 ### 硬件尺寸
+
+![](../assets/images/BPI-Pico-RP2040-V0.2-dimension.jpg)
+
+<table>
+   <tr>
+      <td>BPI-Pico-RP2040 尺寸表</td>
+   </tr>
+   <tr>
+      <td>管脚间距</td>
+      <td>2.54mm</td>
+   </tr>
+   <tr>
+      <td>安装孔间距</td>
+      <td>17.6mm/ 11.4mm</td>
+   </tr>
+   <tr>
+      <td>安装孔尺寸</td>
+      <td>内径2.1mm/外径3.4mm</td>
+   </tr>
+   <tr>
+      <td>主板尺寸</td>
+      <td>11.4 × 55.8(mm)</td>
+   </tr>
+   <tr>
+      <td>板厚</td>
+      <td>1.2mm</td>
+   </tr>
+   <tr>
+      <td></td>
+   </tr>
+</table>
+
+管脚间距兼容万能板（洞洞板、点阵板），面包板，并且能直接贴在其他PCB上，便于调试应用。
 
 
 ## 参考资料与资源
 
-[rp2040-product-brief.pdf](https://datasheets.raspberrypi.com/rp2040/rp2040-product-brief.pdf)
-[raspberry-pi-pico-python-sdk.pdf](https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf)
+- [GitHub: BPI-Pico-RP2040 开发板原理图PDF]() 
+
+- [RP2040 技术规格书](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf)
+
+- [RP2040 技术参考手册](https://datasheets.raspberrypi.com/rp2040/hardware-design-with-rp2040.pdf)
+
+- [rp2040-product-brief.pdf](https://datasheets.raspberrypi.com/rp2040/rp2040-product-brief.pdf)
+
+- [raspberry-pi-pico-python-sdk.pdf](https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf)
