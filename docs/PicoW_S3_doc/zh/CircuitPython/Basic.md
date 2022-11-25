@@ -444,7 +444,79 @@ while True:
 ```
 
 ## 使用增量型旋转编码器
-1. 循环检测两个信号输入引脚的值，其中一个发生变化时同时输出两个引脚当前的值，当值都为1时输出一次计数值，计数值可作为判断编码器完成一次动作的依据。
+![](../assets/images/rotary_incremental_encoder_pic.png) ![](../assets/images/rotary_incremental_encoder_pic_1.jpg)
+
+**接线参考**
+|**增量型旋转编码器**|**BPI-PicoW-S3**|
+| --- | --- |
+|GND|GND|
+|+|VBUS|
+|SW||
+|DT|GP0|
+|CLK|GP1|
+1. 增量型旋转编码器外观粗看与一些常见的旋转电位器相似，其关键的不同之处大致分为三点。
+   1. 微控制器使用ADC外设来读取旋转电位器输出的模拟信号（电压值），确定转轴当前角位；微控制器通过GPIO接收增量型旋转编码器输出的数字信号，可通过软件程序判断信号所对应的转轴动作。
+   2. 微控制器可在一定精度下，确定旋转电位器转轴当前角位，但因为模拟信号的持续性与抗干扰能力差的原因，无法准确判断它是否有动作；增量型旋转编码器仅在转轴运动到一个触点时，向微控制器发出一段动作数字信号，如果一个增量型旋转编码器一周有20个触点，它旋转一周就触发20次动作信号，微控制器可以精确的判断它是否动作，向哪个方向转动，信号触发了多少次。
+   3. 旋转电位器通常不可向任意转向进行无限旋转，会停止在最大或最小限位点；增量型旋转编码器可向任意转向进行无限旋转。
+2. 增量型旋转编码器采用正交编码器生成其A和B的输出信号。从A和B输出发射的脉冲是正交编码的，这意味着当增量编码器以恒定速度运动时，A和B波形是方波，A和B之间存在90度的相位差。最终A和B信号将从两个管脚传输给微控制器。
+    ![](../assets/images/rotary_incremental_encoder_pic_2.gif)
+
+
+3. 理论上，在任何特定时间，对于旋转编码器，A和B信号之间，顺时针旋转的相位差为+90°，逆时针旋转的相位差为−90°，具体则取决于设备内部的正交编码器设计。
+4. A或B输出上的脉冲频率与转轴的速度（位置变化率）成正比。较高的频率表示较快的速度，而较低的频率表示较慢的速度。当转轴静止时，静态、不变的信号输出在A和B上，所以有很多测速方案使用增量型旋转编码器。
+> 参考 [维基百科: 增量编码器](https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_decoder) 。
+5. 用CircuitPython设计一个程序读取在GP0与GP1引脚上的信号，当其中一个发生变化时同时输出两个引脚当前的值，连接开发板与增量型旋转编码器后运行程序。
+```python
+import board
+import digitalio
+
+dt = digitalio.DigitalInOut(board.GP0)
+clk = digitalio.DigitalInOut(board.GP1)
+dt.switch_to_input()
+clk.switch_to_input()
+dt_last_value = 0
+clk_last_value = 0
+
+while True:
+    if dt.value != dt_last_value or clk.value != clk_last_value:
+        dt_last_value = int(dt.value)
+        clk_last_value = int(clk.value)
+        print((dt_last_value,clk_last_value))
+```
+6. 逐级转动转轴，观察输出信号，如果有逻辑分析仪或示波器也可接入观察。
+
+   1. 转轴逆时针旋转时，REPL的输出。
+   ```
+   (1, 1)
+   (1, 0)
+   (0, 0)
+   (0, 1)
+   (1, 1)
+   (1, 0)
+   (0, 0)
+   (0, 1)
+   (1, 1)
+   ```
+   2. 转轴逆时针旋转时，逻辑分析仪所观察到的波形。
+   ![](../assets/images/rotary_incremental_encoder_0.png)
+
+   3. 转轴顺时针旋转时，REPL的输出。
+   ```
+   (1, 1)
+   (0, 1)
+   (0, 0)
+   (1, 0)
+   (1, 1)
+   (0, 1)
+   (0, 0)
+   (1, 0)
+   (1, 1)
+   ```
+   4. 转轴逆时针旋转时，逻辑分析仪所观察到的波形。
+   ![](../assets/images/rotary_incremental_encoder_1.png)
+
+
+7. 首先可以观察到的现象是，转轴完成一级动作后，两个引脚上的信号都为1，可以设计程序，当值都变为1时输出一次计数值，计数值可作为判断编码器完成一次动作的依据。
 ```python
 import board
 import digitalio
@@ -466,7 +538,10 @@ while True:
             print('--',count_1,'--')
             count += 1
 ```
-2. 经过上一步的测试与判断，确定了编码器顺时针旋转与逆时针旋转的动作，在两个引脚上输出的信号变化的规律与差异，由此可设计一个正转使计数+1，反转使计数-1的程序。
+8. 再确定编码器顺时针旋转与逆时针旋转的动作，在两个引脚上输出的信号变化的规律与差异。
+  1. 逆时针旋转的规律为(1, 1)>(1, 0)>(0, 0)>(0, 1)>(1, 1)。
+  2. 顺时针旋转的规律为(1, 1)>(0, 1)>(0, 0)>(1, 0)>(1, 1)。
+  由此可设计一个顺时针旋转使计数+1，逆时针旋转使计数-1的程序，并加入消抖除错的功能。
 ```python
 import board
 import digitalio
@@ -498,12 +573,13 @@ while True:
                 start_sign = 0
                 print('--',count,'--')
 ```
-3. rotaryio 模块可直接实现上一步中的功能。（内部程序有所差异，但最终实现功能基本一致）。
+9. 此程序中的消抖除错功能的实现，并不是逐步判断验证是否符合信号规律，或许还有更多办法可以实现消抖除错，欢迎讨论。
+10. 另外 CircuitPython 的rotaryio模块可直接实现正反转计数功能。（内部程序有所差异，但最终实现功能基本一致）。
 ```python
 import rotaryio
 import board
 
-encoder = rotaryio.IncrementalEncoder(board.GP1,board.GP0) 
+encoder = rotaryio.IncrementalEncoder(board.GP0,board.GP1) 
 last_position = 0
 
 while True:
@@ -511,5 +587,4 @@ while True:
     if position != last_position:
         print(position)
     last_position = position
-
 ```
