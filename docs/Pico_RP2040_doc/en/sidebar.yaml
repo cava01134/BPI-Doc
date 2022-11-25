@@ -1,5 +1,5 @@
 items:
--   label: 1. Unpacking the BPI-Pico-RP2040 development board
+-   label: 1. Unboxing BPI-Pico-RP2040 Development Board
     file: Unboxing/Introduction.md
     
 -   label: 2. MicroPython quick start
