@@ -6,7 +6,7 @@
 
 香蕉派Pico系列是專為物聯網設計的低功耗微控制器開發板。
 
-BPI-Pico-RP2040 是 Banana Pi 推出的一款搭載RP2040芯片的微控制器開發板，其最顯著的特性是，在盡量保留Raspberry Pi Pico的功能，外形尺寸，引腳佈局的前提下，增加一顆板載 WS2812 彩色LED；將 3-Pin DEBUG 接口替換為一個JST SH 1mm 4-Pin 插座，可與 Qwiic & STEMMA QT 或任何可能的外設連接；將micro-USB插座替換為USB Type-C插座，支持正反插，與絕大多數現代智能手機的USB C線通用，無需額外購買。
+BPI-Pico-RP2040 是 Banana Pi 推出的一款搭載RP2040芯片的微控制器開發板，其最顯著的特性是，在盡量保留Raspberry Pi Pico的功能，外形尺寸，引腳佈局的前提下，增加一顆板載 WS2812 彩色LED；將 3-Pin DEBUG 接口替換為一個JST SH 1mm 4-Pin 插座，可與 Qwiic & STEMMA QT 或任何可能的外設連接；將micro-USB插座替換為USB Type-C插座，支持正反插，與絕大多數現代智能手機的USB Type-C線通用，無需額外購買。
 
 跳轉到 [開箱 BPI-Pico-RP2040 開發板](Unboxing/Introduction.md) 頁面查看詳情。
 
