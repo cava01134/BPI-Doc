@@ -10,11 +10,13 @@ BPI-Pico-RP2040板載RP2040芯片，採用Arm Cortex M0+處理器架構，運行
 
 ## 使用 MicroPython 編程
 
-通過燒寫 MicroPython 固件，就可以在開發板中使用 Python 語言進行編程。
-
-將提供豐富的示例代碼以及專業 IDE 的支持（如：VsCode、PyCharm）。
-
 ![](assets/images/Mircopython.png)
+
+MicroPython實現了大部分Python 3 特性和語法，易學易上手，驗證程序效果無需編譯直接下載進芯片運行。
+
+無論是否有編程基礎，MicroPython的上手難度絕對遠低於其他編程語言，其代碼易讀性高，且開源社區有多年積累的豐富資源，就如同Python一樣擁有極強的生命力與應用價值。
+
+通過燒寫 MicroPython 固件，就可以在開發板中使用 Python 語言進行編程。
 
 ## 使用 Arduino 編程
 
