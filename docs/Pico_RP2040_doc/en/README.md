@@ -10,17 +10,29 @@ BPI-Pico-RP2040 has RP2040 chip onboard, adopts Arm Cortex M0+ processor archite
 
 ## Programming with MicroPython
 
-By programming the MicroPython firmware, you can use the Python language for programming in the development board.
-
-Rich sample codes and professional IDE support (such as: VsCode, PyCharm) will be provided.
-
 ![](assets/images/Mircopython.png)
+
+Regardless of the programmer is a beginner or not, MicroPython is considered to be less difficult to develop than other MCU programming languages.
+
+Its code is easy to understand compared to other programming languages, and it has various resources accumulated over the years by the open source community.
+
+Just like Python, it has strong vitality and application value.
+
+By uploading the MicroPython firmware, you can use the Python language to program in the development board.
+
+## Programming with CircuitPython
+
+![](assets/images/CircuitPython_Repo_header_logo.jpg)
+
+CircuitPython is a programming language designed to simplify programming experiments and learning on microcontroller development boards.
+
+CircuitPython programming with the Mu editor is the least difficult way to get started. Install the software and connect the device to start using it.
 
 ## Programming with Arduino
 
-Provides software tools and best examples to get started with Arduino, lowering the barrier to entry for ESP32 embedded professional development.
-
 ![](assets/images/Arduino_logo_1200x350.png)
+
+Provides software tools and best examples to get started with Arduino, lowering the barrier to entry for ESP32 embedded professional development.
 
 >Arduino will not explain too much basic content, please have C/C++ language development foundation.
 

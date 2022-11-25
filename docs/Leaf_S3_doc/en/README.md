@@ -16,9 +16,13 @@ All IO pins corresponding to the chip are marked on the BPI-Leaf-S3 development 
 
 ## Programming with MicroPython
 
-By flashing the MicroPython firmware, you can use the Python language for programming on the development board.
+Regardless of the programmer is a beginner or not, MicroPython is considered to be less difficult to develop than other MCU programming languages.
 
-Will provide rich sample code and professional IDE support (such as: VsCode, PyCharm).
+Its code is easy to understand compared to other programming languages, and it has various resources accumulated over the years by the open source community.
+
+Just like Python, it has strong vitality and application value.
+
+By uploading the MicroPython firmware, you can use the Python language to program in the development board.
 
 ![](assets/images/Mircopython.png)
 

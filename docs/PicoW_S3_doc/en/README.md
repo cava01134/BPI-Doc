@@ -6,13 +6,27 @@
 
 Banana Pi BPI-PicoW is a low-power microcontroller, a development board designed for IoT development and Maker DIY. The same size as the Raspberry Pi Pico board, supports 2.4 GHz Wi-Fi and Bluetooth® LE dual-mode wireless communication, peripherals are compatible with low-power hardware design, and consumes only 10uA in deep sleep mode. In terms of programming, PicoW-S3 supports ESP-IDF, Arduino, micropython, CircuitPython and other methods
 
+## Programming with CircuitPython
+
+> BPI-PicoW-S3 has installed tinyUF2 and CircuitPython firmware before leaving the factory. It is recommended to use CircuitPython to quickly get started with the BPI-PicoW-S3 development board.
+
+![](assets/images/CircuitPython_Repo_header_logo.jpg)
+
+CircuitPython is a programming language designed to simplify programming experiments and learning on microcontroller development boards.
+
+CircuitPython programming with the Mu editor is the least difficult way to get started. Install the software and connect the device to start using it.
+
 ## Programming with MicroPython
 
-By flashing the MicroPython firmware, you can use the Python language for programming on the development board.
-
-Will provide rich sample code and professional IDE support (such as: VsCode, PyCharm).
-
 ![](assets/images/Mircopython.png)
+
+Regardless of the programmer is a beginner or not, MicroPython is considered to be less difficult to develop than other MCU programming languages.
+
+Its code is easy to understand compared to other programming languages, and it has various resources accumulated over the years by the open source community.
+
+Just like Python, it has strong vitality and application value.
+
+By uploading the MicroPython firmware, you can use the Python language to program in the development board.
 
 ## Programming with Arduino
 

@@ -10,9 +10,11 @@ BPI-Leaf-S3板载ESP32-S3芯片，支持 2.4 GHz Wi-Fi 和低功耗蓝牙 (Bluet
 
 ## 使用 MicroPython 编程
 
-通过烧写 MicroPython 固件，就可以在开发板中使用 Python 语言进行编程。
+MicroPython实现了大部分Python 3 特性和语法，易学易上手，验证程序效果无需编译直接下载进芯片运行。
 
-将提供丰富的示例代码以及专业 IDE 的支持（如：VsCode、PyCharm）。
+无论是否有编程基础，MicroPython的上手难度绝对远低于其他编程语言，其代码易读性高，且开源社区有多年积累的丰富资源，就如同Python一样拥有极强的生命力与应用价值。
+
+通过烧写 MicroPython 固件，就可以在开发板中使用 Python 语言进行编程。
 
 ![](assets/images/Mircopython.png)
 
