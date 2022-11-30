@@ -85,9 +85,7 @@ object <module 'board'> is of type module
 >>> 
 ```
 
-## 输出
-
-### 使WS2812彩灯闪烁
+## 使WS2812彩灯闪烁
 
 1. 在Mu编辑器中点击**Load**按钮，选择CircuitPython开发板上的 code.py 文件，点击 **打开**，即可开始编辑 code.py 。
 
@@ -121,7 +119,7 @@ while 1:
 
 > 后续所有示例都可如此编辑code.py文件或复制粘贴到REPL中运行。但在code.py文件中的程序代码执行完毕后，开发板会恢复未运行时的状态，不会保留状态，但在REPL中执行则会保留状态。
 
-### 使引脚输出高低电平，控制LED
+## 使引脚输出高低电平，控制LED
 
 1. `board.LED`控制着PicoW-S3上的一颗单色LED发光二极管，高电平点亮，低电平熄灭，在REPL中输入以下代码：
 ```py
@@ -157,7 +155,7 @@ while True:
 
 5. 在REPL中输入`import board;help(board)`即可列出所有可控制的引脚。`board.GP25` 与 `board.LED`完全相同。
 
-### PWM输出，控制LED亮度
+## PWM输出，控制LED亮度
 
 1. 可通过控制PWM占空比来控制LED灯亮度，控制占空比从0%~100%，采用16位精度，十进制为 0~65535 ，16进制为 0~FFFF 。在REPL中输入以下代码：
 ```py
@@ -267,8 +265,8 @@ while True:
 | :----: | :----: |
 | GND  | GND |
 | +5V  | 3V3 |
-| VRx  | GP26_A0 |
-| VRY  | GP27_A1 |
+| VRx  | GP27_A1 |
+| VRY  | GP26_A0 |
 
 1. 在CircuitPython中提供的ADC精度是16bit，即最大值的16进制表达为 FFFF，10进制表达为 65535，对应的电压量程为0mv ~ 3300mv。BPI-PicoW-S3所使用的EPS32S3芯片实际ADC电压量程为0mv ~ 3100mv，所以实际应用时仅能测量到3100mv。
 
@@ -293,6 +291,7 @@ while True:
 ![](../assets/images/circuitpython_plotter.png)
    
 4. 以下程序可实现校准坐标零点的功能。开始运行的前五秒，请静止摇杆等待获取零点数值。
+> 注意代码中将xy轴对换了，将双轴摇杆模块逆时针旋转90°即可对应使用。此做法可使摇杆在y轴上移时ADC读数增加，反之减少，符合常见直角坐标系的规律。
 ```python
 import board,analogio,time
 
@@ -587,4 +586,168 @@ while True:
     if position != last_position:
         print(position)
     last_position = position
+```
+
+## 下载安装CircuitPython库，驱动ssd1306 oled屏幕
+
+[CircuitPython库 官网页面](https://circuitpython.org/libraries)
+[Adafruit CircuitPython库 文档页面](https://docs.circuitpython.org/projects/bundle/en/latest/index.html)
+
+本节以ssd1306驱动库与framebuf库为例，指导如何下载安装CircuitPython库。
+
+1. 在新页面打开Adafruit CircuitPython库 文档页面。
+2. 在页面中找到 **SSD1306 OLED (framebuf)** 项，点击跳转到其GitHub releases页面，点击 **adafruit-circuitpython-ssd1306-8.x-mpy-2.12.12.zip** 项将其下载到本地。
+3. 回到Adafruit CircuitPython库 文档页面，在页面中找到 **Framebuf Module** 项，点击跳转到其GitHub releases页面，点击 **adafruit-circuitpython-framebuf-8.x-mpy-1.4.14.zip** 项将其下载到本地。
+> 下载最新版本即可。
+4. 将下载的两个压缩包解压，内部文件夹结构如下：
+   ├─examples
+   │  ├─xxx.py
+   │  ├─xxx.py
+   │  └─......
+   ├─lib
+   │  ├─a.mpy
+   │  ├─b.mpy
+   │  └─......
+   └─requirements
+      ├─a
+      │ └─requirements.txt
+      ├─b
+      │ └─requirements.txt
+      └─......
+5. examples文件夹中的是一些库的使用例程，lib文件夹中扩展名为`.mpy`的即是库文件，requirements文件夹中的 requirements.txt 文件，其中记录了各库文件所依赖的，必要的其他库文件名称，有一些已经包含在CircuitPython固件中，而不在其内的则需另外下载安装。例如 **adafruit_ssd1306** 库，就需要 **adafruit_framebuf** 库，所以我们在第3步中也将其下载到本地。
+6. 将两个lib文件夹中扩展名为`.mpy`的库文件复制到 **CIRCUITPY** 磁盘中的lib文件夹内，即可在程序中调用这两个库。
+7. adafruit_framebuf 库还需将其examples文件夹中的 **font5x8.bin** 文件复制到**CIRCUITPY** 磁盘中的根目录，即 code.py 文件所在的地方。此为字库文件，显示文字需要使用它。
+8. 将一块i2c协议的ssd1306 oled屏幕模块与开发板连接。
+| ssd1306 | BPI-PicoW-S3 |
+| :----: | :----: |
+| GND  | GND |
+| VCC  | 3V3 |
+| SCL  | GP0 |
+| SDA  | GP1 |
+9. 编辑code.py，在其中输入以下代码即可驱动此屏幕模块输出图形和文字。
+```python
+import board
+import busio
+import adafruit_ssd1306
+
+i2c = busio.I2C(board.GP0, board.GP1)
+display = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3C)
+display.fill(0)
+
+display.pixel(0, 0, 1)
+display.pixel(display.width // 2, display.height // 2, 1)
+display.pixel(display.width - 1, display.height - 1, 1)
+display.hline(32, 5,20, 1)
+display.vline(52, 10,20, 1)
+display.line(55, 5, 60, 20, 1)
+
+display.circle(16, 16, 16, 1)
+display.fill_rect(11, 11, 12, 12, 1)
+display.rect(35, 11, 12, 12, 1)
+
+display.text("Hello", 64, 0, 1, font_name='font5x8.bin', size=1)
+display.text("World!", 64, 8, 1, font_name='font5x8.bin', size=2)
+display.show()
+
+```
+
+## 实时图形显示双轴摇杆坐标位置
+
+```python
+import time
+import board
+import busio
+import analogio
+import adafruit_ssd1306
+
+def get_zero(times =500, sleep = 0.01):
+    x_total = 0
+    y_total = 0
+    for i in range (times):
+        x_axis = x_axis_pin.value
+        y_axis = y_axis_pin.value
+        x_total += x_axis
+        y_total += y_axis
+        time.sleep(sleep)
+    x_zero = x_total // times
+    y_zero = y_total // times
+    return (x_zero,y_zero)
+
+def get_extremum(times =500, sleep = 0.01):
+    x_list = []
+    y_list = []
+    for i in range (times):
+        x_axis = x_axis_pin.value
+        y_axis = y_axis_pin.value
+        x_list.append(x_axis)
+        y_list.append(y_axis)
+        time.sleep(sleep)
+    x_extremum = (min(x_list),max(x_list))
+    y_extremum = (min(y_list),max(y_list))
+    return (x_extremum,y_extremum)
+
+def get_spacing(level = 16 , zero =(32767,32767) ,x_extremum = (0,65535),y_extremum = (0,65535)):
+    x_temp_1 = (zero[0] - x_extremum[0]) // level
+    x_temp_2 = (x_extremum[1] - zero[0] ) // level
+    y_temp_1 = (zero[1] - y_extremum[0]) // level
+    y_temp_2 = (y_extremum[1] - zero[1] ) // level
+    x_spacing = (x_temp_1,x_temp_2)
+    y_spacing = (y_temp_1,y_temp_2)
+    return (x_spacing,y_spacing)
+
+def get_coordinates(zero = (32767,32767), x_spacing = (2048,2048),y_spacing = (2048,2048)):
+    x_value = x_axis_pin.value - zero[0]
+    y_value = y_axis_pin.value - zero[1]
+    if x_value >= 0:
+        x_axis = x_value // x_spacing[1]
+    else:
+        x_axis = - ((-x_value) // x_spacing[0])
+    if y_value >= 0:
+        y_axis = y_value // y_spacing[1]
+    else:
+        y_axis = - ((-y_value) // y_spacing[0])
+    return (x_axis,y_axis)
+
+i2c = busio.I2C(board.GP0, board.GP1)
+display = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3C)
+display.fill(0)
+display.show()
+
+x_axis_pin = analogio.AnalogIn(board.A0)
+y_axis_pin = analogio.AnalogIn(board.A1)
+
+display.text('Zero adjustment', 0, 28, 1, font_name='font5x8.bin', size=1)
+display.show()
+zero = get_zero(times =200, sleep = 0.01)
+print(zero)
+display.fill(0)
+display.text('Extremum adjustment', 0, 28, 1, font_name='font5x8.bin', size=1)
+display.show()
+(x_extremum,y_extremum) = get_extremum(times = 200, sleep = 0.01)
+print((x_extremum, y_extremum))
+(x_spacing,y_spacing) = get_spacing(level = 32 , zero = zero, x_extremum = x_extremum,y_extremum = y_extremum)
+print((x_spacing, y_spacing))
+display.fill(0)
+display.text('x=', 70, 16, 1, font_name='font5x8.bin', size=2)
+display.text('y=', 70, 32, 1, font_name='font5x8.bin', size=2)
+(x_axis,y_axis) = (0,0)
+(x_axis_1,y_axis_1) = (0,0)
+(x_axis_2,y_axis_2) = (0,0)
+while True:
+    (x_axis,y_axis) = get_coordinates(zero = zero, x_spacing = x_spacing, y_spacing = y_spacing)
+    # print(x_axis,y_axis)
+    if (x_axis,y_axis) == (x_axis_1,y_axis_1):
+        pass
+    else:
+        display.text(str(x_axis_1), 90, 16, 0, font_name='font5x8.bin', size=2)
+        display.text(str(y_axis_1), 90, 32, 0, font_name='font5x8.bin', size=2)
+        display.fill_rect(x_axis_2-3, y_axis_2-3, 6, 6, 0)
+        (x_axis_1,y_axis_1) = (x_axis,y_axis)
+        (x_axis_2,y_axis_2) = (x_axis+32, -y_axis+32)
+        display.fill_rect(x_axis_2-3, y_axis_2-3, 6, 6, 1)
+        display.text(str(x_axis_1), 90, 16, 1, font_name='font5x8.bin', size=2)
+        display.text(str(y_axis_1), 90, 32, 1, font_name='font5x8.bin', size=2)
+        display.show()
+
+
 ```
