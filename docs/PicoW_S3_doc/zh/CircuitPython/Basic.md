@@ -592,6 +592,8 @@ while True:
 
 ## 下载安装CircuitPython库，驱动ssd1306 oled屏幕
 
+![](../assets/images/adafruit_ssd1306_4.jpg)
+
 [CircuitPython库 官网页面](https://circuitpython.org/libraries)
 [Adafruit CircuitPython库 文档页面](https://docs.circuitpython.org/projects/bundle/en/latest/index.html)
 [Adafruit SSD1306 库 文档页面](https://docs.circuitpython.org/projects/ssd1306/en/latest/index.html)
@@ -623,10 +625,10 @@ while True:
    │ └─requirements.txt
    └─......
 ```
-1. examples文件夹中的是一些库的使用例程，lib文件夹中扩展名为`.mpy`的即是库文件，requirements文件夹中的 requirements.txt 文件，其中记录了各库文件所依赖的，必要的其他库文件名称，有一些已经包含在CircuitPython固件中，而不在其内的则需另外下载安装。例如 **adafruit_ssd1306** 库绘制图形和文字的方法全部依赖于**adafruit_framebuf** 库，所以我们在第3步中也将其下载到本地。
-2. 将两个lib文件夹中扩展名为`.mpy`的库文件复制到 **CIRCUITPY** 磁盘中的lib文件夹内，即可在程序中调用这两个库。
-3. adafruit_framebuf 库还需将其examples文件夹中的 **font5x8.bin** 文件复制到**CIRCUITPY** 磁盘中的根目录，即 code.py 文件所在的地方。此为字库文件，显示文字需要使用它。
-4. 将一块i2c协议的ssd1306 oled屏幕模块与开发板连接。
+5. examples文件夹中的是一些库的使用例程，lib文件夹中扩展名为`.mpy`的即是库文件，requirements文件夹中的 requirements.txt 文件，其中记录了各库文件所依赖的，必要的其他库文件名称，有一些已经包含在CircuitPython固件中，而不在其内的则需另外下载安装。例如 **adafruit_ssd1306** 库绘制图形和文字的方法全部依赖于**adafruit_framebuf** 库，所以我们在第3步中也将其下载到本地。
+6. 将两个lib文件夹中扩展名为`.mpy`的库文件复制到 **CIRCUITPY** 磁盘中的lib文件夹内，即可在程序中调用这两个库。
+7. adafruit_framebuf 库还需将其examples文件夹中的 **font5x8.bin** 文件复制到**CIRCUITPY** 磁盘中的根目录，即 code.py 文件所在的地方。此为字库文件，显示文字需要使用它。
+8. 将一块i2c协议的ssd1306 oled屏幕模块与开发板连接。
 
    | ssd1306 | BPI-PicoW-S3 |
    | :----: | :----: |
@@ -635,7 +637,7 @@ while True:
    | SCL  | GP0 |
    | SDA  | GP1 |
 
-5. 编辑 code.py 文件，在其中输入以下代码即可驱动此屏幕模块输出图形和文字。
+9. 编辑 code.py 文件，在其中输入以下代码即可驱动此屏幕模块输出图形和文字。
     修改代码中的变量 `bgColor`数值为1，即可使显示背景为白色，显示图形为黑色。
     在两个库的文档中可查找到API参考，配合例程即可快速理解，上手使用ssd1306显示模块。
 ```python
