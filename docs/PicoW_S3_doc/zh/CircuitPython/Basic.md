@@ -592,14 +592,19 @@ while True:
 
 [CircuitPython库 官网页面](https://circuitpython.org/libraries)
 [Adafruit CircuitPython库 文档页面](https://docs.circuitpython.org/projects/bundle/en/latest/index.html)
+[Adafruit SSD1306 库 文档页面](https://docs.circuitpython.org/projects/ssd1306/en/latest/index.html)
+[Adafruit framebuf 库 文档页面](https://docs.circuitpython.org/projects/framebuf/en/latest/)
 
 本节以ssd1306驱动库与framebuf库为例，指导如何下载安装CircuitPython库。
 
-1. 在新页面打开Adafruit CircuitPython库 文档页面。
-2. 在页面中找到 **SSD1306 OLED (framebuf)** 项，点击跳转到其GitHub releases页面，点击 **adafruit-circuitpython-ssd1306-8.x-mpy-2.12.12.zip** 项将其下载到本地。
-3. 回到Adafruit CircuitPython库 文档页面，在页面中找到 **Framebuf Module** 项，点击跳转到其GitHub releases页面，点击 **adafruit-circuitpython-framebuf-8.x-mpy-1.4.14.zip** 项将其下载到本地。
+1. 在新页面打开[Adafruit CircuitPython库 文档页面](https://docs.circuitpython.org/projects/bundle/en/latest/index.html)。
+2. 在页面中找到并打开 **SSD1306 OLED (framebuf)** 项，然后点击左侧的**Download from GitHub**项，跳转到其GitHub releases页面，点击 **adafruit-circuitpython-ssd1306-8.x-mpy-2.12.12.zip** 项将其下载到本地。
+![](../assets/images/adafruit_ssd1306_1.jpg)
+![](../assets/images/adafruit_ssd1306_2.jpg)
+![](../assets/images/adafruit_ssd1306_3.jpg)
+1. 回到Adafruit CircuitPython库 文档页面，在页面中找到并打开 **Framebuf Module** 项，然后点击左侧的**Download from GitHub**项，跳转到其GitHub releases页面，点击 **adafruit-circuitpython-framebuf-8.x-mpy-1.4.14.zip** 项将其下载到本地。
 > 下载最新版本即可。
-4. 将下载的两个压缩包解压，内部文件夹结构如下：
+1. 将下载的两个压缩包解压，内部文件夹结构如下：
    ├─examples
    │  ├─xxx.py
    │  ├─xxx.py
@@ -614,41 +619,89 @@ while True:
       ├─b
       │ └─requirements.txt
       └─......
-5. examples文件夹中的是一些库的使用例程，lib文件夹中扩展名为`.mpy`的即是库文件，requirements文件夹中的 requirements.txt 文件，其中记录了各库文件所依赖的，必要的其他库文件名称，有一些已经包含在CircuitPython固件中，而不在其内的则需另外下载安装。例如 **adafruit_ssd1306** 库，就需要 **adafruit_framebuf** 库，所以我们在第3步中也将其下载到本地。
-6. 将两个lib文件夹中扩展名为`.mpy`的库文件复制到 **CIRCUITPY** 磁盘中的lib文件夹内，即可在程序中调用这两个库。
-7. adafruit_framebuf 库还需将其examples文件夹中的 **font5x8.bin** 文件复制到**CIRCUITPY** 磁盘中的根目录，即 code.py 文件所在的地方。此为字库文件，显示文字需要使用它。
-8. 将一块i2c协议的ssd1306 oled屏幕模块与开发板连接。
-| ssd1306 | BPI-PicoW-S3 |
-| :----: | :----: |
-| GND  | GND |
-| VCC  | 3V3 |
-| SCL  | GP0 |
-| SDA  | GP1 |
-9. 编辑code.py，在其中输入以下代码即可驱动此屏幕模块输出图形和文字。
+2. examples文件夹中的是一些库的使用例程，lib文件夹中扩展名为`.mpy`的即是库文件，requirements文件夹中的 requirements.txt 文件，其中记录了各库文件所依赖的，必要的其他库文件名称，有一些已经包含在CircuitPython固件中，而不在其内的则需另外下载安装。例如 **adafruit_ssd1306** 库绘制图形和文字的方法全部依赖于**adafruit_framebuf** 库，所以我们在第3步中也将其下载到本地。
+3. 将两个lib文件夹中扩展名为`.mpy`的库文件复制到 **CIRCUITPY** 磁盘中的lib文件夹内，即可在程序中调用这两个库。
+4. adafruit_framebuf 库还需将其examples文件夹中的 **font5x8.bin** 文件复制到**CIRCUITPY** 磁盘中的根目录，即 code.py 文件所在的地方。此为字库文件，显示文字需要使用它。
+5. 将一块i2c协议的ssd1306 oled屏幕模块与开发板连接。
+
+   | ssd1306 | BPI-PicoW-S3 |
+   | :----: | :----: |
+   | GND  | GND |
+   | VCC  | 3V3 |
+   | SCL  | GP0 |
+   | SDA  | GP1 |
+
+6. 编辑 code.py 文件，在其中输入以下代码即可驱动此屏幕模块输出图形和文字。
+    修改代码中的变量 `bgColor`数值为1，即可使显示背景为白色，显示图形为黑色。
+    在两个库的文档中可查找到API参考，配合例程即可快速理解，上手使用ssd1306显示模块。
 ```python
 import board
 import busio
 import adafruit_ssd1306
+import time
 
 i2c = busio.I2C(board.GP0, board.GP1)
 display = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3C)
-display.fill(0)
+bgColor=0
 
-display.pixel(0, 0, 1)
-display.pixel(display.width // 2, display.height // 2, 1)
-display.pixel(display.width - 1, display.height - 1, 1)
-display.hline(32, 5,20, 1)
-display.vline(52, 10,20, 1)
-display.line(55, 5, 60, 20, 1)
+display.fill(bgColor)
+for i in range(0,display.height,4):
+    for j in range(0,display.width,4):
+        display.pixel(j, i, not bgColor)
+    display.show()
 
-display.circle(16, 16, 16, 1)
-display.fill_rect(11, 11, 12, 12, 1)
-display.rect(35, 11, 12, 12, 1)
+display.fill(bgColor)
+for i in range(0,display.height,4):
+    display.hline(0, i,display.width, not bgColor)
+    display.show()
 
-display.text("Hello", 64, 0, 1, font_name='font5x8.bin', size=1)
-display.text("World!", 64, 8, 1, font_name='font5x8.bin', size=2)
+display.fill(bgColor)
+for i in range(0,display.width,8):
+    display.vline(i, 0,display.height, not bgColor)
+    display.show()
+
+display.fill(bgColor)
+for i in range(0,display.height,4):
+    display.line(0, 0, display.width, i, not bgColor)
+    display.line(display.width, display.height, 0, display.height-i, not bgColor)
+    display.show()
+
+display.fill(bgColor)
+for i in range(0,display.width//2,4):
+    display.circle(display.width//2, display.height//2, i, not bgColor)
+    display.show()
+
+display.fill(bgColor)
+for i in range(0,display.height,16):
+    for j in range(0,display.width,16):
+        display.rect(j, i, 12, 12, not bgColor)
+        display.show()
+
+for i in range(0,display.height,16):
+    for j in range(0,display.width,16):
+        display.fill_rect(j+2, i+2, 8, 8, not bgColor)
+        display.show()
+
+display.fill(bgColor)
+display.text("Hello", 0, 24, not bgColor, font_name='font5x8.bin', size=2)
 display.show()
+time.sleep(0.25)
+display.text("World!", 0, 40, not bgColor, font_name='font5x8.bin', size=3)
+display.show()
+time.sleep(0.25)
+display.text(">>>", 60, 0, not bgColor, font_name='font5x8.bin', size=4)
+display.show()
+time.sleep(1)
 
+display.fill(bgColor)
+char_width = 6
+char_height = 8
+chars_per_line = display.width // 6
+for i in range(255):
+    x = char_width * (i % chars_per_line)
+    y = char_height * (i // chars_per_line)
+    display.text(chr(i), x, y, not bgColor, font_name='font5x8.bin', size=1)
+display.show()
 ```
 
 ## 实时图形显示双轴摇杆坐标位置
