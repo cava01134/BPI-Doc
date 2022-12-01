@@ -446,6 +446,7 @@ while True:
 ![](../assets/images/rotary_incremental_encoder_pic.png) ![](../assets/images/rotary_incremental_encoder_pic_1.jpg)
 
 **接线参考**
+
 |**增量型旋转编码器**|**BPI-PicoW-S3**|
 | --- | --- |
 |GND|GND|
@@ -453,6 +454,7 @@ while True:
 |SW||
 |DT|GP0|
 |CLK|GP1|
+
 1. 增量型旋转编码器外观粗看与一些常见的旋转电位器相似，其关键的不同之处大致分为三点。
    1. 微控制器使用ADC外设来读取旋转电位器输出的模拟信号（电压值），确定转轴当前角位；微控制器通过GPIO接收增量型旋转编码器输出的数字信号，可通过软件程序判断信号所对应的转轴动作。
    2. 微控制器可在一定精度下，确定旋转电位器转轴当前角位，但因为模拟信号的持续性与抗干扰能力差的原因，无法准确判断它是否有动作；增量型旋转编码器仅在转轴运动到一个触点时，向微控制器发出一段动作数字信号，如果一个增量型旋转编码器一周有20个触点，它旋转一周就触发20次动作信号，微控制器可以精确的判断它是否动作，向哪个方向转动，信号触发了多少次。
@@ -602,27 +604,29 @@ while True:
 ![](../assets/images/adafruit_ssd1306_1.jpg)
 ![](../assets/images/adafruit_ssd1306_2.jpg)
 ![](../assets/images/adafruit_ssd1306_3.jpg)
-1. 回到Adafruit CircuitPython库 文档页面，在页面中找到并打开 **Framebuf Module** 项，然后点击左侧的**Download from GitHub**项，跳转到其GitHub releases页面，点击 **adafruit-circuitpython-framebuf-8.x-mpy-1.4.14.zip** 项将其下载到本地。
+3. 回到Adafruit CircuitPython库 文档页面，在页面中找到并打开 **Framebuf Module** 项，然后点击左侧的**Download from GitHub**项，跳转到其GitHub releases页面，点击 **adafruit-circuitpython-framebuf-8.x-mpy-1.4.14.zip** 项将其下载到本地。
 > 下载最新版本即可。
-1. 将下载的两个压缩包解压，内部文件夹结构如下：
-   ├─examples
-   │  ├─xxx.py
-   │  ├─xxx.py
-   │  └─......
-   ├─lib
-   │  ├─a.mpy
-   │  ├─b.mpy
-   │  └─......
-   └─requirements
-      ├─a
-      │ └─requirements.txt
-      ├─b
-      │ └─requirements.txt
-      └─......
-2. examples文件夹中的是一些库的使用例程，lib文件夹中扩展名为`.mpy`的即是库文件，requirements文件夹中的 requirements.txt 文件，其中记录了各库文件所依赖的，必要的其他库文件名称，有一些已经包含在CircuitPython固件中，而不在其内的则需另外下载安装。例如 **adafruit_ssd1306** 库绘制图形和文字的方法全部依赖于**adafruit_framebuf** 库，所以我们在第3步中也将其下载到本地。
-3. 将两个lib文件夹中扩展名为`.mpy`的库文件复制到 **CIRCUITPY** 磁盘中的lib文件夹内，即可在程序中调用这两个库。
-4. adafruit_framebuf 库还需将其examples文件夹中的 **font5x8.bin** 文件复制到**CIRCUITPY** 磁盘中的根目录，即 code.py 文件所在的地方。此为字库文件，显示文字需要使用它。
-5. 将一块i2c协议的ssd1306 oled屏幕模块与开发板连接。
+4. 将下载的两个压缩包解压，内部文件夹结构如下：
+```
+├─examples
+│  ├─xxx.py
+│  ├─xxx.py
+│  └─......
+├─lib
+│  ├─a.mpy
+│  ├─b.mpy
+│  └─......
+└─requirements
+   ├─a
+   │ └─requirements.txt
+   ├─b
+   │ └─requirements.txt
+   └─......
+```
+1. examples文件夹中的是一些库的使用例程，lib文件夹中扩展名为`.mpy`的即是库文件，requirements文件夹中的 requirements.txt 文件，其中记录了各库文件所依赖的，必要的其他库文件名称，有一些已经包含在CircuitPython固件中，而不在其内的则需另外下载安装。例如 **adafruit_ssd1306** 库绘制图形和文字的方法全部依赖于**adafruit_framebuf** 库，所以我们在第3步中也将其下载到本地。
+2. 将两个lib文件夹中扩展名为`.mpy`的库文件复制到 **CIRCUITPY** 磁盘中的lib文件夹内，即可在程序中调用这两个库。
+3. adafruit_framebuf 库还需将其examples文件夹中的 **font5x8.bin** 文件复制到**CIRCUITPY** 磁盘中的根目录，即 code.py 文件所在的地方。此为字库文件，显示文字需要使用它。
+4. 将一块i2c协议的ssd1306 oled屏幕模块与开发板连接。
 
    | ssd1306 | BPI-PicoW-S3 |
    | :----: | :----: |
@@ -631,7 +635,7 @@ while True:
    | SCL  | GP0 |
    | SDA  | GP1 |
 
-6. 编辑 code.py 文件，在其中输入以下代码即可驱动此屏幕模块输出图形和文字。
+5. 编辑 code.py 文件，在其中输入以下代码即可驱动此屏幕模块输出图形和文字。
     修改代码中的变量 `bgColor`数值为1，即可使显示背景为白色，显示图形为黑色。
     在两个库的文档中可查找到API参考，配合例程即可快速理解，上手使用ssd1306显示模块。
 ```python
