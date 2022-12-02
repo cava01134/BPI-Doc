@@ -133,3 +133,6 @@ You can try to modify the data in the tuple yourself to control the color of the
 >>> neo[0] = (25,25,25)
 >>> neo.write()
 ```
+
+## Reference Resources
+- [raspberry-pi-pico-python-sdk.pdf](https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf)

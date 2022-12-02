@@ -38,17 +38,15 @@ Provides software tools and best examples to get started with Arduino, lowering 
 
 >Arduino will not explain too much basic content, please have C/C++ language development foundation.
 
-## Materials and Resources
+## Reference Resources
 
-- [Official WIKI]()
+- [Official WIKI](https://wiki.banana-pi.org/BPI-Pico-RP2040)
 
 - [GitHub: BPI-Pico-RP2040 Development Board Schematic PDF]()
 
-- [RP2040 Technical Specification](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf)
+- [rp2040-datasheet.pdf](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf)
 
 - [rp2040-product-brief.pdf](https://datasheets.raspberrypi.com/rp2040/rp2040-product-brief.pdf)
-
-- [raspberry-pi-pico-python-sdk.pdf](https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf)
 
 ## Sample Purchase
 

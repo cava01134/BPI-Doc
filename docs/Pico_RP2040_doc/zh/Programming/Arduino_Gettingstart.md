@@ -46,3 +46,7 @@ void loop() {
 ```
 
 点击 `Upload` 按钮，程序将在编译完成后上传至开发板，板载LED将间隔1秒闪烁。
+
+## 参考资源
+
+- [RP2040 Arduino文档](https://arduino-pico.readthedocs.io/en/latest/)

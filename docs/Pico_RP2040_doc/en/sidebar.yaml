@@ -1,4 +1,7 @@
 items:
+-   label: BPI-Pico-RP2040 Homepage
+    file: README.md
+    
 -   label: 1. Unboxing BPI-Pico-RP2040 Development Board
     file: Unboxing/Introduction.md
     

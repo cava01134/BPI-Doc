@@ -36,17 +36,15 @@ CircuitPython是旨在简化在单片机开发板上进行编程实验和学习�
 
 >Arduino 将不会阐述过多基础内容，请具备 C/C++ 的语言开发基础。
 
-## 资料与资源
+## 参考资源
 
-- [官方WIKI]() 
+- [BPI-Pico-RP2040 官方 WIKI](https://wiki.banana-pi.org/BPI-Pico-RP2040_%E5%BC%80%E5%8F%91%E6%9D%BF) 
 
 - [GitHub: BPI-Pico-RP2040 开发板原理图PDF]() 
 
-- [RP2040 技术规格书](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf)
+- [rp2040-datasheet.pdf](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf)
 
 - [rp2040-product-brief.pdf](https://datasheets.raspberrypi.com/rp2040/rp2040-product-brief.pdf)
-
-- [raspberry-pi-pico-python-sdk.pdf](https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf)
 
 ## 样品购买
 

@@ -133,3 +133,6 @@ WS2812 彩燈內有三顆純色LED，它們的顏色分別是紅，綠，藍，`
 >>> neo[0] = (25,25,25)
 >>> neo.write()
 ```
+
+## 參考資源
+- [raspberry-pi-pico-python-sdk.pdf](https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf)

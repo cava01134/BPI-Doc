@@ -28,17 +28,15 @@ MicroPython實現了大部分Python 3 特性和語法，易學易上手，驗證
 
 >Arduino 將不會闡述過多基礎內容，請具備 C/C++ 的語言開發基礎。
 
-## 資料與資源
+## 參考資源
 
-- [官方WIKI]() 
+- [BPI-Pico-RP2040 官方 WIKI](https://wiki.banana-pi.org/BPI-Pico-RP2040_%E5%BC%80%E5%8F%91%E6%9D%BF) 
 
 - [GitHub: BPI-Pico-RP2040 開發板原理圖PDF]() 
 
-- [RP2040 技術規格書](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf)
+- [rp2040-datasheet.pdf](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf)
 
 - [rp2040-product-brief.pdf](https://datasheets.raspberrypi.com/rp2040/rp2040-product-brief.pdf)
-
-- [raspberry-pi-pico-python-sdk.pdf](https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf)
 
 ## 樣品購買
 

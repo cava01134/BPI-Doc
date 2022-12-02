@@ -46,3 +46,7 @@ void loop() {
 ```
 
 Click the `Upload` button, the program will be uploaded to the development board after the compilation is complete, and the onboard LED will blink at intervals of 1 second.
+
+## Reference Resources
+
+- [RP2040 Arduino documentation](https://arduino-pico.readthedocs.io/en/latest/)
