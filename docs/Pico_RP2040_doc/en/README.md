@@ -42,7 +42,7 @@ Provides software tools and best examples to get started with Arduino, lowering 
 
 - [Official WIKI](https://wiki.banana-pi.org/BPI-Pico-RP2040)
 
-- [GitHub: BPI-Pico-RP2040 Development Board Schematic PDF]()
+- [GitHub: BPI-Pico-RP2040 Development Board Schematic PDF](https://github.com/BPI-STEAM/BPI-Pico-RP2040-Doc/blob/main/BPI-Pico-RP2040-V0.2-SCH.pdf)
 
 - [rp2040-datasheet.pdf](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf)
 

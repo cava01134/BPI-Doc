@@ -32,7 +32,7 @@ MicroPython實現了大部分Python 3 特性和語法，易學易上手，驗證
 
 - [BPI-Pico-RP2040 官方 WIKI](https://wiki.banana-pi.org/BPI-Pico-RP2040_%E5%BC%80%E5%8F%91%E6%9D%BF) 
 
-- [GitHub: BPI-Pico-RP2040 開發板原理圖PDF]() 
+- [GitHub: BPI-Pico-RP2040 開發板原理圖PDF](https://github.com/BPI-STEAM/BPI-Pico-RP2040-Doc/blob/main/BPI-Pico-RP2040-V0.2-SCH.pdf) 
 
 - [rp2040-datasheet.pdf](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf)
 

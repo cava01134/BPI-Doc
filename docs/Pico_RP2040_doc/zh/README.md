@@ -40,7 +40,7 @@ CircuitPython是旨在简化在单片机开发板上进行编程实验和学习�
 
 - [BPI-Pico-RP2040 官方 WIKI](https://wiki.banana-pi.org/BPI-Pico-RP2040_%E5%BC%80%E5%8F%91%E6%9D%BF) 
 
-- [GitHub: BPI-Pico-RP2040 开发板原理图PDF]() 
+- [GitHub: BPI-Pico-RP2040 开发板原理图PDF](https://github.com/BPI-STEAM/BPI-Pico-RP2040-Doc/blob/main/BPI-Pico-RP2040-V0.2-SCH.pdf) 
 
 - [rp2040-datasheet.pdf](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf)
 
