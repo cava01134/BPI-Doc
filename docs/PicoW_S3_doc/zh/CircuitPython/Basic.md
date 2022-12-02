@@ -630,14 +630,16 @@ while True:
 7. adafruit_framebuf 库还需将其examples文件夹中的 **font5x8.bin** 文件复制到**CIRCUITPY** 磁盘中的根目录，即 code.py 文件所在的地方。此为字库文件，显示文字需要使用它。
 8. 将一块i2c协议的ssd1306 oled屏幕模块与开发板连接。
 
-   | ssd1306 | BPI-PicoW-S3 |
-   | :----: | :----: |
-   | GND  | GND |
-   | VCC  | 3V3 |
-   | SCL  | GP0 |
-   | SDA  | GP1 |
+**接线参考**
 
-9. 编辑 code.py 文件，在其中输入以下代码即可驱动此屏幕模块输出图形和文字。
+| ssd1306 | BPI-PicoW-S3 |
+| :----: | :----: |
+| GND  | GND |
+| VCC  | 3V3 |
+| SCL  | GP0 |
+| SDA  | GP1 |
+
+1. 编辑 code.py 文件，在其中输入以下代码即可驱动此屏幕模块输出图形和字符。
     修改代码中的变量 `bgColor`数值为1，即可使显示背景为白色，显示图形为黑色。
     在两个库的文档中可查找到API参考，配合例程即可快速理解，上手使用ssd1306显示模块。
 ```python
