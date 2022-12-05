@@ -1,14 +1,16 @@
 # 【 BPI-Pico-RP2040 Development Board 】
 
-## introduce
+## Introduction
 
 ![](assets/images/BPI-Pico-RP2040_banner.png)
 
-The Banana Pi Pico series is a low-power microcontroller development board designed for the Internet of Things.
+The Banana Pi Pico is a series of low-power microcontroller development board designed for the Internet of Things.
 
-BPI-Pico-RP2040 is a microcontroller development board launched by Banana Pi equipped with RP2040 chip. Its most notable feature is to add a Onboard WS2812 color LED; replace the 3-Pin DEBUG interface with a JST SH 1mm 4-Pin socket, which can be connected with Qwiic & STEMMA QT or any possible peripherals; replace the micro-USB socket with a USB Type-C socket , supports reversible insertion, and is compatible with the USB Type-C cable of most modern smartphones, no additional purchase is required.
+BPI-Pico-RP2040, launched by Banana Pi Industries, is equipped with the RP2040 chip. Its has a built-in WS2812 full-color LED; a JST SH 1mm 4-Pin socket, replacing the old 3-Pin DEBUG interface, which can be connected with Qwiic & STEMMA QT or any possible peripherals; a USB Type-C socket, supports reversible insertion, and is compatible with the USB Type-C cable of most modern smartphones.
 
-Jump to [Unboxing BPI-Pico-RP2040 Development Board](Unboxing/Introduction.md) page for details.
+Hop to [Unboxing BPI-Pico-RP2040 Development Board](Unboxing/Introduction.md) page for more details.
+
+Multiple systems can be flashed on the board: MicroPython, CircuitPython, and Arduino. 
 
 ## Programming with MicroPython
 
@@ -16,9 +18,9 @@ Jump to [Unboxing BPI-Pico-RP2040 Development Board](Unboxing/Introduction.md) p
 
 Regardless of the programmer is a beginner or not, MicroPython is considered to be less difficult to develop than other MCU programming languages.
 
-Its code is easy to understand compared to other programming languages, and it has various resources accumulated over the years by the open source community.
+Its code is easy to understand compared to other programming languages, and has large amounts of resources accumulated over the years by the open source community.
 
-Just like Python, it has strong vitality and application value.
+Just like Python, it has a strong vitality and application value.
 
 By uploading the MicroPython firmware, you can use the Python language to program in the development board.
 
@@ -34,9 +36,9 @@ CircuitPython programming with the Mu editor is the least difficult way to get s
 
 ![](assets/images/Arduino_logo_1200x350.png)
 
-Provides software tools and best examples to get started with Arduino, lowering the barrier to entry for ESP32 embedded professional development.
+Provides software tools and best examples to get started with Arduino, lowering the barrier to entry for ESP32 embedded development.
 
->Arduino will not explain too much basic content, please have C/C++ language development foundation.
+>A basic guide of Arduino will not be provided.
 
 ## Reference Resources
 
