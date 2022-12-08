@@ -12,7 +12,7 @@
             "/Triode-Car/zh/": "docs/Triode-Car/zh",
             "/WebBit_dev/zh/": "docs/WebBit_dev/zh",
             "/WebBit_doc/zh/": "docs/WebBit_doc/zh",
-            "/WebBit_V2_doc/zh/": "docs/WebBit_V2_doc/zh",
+            "/Bit_S2_doc/zh/": "docs/Bit_S2_doc/zh",
             "/WebAI/zh/": "docs/WebAI/zh",
             "/Leaf_S3_doc/zh/": "docs/Leaf_S3_doc/zh",
             "/PicoW_S3_doc/zh/": "docs/PicoW_S3_doc/zh",
@@ -34,7 +34,7 @@
             "/WebAI/zh/assets/": "docs/WebAI/zh/assets",
             "/WebBit_dev/zh/assets/": "docs/WebBit_dev/zh/assets",
             "/WebBit_doc/zh/assets/": "docs/WebBit_doc/zh/assets",
-            "/WebBit_V2_doc/zh/assets/": "docs/WebBit_V2_doc/zh/assets"
+            "/Bit_S2_doc/zh/assets/": "docs/Bit_S2_doc/zh/assets"
         },
         "blog": {
             "/news/": "news"
@@ -112,14 +112,14 @@
                     "src": "docs/WebBit_doc/en"
                 }
             ],
-            "/WebBit_V2_doc/zh/": [
+            "/Bit_S2_doc/zh/": [
                 {
-                    "url": "/WebBit_V2_doc/zh_tw/",
-                    "src": "docs/WebBit_V2_doc/zh_tw"
+                    "url": "/Bit_S2_doc/zh_tw/",
+                    "src": "docs/Bit_S2_doc/zh_tw"
                 },
                 {
-                    "url": "/WebBit_V2_doc/en/",
-                    "src": "docs/WebBit_V2_doc/en"
+                    "url": "/Bit_S2_doc/en/",
+                    "src": "docs/Bit_S2_doc/en"
                 }
             ],
             "/WebAI/zh/": [
