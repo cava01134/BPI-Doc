@@ -1,15 +1,14 @@
 # 烧录tinyUF2固件的方法
 > 所有对flash的操作不可逆，注意提前备份代码等重要文件。
 ## 下载tinyUF2固件
-1. 进入[BPI-PicoW-S3 CircuitPython 下载](https://circuitpython.org/board/bpi_picow_s3/)页面。
+1. 进入[BPI-Bit-S2 CircuitPython 下载](https://circuitpython.org/board/bpi_bit_s2/)页面。
 2. 在页面底部找到`Install, Repair, or Update UF2 Bootloader`栏目，点击最下方的`DOWNLOAD BOOTLOADER ZIP`按钮下载压缩包。
 3. 在本地解压压缩包，`combined.bin`文件是我们需要的固件。
 ## 将开发板置于bootloader模式
-![](../assets/images/picow_s3_circuitpython_download_2.jpg)
 1. 通过USB连接开发板与电脑。
-2. 使用任何导体（如金属引脚或镊子）将BOOT0触点短路，以将EPS32S3芯片置于bootloader模式。
-3. 按一次`Reset`按键。
-4. 松开BOOT0触点。
+2. 按住`BOOT`按键，此时开发板背面红灯会保持熄灭状态。
+3. 按一次`RST`按键。
+4. 松开`BOOT`按键，此时开发板背面红灯会保持点亮状态。
 ## 在浏览器中烧录固件
 > 支持Chrome，Edge浏览器，内核版本需高于89。
 1. 打开[ESP Web Flasher](https://nabucasa.github.io/esp-web-flasher/)页面。
@@ -20,7 +19,7 @@
    ![](../assets/images/picow_s3_tinyuf2_download_3.jpg)
 4. 点击`Choose a file...`按钮，在弹出的文件选择窗口中跳转到`combined.bin`文件所在的目录，选择此文件并点击确认。
 5. 点击`Program`按钮即可开始烧录固件，大约等待五分钟即可完成。
-6. 完成后，手动按一次`Reset`按键，成功烧录的标志是彩灯为长绿灯，如果没有得到此结果，可以重试前五步，或尝试下一个烧录方法。
+6. 完成后，手动按一次`Reset`按键，成功烧录的标志是第一颗彩灯为长亮绿灯，且在电脑系统中将看到一个名为`BITS2BOOT`的USB存储磁盘，如果没有得到此结果，可以重试前五步，或尝试下一个烧录方法。
 
 ## esptool本地烧录固件
 
