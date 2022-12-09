@@ -1,41 +1,231 @@
 # 板载资源的使用
 
-本章主要是通过一些示例项目，阐述 PicoW-S3 主控板的外设基本使用方法，通过下面的项目，您可以进行修改完成您的自己的项目。 
-其中 PicoW-S3 外设主要包括：UART、I2C、SPI、ADC、PWM、DAC等。 
+本章主要是通过一些示例项目，阐述 BPI-Bit-S2 的外设的基本使用方法，通过下面的项目，您可以进行修改完成您的自己的项目。
 
-## 开始之前的准备
+## 项目一 WS2812
 
-BPI-PicoW-S3 开发板上的MicorUSB使用的是ESP32-S3的原生USB接口，而不是传统的USB转TLL芯片。
+ BPI-Bit-S2 使用25颗WS2812彩灯。 本项目是点亮 BPI-Bit-S2 的RGB彩灯的实验。
 
-为了让您的开发板能正确下载程序，您需要将BPI-PicoW-S3设置为下载模式，有以下两种方法：
+### 所需元件
 
-- 通过USB连接到电脑，使用镊子将BOOT短接，再按一下Reset键并松开，最后断开BOOT短接。
+BPI-Bit-S2 主板 X 1
 
-- 在断开所有供电的状态下，将BOOT短接，然后将开发板插上电脑，最后断开BOOT短接。
+![](../assets/images/Bit_S2_500x.png)
 
-![](../assets/images/PicoW-BOOT.png)
+>注意：该项目不需要连接其他传感器。
 
-这时候可以在设备管理器中看到一个多的COM口
+### 输入代码
 
-![](../assets/images/Device_manager.jpg)
+打开 Arduino IDE。尽管可以直接复制代码，我们还是建议您自己手动输入代码熟悉下。 （这个程序需要Adafruit_NeoPixel库，需要在[GitHub](https://github.com/adafruit/Adafruit_NeoPixel)下载，解压到Arduino\ Library 文件夹下）代码如下:
 
-在IDE中选择这个端口
+<details>
+<summary>展开查看</summary>
 
-![](../assets/images/Device_manager_1.jpg)
+<pre><code>
+// NeoPixel Ring simple sketch (c) 2013 Shae Erisson
+// Released under the GPLv3 license to match the rest of the
+// Adafruit NeoPixel library
 
-##  项目一 串口实验
+#include <Adafruit_NeoPixel.h>
+#ifdef __AVR__
+ #include <avr/power.h> // Required for 16 MHz Adafruit Trinket
+#endif
+
+// Which pin on the Arduino is connected to the NeoPixels?
+#define PIN        18 // On Trinket or Gemma, suggest changing this to 1
+
+// How many NeoPixels are attached to the Arduino?
+#define NUMPIXELS 25 // Popular NeoPixel ring size
+
+// When setting up the NeoPixel library, we tell it how many pixels,
+// and which pin to use to send signals. Note that for older NeoPixel
+// strips you might need to change the third parameter -- see the
+// strandtest example for more information on possible values.
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+#define DELAYVAL 500 // Time (in milliseconds) to pause between pixels
+
+void setup() {
+  // These lines are specifically to support the Adafruit Trinket 5V 16 MHz.
+  // Any other board, you can remove this part (but no harm leaving it):
+#if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
+  clock_prescale_set(clock_div_1);
+#endif
+  // END of Trinket-specific code.
+
+  pixels.begin(); // INITIALIZE NeoPixel strip object (REQUIRED)
+}
+
+void loop() {
+  pixels.clear(); // Set all pixel colors to 'off'
+
+  // The first NeoPixel in a strand is #0, second is 1, all the way up
+  // to the count of pixels minus one.
+  for(int i=0; i < NUMPIXELS; i++) { // For each pixel...
+
+    // pixels.Color() takes RGB values, from 0,0,0 up to 255,255,255
+    // Here we're using a moderately bright green color:
+    pixels.setPixelColor(i, pixels.Color(25, 25, 25));
+
+    pixels.show();   // Send the updated pixel colors to the hardware.
+
+    delay(DELAYVAL); // Pause before next pass through loop
+  }
+}
+</code></pre>
+</details>
+
+输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  会把代码发送给 BPI-Bit-S2 主板。复位后WS2812灯会开始亮绿灯，
+
+>注意：如果需要其他颜色，可以修改代码中的RGB值。
+
+### 代码分析
+
+本项目使用 BPI-Bit-S2 集成的WS2812灯，默认GPIO是18。
+
+```
+#define PIN        18
+```
+
+设置GPIO引脚号
+
+```
+#define NUMPIXELS 25 
+```
+
+设置灯的个数，如果您想连接更多WS2812 彩灯，可以换一个IO，并修改灯的数量。 
+
+## 项目二 触摸传感器
+
+BPI-Bit-S2 提供了多达 11 个可用的电容式传感器 GPIO，能够探测由手指或其他物品直接接触或接近而产生的电容差异。这种低噪声特性和电路的高灵敏度设计适用于较小的触摸板，可以直接用于触摸开关。本项目阐述了如何通过Arduino 代码获取 BPI-Bit-S2 的触摸传感器状态，并打印状态。
+
+### 所需元件
+
+BPI-Bit-S2 主板 X 1
+
+![](../assets/images/Bit_S2_500x.png)
+
+>注意：该项目不需要连接其他传感器。
+
+### 输入代码
+
+打开 Arduino IDE。尽管可以直接复制代码，我们还是建议您自己手动输入代码熟悉下。  
+
+代码如下:
+
+<details>
+<summary>展开查看</summary>
+
+<pre><code>
+ void setup() 
+{ 
+  Serial.begin(115200); 
+      delay(1000); // give me time to bring up serial monitor 
+      Serial.println("BPI-Bit-S2 Touch Test");    
+}  
+void loop(){ 
+  Serial.println(touchRead(T2));  // get value using T0->D9  
+  delay(100); 
+} 
+
+</code></pre>
+</details>
+
+输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  会把代码发送给 BPI-Bit-S2 主板。打开 Arduino IDE 串口监视器，并用手触摸 GPIO2（T2 对应的是GPIO2），可以看到会打印出的数据突然变小，如下图所示： 
+
+![](../assets/images/Lesson8-1.png)
+
+### 代码分析
+
+获取触摸传感器的 GPIO 状态，只需要调用 touchRead 函数，函数原型如下：
+
+```
+ uint16_t touchRead(uint8_t pin)
+```
+
+返回“0”表示没有触摸，“1”表示触摸。其中 pin 是 T0~T9，对应到 BPI-Bit-S2的引脚如下表所示：
+
+![](../assets/images/bpi_bit_v2_goldfinger.jpg)
+
+<table>
+   <tr>
+      
+   </tr>
+   <tr>
+      <td>触摸传感器序号 </td>
+      <td>对应的 ESP32 硬件 </td>
+      <td>BPI-Bit-S2</td>
+   </tr>
+   <tr>
+      <td>T1</td>
+      <td>GPIO1</td>
+      <td>P1</td>
+   </tr>
+   <tr>
+      <td>T2 </td>
+      <td>GPIO2 </td>
+      <td>P2</td>
+   </tr>
+   <tr>
+      <td>T3 </td>
+      <td>GPIO3</td>
+      <td>P3</td>
+   </tr>
+   <tr>
+      <td>T4 </td>
+      <td>GPIO4</td>
+      <td>P4</td>
+   </tr>
+   <tr>
+      <td>T5 </td>
+      <td>GPIO5</td>
+      <td>P5</td>
+   </tr>
+   <tr>
+      <td>T6 </td>
+      <td>GPIO6</td>
+      <td>P6</td>
+   </tr>
+   <tr>
+      <td>T7 </td>
+      <td>GPIO7</td>
+      <td>P7</td>
+   </tr>
+   <tr>
+      <td>T8 </td>
+      <td>GPIO8</td>
+      <td>P8</td>
+   </tr>
+   <tr>
+      <td>T9 </td>
+      <td>GPIO9</td>
+      <td>P9</td>
+   </tr>
+   <tr>
+      <td>T10</td>
+      <td>GPIO10</td>
+      <td>P10</td>
+   </tr>
+   <tr>
+      <td>T11</td>
+      <td>GPIO11</td>
+      <td>P11</td>
+   </tr>
+</table>
+
+## 项目三 串口实验
 
 在最开始的章节中，我们上传了一个 Blink 闪烁程序来测试板子上的 LED 状态灯。现在，我们使用 UART 串口，每秒打印一次计时数据。
 
 ### 所需元件
 
-PicoW-S3 主板 X 1
+BPI-Bit-S2 主板 X 1
 
-![](../assets/images/PicoW-S3.png)
+![](../assets/images/Bit_S2_500x.png)
 
 ### 硬件连接 
 
-此项目不需要其他传感器，所以只需要把PicoW-S3用USB连到电脑就能用。
+此项目不需要其他传感器，所以只需要把BPI-Bit-S2用USB连到电脑就能用。
 
 ### 输入代码 
 
@@ -60,7 +250,7 @@ void loop()
 </code></pre>
 </details>
 
-输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE 会把代码发送给 PicoW-S3 主板。上传完成之后，你需要按一下复位键，这样代码就能正常运行了
+输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE 会把代码发送给 BPI-Bit-S2 主板。上传完成之后，你需要按一下复位键，这样代码就能正常运行了
 
 ### 实验现象
 
@@ -68,15 +258,15 @@ void loop()
 
 ![](../assets/images/Lesson1-1.png)
 
-## 项目二 PWM(呼吸灯)
+## 项目四 PWM(呼吸灯)
 
-呼吸灯，即让 PicoW-S3 通过 PWM 驱动 LED 灯，实现 LED 的亮度渐变，看起来就像是在呼吸一样。关于 PWM 的解释，请阅览知识扩展部分。 
+呼吸灯，即让 BPI-Bit-S2 通过 PWM 驱动 LED 灯，实现 LED 的亮度渐变，看起来就像是在呼吸一样。关于 PWM 的解释，请阅览知识扩展部分。 
 
 ### 所需元件
 
-PicoW-S3 主板 X 1
+BPI-Bit-S2 主板 X 1
 
-![](../assets/images/PicoW-S3.png)
+![](../assets/images/Bit_S2_500x.png)
 
 LED X 1 (建议串联一个电阻限流)
 
@@ -84,7 +274,7 @@ LED X 1 (建议串联一个电阻限流)
 
 ### 硬件连接
 
-将LED连接到PicoW-S3的GPIO13就可以了，长的那个脚接GPIO13，短的接到GND
+将LED连接到BPI-Bit-S2的GPIO13就可以了，长的那个脚接GPIO13，短的接到GND
 
 ### 输入代码 
 
@@ -125,7 +315,7 @@ void loop() {
 </code></pre>
 </details>
 
-输入完成后，点击“编译”按钮检查代码是否有错误。确定没有错误后可以开始上传了，点击“上传”按钮 。IDE 会把代码发送给 PicoW-S3 主板。上传完成后您就可以看见Type-C旁边的LED 灯开始“呼吸”了！
+输入完成后，点击“编译”按钮检查代码是否有错误。确定没有错误后可以开始上传了，点击“上传”按钮 。IDE 会把代码发送给 BPI-Bit-S2 主板。上传完成后您就可以看见Type-C旁边的LED 灯开始“呼吸”了！
 现在让我们来回顾一下代码和硬件，看看它是如何工作。
 
 ### 知识学习
@@ -140,13 +330,13 @@ PWM（pulse-width modulation）脉冲宽度调制，MCU（微控制器）通过�
 
 ### 代码分析
 
-PicoW-S3 的 PWM 比普通的 Arduino UNO 高级的多，设置上不能简单的使用analogWrite 函数来驱动 PWM，而是需要设置 timer 函数，以及相关的频率参数等才能工作。 
+BPI-Bit-S2 的 PWM 比普通的 Arduino UNO 高级的多，设置上不能简单的使用analogWrite 函数来驱动 PWM，而是需要设置 timer 函数，以及相关的频率参数等才能工作。 
 
 ```
 #define LEDC_CHANNEL_0     0
 ```
 
-定义了定时器使用的通道，PicoW-S3 总共有 16 个通道，这里用的是通道 0。
+定义了定时器使用的通道，BPI-Bit-S2 总共有 16 个通道，这里用的是通道 0。
 
 ```
 #define LEDC_TIMER_13_BIT  13
@@ -171,15 +361,15 @@ ledcSetup(LEDC_CHANNEL_0, LEDC_BASE_FREQ, LEDC_TIMER_13_BIT);
 	       ledcAttachPin(LED_PIN, LEDC_CHANNEL_0);
 ```
 
-这两个函数是 PicoW-S3 定时器设置函数，函数原型及原理这里不讲述，如果您感兴趣可以看看底层源码（源码地址：C:\Users\“your-PC”\AppData\Local\Arduino15\packages\esp32\ hardware\ adafruit_metro_esp32s2 \0.0.3\libraries\ESP32\），这里只需要知道怎么用这些函数来设置相关的 timer 就可以了。 
+这两个函数是 BPI-Bit-S2 定时器设置函数，函数原型及原理这里不讲述，如果您感兴趣可以看看底层源码（源码地址：C:\Users\“your-PC”\AppData\Local\Arduino15\packages\esp32\ hardware\ adafruit_metro_esp32s2 \0.0.3\libraries\ESP32\），这里只需要知道怎么用这些函数来设置相关的 timer 就可以了。 
 
 关于什么是 PWM 信号，在前面已经阐述过了，这里不再说明。 
 
->注意：PicoW-S3 的任何引脚都可以配置成 PWM 输出，您可以尝试着修改代码，完成您的项目。
+>注意：BPI-Bit-S2 的任何引脚都可以配置成 PWM 输出，您可以尝试着修改代码，完成您的项目。
 
-## 项目三 ADC 
+## 项目五 ADC 
 
-ADC（模数转换器即 A/D 转换器），是指将模拟信号转变成数字信号。PicoW-S3 的ADC 是13位的，最大输出值为 8191，而 Arduino UNO 是 10 位的，最大输出值是 1023，因此，在精度上比Arduino UNO 要高，而且转换速率快，且在使用上兼容 Arduino analogRead 函数，直接读取即可。
+ADC（模数转换器即 A/D 转换器），是指将模拟信号转变成数字信号。BPI-Bit-S2 的ADC 是13位的，最大输出值为 8191，而 Arduino UNO 是 10 位的，最大输出值是 1023，因此，在精度上比Arduino UNO 要高，而且转换速率快，且在使用上兼容 Arduino analogRead 函数，直接读取即可。
 
 ### 所需元件 
 
@@ -191,13 +381,13 @@ ADC（模数转换器即 A/D 转换器），是指将模拟信号转变成数字
 
 ![](../assets/images/Lesson3-2.png)
 
-PicoW-S3 主板 X 1
+BPI-Bit-S2 主板 X 1
 
-![](../assets/images/PicoW-S3.png)
+![](../assets/images/Bit_S2_500x.png)
 
 ### 硬件连接 
 
- 把 电位计插接到 PicoW-S3 主板上，然后将模拟角度传感器插接到 IO2（实验中用的是IO2）。  元件连接好后，使用 USB 线连接 PicoW-S3 和电脑。 
+ 把 电位计插接到 BPI-Bit-S2 主板上，然后将模拟角度传感器插接到 IO2（实验中用的是IO2）。  元件连接好后，使用 USB 线连接 BPI-Bit-S2 和电脑。 
 
  ### 输入代码
 
@@ -220,20 +410,20 @@ void loop() {
 </code></pre>
 </details>
 
- 输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后IDE 会把代码发送给 PicoW-S3 主板。上传完成后，打开 Arduino IDE 的串口监视器，旋转模拟角度传感器，可以看到串口监视器中的数值变化，如下图所示：
+ 输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后IDE 会把代码发送给 BPI-Bit-S2 主板。上传完成后，打开 Arduino IDE 的串口监视器，旋转模拟角度传感器，可以看到串口监视器中的数值变化，如下图所示：
 
  
 ![](../assets/images/Lesson3-3.png)
 
 ### 代码分析
 
-由于PicoW-S3 的 ADC 在使用上完全兼容 Arduino，因此这里不再对analogRead 函数进行过多的讲解。 
+由于BPI-Bit-S2 的 ADC 在使用上完全兼容 Arduino，因此这里不再对analogRead 函数进行过多的讲解。 
  
 注意：如果您对 Arduino 的基本函数不是特别熟悉，您可以[点击链接](https://www.arduino.cc/en/Tutorial/BuiltInExamples)进行学习。 
 
-## 项目四 I2C
+## 项目六 I2C
 
-PicoW-S3 的 I2C 可以配置到任意 I/O 口，您可以通过传递相关参数进行配置。为了方便使用，我们已经将 I2C 进行了默认配置，在使用上完全兼容 Arduino，默认配置引脚可以在第一章简介中查看到。本项目是基于 I2C 默认配置，驱动 OLED 显示屏。 
+BPI-Bit-S2 的 I2C 可以配置到任意 I/O 口，您可以通过传递相关参数进行配置。为了方便使用，我们已经将 I2C 进行了默认配置，在使用上完全兼容 Arduino，默认配置引脚可以在第一章简介中查看到。本项目是基于 I2C 默认配置，驱动 OLED 显示屏。 
 
 所需元件
 
@@ -245,13 +435,13 @@ I2C OLED-12864 显示屏 X 1
 
 ![](../assets/images/Lesson3-2.png)
 
-PicoW-S3 主板 X 1
+BPI-Bit-S2 主板 X 1
 
-![](../assets/images/PicoW-S3.png)
+![](../assets/images/Bit_S2_500x.png)
 
 ### 硬件连接
 
-把PicoW-S3 主板插到面包板上，然后将 OLED显示屏插接到 I2C 接口。（SDA是33，SCL是34）元件连接好后，使用 USB 线连接 PicoW-S3 和电脑。
+把BPI-Bit-S2 主板插到面包板上，然后将 OLED显示屏插接到 I2C 接口。（SDA是33，SCL是34）元件连接好后，使用 USB 线连接 BPI-Bit-S2 和电脑。
 
 ### 输入代码 
 
@@ -503,7 +693,7 @@ void loop()
 </code></pre>
 </details>
 
-输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  	会把代码发送给 PicoW-S3 主板。上传完成后，OLED 显示屏会显示“BananaPi banana-pi.org”字样。
+输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  	会把代码发送给 BPI-Bit-S2 主板。上传完成后，OLED 显示屏会显示“BananaPi banana-pi.org”字样。
 
 ### 代码分析
 
@@ -521,11 +711,11 @@ void Writed(unsigned char DATA)
 
 写数据函数，I2C 使用方法完全兼容 Arduino。 
 
->注意：PicoW-S3 的 I2C 与 Arduino 完全兼容，主要是调用 Wire 库文件使用。
+>注意：BPI-Bit-S2 的 I2C 与 Arduino 完全兼容，主要是调用 Wire 库文件使用。
 
-## 项目五 SPI
+## 项目七 SPI
 
-在很多传感器中，都使用 SPI 通信，因为 SPI 通信速率相对于 I2C 更快，没有地址冲突的弊端。SPI，是  一种高速的、全双工、同步的通信总线，而 PicoW-S3 的 SPI 可以配置到所有 I/O，您可以阅览底层  代码进行使用（初学者不建议使用）。为了更好的使用体验，PicoW-S3 默认情况下配置了IO35、IO36、IO37 为 SPI 口，在使用上则完全兼容 Arduino。 本项目使用 PicoW-S3，通过 SPI 读取 BME280 温湿度传感器的数据，示例中使用的是BME280 库文件，关于 SPI 驱动您可以阅览 BEM280 库文件，[点击链接](https://github.com/DFRobot/DFRobot_BME280)下载 BME280 库文件。 
+在很多传感器中，都使用 SPI 通信，因为 SPI 通信速率相对于 I2C 更快，没有地址冲突的弊端。SPI，是  一种高速的、全双工、同步的通信总线，而 BPI-Bit-S2 的 SPI 可以配置到所有 I/O，您可以阅览底层  代码进行使用（初学者不建议使用）。为了更好的使用体验，BPI-Bit-S2 默认情况下配置了IO35、IO36、IO37 为 SPI 口，在使用上则完全兼容 Arduino。 本项目使用 BPI-Bit-S2，通过 SPI 读取 BME280 温湿度传感器的数据，示例中使用的是BME280 库文件，关于 SPI 驱动您可以阅览 BEM280 库文件，[点击链接](https://github.com/DFRobot/DFRobot_BME280)下载 BME280 库文件。 
 
 ### 所需元件 
 
@@ -539,9 +729,9 @@ BME280 温湿度传感器 X 1
 
 ![](../assets/images/Lesson3-2.png)
 
-PicoW-S3 主板 X 1
+BPI-Bit-S2 主板 X 1
 
-![](../assets/images/PicoW-S3.png)
+![](../assets/images/Bit_S2_500x.png)
 
 ### 输入代码
 
@@ -624,238 +814,11 @@ void loop()
 </code></pre>
 </details>
 
- 输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  会把代码发送给 PicoW-S3 主板。打开 Arduino 串口监视器，可以看到打印信息如下： 
+ 输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  会把代码发送给 BPI-Bit-S2 主板。打开 Arduino 串口监视器，可以看到打印信息如下： 
 
 ![](../assets/images/Lesson5-2.png)
 
 ### 代码分析
 
- 本项目采用的是 BME280 库文件，在 Item-5.ino 文件中并没有对 SPI 底层进行操作，不过，PicoW  ESP32-S3 的 SPI 使用完全兼容 Arduino。 
+ 本项目采用的是 BME280 库文件，在 Item-5.ino 文件中并没有对 SPI 底层进行操作，不过，BPI-Bit-S2  ESP32-S3 的 SPI 使用完全兼容 Arduino。 
 
-## 项目六 WS2812
-
- PicoW-S3 集成了一个型号为WS2812的RGB彩灯。 本项目是点亮 PicoW-S3 的RGB彩灯的实验，
-
-### 所需元件
-
-LPicoW-S3 主板 X 1
-
-![](../assets/images/PicoW-S3.png)
-
->注意：该项目不需要连接其他传感器。
-
-### 输入代码
-
-打开 Arduino IDE。尽管可以直接复制代码，我们还是建议您自己手动输入代码熟悉下。 （这个程序需要Adafruit_NeoPixel库，需要在[GitHub](https://github.com/adafruit/Adafruit_NeoPixel)下载，解压到Arduino\ Library 文件夹下）代码如下:
-
-<details>
-<summary>展开查看</summary>
-
-<pre><code>
-// NeoPixel Ring simple sketch (c) 2013 Shae Erisson
-// Released under the GPLv3 license to match the rest of the
-// Adafruit NeoPixel library
-
-#include <Adafruit_NeoPixel.h>
-#ifdef __AVR__
- #include <avr/power.h> // Required for 16 MHz Adafruit Trinket
-#endif
-
-// Which pin on the Arduino is connected to the NeoPixels?
-#define PIN        18 // On Trinket or Gemma, suggest changing this to 1
-
-// How many NeoPixels are attached to the Arduino?
-#define NUMPIXELS 1 // Popular NeoPixel ring size
-
-// When setting up the NeoPixel library, we tell it how many pixels,
-// and which pin to use to send signals. Note that for older NeoPixel
-// strips you might need to change the third parameter -- see the
-// strandtest example for more information on possible values.
-Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-
-#define DELAYVAL 500 // Time (in milliseconds) to pause between pixels
-
-void setup() {
-  // These lines are specifically to support the Adafruit Trinket 5V 16 MHz.
-  // Any other board, you can remove this part (but no harm leaving it):
-#if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
-  clock_prescale_set(clock_div_1);
-#endif
-  // END of Trinket-specific code.
-
-  pixels.begin(); // INITIALIZE NeoPixel strip object (REQUIRED)
-}
-
-void loop() {
-  pixels.clear(); // Set all pixel colors to 'off'
-
-  // The first NeoPixel in a strand is #0, second is 1, all the way up
-  // to the count of pixels minus one.
-  for(int i=0; i < NUMPIXELS; i++) { // For each pixel...
-
-    // pixels.Color() takes RGB values, from 0,0,0 up to 255,255,255
-    // Here we're using a moderately bright green color:
-    pixels.setPixelColor(i, pixels.Color(0, 150, 0));
-
-    pixels.show();   // Send the updated pixel colors to the hardware.
-
-    delay(DELAYVAL); // Pause before next pass through loop
-  }
-}
-</code></pre>
-</details>
-
-输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  会把代码发送给 PicoW-S3 主板。复位后WS2812灯会开始亮绿灯，
-
->注意：如果需要其他颜色，可以修改代码中的RGB值。
-
-### 代码分析
-
-本项目使用 PicoW-S3 集成的WS2812灯，默认GPIO是48。
-
-```
-#define PIN        48
-```
-
-设置GPIO引脚号
-
-```
-#define NUMPIXELS 1 
-```
-
-设置灯的个数，如果您想连接更多WS2812，可以换一个IO，并修改灯的数量。 
-
-## 项目七 触摸传感器
-
-PicoW-S3 提供了多达 14 个电容式传感器 GPIO，能够探测由手指或其他物品直接接触或接近而产生的电容差异。这种低噪声特性和电路的高灵敏度设计适用于较小的触摸板，可以直接用于触摸开关。本项目阐述了如何通过Arduino 代码获取 PicoW-S3 的触摸传感器状态，并打印状态。
-
-### 所需元件
-
-PicoW-S3 主板 X 1
-
-![](../assets/images/PicoW-S3.png)
-
->注意：该项目不需要连接其他传感器。
-
-### 输入代码
-
-打开 Arduino IDE。尽管可以直接复制代码，我们还是建议您自己手动输入代码熟悉下。  
-
-代码如下:
-
-<details>
-<summary>展开查看</summary>
-
-<pre><code>
- void setup() 
-{ 
-  Serial.begin(115200); 
-      delay(1000); // give me time to bring up serial monitor 
-      Serial.println("PicoW-S3 Touch Test");    
-}  
-void loop(){ 
-  Serial.println(touchRead(T2));  // get value using T0->D9  
-  delay(100); 
-} 
-
-</code></pre>
-</details>
-
-输入完成后，点击“编译”检查代码有无错误。确保没有错误后就可以开始上传了，点击“上传”之后 IDE  会把代码发送给 PicoW-S3 主板。打开 Arduino IDE 串口监视器，并用手触摸 GPIO2（T2 对应的是GPIO2），可以看到会打印出的数据突然变小，如下图所示： 
-
-![](../assets/images/Lesson8-1.png)
-
-### 代码分析
-
-获取触摸传感器的 GPIO 状态，只需要调用 touchRead 函数，函数原型如下：
-
-```
- uint16_t touchRead(uint8_t pin)
-```
-
-返回“0”表示没有触摸，“1”表示触摸。其中 pin 是 T0~T9，对应到 PicoW 的引脚如下表所示：
-
-<table>
-   <tr>
-      <td></td>
-   </tr>
-   <tr>
-      <td>触摸传感器序号 </td>
-      <td>对应的 ESP32 硬件 </td>
-      <td>PicoW-S3</td>
-      <td> </td>
-   </tr>
-   <tr>
-      <td>T1</td>
-      <td>GPIO1</td>
-      <td>IO1</td>
-   </tr>
-   <tr>
-      <td>T2 </td>
-      <td>GPIO2 </td>
-      <td>IO2</td>
-   </tr>
-   <tr>
-      <td>T3 </td>
-      <td>GPIO3</td>
-      <td>IO3</td>
-   </tr>
-   <tr>
-      <td>T4 </td>
-      <td>GPIO4</td>
-      <td>IO4</td>
-   </tr>
-   <tr>
-      <td>T5 </td>
-      <td>GPIO5</td>
-      <td>IO5</td>
-   </tr>
-   <tr>
-      <td>T6 </td>
-      <td>GPIO6</td>
-      <td>IO6</td>
-   </tr>
-   <tr>
-      <td>T7 </td>
-      <td>GPIO7</td>
-      <td>IO7</td>
-   </tr>
-   <tr>
-      <td>T8 </td>
-      <td>GPIO8</td>
-      <td>IO8</td>
-   </tr>
-   <tr>
-      <td>T9 </td>
-      <td>GPIO9</td>
-      <td>IO9</td>
-   </tr>
-   <tr>
-      <td>T10</td>
-      <td>GPIO10</td>
-      <td>IO10</td>
-   </tr>
-   <tr>
-      <td>T11</td>
-      <td>GPIO11</td>
-      <td>IO11</td>
-   </tr>
-   <tr>
-      <td>T12</td>
-      <td>GPIO12</td>
-      <td>IO12</td>
-   </tr>
-   <tr>
-      <td>T13</td>
-      <td>GPIO13</td>
-      <td>IO13</td>
-   </tr>
-   <tr>
-      <td>T14</td>
-      <td>GPIO14</td>
-      <td>IO14</td>
-   </tr>
-   <tr>
-      <td></td>
-   </tr>
-</table>

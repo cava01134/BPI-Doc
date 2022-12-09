@@ -1,8 +1,5 @@
 # 环境搭建
 
-由于板型原因，PicoW-S3的Arduino使用会比较复杂，我们不太推荐您使用PicoW-S3学习Arduino。这篇文章将会指引您安装PicoW-S3的Arduino支持。
-![](../assets/images/logo_arduino.png)
-
 > 参考[arduino-esp32 DOC Getting Started » Installing](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html)
 
 ## 使用Arduino IDE安装支持
@@ -41,6 +38,12 @@ https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32
 
 重启arduino IDE之后可以看到在开发板选项中多了ESP32 Arduino选项。
 
-选择 `ESP32S3 Dev Module` 这个型号，再参照下图所示的内容进行配置一遍即可，配置不当是无法使用的，请一定要参照下图所示的内容进行配置！
+选择 `ESP32S2 Native USB` 这个型号，再参照下图所示的内容进行配置一遍即可，配置不当是无法使用的，请一定要参照下图所示的内容进行配置！
 
-![](../assets/images/Board_chose.jpg)
+![](../assets/images/Board_chose.png)
+
+第一次使用需要将开发板置于bootloader模式。
+
+确保有一根type-c数据线，一端连接到PC，拿起开发板，保持上面无任何连线或外围硬件，按住Boot按钮，将type-c数据线与开发板连接，松开Boot按钮，在 Tools > Ports中选择新出现的端口。
+
+点击 Upload 即可将代码编译并上传到开发板中。

@@ -14,7 +14,7 @@ IO与micro:bit兼容，可以使用大部分micro:bit的周边配件。
 
 ## 使用 CircuitPython 编程
 
-> BPI-Bit-S2 出厂已安装tinyUF2与CircuitPython固件,推荐通过CircuitPython快速上手BPI-Bit-S2 开发板。
+> 推荐通过CircuitPython快速上手BPI-Bit-S2 开发板。
 
 ![](assets/images/CircuitPython_Repo_header_logo.jpg)
 
@@ -60,8 +60,6 @@ MicroPython是Python 3编程语言的精益高效实现，包括 Python 标准�
 
 在另一方面，你深入地学习MicroPython，也能提升你对Python的理解。
 
-
-
 ## 使用 Arduino 编程
 
 ![](assets/images/Arduino_logo_1200x350.png)
@@ -81,6 +79,8 @@ Arduino IDE中还集成了很多例程，辅有大量的注释，能帮助用户
 Arduino 社区中积累的大量的优秀开源项目可供参考与学习，还有相当多的芯片制造商提供的驱动库与API。
 
 ## 使用 Webduino 编程
+
+> BPI-Bit-S2 出厂已安装 Webduino 固件。
 
 ![](assets/images/Webduino_logo_1200x350.jpg)
 

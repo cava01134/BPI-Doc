@@ -10,8 +10,6 @@
 
 ## 建立Mu编辑器与开发板的连接
 
-> BPI-PicoW-S3出厂已安装tinyUF2与CircuitPython固件。
-
 1. 启动Mu编辑器，将模式更改为CircuitPython，如果您已正确连接CircuitPython开发板，将提示您是否直接切换到该模式。
 ![](../assets/images/Download_mu_3.png)
 
