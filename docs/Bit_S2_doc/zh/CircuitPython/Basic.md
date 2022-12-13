@@ -112,7 +112,7 @@ object <module 'board'> is of type module
 >>> 
 ```
 
-## 使WS2812彩灯闪烁
+## 使一颗WS2812彩灯闪烁
 
 1. 在Mu编辑器中点击**Load**按钮，选择CircuitPython开发板上的 code.py 文件，点击 **打开**，即可开始编辑 code.py 。
 
@@ -145,6 +145,66 @@ while 1:
 5. 代码也可直接复制粘贴到REPL中运行。
 
 > 后续所有示例都可如此编辑code.py文件或复制粘贴到REPL中运行。但在code.py文件中的程序代码执行完毕后，开发板会恢复未运行时的状态，不会保留状态，但在REPL中执行则会保留状态。
+
+## 使用25颗WS2812彩灯
+
+1. 在上一节**使一颗WS2812彩灯闪烁**的代码基础上，使用for循环即可依次点亮25颗WS2812彩灯。
+
+```python
+import time
+import board
+import neopixel
+
+pixels = neopixel.NeoPixel(board.NEOPIXEL, 25, brightness=0.1)
+
+while 1:
+    for i in range(25):
+        pixels[i] = (255,0,0)
+        pixels.show()
+        time.sleep(0.1)
+    for i in range(25):
+        pixels[i] = (0,255,0)
+        pixels.show()
+        time.sleep(0.1)
+    for i in range(25):
+        pixels[i] = (0,0,255)
+        pixels.show()
+        time.sleep(0.1)
+    for i in range(25):
+        pixels[i] = (255,255,255)
+        pixels.show()
+        time.sleep(0.1)
+```
+
+2. 若想同时控制所有彩灯的颜色，则在for循环结束后再使用`pixels.show()`将数据发送给WS2812彩灯。
+
+```python
+import time
+import board
+import neopixel
+
+pixels = neopixel.NeoPixel(board.NEOPIXEL, 25, brightness=0.1)
+
+while 1:
+    for i in range(25):
+        pixels[i] = (255,0,0)
+    pixels.show()
+    time.sleep(0.5)
+    for i in range(25):
+        pixels[i] = (0,255,0)
+    pixels.show()
+    time.sleep(0.5)
+    for i in range(25):
+        pixels[i] = (0,0,255)
+    pixels.show()
+    time.sleep(0.5)
+    for i in range(25):
+        pixels[i] = (255,255,255)
+    pixels.show()
+    time.sleep(0.5)
+```
+
+1. WS2812彩灯的通信协议采用单线归零码的通讯方式，即一条信号线即可控制串联在一起的所有灯珠。可以将每一颗灯珠看作一个 8bit RGB 像素点，像素点在上电复位以后，DIN端（数据接收端）接受从控制器传输过来的数据，**首先送过来的24bit数据被第一个像素点提取后，送到像素点内部的数据锁存器，剩余的数据经过内部整形处理电路整形放大后通过DO端（数据发送端）开始转发输出给下一个级联的像素点，每经过一个像素点的传输，信号减少24bit。** WS2812彩灯采用自动整形转发技术，使得像素点的级联个数不受限制，仅受限于信号传输速度的要求。
 
 ## 使引脚输出高低电平，控制LED
 
