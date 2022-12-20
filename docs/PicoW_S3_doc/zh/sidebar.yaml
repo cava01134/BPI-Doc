@@ -15,9 +15,12 @@ items:
         file: CircuitPython/flash_tinyuf2.md
     -   label: 基础功能使用
         file: CircuitPython/Basic.md
+    -   label: 进阶多功能应用
+        file: CircuitPython/Advanced.md
 -   label: 三、使用 Arduino 编程
     items:
     -   label: Arduino环境搭建
         file: Arduino/Environment.md
     -   label: 基础功能使用
         file: Arduino/Basic.md
+        

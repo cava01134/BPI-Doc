@@ -99,8 +99,8 @@ Arduino 社区中积累的大量的优秀开源项目可供参考与学习，还
 
 ## 样品购买
 
-- [官方速卖通]()
+- [官方速卖通](https://www.aliexpress.us/item/3256804809903732.html)
 
-- [官方淘宝]()
+- [官方淘宝](https://item.taobao.com/item.htm?spm=a213gs.success.result.1.d1187a86CepiGC&id=693462857865)
 
 - OEM&OEM 定制服务 ： sales@banana-pi.com
