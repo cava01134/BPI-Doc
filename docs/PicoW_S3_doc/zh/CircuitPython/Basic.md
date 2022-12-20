@@ -716,6 +716,8 @@ display.show()
 
 ## OLED实时动画显示双轴摇杆位置
 
+基于前文 [ADC输入，读取双轴摇杆坐标](#adc输入读取双轴摇杆坐标)与[下载安装CircuitPython库，驱动ssd1306 oled屏幕](#下载安装circuitpython库驱动ssd1306-oled屏幕) 章节，可设计一个使OLED实时动画显示双轴摇杆位置的程序。
+
 ```python
 import time
 import board
