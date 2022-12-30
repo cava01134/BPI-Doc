@@ -1,43 +1,43 @@
-# 环境搭建
+# Environment construction
 
-> 参考[arduino-esp32 DOC Getting Started » Installing](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html)
+> Refer to [arduino-esp32 DOC Getting Started » Installing](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html)
 
-## 使用Arduino IDE安装支持
+## Install support using the Arduino IDE
 
-这是直接从 Arduino IDE 安装 Arduino-ESP32 的方法。
+Here's how to install the Arduino-ESP32 directly from the Arduino IDE.
 
-> 从 Arduino IDE 版本 1.6.4 开始，Arduino 允许使用 Boards Manager（开发板管理器）安装第三方平台包。有适用于 Windows、macOS 和 Linux 的软件包。
+> Starting with Arduino IDE version 1.6.4, Arduino allows installing third-party platform packages using the Boards Manager. There are packages for Windows, macOS, and Linux.
 
-Arduino IDE 下载地址：https://www.arduino.cc/en/software
+Arduino IDE download link: https://www.arduino.cc/en/software
 
-> Arduino IDE 2.0与Arduino IDE 1.8.x的UI有些许差异，本文基于1.8.13版本编写，但不影响使用2.0版本的用户参考。
+> The UI of Arduino IDE 2.0 is slightly different from Arduino IDE 1.8.x. This article is written based on version 1.8.13, but it does not affect the reference of users who use version 2.0.
 
-要使用 Boards Managaer（开发板管理器）安装esp32平台包，请执行以下步骤：
+To install the esp32 platform package using Boards Managaer, follow these steps:
 
-- 安装当前上游 Arduino IDE 1.8 或更高版本。
+- Install current upstream Arduino IDE 1.8 or higher.
 
-- 启动 Arduino 并打开 File（文件）> Preferences（首选项）窗口，找到Additional Board Manager URLs（附加开发板管理器网址）。
+- Start Arduino and open the File > Preferences window and find Additional Board Manager URLs.
 
 ![](../assets/images/install_guide_preferences.png)
 
-- 稳定版链接：
+- Stable version link:
 ```
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 ```
-- 开发版链接：
+- Development version link:
 ```
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_dev_index.json
 ```
-- 在Additional Board Manager URLs后面输入上述发布链接之一。您可以添加多个 URL，一行一个。
+- Enter one of the release links above after Additional Board Manager URLs. You can add multiple URLs, one per line.
 
 ![](../assets/images/install_guide_boards_manager_url.png)
 
-从菜单打开 Tools（工具） > Board（开发板）> Board Manager（开发板管理器） 搜索并安装esp32平台。
+Open Tools > Board > Board Manager from the menu to search and install the esp32 platform.
 
 ![](../assets/images/install_guide_boards_manager_esp32.png)
 
-重启arduino IDE之后可以看到在开发板选项中多了ESP32 Arduino选项。
+After restarting the arduino IDE, you can see that there is an ESP32 Arduino option in the development board option.
 
-选择 `ESP32S2 Native USB` 这个型号，再参照下图所示的内容进行配置一遍即可，配置不当是无法使用的，请一定要参照下图所示的内容进行配置！
+Select the model `ESP32S2 Native USB`, and then refer to the content shown in the figure below to configure it again. Improper configuration will not work, please be sure to configure it according to the content shown in the figure below!
 
 ![](../assets/images/Board_chose.png)
