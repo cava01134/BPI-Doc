@@ -718,6 +718,22 @@ display.show()
 
 基于前文 [ADC输入，读取双轴摇杆坐标](#adc输入读取双轴摇杆坐标)与[下载安装CircuitPython库，驱动ssd1306 oled屏幕](#下载安装circuitpython库驱动ssd1306-oled屏幕) 章节，可设计一个使OLED实时动画显示双轴摇杆位置的程序。
 
+**接线参考**
+
+| ssd1306 | BPI-PicoW-S3 |
+| :----: | :----: |
+| GND  | GND |
+| VCC  | 3V3 |
+| SCL  | GP0 |
+| SDA  | GP1 |
+
+| 双轴摇杆 | BPI-PicoW-S3 |
+| :----: | :----: |
+| GND  | GND |
+| +5V  | 3V3 |
+| VRx  | GP27_A1 |
+| VRY  | GP26_A0 |
+
 ```python
 import time
 import board
@@ -773,44 +789,80 @@ def get_coordinates(zero = (32767,32767), x_spacing = (2048,2048),y_spacing = (2
         y_axis = - ((-y_value) // y_spacing[0])
     return (x_axis,y_axis)
 
+# i2c init
 i2c = busio.I2C(board.GP0, board.GP1)
 display = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3C)
-display.fill(0)
+
+# Uniformly set the color and background color of displayed characters or graphics.
+# Monochrome OLEDs only need to set one and then negate the other.
+display_color = 0
+bg_color = not display_color
+
+# Fill background color.
+display.fill(bg_color)
 display.show()
 
+# Set 2-axis rocker pin.
 x_axis_pin = analogio.AnalogIn(board.A0)
 y_axis_pin = analogio.AnalogIn(board.A1)
 
-display.text('Zero adjustment', 0, 28, 1, font_name='font5x8.bin', size=1)
+# Calibrate the zero point.
+# Take the xy-axis reading when the dual-axis joystick is at rest and set it to zero point.
+display.text('Zero adjustment', 0, 20, display_color, font_name='font5x8.bin', size=1)
+display.text('Do not touch', 0, 28, display_color, font_name='font5x8.bin', size=1)
 display.show()
 zero = get_zero(times =200, sleep = 0.01)
-print(zero)
-display.fill(0)
-display.text('Extremum adjustment', 0, 28, 1, font_name='font5x8.bin', size=1)
+display.text('Do not touch', 0, 28, bg_color, font_name='font5x8.bin', size=1)
+str_zero = "x={},y={}".format(zero[0],zero[1])
+display.text(str_zero, 0, 28, display_color, font_name='font5x8.bin', size=1)
 display.show()
-(x_extremum,y_extremum) = get_extremum(times = 200, sleep = 0.01)
-print((x_extremum, y_extremum))
+print(str_zero)
+time.sleep(2)
+
+# Different hardware measures different extreme values.
+display.fill(bg_color)
+display.text('Extremum adjustment', 0, 20, display_color, font_name='font5x8.bin', size=1)
+display.text('Rotary rocker', 0, 28, display_color, font_name='font5x8.bin', size=1)
+display.show()
+(x_extremum,y_extremum) = get_extremum(times = 400, sleep = 0.01)
+display.text('Extremum adjustment', 0, 20, bg_color, font_name='font5x8.bin', size=1)
+display.text('Rotary rocker', 0, 28, bg_color, font_name='font5x8.bin', size=1)
+str_x_extremum = "x_min={},x_max={}".format(x_extremum[0],x_extremum[1])
+str_y_extremum = "y_min={},y_max={}".format(y_extremum[0],y_extremum[1])
+display.text(str_x_extremum, 0, 20, display_color, font_name='font5x8.bin', size=1)
+display.text(str_y_extremum, 0, 28, display_color, font_name='font5x8.bin', size=1)
+print((str_x_extremum, str_y_extremum))
+display.show()
+time.sleep(2)
+
+# Setting the scale spacing can eliminate unnecessary jitter.
 (x_spacing,y_spacing) = get_spacing(level = 32 , zero = zero, x_extremum = x_extremum,y_extremum = y_extremum)
 print((x_spacing, y_spacing))
-display.fill(0)
-display.text('x=', 70, 16, 1, font_name='font5x8.bin', size=2)
-display.text('y=', 70, 32, 1, font_name='font5x8.bin', size=2)
+
+display.fill(bg_color)
+display.text('x=', 70, 16, display_color, font_name='font5x8.bin', size=2)
+display.text('y=', 70, 32, display_color, font_name='font5x8.bin', size=2)
 (x_axis,y_axis) = (0,0)
-(x_axis_1,y_axis_1) = (0,0)
+(x_axis_1,y_axis_1) = (1,1)
 (x_axis_2,y_axis_2) = (0,0)
+display.show()
 while True:
+    # Get the coordinate value in a loop.
     (x_axis,y_axis) = get_coordinates(zero = zero, x_spacing = x_spacing, y_spacing = y_spacing)
-    # print(x_axis,y_axis)
+    # Only refresh the display when the coordinates change.
     if (x_axis,y_axis) == (x_axis_1,y_axis_1):
         pass
     else:
-        display.text(str(x_axis_1), 90, 16, 0, font_name='font5x8.bin', size=2)
-        display.text(str(y_axis_1), 90, 32, 0, font_name='font5x8.bin', size=2)
-        display.fill_rect(x_axis_2-3, y_axis_2-3, 6, 6, 0)
+        # Using background color inversion for identical pixels,
+        # pixels can be refreshed with minimal performance cost.
+        display.fill_rect(x_axis_2-3, y_axis_2-3, 6, 6, bg_color)
+        display.text(str(x_axis_1), 90, 16, bg_color, font_name='font5x8.bin', size=2)
+        display.text(str(y_axis_1), 90, 32, bg_color, font_name='font5x8.bin', size=2)
         (x_axis_1,y_axis_1) = (x_axis,y_axis)
         (x_axis_2,y_axis_2) = (x_axis+32, -y_axis+32)
-        display.fill_rect(x_axis_2-3, y_axis_2-3, 6, 6, 1)
-        display.text(str(x_axis_1), 90, 16, 1, font_name='font5x8.bin', size=2)
-        display.text(str(y_axis_1), 90, 32, 1, font_name='font5x8.bin', size=2)
+        display.fill_rect(x_axis_2-3, y_axis_2-3, 6, 6, display_color)
+        display.text(str(x_axis_1), 90, 16, display_color, font_name='font5x8.bin', size=2)
+        display.text(str(y_axis_1), 90, 32, display_color, font_name='font5x8.bin', size=2)
         display.show()
+
 ```
