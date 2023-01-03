@@ -1,6 +1,7 @@
 # 环境搭建
 
 由于板型原因，PicoW-S3的Arduino使用会比较复杂，我们不太推荐您使用PicoW-S3学习Arduino。这篇文章将会指引您安装PicoW-S3的Arduino支持。
+
 ![](../assets/images/logo_arduino.png)
 
 > 参考[arduino-esp32 DOC Getting Started » Installing](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html)

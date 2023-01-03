@@ -107,16 +107,16 @@ Entering the following code will turn off the LED.
 >>> led. value(0)
 ```
 
-## Use onboard lights
+## Use onboard RGB LED
 
-The onboard WS2812 colored light on BPI-Pico-RP2040 is connected to GPIO 3 pin, it only needs one signal line to control, enter the following code in REPL.
+The onboard WS2812 RGB LED on BPI-Pico-RP2040 is connected to GPIO 3 pin, it only needs one signal line to control, enter the following code in REPL.
 ```python
 >>> from machine import Pin
 >>> from neopixel import NeoPixel
 >>> neo = NeoPixel(Pin(3), 1)
 ```
-> The `neopixel` module provides drivers for WS2812 colored lights. You can learn more about it in the [MicroPython documentation: neopixel](https://docs.micropython.org/en/v1.19.1/library/neopixel.html).
-Enter the code below and the colored light will light up red.
+> The `neopixel` module provides drivers for WS2812 RGB LED. You can learn more about it in the [MicroPython documentation: neopixel](https://docs.micropython.org/en/v1.19.1/library/neopixel.html).
+Enter the code below and the RGB LED will light up red.
 ```python
 >>> neo[0] = (25,0,0)
 >>> neo.write()
@@ -128,7 +128,7 @@ It is recommended to control the value of the element below 50. When the value i
 
 After `neo.write()` is executed, the chip will transmit the control signal to the onboard WS2812 lantern.
 
-You can try to modify the data in the tuple yourself to control the color of the colored lights. For example, continue to enter the following code in the REPL to make the colored lights white.
+You can try to modify the data in the tuple yourself to control the color of the RGB LEDs. For example, continue to enter the following code in the REPL to make the RGB LEDs white.
 ```python
 >>> neo[0] = (25,25,25)
 >>> neo.write()
