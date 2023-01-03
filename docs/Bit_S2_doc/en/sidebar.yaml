@@ -3,7 +3,7 @@ items:
     file: README.md
 -   label: 1. Unboxing Bit-S2 Development Board
     items:
-    -    label: Bit-S2 Introduction
+    -   label: Bit-S2 Introduction
         file: Unboxing/Introduction.md
 -   label: 2. Programming with CircuitPython
     items:
