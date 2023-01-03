@@ -667,4 +667,192 @@ Open the Arduino IDE. Although it is possible to copy the code directly, we reco
 // When setting up the NeoPixel library, we tell it how many pixels,
 // and which pin to use to send signals. Note that for older NeoPixel
 // strips you might need to change the third parameter -- see the
-// strandtest example for more info
+// strandtest example for more information on possible values.
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+#define DELAYVAL 500 // Time (in milliseconds) to pause between pixels
+
+void setup() {
+   // These lines are specifically to support the Adafruit Trinket 5V 16 MHz.
+   // Any other board, you can remove this part (but no harm leaving it):
+#if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
+   clock_prescale_set(clock_div_1);
+#endif
+   // END of Trinket-specific code.
+
+   pixels.begin(); // INITIALIZE NeoPixel strip object (REQUIRED)
+}
+
+void loop() {
+   pixels.clear(); // Set all pixel colors to 'off'
+
+   // The first NeoPixel in a strand is #0, second is 1, all the way up
+   // to the count of pixels minus one.
+   for(int i=0; i < NUMPIXELS; i++) { // For each pixel...
+
+     // pixels.Color() takes RGB values, from 0,0,0 up to 255,255,255
+     // Here we're using a moderately bright green color:
+     pixels.setPixelColor(i, pixels.Color(0, 150, 0));
+
+     pixels.show(); // Send the updated pixel colors to the hardware.
+
+     delay(DELAYVAL); // Pause before next pass through loop
+   }
+}
+</code></pre>
+</details>
+
+After the input is complete, click "Compile" to check the code for errors. After making sure there are no errors, you can start uploading. After clicking "Upload", the IDE will send the code to the Leaf-S3 motherboard. After reset, the WS2812 light will start to light up green.
+
+> Note: You can modify the RGB values in the code if you need other colors.
+
+### Code Analysis
+
+This project uses the WS2812 light integrated in Leaf-S3, and the default GPIO is 18.
+
+```
+#define PIN 18
+```
+
+Set GPIO pin number
+
+```
+#define NUMPIXELS 1
+```
+
+Set the number of lights. If you want to connect more WS2812, you can change an IO and modify the number of lights.
+
+## Item Seven Touch Sensor
+
+The Leaf-S3 provides up to 10 capacitive sensor GPIOs capable of detecting differences in capacitance caused by direct contact or proximity of fingers or other objects. This low-noise characteristic and high-sensitivity design of the circuit are suitable for smaller touch panels and can be directly used for touch switches. This project explains how to get the status of the touch sensor of Leaf-S3 through Arduino code, and print the status.
+
+### Required components
+
+Leaf-S3 Motherboard X 1
+
+![](../assets/images/Leaf-S3.png)
+
+> Note: This project does not require other sensors to be connected.
+
+### enter code
+
+Open the Arduino IDE. Although the code can be copied directly, we recommend that you manually enter the code yourself to familiarize yourself.
+
+code show as below:
+
+<details>
+<summary>Expand to view</summary>
+
+<pre><code>
+  void setup()
+{
+   Serial.begin(115200);
+       delay(1000); // give me time to bring up serial monitor
+       Serial.println("Leaf-S3 Touch Test");
+}
+void loop(){
+   Serial.println(touchRead(T2)); // get value using T0->D9
+   delay(100);
+}
+
+</code></pre>
+</details>
+
+After the input is complete, click "Compile" to check the code for errors. After making sure there are no errors, you can start uploading. After clicking "Upload", the IDE will send the code to the Leaf-S3 motherboard. Open the Arduino IDE serial monitor, and touch GPIO2 (T2 corresponds to GPIO2), you can see that the printed data suddenly becomes smaller, as shown in the figure below:
+
+![](../assets/images/Lesson8-1.png)
+
+### Code Analysis
+
+To get the GPIO status of the touch sensor, you only need to call the touchRead function. The function prototype is as follows:
+
+```
+  uint16_t touchRead(uint8_t pin)
+```
+
+Returns "0" for no touch and "1" for touch. The pins are T0~T9, and the pins corresponding to the Leaf are shown in the following table:
+
+<table>
+    <tr>
+       <td></td>
+    </tr>
+    <tr>
+       <td>Touch sensor serial number</td>
+       <td>Corresponding ESP32 hardware</td>
+       <td>Leaf-S3</td>
+       <td> </td>
+    </tr>
+    <tr>
+       <td>T1</td>
+       <td>GPIO1</td>
+       <td>IO1</td>
+    </tr>
+    <tr>
+       <td>T2</td>
+       <td>GPIO2</td>
+       <td>IO2</td>
+    </tr>
+    <tr>
+       <td>T3</td>
+       <td>GPIO3</td>
+       <td>IO3</td>
+    </tr>
+    <tr>
+       <td>T4</td>
+       <td>GPIO4</td>
+       <td>IO4</td>
+    </tr>
+    <tr>
+       <td>T5</td>
+       <td>GPIO5</td>
+       <td>IO5</td>
+    </tr>
+    <tr>
+       <td>T6</td>
+       <td>GPIO6</td>
+       <td>IO6</td>
+    </tr>
+    <tr>
+       <td>T7</td>
+       <td>GPIO7</td>
+       <td>IO7</td>
+    </tr>
+    <tr>
+       <td>T8</td>
+       <td>GPIO8</td>
+       <td>IO8</td>
+    </tr>
+    <tr>
+       <td>T9</td>
+       <td>GPIO9</td>
+       <td>IO9</td>
+    </tr>
+    <tr>
+       <td>T10</td>
+       <td>GPIO10</td>
+       <td>IO10</td>
+    </tr>
+    <tr>
+       <td>T11</td>
+       <td>GPIO11</td>
+       <td>IO11</td>
+    </tr>
+    <tr>
+       <td>T12</td>
+       <td>GPIO12</td>
+       <td>IO12</td>
+    </tr>
+    <tr>
+       <td>T13</td>
+       <td>GPIO13</td>
+       <td>IO13</td>
+    </tr>
+    <tr>
+       <td>T14</td>
+       <td>GPIO14</td>
+       <td>IO14</td>
+    </tr>
+    <tr>
+       <td></td>
+    </tr>
+</table>
