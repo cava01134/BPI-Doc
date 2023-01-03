@@ -5,7 +5,7 @@ items:
     items:
     -    label: Bit-S2 Introduction
         file: Unboxing/Introduction.md
-- label: 2. Programming with CircuitPython
+-   label: 2. Programming with CircuitPython
     items:
     -   label: has been officially supported by CircuitPython
         file: CircuitPython/supported_by_circuitpython.md
