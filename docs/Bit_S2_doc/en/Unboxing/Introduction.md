@@ -1,4 +1,4 @@
-# 【 开发板介绍 】
+# Development Board Introduction
 
 BPI-Bit-S2 development board is a successor to BPI-Bit, inheriting most of the hardware functions.
 
@@ -22,7 +22,7 @@ Support Webduino, Arduino, MicroPython & CircuitPython programming environment s
 
 ### Diagram
 
-![](../assets/images/bpi_bit_v2_interface.jpg)
+![](../assets/images/bpi_bit_v2_interface_en.jpg)
 
 ### Hardware Specifications
 
