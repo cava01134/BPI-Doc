@@ -1,6 +1,7 @@
 # Environment build
 
 Due to the board size, the Arduino usage of PicoW-S3 will be more complicated, we do not recommend you to use PicoW-S3 to learn Arduino. This article will guide you through installing Arduino support for the PicoW-S3.
+
 ![](../assets/images/logo_arduino.png)
 
 > Refer to [arduino-esp32 DOC Getting Started » Installing](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html)
