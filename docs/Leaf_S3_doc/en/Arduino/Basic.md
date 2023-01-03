@@ -1,19 +1,19 @@
 # Use of onboard resources
 
-This chapter mainly describes the basic usage of the peripherals of the Leaf-S3 main control board through some sample projects. Through the following projects, you can modify and complete your own projects.
+This chapter mainly uses some sample projects to explain the basic usage of the peripherals of the Leaf-S3 main control board. Through the following projects, you can modify them to complete your own projects.
 The Leaf-S3 peripherals mainly include: UART, I2C, SPI, ADC, PWM, DAC, etc.
 
 ## Preparation before starting
 
-The typec on the BPI-Leaf-S3 development board uses the native USB interface of ESP32-S3 instead of the traditional USB to TLL chip.
+The typec on the BPI-Leaf-S3 development board uses the native USB interface of ESP32-S3 instead of the traditional USB-to-TLL chip.
 
-In order for your development board to download programs correctly, you need to set the BPI-Leaf-S3 to download mode, there are two methods:
+In order for your development board to download the program correctly, you need to set the BPI-Leaf-S3 to the download mode, there are two methods:
 
-- Connect to the computer via USB, press the BOOT button, then press the Reset button and release, and finally release the BOOT button.
+- Connect to the computer via USB, press the BOOT button, press the Reset button and release it, and finally release the BOOT button.
 
 - In the state of disconnecting all power supplies, press and hold the BOOT button, then plug the development board into the computer, and finally release the BOOT button.
 
-At this time, you can see more than one COM port in the device manager
+At this time, you can see more than one COM port in the device manager.
 
 ![](../assets/images/Device_manager.jpg)
 
@@ -25,19 +25,19 @@ Select this port in the IDE
 
 In the very first chapter, we uploaded a Blink program to test the LED status lights on the board. Now, we use the UART serial port and print the timing data every second.
 
-### Required components
+### Serial port experiment: required components
 
 Leaf-S3 Motherboard X 1
 
 ![](../assets/images/Leaf-S3.png)
 
-### Hardware connection
+### Serial port experiment: hardware connection
 
-No other sensors are required for this project, so just connect the Leaf-S3 to a computer via USB and it will work.
+This project does not require other sensors, so you only need to connect the Leaf-S3 to the computer with USB.
 
-### Enter code
+### Serial port experiment: code
 
-Open the Arduino IDE. Although it is possible to copy the code directly, we recommend that you enter the code manually to familiarize yourself with it.
+Open the Arduino IDE. Although the code can be copied directly, we recommend that you manually enter the code yourself to familiarize yourself.
 
 code show as below:  
 
@@ -47,47 +47,46 @@ code show as below:
 <pre><code>
 void setup()
 {
-  Serial.begin(115200); //Set serial communication baud rate
+   Serial.begin(115200); //Set the serial communication baud rate
 }
 void loop()
 {
-  static unsigned long i = 0; //define variable i
-  Serial.println(i++); //output i after adding one
-  delay(1000); // delay 1 second
+   static unsigned long i = 0; //Define variable i
+   Serial.println(i++); //output i after adding one
+   delay(1000); //Delay for 1 second
 }
-
 </code></pre>
 </details>
 
 After the input is complete, click "Compile" to check the code for errors. After making sure there are no errors, you can start uploading. After clicking "Upload", the IDE will send the code to the Leaf-S3 motherboard. After the upload is complete, you need to press the reset button so that the code can run normally
 
-### Experimental phenomena
+### Serial port experiment: experimental phenomenon
 
-After completing the upload in the previous steps, open the serial monitor that comes with the Arduino IDE, and you can see the following print information:
+After uploading the previous steps, open the serial monitor that comes with the Arduino IDE, and you can see the following print information:
 
 ![](../assets/images/Lesson1-1.png)
 
 ## Project 2 PWM (breathing light)
 
-Breathing light, that is, let Leaf-S3 drive the LED light through PWM to realize the brightness gradient of the LED, which looks like it is breathing. For an explanation of PWM, please read the Knowledge Extension section.
+Breathing lights, that is, let Leaf-S3 drive LED lights through PWM to realize the gradual change of LED brightness, which looks like it is breathing. For an explanation of PWM, please read the knowledge expansion section.
 
-### Required components
+### PWM Experiment: Required Components
 
 Leaf-S3 Motherboard X 1
 
 ![](../assets/images/Leaf-S3.png)
 
-LED X 1 (recommended to connect a resistor in series to limit current)
+LED X 1 (It is recommended to connect a resistor in series to limit the current)
 
 ![](../assets/images/led.png)
 
-### Hardware connection
+### PWM Experiment: Hardware Connection
 
 Just connect the LED to GPIO13 of Leaf-S3, the long one is connected to GPIO13, and the short one is connected to GND
 
-### Enter code
+### PWM Experiment: Code
 
-Open the Arduino IDE. Although it is possible to copy the code directly, we recommend that you enter the code manually to familiarize yourself with it.
+Open the Arduino IDE. Although the code can be copied directly, we recommend that you manually enter the code yourself to familiarize yourself.
 code show as below: 
 
 <details>
@@ -96,91 +95,91 @@ code show as below:
 <pre><code>
 #define LED_CHANNEL_0 0 //Set channel 0
 #define LED_TIMER_13_BIT 13 //Set 13-bit timer
-#define LED_BASE_FREQ 5000 //Set the timer frequency bit to 5000Hz
-#define LED_PIN 13 //Set LED light
+#define LED_BASE_FREQ 5000 //Set timer frequency to 5000Hz
+#define LED_PIN 13 //Set the LED light
 
 int brightness = 0; // LED brightness
 int fadeAmount = 1; // number of LEDs
  
 //Set the brightness of the led light
 void ledcAnalogWrite(uint32_t value, uint32_t valueMax = 255) {
-  //calculate duty cycle
-  uint32_t duty = (LED_BASE_FREQ / valueMax) * min(value, valueMax);
-  //set duty cycle
-  ledcWrite(LED_CHANNEL_0, duty);
+   // calculate duty cycle
+   uint32_t duty = (LED_BASE_FREQ / valueMax) * min(value, valueMax);
+   //Set the duty cycle
+   ledcWrite(LED_CHANNEL_0, duty);
 }
 void setup() {
-  ledcSetup(LED_CHANNEL_0, LED_BASE_FREQ, LED_TIMER_13_BIT); ledcAttachPin(LED_PIN, LED_CHANNEL_0);
+   ledcSetup(LED_CHANNEL_0, LED_BASE_FREQ, LED_TIMER_13_BIT); ledcAttachPin(LED_PIN, LED_CHANNEL_0);
 }
 void loop() {
-  ledcAnalogWrite(brightness); brightness += fadeAmount;
+   ledcAnalogWrite(brightness); brightness += fadeAmount;
  
-  if (brightness <= 0 || brightness >= 255) {
-       fadeAmount = -fadeAmount;
-  }
-  delay(30);
+   if (brightness <= 0 || brightness >= 255) {
+        fadeAmount = -fadeAmount;
+   }
+   delay(30);
 }
 
 </code></pre>
 </details>
 
-After typing, click the "Compile" button to check the code for errors. After confirming that there are no errors, you can start uploading, click the "Upload" button . The IDE will send the code to the Leaf-S3 motherboard. After the upload is complete, you can see the LED light next to the Type-C start to "breathe"!
+After the input is complete, click the "Compile" button to check the code for errors. After confirming that there are no errors, you can start uploading, click the "Upload" button . The IDE will send the code to the Leaf-S3 board. After the upload is complete, you can see the LED light next to the Type-C start to "breathe"!
 Now let's review the code and hardware to see how it works.
 
-### Knowledge learning
+### PWM experiment: relevant knowledge
 
 What is a PWM control signal?
 
-PWM (pulse-width modulation) pulse width modulation, the MCU (microcontroller) controls the on-off of the switching device, so that the output terminal gets a series of pulses of equal amplitude, and these pulses are used to replace the sine wave or the required waveform. As shown below:
+PWM (pulse-width modulation) pulse width modulation, MCU (microcontroller) controls the on and off of the switching device, so that the output terminal gets a series of pulses with equal amplitude, and these pulses are used to replace the sine wave or the required waveform. As shown below:
 
 ![](../assets/images/Lesson2-1.jpg)
 
-Among them, tON is the high-level duration, tPWM is the period of the PWM wave, tPWM-tON is the low-level duration, and the duty cycle refers to the proportion of the high-level duration to the entire cycle, namely D=ton/tPWM.
+Among them, tON is the duration of high level, tPWM is the period of PWM wave, tPWM-tON is the duration of low level, and the duty cycle refers to the ratio of the duration of high level to the entire cycle, that is, D=ton/tPWM.
 
-### Code Analysis
+### PWM Experiment: Code Analysis
 
-The PWM of Leaf-S3 is much more advanced than the ordinary Arduino UNO. The analogWrite function cannot be simply used to drive the PWM, but the timer function and related frequency parameters need to be set to work.
+The PWM of Leaf-S3 is much more advanced than that of ordinary Arduino UNO. You cannot simply use the analogWrite function to drive the PWM, but you need to set the timer function and related frequency parameters to work.
 
-````
+```
 #define LEDC_CHANNEL_0 0
-````
+```
 
 Defines the channel used by the timer. Leaf-S3 has a total of 16 channels, and channel 0 is used here.
 
-````
+```
 #define LEDC_TIMER_13_BIT 13
-````
+```
 
 The timer is defined as a 13-bit timer, that is, the maximum count of the timer is 2 to the 13th power.
 
-````
+```
 #define LEDC_BASE_FREQ 5000
-````
+```
 
-This is the frequency at which the timer is set, in Hz. The next brightness and fadeAmount parameters represent the duty cycle of the PWM and the value for each change, respectively.
+This is the frequency at which the timer is set, in Hz. The next brightness and fadeAmount parameters represent the PWM duty cycle and the value of each change respectively.
 
-````
+```
 void ledcAnalogWrite(uint32_t value, uint32_t valueMax = 255)
-````
+```
 
-This function calculates the PWM duty cycle and sets the PWM duty cycle, similar to Arduino's analogWrite function. As you can see, the maximum value of the passed parameter is 255, which is for compatibility with analogWrite.
+This function is to calculate and set the PWM duty cycle, similar to Arduino's analogWrite function, it can be seen that the maximum value of the passed parameter is 255, which is compatible with analogWrite.
 
-````
+```
 ledcSetup(LEDC_CHANNEL_0, LEDC_BASE_FREQ, LEDC_TIMER_13_BIT);
 ledcAttachPin(LED_PIN, LEDC_CHANNEL_0);
-````
+```
 
-These two functions are Leaf-S3 timer setting functions. The function prototype and principle are not described here. If you are interested, you can look at the underlying source code (source address: C:\Users\“your-PC”\AppData\Local\Arduino15 \packages\esp32\ hardware\ adafruit_metro_esp32s2 \0.0.3\libraries\ESP32\), you only need to know how to use these functions to set the relevant timer.
+These two functions are Leaf-S3 timer setting functions. The function prototype and principle are not described here. If you are interested, you can look at the underlying source code (source code address: C:\Users\"your-PC"\AppData\Local\Arduino15 \packages\esp32\ hardware\ adafruit_metro_esp32s2 \0.0.3\libraries\ESP32\), here you only need to know how to use these functions to set the relevant timers.
 
-About what is a PWM signal, it has been explained before, and it will not be explained here.
+Regarding what is a PWM signal, it has been explained before, so it will not be explained here.
 
 >Note: Any pin of Leaf-S3 can be configured as PWM output, you can try to modify the code to complete your project.
 
-## Project 3 ADC
+## Item 3 ADC
 
-ADC (analog-to-digital converter or A/D converter) refers to converting an analog signal into a digital signal. The ADC of Leaf-S3 is 13-bit, the maximum output value is 8191, while the Arduino UNO is 10-bit, and the maximum output value is 1023. Therefore, the accuracy is higher than that of Arduino UNO, and the conversion rate is faster, and in use Compatible with Arduino analogRead function, you can read it directly.
+ADC (analog-to-digital converter or A/D converter) refers to converting analog signals into digital signals. The ADC of Leaf-S3 is 13-bit, the maximum output value is 8191, while the Arduino UNO is 10-bit, the maximum output value is 1023, so the accuracy is higher than that of Arduino UNO, and the conversion rate is fast, and it is easy to use Compatible with Arduino analogRead function, just read directly.
 
-### Required components
+### ADC Experiment: Required Components
 
 Analog angle sensor X 1
 
@@ -194,53 +193,53 @@ Leaf-S3 Motherboard X 1
 
 ![](../assets/images/Leaf-S3.png)
 
-### Hardware connection
+### ADC experiment: hardware connection
 
- Plug the potentiometer to the Leaf-S3 motherboard, and then plug the analog angle sensor to IO2 (IO2 is used in the experiment). After the components are connected, use the USB cable to connect the Leaf-S3 and the computer.
+  Plug the potentiometer into the Leaf-S3 main board, and then plug the analog angle sensor into IO2 (IO2 is used in the experiment). After the components are connected, use the USB cable to connect Leaf-S3 and computer.
 
- ### Enter code
+  ### ADC experiment: code
 
- Open the Arduino IDE. Although it is possible to copy the code directly, we recommend that you enter the code manually to familiarize yourself with it. code show as below: 
+  Open the Arduino IDE. Although the code can be copied directly, we recommend that you manually enter the code yourself to familiarize yourself. code show as below: 
 
 <details>
 <summary>Expand to view</summary>
 
 <pre><code>
- void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(115200);
+  void setup() {
+   // put your setup code here, to run once:
+   Serial.begin(115200);
 }
 void loop() {
-  // put your main code here, to run repeatedly:
-  Serial.println(analogRead(2));
-  delay(100);
+   // put your main code here, to run repeatedly:
+   Serial. println(analogRead(2));
+   delay(100);
 }
 
 </code></pre>
 </details>
 
- After the input is complete, click "Compile" to check the code for errors. After making sure there are no errors, you can start uploading. After clicking "Upload", the IDE will send the code to the Leaf-S3 motherboard. After the upload is complete, open the serial monitor of the Arduino IDE, rotate the analog angle sensor, and you can see the value changes in the serial monitor, as shown in the following figure:
+  After the input is complete, click "Compile" to check the code for errors. After making sure there are no errors, you can start uploading. After clicking "Upload", the IDE will send the code to the Leaf-S3 motherboard. After the upload is complete, open the serial monitor of the Arduino IDE, rotate the analog angle sensor, and you can see the value changes in the serial monitor, as shown in the figure below:
 
  
 ![](../assets/images/Lesson3-3.png)
 
-### Code Analysis
+### ADC Experiment: Code Analysis
 
-Since the ADC of Leaf-S3 is fully compatible with Arduino, the analogRead function will not be explained too much here.
+Since the ADC of Leaf-S3 is fully compatible with Arduino, there is no need to explain too much about the analogRead function here.
  
 Note: If you are not particularly familiar with the basic functions of Arduino, you can [click the link](https://www.arduino.cc/en/Tutorial/BuiltInExamples) to learn.
 
 ## Project 4 I2C
 
-The I2C of Leaf-S3 can be configured to any I/O port, and you can configure it by passing relevant parameters. For the convenience of use, we have configured I2C by default, which is fully compatible with Arduino in use. The default configuration pins can be viewed in Chapter 1 Introduction. This project is based on I2C default configuration to drive OLED display.
+The I2C of Leaf-S3 can be configured to any I/O port, and you can configure it by passing relevant parameters. For the convenience of use, we have configured I2C by default, and it is fully compatible with Ardui in useno, the default configuration pins can be viewed in Chapter 1 Introduction. This project is based on I2C default configuration to drive OLED display.
 
-required components
+Required components
 
 I2C OLED-12864 Display X 1
 
 ![](../assets/images/Lesson4-1.png)
 
-BreadboardX 1
+Breadboard X 1
 
 ![](../assets/images/Lesson3-2.png)
 
@@ -248,74 +247,74 @@ Leaf-S3 Motherboard X 1
 
 ![](../assets/images/Leaf-S3.png)
 
-### Hardware connection
+### I2C experiment: hardware connection
 
-Plug the Leaf-S3 motherboard into the breadboard, then plug the OLED display into the I2C port. (SDA is 33, SCL is 34) After the components are connected, use a USB cable to connect the Leaf-S3 to the computer.
+Plug the Leaf-S3 motherboard into the breadboard, and then plug the OLED display into the I2C interface. (SDA is 33, SCL is 34) After the components are connected, use a USB cable to connect the Leaf-S3 and the computer.
 
-### Enter code
+### I2C Experiment: Code
 
-Open the Arduino IDE. Although it is possible to copy the code directly, we recommend that you enter the code manually to familiarize yourself with it. code show as below:
+Open the Arduino IDE. Although the code can be copied directly, we recommend that you manually enter the code yourself to familiarize yourself. code show as below:
 
 <details>
 <summary>Expand to view</summary>
 
 <pre><code>
 #include <Wire.h>
-   int UG2864Address = 0x3C;//OLED UG2864 device 7-bit address
+    int UG2864Address = 0x3C;//OLED UG2864 device 7-bit address
  
 prog_char F8X16[][16] PROGMEM =
 {
-  0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,// 0
-  0x00,0x00,0x00,0xF8,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x33,0x30,0x00,0x00,0x00,//!1
-  0x00,0x10,0x0C,0x06,0x10,0x0C,0x06,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,//"2
-  0x40,0xC0,0x78,0x40,0xC0,0x78,0x40,0x00,0x04,0x3F,0x04,0x04,0x3F,0x04,0x04,0x00,//#3
-  0x00,0x70,0x88,0xFC,0x08,0x30,0x00,0x00,0x00,0x18,0x20,0xFF,0x21,0x1E,0x00,0x00,//$4
-  0xF0,0x08,0xF0,0x00,0xE0,0x18,0x00,0x00,0x00,0x21,0x1C,0x03,0x1E,0x21,0x1E,0x00,//%5
-  0x00,0xF0,0x08,0x88,0x70,0x00,0x00,0x00,0x1E,0x21,0x23,0x24,0x19,0x27,0x21,0x10,//&6
-  0x10,0x16,0x0E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,//'7
-  0x00,0x00,0x00,0xE0,0x18,0x04,0x02,0x00,0x00,0x00,0x00,0x07,0x18,0x20,0x40,0x00,//(8
-  0x00,0x02,0x04,0x18,0xE0,0x00,0x00,0x00,0x00,0x40,0x20,0x18,0x07,0x00,0x00,0x00,//)9
-  0x40,0x40,0x80,0xF0,0x80,0x40,0x40,0x00,0x02,0x02,0x01,0x0F,0x01,0x02,0x02,0x00,//*10
-  0x00,0x00,0x00,0xF0,0x00,0x00,0x00,0x00,0x01,0x01,0x01,0x1F,0x01,0x01,0x01,0x00,//+11
-  0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x80,0xB0,0x70,0x00,0x00,0x00,0x00,0x00,//,12
-  0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x01,0x01,0x01,0x01,0x01,0x01,0x01,//-13
-  0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x30,0x30,0x00,0x00,0x00,0x00,0x00,//.14
-  0x00,0x00,0x00,0x00,0x80,0x60,0x18,0x04,0x00,0x60,0x18,0x06,0x01,0x00,0x00,0x00,///15
-  0x00,0xE0,0x10,0x08,0x08,0x10,0xE0,0x00,0x00,0x0F,0x10,0x20,0x20,0x10,0x0F,0x00,//016
-  0x00,0x10,0x10,0xF8,0x00,0x00,0x00,0x00,0x00,0x20,0x20,0x3F,0x20,0x20,0x00,0x00,//117
-  0x00,0x70,0x08,0x08,0x08,0x88,0x70,0x00,0x00,0x30,0x28,0x24,0x22,0x21,0x30,0x00,//218
-  0x00,0x30,0x08,0x88,0x88,0x48,0x30,0x00,0x00,0x18,0x20,0x20,0x20,0x11,0x0E,0x00,//319
-  0x00,0x00,0xC0,0x20,0x10,0xF8,0x00,0x00,0x00,0x07,0x04,0x24,0x24,0x3F,0x24,0x00,//420
-  0x00,0xF8,0x08,0x88,0x88,0x08,0x08,0x00,0x00,0x19,0x21,0x20,0x20,0x11,0x0E,0x00,//521
-  0x00,0xE0,0x10,0x88,0x88,0x18,0x00,0x00,0x00,0x0F,0x11,0x20,0x20,0x11,0x0E,0x00,//622
-  0x00,0x38,0x08,0x08,0xC8,0x38,0x08,0x00,0x00,0x00,0x00,0x3F,0x00,0x00,0x00,0x00,//723
-  0x00,0x70,0x88,0x08,0x08,0x88,0x70,0x00,0x00,0x1C,0x22,0x21,0x21,0x22,0x1C,0x00,//824
-  0x00,0xE0,0x10,0x08,0x08,0x10,0xE0,0x00,0x00,0x00,0x31,0x22,0x22,0x11,0x0F,0x00,//925
-  0x00,0x00,0x00,0xC0,0xC0,0x00,0x00,0x00,0x00,0x00,0x00,0x30,0x30,0x00,0x00,0x00,//:26
-  0x00,0x00,0x00,0x80,0x00,0x00,0x00,0x00,0x00,0x00,0x80,0x60,0x00,0x00,0x00,0x00,//;27
-  0x00,0x00,0x80,0x40,0x20,0x10,0x08,0x00,0x00,0x01,0x02,0x04,0x08,0x10,0x20,0x00,//<28
-  0x40,0x40,0x40,0x40,0x40,0x40,0x40,0x00,0x04,0x04,0x04,0x04,0x04,0x04,0x04,0x00,//=29
-  0x00,0x08,0x10,0x20,0x40,0x80,0x00,0x00,0x00,0x20,0x10,0x08,0x04,0x02,0x01,0x00,//>30
-  0x00,0x70,0x48,0x08,0x08,0x08,0xF0,0x00,0x00,0x00,0x00,0x30,0x36,0x01,0x00,0x00,//?31
-  0xC0,0x30,0xC8,0x28,0xE8,0x10,0xE0,0x00,0x07,0x18,0x27,0x24,0x23,0x14,0x0B,0x00,//@32
-  0x00,0x00,0xC0,0x38,0xE0,0x00,0x00,0x00,0x20,0x3C,0x23,0x02,0x02,0x27,0x38,0x20,//A33
-  0x08,0xF8,0x88,0x88,0x88,0x70,0x00,0x00,0x20,0x3F,0x20,0x20,0x20,0x11,0x0E,0x00,//B34
-  0xC0,0x30,0x08,0x08,0x08,0x08,0x38,0x00,0x07,0x18,0x20,0x20,0x20,0x10,0x08,0x00,//C35
-  0x08,0xF8,0x08,0x08,0x08,0x10,0xE0,0x00,0x20,0x3F,0x20,0x20,0x20,0x10,0x0F,0x00,//D36
-  0x08,0xF8,0x88,0x88,0xE8,0x08,0x10,0x00,0x20,0x3F,0x20,0x20,0x23,0x20,0x18,0x00,//E37
-  0x08,0xF8,0x88,0x88,0xE8,0x08,0x10,0x00,0x20,0x3F,0x20,0x00,0x03,0x00,0x00,0x00,//F38
-  0xC0,0x30,0x08,0x08,0x08,0x38,0x00,0x00,0x07,0x18,0x20,0x20,0x22,0x1E,0x02,0x00,//G39
-  0x08,0xF8,0x08,0x00,0x00,0x08,0xF8,0x08,0x20,0x3F,0x21,0x01,0x01,0x21,0x3F,0x20,//H40
-  0x00,0x08,0x08,0xF8,0x08,0x08,0x00,0x00,0x00,0x20,0x20,0x3F,0x20,0x20,0x00,0x00,//I41
-  0x00,0x00,0x08,0x08,0xF8,0x08,0x08,0x00,0xC0,0x80,0x80,0x80,0x7F,0x00,0x00,0x00,//J42
-  0x08,0xF8,0x88,0xC0,0x28,0x18,0x08,0x00,0x20,0x3F,0x20,0x01,0x26,0x38,0x20,0x00,//K43
-  0x08,0xF8,0x08,0x00,0x00,0x00,0x00,0x00,0x20,0x3F,0x20,0x20,0x20,0x20,0x30,0x00,//L44
-  0x08,0xF8,0xF8,0x00,0xF8,0xF8,0x08,0x00,0x20,0x3F,0x00,0x3F,0x00,0x3F,0x20,0x00,//M45
-  0x08,0xF8,0x30,0xC0,0x00,0x08,0xF8,0x08,0x20,0x3F,0x20,0x00,0x07,0x18,0x3F,0x00,//N46
-  0xE0,0x10,0x08,0x08,0x08,0x10,0xE0,0x00,0x0F,0x10,0x20,0x20,0x20,0x10,0x0F,0x00,//O47
-  0x08,0xF8,0x08,0x08,0x08,0x08,0xF0,0x00,0x20,0x3F,0x21,0x01,0x01,0x01,0x00,0x00,//P48
-  0xE0,0x10,0x08,0x08,0x08,0x10,0xE0,0x00,0x0F,0x18,0x24,0x24,0x38,0x50,0x4F,0x00,//Q49
-  0x08,0xF8,0x88,0x88,0x88,0x88,0x70,0x00,0x20,0x3F,0x20,0x00,0x03,0x0C,0x30,0x20,//R50
+   0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,//0
+   0x00,0x00,0x00,0xF8,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x33,0x30,0x00,0x00,0x00,//!1
+   0x00,0x10,0x0C,0x06,0x10,0x0C,0x06,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,//"2
+   0x40,0xC0,0x78,0x40,0xC0,0x78,0x40,0x00,0x04,0x3F,0x04,0x04,0x3F,0x04,0x04,0x00,//#3
+   0x00,0x70,0x88,0xFC,0x08,0x30,0x00,0x00,0x00,0x18,0x20,0xFF,0x21,0x1E,0x00,0x00,//$4
+   0xF0,0x08,0xF0,0x00,0xE0,0x18,0x00,0x00,0x00,0x21,0x1C,0x03,0x1E,0x21,0x1E,0x00,//%5
+   0x00,0xF0,0x08,0x88,0x70,0x00,0x00,0x00,0x1E,0x21,0x23,0x24,0x19,0x27,0x21,0x10,//&6
+   0x10,0x16,0x0E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,//'7
+   0x00,0x00,0x00,0xE0,0x18,0x04,0x02,0x00,0x00,0x00,0x00,0x07,0x18,0x20,0x40,0x00,//(8
+   0x00,0x02,0x04,0x18,0xE0,0x00,0x00,0x00,0x00,0x40,0x20,0x18,0x07,0x00,0x00,0x00,//)9
+   0x40,0x40,0x80,0xF0,0x80,0x40,0x40,0x00,0x02,0x02,0x01,0x0F,0x01,0x02,0x02,0x00,//*10
+   0x00,0x00,0x00,0xF0,0x00,0x00,0x00,0x00,0x01,0x01,0x01,0x1F,0x01,0x01,0x01,0x00,//+11
+   0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x80,0xB0,0x70,0x00,0x00,0x00,0x00,0x00,//,12
+   0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x01,0x01,0x01,0x01,0x01,0x01,0x01,//-13
+   0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x30,0x30,0x00,0x00,0x00,0x00,0x00,//.14
+   0x00,0x00,0x00,0x00,0x80,0x60,0x18,0x04,0x00,0x60,0x18,0x06,0x01,0x00,0x00,0x00,///15
+   0x00,0xE0,0x10,0x08,0x08,0x10,0xE0,0x00,0x00,0x0F,0x10,0x20,0x20,0x10,0x0F,0x00,//016
+   0x00,0x10,0x10,0xF8,0x00,0x00,0x00,0x00,0x00,0x20,0x20,0x3F,0x20,0x20,0x00,0x00,//117
+   0x00,0x70,0x08,0x08,0x08,0x88,0x70,0x00,0x00,0x30,0x28,0x24,0x22,0x21,0x30,0x00,//218
+   0x00,0x30,0x08,0x88,0x88,0x48,0x30,0x00,0x00,0x18,0x20,0x20,0x20,0x11,0x0E,0x00,//319
+   0x00,0x00,0xC0,0x20,0x10,0xF8,0x00,0x00,0x00,0x07,0x04,0x24,0x24,0x3F,0x24,0x00,//420
+   0x00,0xF8,0x08,0x88,0x88,0x08,0x08,0x00,0x00,0x19,0x21,0x20,0x20,0x11,0x0E,0x00,//521
+   0x00,0xE0,0x10,0x88,0x88,0x18,0x00,0x00,0x00,0x0F,0x11,0x20,0x20,0x11,0x0E,0x00,//622
+   0x00,0x38,0x08,0x08,0xC8,0x38,0x08,0x00,0x00,0x00,0x00,0x3F,0x00,0x00,0x00,0x00,//723
+   0x00,0x70,0x88,0x08,0x08,0x88,0x70,0x00,0x00,0x1C,0x22,0x21,0x21,0x22,0x1C,0x00,//824
+   0x00,0xE0,0x10,0x08,0x08,0x10,0xE0,0x00,0x00,0x00,0x31,0x22,0x22,0x11,0x0F,0x00,//925
+   0x00,0x00,0x00,0xC0,0xC0,0x00,0x00,0x00,0x00,0x00,0x00,0x30,0x30,0x00,0x00,0x00,//:26
+   0x00,0x00,0x00,0x80,0x00,0x00,0x00,0x00,0x00,0x00,0x80,0x60,0x00,0x00,0x00,0x00,//;27
+   0x00,0x00,0x80,0x40,0x20,0x10,0x08,0x00,0x00,0x01,0x02,0x04,0x08,0x10,0x20,0x00,//<28
+   0x40,0x40,0x40,0x40,0x40,0x40,0x40,0x00,0x04,0x04,0x04,0x04,0x04,0x04,0x04,0x00,//=29
+   0x00,0x08,0x10,0x20,0x40,0x80,0x00,0x00,0x00,0x20,0x10,0x08,0x04,0x02,0x01,0x00,/>30
+   0x00,0x70,0x48,0x08,0x08,0x08,0xF0,0x00,0x00,0x00,0x00,0x30,0x36,0x01,0x00,0x00,//?31
+   0xC0,0x30,0xC8,0x28,0xE8,0x10,0xE0,0x00,0x07,0x18,0x27,0x24,0x23,0x14,0x0B,0x00,//@32
+   0x00,0x00,0xC0,0x38,0xE0,0x00,0x00,0x00,0x20,0x3C,0x23,0x02,0x02,0x27,0x38,0x20,//A33
+   0x08,0xF8,0x88,0x88,0x88,0x70,0x00,0x00,0x20,0x3F,0x20,0x20,0x20,0x11,0x0E,0x00,//B34
+   0xC0, 0x30, 0x08, 0x08, 0x08, 0x08, 0x38, 0x00, 0x07, 0x18, 0x20, 0x20, 0x20, 0x10, 0x08, 0x00, //C35
+   0x08,0xF8,0x08,0x08,0x08,0x10,0xE0,0x00,0x20,0x3F,0x20,0x20,0x20,0x10,0x0F,0x00,//D36
+   0x08,0xF8,0x88,0x88,0xE8,0x08,0x10,0x00,0x20,0x3F,0x20,0x20,0x23,0x20,0x18,0x00,//E37
+   0x08,0xF8,0x88,0x88,0xE8,0x08,0x10,0x00,0x20,0x3F,0x20,0x00,0x03,0x00,0x00,0x00,//F38
+   0xC0, 0x30, 0x08, 0x08, 0x08, 0x38, 0x00, 0x00, 0x07, 0x18, 0x20, 0x20, 0x22, 0x1E, 0x02, 0x00, //G39
+   0x08,0xF8,0x08,0x00,0x00,0x08,0xF8,0x08,0x20,0x3F,0x21,0x01,0x01,0x21,0x3F,0x20,//H40
+   0x00,0x08,0x08,0xF8,0x08,0x08,0x00,0x00,0x00,0x20,0x20,0x3F,0x20,0x20,0x00,0x00,//I41
+   0x00,0x00,0x08,0x08,0xF8,0x08,0x08,0x00,0xC0,0x80,0x80,0x80,0x7F,0x00,0x00,0x00,//J42
+   0x08,0xF8,0x88,0xC0,0x28,0x18,0x08,0x00,0x20,0x3F,0x20,0x01,0x26,0x38,0x20,0x00,//K43
+   0x08,0xF8,0x08,0x00,0x00,0x00,0x00,0x00,0x20,0x3F,0x20,0x20,0x20,0x20,0x30,0x00,//L44
+   0x08,0xF8,0xF8,0x00,0xF8,0xF8,0x08,0x00,0x20,0x3F,0x00,0x3F,0x00,0x3F,0x20,0x00,//M45
+   0x08,0xF8,0x30,0xC0,0x00,0x08,0xF8,0x08,0x20,0x3F,0x20,0x00,0x07,0x18,0x3F,0x00,//N46
+   0xE0,0x10,0x08,0x08,0x08,0x10,0xE0,0x00,0x0F,0x10,0x20,0x20,0x20,0x10,0x0F,0x00,//O47
+   0x08,0xF8,0x08,0x08,0x08,0x08,0xF0,0x00,0x20,0x3F,0x21,0x01,0x01,0x01,0x00,0x00,//P48
+   0xE0,0x10,0x08,0x08,0x08,0x10,0xE0,0x00,0x0F,0x18,0x24,0x24,0x38,0x50,0x4F,0x00,//Q49
+   0x08,0xF8,0x88,0x88,0x88,0x88,0x70,0x00,0x20,0x3F,0x20,0x00,0x03,0x0C,0x30,0x20,//R50
   0x00,0x70,0x88,0x08,0x08,0x08,0x38,0x00,0x00,0x38,0x20,0x21,0x21,0x22,0x1C,0x00,//S51
   0x18,0x08,0x08,0xF8,0x08,0x08,0x18,0x00,0x00,0x00,0x20,0x3F,0x20,0x00,0x00,0x00,//T52
   0x08,0xF8,0x08,0x00,0x00,0x08,0xF8,0x08,0x00,0x1F,0x20,0x20,0x20,0x20,0x1F,0x00,//U53
@@ -403,7 +402,7 @@ void SSD1306()
   Writec(0X80);
   Writec(0XD9);//set pre-charge period
   Writec(0X11);
-  Writec(0XDa);//set COM pins
+  Writec(0XDa);//setCOM pins
   Writec(0X12);
   Writec(0X8d);/*set charge pump enable*/
   Writec(0X14);
@@ -498,39 +497,41 @@ void loop()
       while(1);
 }
 
+
 </code></pre>
 </details>
-After the input is complete, click "Compile" to check the code for errors. After making sure there are no errors, you can start uploading. After clicking "Upload", the IDE will send the code to the Leaf-S3 motherboard. After the upload is complete, the OLED display will display the words "BananaPi banana-pi.org".
 
-### Code Analysis
+After the input is complete, click "Compile" to check the code for errors. After making sure there are no errors, you can start uploading. After clicking "Upload", the IDE will send the code to the Leaf-S3 motherboard. When the upload is complete, the OLED display will show "BananaPi banana-pi.org".
 
-Compared with the previous projects, the code of this project is more, mainly based on the direct drive of the bottom register of the OLED display based on I2C communication.
+### I2C Experiment: Code Analysis
 
-````
+Compared with the previous projects, the code of this project is more, mainly based on the direct drive of the underlying registers of the OLED display based on I2C communication.
+
+```
 void Writec(unsigned char COM)
-````
+```
 
-Set the register function, set the OLED display through I2C, the I2C usage method is fully compatible with Arduino.
+Set the register function, set the OLED display through I2C, and the method of using I2C is fully compatible with Arduino.
 
-````
-void Written(unsigned char DATA)
-````
+```
+void Writed(unsigned char DATA)
+```
 
 Write data function, I2C usage is fully compatible with Arduino.
 
->Note: Leaf-S3's I2C is fully compatible with Arduino, mainly by calling the Wire library file.
+>Note: The I2C of Leaf-S3 is fully compatible with Arduino, mainly for calling the Wire library file.
 
-## Project 5 SPI
+## Item Five SPI
 
-In many sensors, SPI communication is used, because the SPI communication rate is faster than I2C, and there is no disadvantage of address conflict. SPI is a high-speed, full-duplex, synchronous communication bus, and Leaf-S3's SPI can be configured to all I/Os, and you can read the underlying code for use (not recommended for beginners). For a better user experience, Leaf-S3 is configured with IO35, IO36, and IO37 as SPI ports by default, and is fully compatible with Arduino in use. This project uses Leaf-S3 to read the data of the BME280 temperature and humidity sensor through SPI. The BME280 library file is used in the example. For the SPI driver, you can read the BEM280 library file, [click the link](https://github.com/ DFRobot/DFRobot_BME280) to download the BME280 library file.
+In many sensors, SPI communication is used, because the SPI communication rate is faster than I2C, and there is no disadvantage of address conflict. SPI is a high-speed, full-duplex, synchronous communication bus, and the SPI of Leaf-S3 can be configured to all I/Os, and you can read the underlying code for use (it is not recommended for beginners). For a better user experience, Leaf-S3 is configured with IO35, IO36, and IO37 as SPI ports by default, and is fully compatible with Arduino in use. This project uses Leaf-S3 to read the data of BME280 temperature and humidity sensor through SPI. The BME280 library file is used in the example. You can read the BEM280 library file about the SPI driver. [Click the link](https://github.com/ DFRobot/DFRobot_BME280) to download the BME280 library file.
 
-### Required components
+### SPI Experiment: Required Components
 
-BME280 Temperature and Humidity Sensor X 1
+BME280 temperature and humidity sensor X 1
 
 ![](../assets/images/Lesson5-1.png)
 
->Note: BME280 sensor itself supports I2C and SPI communication, here we use SPI communication.
+>Note: The BME280 sensor itself supports I2C and SPI communication, here we use SPI communication.
 
 Breadboard X 1
 
@@ -540,9 +541,9 @@ Leaf-S3 Motherboard X 1
 
 ![](../assets/images/Leaf-S3.png)
 
-### Enter code
+### SPI experiment: code
 
-Open the Arduino IDE. Although it is possible to copy the code directly, we recommend that you enter the code manually to familiarize yourself with it. (This program requires the DFRobot_BME280 library, which needs to be downloaded at [GitHub](https://github.com/DFRobot/DFRobot_BME280), and unzip it to the Arduino\ Library folder) The code is as follows:
+Open the Arduino IDE. Although the code can be copied directly, we recommend that you manually enter the code yourself to familiarize yourself. (This program requires the DFRobot_BME280 library, which needs to be downloaded from [GitHub](https://github.com/DFRobot/DFRobot_BME280) and uncompressed to the Arduino\ Library folder.) The code is as follows:
 
 <details>
 <summary>Expand to view</summary>
@@ -552,35 +553,35 @@ Open the Arduino IDE. Although it is possible to copy the code directly, we reco
  * read_data_spi.ino
  *
  * Download this demo to test read data from bme280, connect sensor through spi interface
- *Connect cs pin to io 2
+ * Connect cs pin to io 2
  * Data will print on your serial monitor
  *
- * Copyright [DFRobot](http://www.dfrobot.com), 2016
- * Copyright GNU Lesser General Public License
+ * Copyright   [DFRobot](http://www.dfrobot.com), 2016
+ * Copyright   GNU Lesser General Public License
  *
- * version V1.0
- * date 12/03/2019
+ * version  V1.0
+ * date  12/03/2019
  */
 
 #include "DFRobot_BME280.h"
 #include "Wire.h"
 
-typedef DFRobot_BME280_SPI BME; // ******** use abbreviations instead of full names ********
+typedef DFRobot_BME280_SPI    BME;    // ******** use abbreviations instead of full names ********
 
-#define PIN_CS 2
+# define PIN_CS   2
 
-BME bme(&SPI, PIN_CS); // select TwoWire peripheral and set cs pin id
+BME   bme(&SPI, PIN_CS);   // select TwoWire peripheral and set cs pin id
 
-#define SEA_LEVEL_PRESSURE 1015.0f
+#define SEA_LEVEL_PRESSURE    1015.0f
 
 // show last sensor operate status
 void printLastOperateStatus(BME::eStatus_t eStatus)
 {
   switch(eStatus) {
-  case BME::eStatusOK: Serial.println("everything ok"); break;
-  case BME::eStatusErr: Serial.println("unknow error"); break;
-  case BME::eStatusErrDeviceNotDetected: Serial.println("device not detected"); break;
-  case BME::eStatusErrParameter: Serial.println("parameter error"); break;
+  case BME::eStatusOK:    Serial.println("everything ok"); break;
+  case BME::eStatusErr:   Serial.println("unknow error"); break;
+  case BME::eStatusErrDeviceNotDetected:    Serial.println("device not detected"); break;
+  case BME::eStatusErrParameter:    Serial.println("parameter error"); break;
   default: Serial.println("unknow status"); break;
   }
 }
@@ -601,18 +602,18 @@ void setup()
 
 void loop()
 {
-  float temp = bme.getTemperature();
-  uint32_t press = bme.getPressure();
-  float alti = bme.calAltitude(SEA_LEVEL_PRESSURE, press);
-  float humi = bme.getHumidity();
+  float   temp = bme.getTemperature();
+  uint32_t    press = bme.getPressure();
+  float   alti = bme.calAltitude(SEA_LEVEL_PRESSURE, press);
+  float   humi = bme.getHumidity();
 
   Serial.println();
-  Serial.println("======== start print =======");
+  Serial.println("======== start print ========");
   Serial.print("temperature (unit Celsius): "); Serial.println(temp);
-  Serial.print("pressure (unit pa): "); Serial.println(press);
-  Serial.print("altitude (unit meter): "); Serial.println(alti);
-  Serial.print("humidity (unit percent): "); Serial.println(humi);
-  Serial.println("======== end print =======");
+  Serial.print("pressure (unit pa):         "); Serial.println(press);
+  Serial.print("altitude (unit meter):      "); Serial.println(alti);
+  Serial.print("humidity (unit percent):    "); Serial.println(humi);
+  Serial.println("========  end print  ========");
 
   delay(1000);
 }
@@ -621,29 +622,29 @@ void loop()
 </code></pre>
 </details>
 
- After the input is complete, click "Compile" to check the code for errors. After making sure there are no errors, you can start uploading. After clicking "Upload", the IDE will send the code to the Leaf-S3 motherboard. Open the Arduino serial monitor, you can see the print information as follows:
+  After the input is complete, click "Compile" to check the code for errors. After making sure there are no errors, you can start uploading. After clicking "Upload", the IDE will send the code to the Leaf-S3 motherboard. Open the Arduino serial monitor, you can see the printed information as follows:
 
 ![](../assets/images/Lesson5-2.png)
 
-### Code Analysis
+### SPI Experiment: Code Analysis
 
- The purpose is to use the BME280 library file, and the SPI bottom layer is not operated in the Item-5.ino file. However, the SPI of the Leaf ESP32-S3 is fully compatible with Arduino.
+  This project uses the BME280 library file, and the SPI bottom layer is not operated in the Item-5.ino file. However, the SPI of Leaf ESP32-S3 is fully compatible with Arduino.
 
 ## Item Six WS2812
 
- Leaf-S3 integrates an RGB color light with model number WS2812. This project is an experiment to light up the RGB lights of Leaf-S3.
+  Leaf-S3 integrates a WS2812 RGB color light. This project is an experiment to light up the RGB lights of Leaf-S3.
 
-### Required components
+### WS2812 Experiment: Required Components
 
 Leaf-S3 Motherboard X 1
 
 ![](../assets/images/Leaf-S3.png)
 
-> Note: No other sensors need to be connected for this project.
+> Note: This project does not require other sensors to be connected.
 
-### Enter code
+### WS2812 Experiments: Code
 
-Open the Arduino IDE. Although it is possible to copy the code directly, we recommend that you enter the code manually to familiarize yourself with it. (This program requires the Adafruit_NeoPixel library, which needs to be downloaded from [GitHub](https:/ /github.com/adafruit/Adafruit_NeoPixel) and unzipped to the Arduino\ Library folder) The code is as follows:
+Open the Arduino IDE. Although the code can be copied directly, we recommend that you manually enter the code yourself to familiarize yourself. (This program needs the Adafruit_NeoPixel library, which needs to be downloaded from [GitHub](https://github.com/adafruit/Adafruit_NeoPixel) and unzip to the Arduino\ Library folder.) The code is as follows:
 
 <details>
 <summary>Expand to view</summary>
@@ -655,7 +656,7 @@ Open the Arduino IDE. Although it is possible to copy the code directly, we reco
 
 #include <Adafruit_NeoPixel.h>
 #ifdef __AVR__
- #include <avr/power.h> // Required for 16 MHz Adafruit Trinket
+  #include <avr/power.h> // Required for 16 MHz Adafruit Trinket
 #endif
 
 // Which pin on the Arduino is connected to the NeoPixels?
@@ -706,7 +707,7 @@ After the input is complete, click "Compile" to check the code for errors. After
 
 > Note: You can modify the RGB values in the code if you need other colors.
 
-### Code Analysis
+### WS2812 Experiment: Code Analysis
 
 This project uses the WS2812 light integrated in Leaf-S3, and the default GPIO is 18.
 
@@ -726,7 +727,7 @@ Set the number of lights. If you want to connect more WS2812, you can change an 
 
 The Leaf-S3 provides up to 10 capacitive sensor GPIOs capable of detecting differences in capacitance caused by direct contact or proximity of fingers or other objects. This low-noise characteristic and high-sensitivity design of the circuit are suitable for smaller touch panels and can be directly used for touch switches. This project explains how to get the status of the touch sensor of Leaf-S3 through Arduino code, and print the status.
 
-### Required components
+### Touch Experiment: Required Components
 
 Leaf-S3 Motherboard X 1
 
@@ -734,7 +735,7 @@ Leaf-S3 Motherboard X 1
 
 > Note: This project does not require other sensors to be connected.
 
-### enter code
+### Touch experiment: code
 
 Open the Arduino IDE. Although the code can be copied directly, we recommend that you manually enter the code yourself to familiarize yourself.
 
@@ -762,7 +763,7 @@ After the input is complete, click "Compile" to check the code for errors. After
 
 ![](../assets/images/Lesson8-1.png)
 
-### Code Analysis
+### Touch Experiment: Code Analysis
 
 To get the GPIO status of the touch sensor, you only need to call the touchRead function. The function prototype is as follows:
 
@@ -850,9 +851,8 @@ Returns "0" for no touch and "1" for touch. The pins are T0~T9, and the pins cor
     <tr>
        <td>T14</td>
        <td>GPIO14</td>
-       <td>IO14</td>
-    </tr>
-    <tr>
-       <td></td>
-    </tr>
+       <td>IO14</td></tr>
+   <tr>
+      <td></td>
+   </tr>
 </table>
