@@ -214,6 +214,7 @@ while True:
     y=(4369*x+196605)/30
     ```
 7. The wiring method of the servo and BPI-PicoW-S3:
+
     |MG90S|BPI-PicoW-S3|
     | --- | --- |
     |GND brown|GND|
