@@ -168,7 +168,7 @@ ledpin.duty_cycle = 32768  # mid-point 0-65535 = 50 % duty-cycle
 ```py
 ledpin.duty_cycle = 65535
 ```
-3. 呼吸灯：
+3. 使用`while`和`for`循环生成呼吸灯：：
 ```py
 import board
 import pwmio

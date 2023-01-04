@@ -119,9 +119,9 @@ while 1:
 
 > All subsequent examples can be edited in the code.py file or copied and pasted into the REPL to run. However, after the program code in the code.py file is executed, the development board will return to the state when it is not running, and the state will not be retained, but the state will be retained when executed in the REPL.
 
-## 使引脚输出高低电平，控制LED
+## Make pins output high or low level, control the LED
 
-1. `board.LED`控制着PicoW-S3上的一颗单色LED发光二极管，高电平点亮，低电平熄灭，在REPL中输入以下代码：
+1. `board.LED` controls a single-color LED on PicoW-S3, high level is on, low level is off, enter the following code in the REPL:
 ```py
 import board
 import digitalio
@@ -130,7 +130,7 @@ ledpin.direction = digitalio.Direction.OUTPUT
 ledpin.value = True
 ```
 
-2. 或者这么做：
+1. Or:
 ```py
 import board
 import digitalio
@@ -138,7 +138,7 @@ ledpin = digitalio.DigitalInOut(board.LED)
 ledpin.switch_to_output(value=True) # value=1
 ```
 
-3. 让LED间隔0.5秒闪烁：
+3. Make the LED blink every 0.5 seconds:
 ```py
 import board
 import digitalio
@@ -151,24 +151,26 @@ while True:
     time.sleep(0.5)
 
 ```
-4. 在REPL中使用中断快捷键即可停止程序的运行。
+4. Use the KeyboardInterrupt(ctrl+c) in REPL to stop the running of the program.
 
-5. 在REPL中输入`import board;help(board)`即可列出所有可控制的引脚。`board.GP25` 与 `board.LED`完全相同。
+5. Enter `import board;help(board)` in the REPL interface of the Mu editor to list all controllable pins.
 
-## PWM输出，控制LED亮度
+6. `board.GP25` is exactly the same as `board.LED`.
 
-1. 可通过控制PWM占空比来控制LED灯亮度，控制占空比从0%~100%，采用16位精度，十进制为 0~65535 ，16进制为 0~FFFF 。在REPL中输入以下代码：
+## PWM output, control LED brightness
+
+1. The brightness of the LED light can be controlled by controlling the PWM duty cycle. The control duty cycle is from 0% to 100%, using 16-bit precision, 0 to 65535 in decimal and 0 to FFFF in hexadecimal. Enter the following code in the REPL:
 ```py
 import board
 import pwmio
 ledpin = pwmio.PWMOut(board.LED, frequency=25000, duty_cycle=0)
 ledpin.duty_cycle = 32768  # mid-point 0-65535 = 50 % duty-cycle
 ```
-2. 仅需在REPL中再次输入最后一行代码即可改变PWM占空比，使LED达到最大亮度：
+2. Just enter the last line of code again in the REPL to change the PWM duty cycle to bring the LED to maximum brightness:：
 ```py
 ledpin.duty_cycle = 65535
 ```
-3. 呼吸灯：
+3. Use `while` and `for` loops to make breathing lights:
 ```py
 import board
 import pwmio
@@ -183,45 +185,44 @@ while True:
         ledpin.duty_cycle = i
 ```
 
-## PWM输出，控制180度舵机
+## PWM Controlled Servo
 
 ![](../assets/images/MG90S-Wiring-Diagram.jpg)
 
 以MG90S舵机为例，其他各种舵机参考其对应的使用手册，在以下代码中修改相应的参数。
 
-1. MG90S舵机关键参数：
-   * 控制角度，0° ~ 180°
-   * PWM 占空时长控制，500us ~ 2500us 对应 0° ~ 180°
-   * 工作电压：4.8V 至 6V（典型值为 5V）
-   * 失速扭矩：1.8 kg/cm (4.8V)
-   * 最大失速扭矩：2.2 kg/cm (6V)
-   * 工作速度为 0.1s/60° (4.8V)
-2. 求取任意一个旋转角度所需的占空时长的表达式为：
+1. The key parameters of MG90S servo:
+   * Control angle, 0° ~ 180°
+   * PWM duty time control, 500us ~ 2500us corresponds to 0° ~ 180°
+   * Operating Voltage: 4.8V to 6V (5V typical)
+   * Stall torque: 1.8 kg/cm (4.8V)
+   * Maximum stall torque: 2.2 kg/cm (6V)
+   * Operating speed is 0.1s/60° (4.8V)
+2. The expression of the duty time required to find any rotation angle is:
    ```
-    设y为占空时长，x为旋转角度
+    Let y be the duty time and x be the rotation angle
     y=(2500-500)/180*x+500
     y=(100*x+4500)/9
     ```
-3. 根据参数，可以确定舵机角度由PWM波的高电平持续时长所控制，且由于舵机的控制必须由周期性的PWM波形控制，所以一个周期时长必须超过控制此舵机达到180°所需的占空时长，即超过2500us，则PWM频率要低于400hz。
-4. 设定PWM频率为200hz，则周期时长为5000us，对应控制此舵机旋转 0° ~ 180°的占空比为10% ~ 50% 。
-5. circuitpython的PWM占空比控制精度为16bit，100%占空比在 2进制中表达为 1111 1111 1111 1111，16进制表达为 FFFF，10进制表达为 65535。
-6. 求取任意一个旋转角度所需的占空比的表达式为：
+3. According to the parameters, it can be determined that the angle of the steering gear is controlled by the duration of the high level of the PWM wave. And since the control of the steering gear must be controlled by a periodic PWM waveform, the duration of one cycle must exceed the duty time required to control the steering gear to reach 180°, that is, if it exceeds 2500us, the PWM frequency should be lower than 400hz.
+4. Set the PWM frequency to 200hz, then the cycle duration is 5000us, and the corresponding duty cycle for controlling the servo to rotate from 0° to 180° is 10% to 50%.
+5. The PWM duty cycle control precision of CircuitPython is 16bit, 100% duty cycle is expressed as 1111 1111 1111 1111 in binary, FFFF in hexadecimal, and 65535 in decimal.
+6. The expression for finding the duty cycle required for any rotation angle is:
     ```
-    设y为占空比，x为旋转角度
+    Let y be the duty cycle and x the rotation angle
     y=((50-10)/180*x+10)/100*65535
     y=(4369*x+196605)/30
     ```
-7. 舵机与BPI-PicoW-S3的接线方式:
-   > BPI-PicoW-S3的VBS引脚可输出+5V；除GP0以外，所有GP引脚都可以用于输出PWM，仅需在程序中修改到对应引脚即可。
+7. The wiring method of the servo and BPI-PicoW-S3:
+    |MG90S|BPI-PicoW-S3|
+    | --- | --- |
+    |GND brown|GND|
+    |+5V red|VBUS|
+    |PWM orange|GP0|
 
-| 舵机 | BPI-PicoW-S3 |
-| :----: | :----: |
-| GND 棕色 | GND |
-| +5V 红色 | VBS |
-| PWM 橙色 | GP0 |
+    > The VBUS pin of BPI-PicoW-S3 can output +5V; except GP0, all GP pins can be used to output PWM, just need to modify the corresponding pin in the program.
 
-
-8. 根据以上表达式与参数设计一个可以任意控制此舵机旋转角度的程序：
+8. According to the above expressions and parameters, design a program that can arbitrarily control the rotation angle of this servo:
     ```py
     import board
     import pwmio
@@ -233,27 +234,27 @@ while True:
 
     servo_1.duty_cycle = get_duty_cycle(90)# 90 degrees
     ```
-9. 通过一个逻辑分析仪可以读出此程序所控制输出的PWM占空时长，与计算的数值应当相符。
+9. The PWM duty time of the output controlled by this program can be read out through a logic analyzer, which should be consistent with the calculated value.
    ![](../assets/images/MG90S_pulseveiw_2.png)
    ![](../assets/images/MG90S_pulseveiw_1.png)
 
-10. 使用列表设计一套连续的舵机动作：
-   ```py
-   import board
-   import pwmio
-   import time
-   servo_1 = pwmio.PWMOut(board.GP0, frequency=200, duty_cycle=0)#200hz, one cycle 5000us
+10. Use a list to design a set of consecutive servo actions:
+    ```py
+    import board
+    import pwmio
+    import time
+    servo_1 = pwmio.PWMOut(board.GP0, frequency=200, duty_cycle=0)#200hz, one cycle 5000us
 
-   def get_duty_cycle(x):
-       return int((4369*x+196605)/30) 
+    def get_duty_cycle(x):
+        return int((4369*x+196605)/30) 
 
-   action_list1 = [0,45,90,135,180,0,180,45,135,90]
+    action_list1 = [0,45,90,135,180,0,180,45,135,90]
 
-   while True:
-       for i in action_list1:
-           servo_1.duty_cycle = get_duty_cycle(i)
-           time.sleep(0.5)
-   ```
+    while True:
+        for i in action_list1:
+            servo_1.duty_cycle = get_duty_cycle(i)
+            time.sleep(0.5)
+    ```
 
 ## ADC输入，读取双轴摇杆坐标
 
