@@ -214,14 +214,13 @@ while True:
     y=(4369*x+196605)/30
     ```
 7. The wiring method of the servo and BPI-PicoW-S3:
-
-    |MG90S|BPI-PicoW-S3|
-    | --- | --- |
-    |GND brown|GND|
-    |+5V red|VBUS|
-    |PWM orange|GP0|
-
     > The VBUS pin of BPI-PicoW-S3 can output +5V; except GP0, all GP pins can be used to output PWM, just need to modify the corresponding pin in the program.
+
+|MG90S|BPI-PicoW-S3|
+| --- | --- |
+|GND brown|GND|
+|+5V red|VBUS|
+|PWM orange|GP0|
 
 8. According to the above expressions and parameters, design a program that can arbitrarily control the rotation angle of this servo:
     ```py
@@ -257,22 +256,25 @@ while True:
             time.sleep(0.5)
     ```
 
-## ADC输入，读取双轴摇杆坐标
+## ADC input, use a dual-axis joystick
 
 ![](../assets/images/Dual-axis_joystick.jpg)
 
-这是一个常见的双轴XY摇杆模块，使用了两个电位器最为其核心器件，通过芯片的ADC 模/数转换器 读取它们各自的电压数值，即可将读数转化为其在XY坐标轴上的位置。
+This is a common dual-axis XY joystick module, which uses two potentiometers as its core components. Read their respective voltage values through the ADC analog/digital converter of the chip, and then convert the reading to its position on the XY coordinate axis.
 
-| 双轴摇杆 | BPI-PicoW-S3 |
-| :----: | :----: |
-| GND  | GND |
-| +5V  | 3V3 |
-| VRx  | GP27_A1 |
-| VRY  | GP26_A0 |
+**Wiring reference**
 
-1. 在CircuitPython中提供的ADC精度是16bit，即最大值的16进制表达为 FFFF，10进制表达为 65535，对应的电压量程为0mv ~ 3300mv。BPI-PicoW-S3所使用的EPS32S3芯片实际ADC电压量程为0mv ~ 3100mv，所以实际应用时仅能测量到3100mv。
+|Joystick|BPI-PicoW-S3|
+| --- | --- |
+|GND|GND|
+|+5V|3V3|
+|VRx|GP27_A1|
+|VRy|GP26_A0|
 
-2. 基础ADC读数，读取两个电位器的数值，转换为电压数值。
+1. The ADC accuracy provided in CircuitPython is 16bit, that is, the hexadecimal expression of the maximum value is FFFF, the decimal expression is 65535, and the corresponding voltage range is 0mv ~ 3300mv. The actual ADC voltage range of the EPS32S3 chip used by BPI-PicoW-S3 is 0mv ~ 3100mv, so it can only measure 3100mv in actual application.
+
+2. Basic ADC readings, read the values of the two potentiometers, and convert them to voltage values.
+> Note that the xy axis is reversed in the code, and the dual-axis joystick module can be used after rotating it counterclockwise by 90°. This method can make the ADC reading increase when the joystick moves up the y-axis, and vice versa, which conforms to the law of the common rectangular coordinate system.
 ```python
 import board,analogio,time
 
@@ -289,11 +291,11 @@ while True:
     time.sleep(0.1)
 ```
 
-3. 在Mu编辑器中，点击`Plotter`图标即可显示绘图仪，可以实时将REPL输出的数值显示为与时间相关的折线图。
+3. In the Mu editor, click the `Plotter` icon to display the plotter, which can display the value output by REPL as a time-related line graph in real time.
 ![](../assets/images/circuitpython_plotter.png)
    
-4. 以下程序可实现校准坐标零点的功能。开始运行的前五秒，请静止摇杆等待获取零点数值。
-> 注意代码中将xy轴对换了，将双轴摇杆模块逆时针旋转90°即可对应使用。此做法可使摇杆在y轴上移时ADC读数增加，反之减少，符合常见直角坐标系的规律。
+4. The following program can realize the function of calibrating the coordinate zero point. In the first five seconds of running, please stop the joystick and wait for the zero point value to be obtained.
+
 ```python
 import board,analogio,time
 
@@ -322,7 +324,7 @@ while True:
     print((x_axis,y_axis))
     time.sleep(0.1)
 ```
-5. 以下程序可获取摇杆方向，这是双轴摇杆最常见的应用。
+5. The following program gets the joystick direction, which is the most common application for dual-axis joysticks.
 ```python
 import board,analogio,time
 
@@ -376,7 +378,7 @@ while True:
     print(get_direction(zero = zero))
     time.sleep(0.1)
 ```
-6. 以下程序可设置坐标精度等级，计算每级跨度，可以按需求消除抖动，增强数据的实用性。
+6. The following program can set the coordinate accuracy level, calculate the span of each level, eliminate the jitter as required, and enhance the practicality of the data.
 ```python
 import board,analogio,time
 
@@ -444,12 +446,12 @@ while True:
     time.sleep(0.1)
 ```
 
-## 使用增量型旋转编码器
+## Using incremental rotary encoders
 ![](../assets/images/rotary_incremental_encoder_pic.png) ![](../assets/images/rotary_incremental_encoder_pic_1.jpg)
 
-**接线参考**
+**Wiring reference**
 
-|**增量型旋转编码器**|**BPI-PicoW-S3**|
+|**Incremental rotary encoder**|**BPI-PicoW-S3**|
 | --- | --- |
 |GND|GND|
 |+|VBUS|
@@ -457,18 +459,23 @@ while True:
 |DT|GP0|
 |CLK|GP1|
 
-1. 增量型旋转编码器外观粗看与一些常见的旋转电位器相似，其关键的不同之处大致分为三点。
-   1. 微控制器使用ADC外设来读取旋转电位器输出的模拟信号（电压值），确定转轴当前角位；微控制器通过GPIO接收增量型旋转编码器输出的数字信号，可通过软件程序判断信号所对应的转轴动作。
-   2. 微控制器可在一定精度下，确定旋转电位器转轴当前角位，但因为模拟信号的持续性与抗干扰能力差的原因，无法准确判断它是否有动作；增量型旋转编码器仅在转轴运动到一个触点时，向微控制器发出一段动作数字信号，如果一个增量型旋转编码器一周有20个触点，它旋转一周就触发20次动作信号，微控制器可以精确的判断它是否动作，向哪个方向转动，信号触发了多少次。
-   3. 旋转电位器通常不可向任意转向进行无限旋转，会停止在最大或最小限位点；增量型旋转编码器可向任意转向进行无限旋转。
-2. 增量型旋转编码器采用正交编码器生成其A和B的输出信号。从A和B输出发射的脉冲是正交编码的，这意味着当增量编码器以恒定速度运动时，A和B波形是方波，A和B之间存在90度的相位差。最终A和B信号将从两个管脚传输给微控制器。
+1. The appearance of the incremental rotary encoder is similar to some common rotary potentiometers, but there are three key differences.
+
+   1. The microcontroller uses the ADC peripheral to read the analog signal (voltage value) output by the rotary potentiometer to determine the current angular position of the shaft. The microcontroller receives the digital signal output by the incremental rotary encoder through GPIO, and can judge the movement of the rotating shaft corresponding to the signal through the software program.
+   2. Within a certain range of accuracy, the microcontroller can determine the current angular position of the rotary potentiometer shaft, but due to the continuity of the analog signal and poor anti-interference ability, it cannot accurately determine whether it has an action. The incremental rotary encoder sends a digital signal to the microcontroller only when the rotating shaft moves to a contact point, if an incremental rotary encoder has 20 contacts in one revolution, it will trigger 20 action signals for one revolution, and the microcontroller can accurately determine whether it moves, in which direction it turns, and how many times the signal is triggered.
+
+   3. Rotary potentiometers usually cannot rotate infinitely in any direction, and will stop at the maximum or minimum limit points. But incremental rotary encoders can rotate infinitely in any direction.
+
+2. Incremental rotary encoders use quadrature encoders to generate their A and B output signals. The pulses emitted from the A and B outputs are encoded in quadrature, which means that when the incremental encoder is moving at a constant velocity, the A and B waveforms are square waves with a 90 degree phase difference between A and B. Eventually the A and B signals will be delivered to the microcontroller from two pins.
     ![](../assets/images/rotary_incremental_encoder_pic_2.gif)
 
+3. Theoretically, at any given time, for a rotary encoder, there is a phase difference of +90° for clockwise rotation and −90° for counterclockwise rotation between the A and B signals, it depends on the design of the quadrature encoder inside the device.
 
-3. 理论上，在任何特定时间，对于旋转编码器，A和B信号之间，顺时针旋转的相位差为+90°，逆时针旋转的相位差为−90°，具体则取决于设备内部的正交编码器设计。
-4. A或B输出上的脉冲频率与转轴的速度（位置变化率）成正比。较高的频率表示较快的速度，而较低的频率表示较慢的速度。当转轴静止时，静态、不变的信号输出在A和B上，所以有很多测速方案使用增量型旋转编码器。
-> 参考 [维基百科: 增量编码器](https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_decoder) 。
-5. 用CircuitPython设计一个程序读取在GP0与GP1引脚上的信号，当其中一个发生变化时同时输出两个引脚当前的值，连接开发板与增量型旋转编码器后运行程序。
+4. The pulse frequency on the A or B output is proportional to the speed (rate of change of position) of the shaft. A higher frequency means a faster speed, while a lower frequency means a slower speed. When the shaft is stationary, the static, constant signal output is on A and B, so there are many speed measurement schemes using incremental rotary encoders.
+
+> See [Wikipedia:Incremental encoders](https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_decoder) .
+
+5. Use CircuitPython to design a program to read the signals on the GP0 and GP1 pins, and when one of them changes, output the values of the two pins at the same time, connect the development board and the incremental rotary encoder and run the program.
 ```python
 import board
 import digitalio
@@ -486,9 +493,10 @@ while True:
         clk_last_value = int(clk.value)
         print((dt_last_value,clk_last_value))
 ```
-6. 逐级转动转轴，观察输出信号，如果有逻辑分析仪或示波器也可接入观察。
+6. Turn the rotating shaft step by step to observe the output signal. If there is a logic analyzer or oscilloscope, it can also be connected to observe.
 
-   1. 转轴逆时针旋转时，REPL的输出。
+   1. When the shaft rotates counterclockwise, the REPL output:
+
    ```
    (1, 1)
    (1, 0)
@@ -500,10 +508,11 @@ while True:
    (0, 1)
    (1, 1)
    ```
-   2. 转轴逆时针旋转时，逻辑分析仪所观察到的波形。
+
+    2. When the shaft rotates counterclockwise, the waveform observed by the logic analyzer:
    ![](../assets/images/rotary_incremental_encoder_0.png)
 
-   3. 转轴顺时针旋转时，REPL的输出。
+   3. When the shaft rotates clockwise, the REPL output:
    ```
    (1, 1)
    (0, 1)
@@ -515,11 +524,11 @@ while True:
    (1, 0)
    (1, 1)
    ```
-   4. 转轴逆时针旋转时，逻辑分析仪所观察到的波形。
+   4. When the shaft rotates clockwise, the waveform observed by the logic analyzer:
    ![](../assets/images/rotary_incremental_encoder_1.png)
 
 
-7. 首先可以观察到的现象是，转轴完成一级动作后，两个引脚上的信号都为1，可以设计程序，当值都变为1时输出一次计数值，计数值可作为判断编码器完成一次动作的依据。
+7. The first thing that can be observed is that the signals on the two pins are both 1 after the shaft completes the first level of motion. Based on this, the program can be designed to output a count value when both the values of the two pins become 1, and this count value can be used as the basis for judging that the encoder has completed an action.
 ```python
 import board
 import digitalio
@@ -541,10 +550,14 @@ while True:
             print('--',count_1,'--')
             count += 1
 ```
-8. 再确定编码器顺时针旋转与逆时针旋转的动作，在两个引脚上输出的信号变化的规律与差异。
-  1. 逆时针旋转的规律为(1, 1)>(1, 0)>(0, 0)>(0, 1)>(1, 1)。
-  2. 顺时针旋转的规律为(1, 1)>(0, 1)>(0, 0)>(1, 0)>(1, 1)。
-  由此可设计一个顺时针旋转使计数+1，逆时针旋转使计数-1的程序，并加入消抖除错的功能。
+8. Then determine the law and difference of the signal output on the two pins when the encoder rotates clockwise and counterclockwise.
+
+   1. The law of counterclockwise rotation is (1, 1)>(1, 0)>(0, 0)>(0, 1)>(1, 1) .
+
+   2. The law of clockwise rotation is (1, 1)>(0, 1)>(0, 0)>(1, 0)>(1, 1) .
+
+   From this, we can design a program that rotates clockwise to make the count +1, and rotates counterclockwise to make the count -1, and add the function of debounce and error correction.
+
 ```python
 import board
 import digitalio
@@ -576,8 +589,9 @@ while True:
                 start_sign = 0
                 print('--',count,'--')
 ```
-9. 此程序中的消抖除错功能的实现，并不是逐步判断验证是否符合信号规律，或许还有更多办法可以实现消抖除错，欢迎讨论。
-10. 另外 CircuitPython 的rotaryio模块可直接实现正反转计数功能。（内部程序有所差异，但最终实现功能基本一致）。
+9. The implementation of the debounce and error elimination function in this program is not to gradually judge whether the verification conforms to the signal law. There may be more ways to achieve debounce and error elimination. Welcome to discuss.
+
+10. In addition, the `rotaryio` module of CircuitPython can directly realize the function of counting the forward and reverse. There are some differences in the internal procedures, but the final functions are basically the same.
 ```python
 import rotaryio
 import board
@@ -592,25 +606,28 @@ while True:
     last_position = position
 ```
 
-## 下载安装CircuitPython库，驱动ssd1306 oled屏幕
+## Download and install the CircuitPython library to drive the ssd1306 oled display module
 
 ![](../assets/images/adafruit_ssd1306_4.jpg)
 
-[CircuitPython库 官网页面](https://circuitpython.org/libraries)
-[Adafruit CircuitPython库 文档页面](https://docs.circuitpython.org/projects/bundle/en/latest/index.html)
-[Adafruit SSD1306 库 文档页面](https://docs.circuitpython.org/projects/ssd1306/en/latest/index.html)
-[Adafruit framebuf 库 文档页面](https://docs.circuitpython.org/projects/framebuf/en/latest/)
+[CircuitPython library official website](https://circuitpython.org/libraries)
 
-本节以ssd1306驱动库与framebuf库为例，指导如何下载安装CircuitPython库。
+[Adafruit CircuitPython Library Documentation Page](https://docs.circuitpython.org/projects/bundle/en/latest/index.html)
 
-1. 在新页面打开[Adafruit CircuitPython库 文档页面](https://docs.circuitpython.org/projects/bundle/en/latest/index.html)。
-2. 在页面中找到并打开 **SSD1306 OLED (framebuf)** 项，然后点击左侧的**Download from GitHub**项，跳转到其GitHub releases页面，点击 **adafruit-circuitpython-ssd1306-8.x-mpy-2.12.12.zip** 项将其下载到本地。
+[Adafruit SSD1306 Library Documentation Page](https://docs.circuitpython.org/projects/ssd1306/en/latest/index.html)
+
+[Adafruit framebuf Library Documentation Page](https://docs.circuitpython.org/projects/framebuf/en/latest/)
+
+This section takes ssd1306 driver library and framebuf library as examples to guide how to download and install CircuitPython library.
+
+1. Open the [Adafruit CircuitPython Library Documentation Page](https://docs.circuitpython.org/projects/bundle/en/latest/index.html) in a new page.
+2. Find and open the **SSD1306 OLED (framebuf)** item on the page, then click the **Download from GitHub** item on the left to jump to its GitHub releases page, click the **adafruit-circuitpython-ssd1306-8.x-mpy-2.12.12.zip** item to download it locally.
 ![](../assets/images/adafruit_ssd1306_1.jpg)
 ![](../assets/images/adafruit_ssd1306_2.jpg)
 ![](../assets/images/adafruit_ssd1306_3.jpg)
-3. 回到Adafruit CircuitPython库 文档页面，在页面中找到并打开 **Framebuf Module** 项，然后点击左侧的**Download from GitHub**项，跳转到其GitHub releases页面，点击 **adafruit-circuitpython-framebuf-8.x-mpy-1.4.14.zip** 项将其下载到本地。
-> 下载最新版本即可。
-4. 将下载的两个压缩包解压，内部文件夹结构如下：
+3. Go back to the Adafruit CircuitPython library documentation page, find and open the Framebuf Module item on the page, then click the Download from GitHub item on the left to jump to its GitHub releases page, click the adafruit-circuitpython-framebuf-8.x-mpy-1.4.14.zip item to download it locally.
+> Just download the latest version.
+4. Unzip the downloaded two compressed packages, the internal folder structure is as follows:
 ```
 ├─examples
 │  ├─xxx.py
@@ -627,12 +644,11 @@ while True:
    │ └─requirements.txt
    └─......
 ```
-5. examples文件夹中的是一些库的使用例程，lib文件夹中扩展名为`.mpy`的即是库文件，requirements文件夹中的 requirements.txt 文件，其中记录了各库文件所依赖的，必要的其他库文件名称，有一些已经包含在CircuitPython固件中，而不在其内的则需另外下载安装。例如 **adafruit_ssd1306** 库绘制图形和文字的方法全部依赖于**adafruit_framebuf** 库，所以我们在第3步中也将其下载到本地。
-6. 将两个lib文件夹中扩展名为`.mpy`的库文件复制到 **CIRCUITPY** 磁盘中的lib文件夹内，即可在程序中调用这两个库。
-7. adafruit_framebuf 库还需将其examples文件夹中的 **font5x8.bin** 文件复制到**CIRCUITPY** 磁盘中的根目录，即 code.py 文件所在的地方。此为字库文件，显示文字需要使用它。
-8. 将一块i2c协议的ssd1306 oled屏幕模块与开发板连接。
+5. In the examples folder are some library usage routines, in the lib folder the file with the extension `.mpy` is the library file, the requirements.txt file in the requirements folder records the names of other necessary library files that each library file depends on, some of which are already included in the CircuitPython firmware, and those that are not included need to be downloaded and installed separately. Such as, the methods of drawing graphics and text in the adafruit_ssd1306 library all depend on the adafruit_framebuf library, so we also download it to the local in step 3.
+7. The adafruit_framebuf library also needs to copy the **font5x8.bin** file in its examples folder to the root of the **CIRCUITPY** disk, where the code.py file is located. This is a font file, and it is needed to display text.
+8. Connect an i2c protocol ssd1306 oled display module to the development board.
 
-**接线参考**
+**Wiring Reference**
 
 | ssd1306 | BPI-PicoW-S3 |
 | :----: | :----: |
@@ -641,9 +657,7 @@ while True:
 | SCL  | GP0 |
 | SDA  | GP1 |
 
-1. 编辑 code.py 文件，在其中输入以下代码即可驱动此屏幕模块输出图形和字符。
-    修改代码中的变量 `bgColor`数值为1，即可使显示背景为白色，显示图形为黑色。
-    在两个库的文档中可查找到API参考，配合例程即可快速理解，上手使用ssd1306显示模块。
+9. Edit the code.py file and enter the following codes to drive the display module to output graphics and characters. Modify the value of the variable `bgColor` in the code to 1 to make the display background white and the display graphics black. You can find the API reference in the documentation of the two libraries, and you can quickly understand it with the routines, and get started with the ssd1306 display module.
 ```python
 import board
 import busio
@@ -714,13 +728,19 @@ for i in range(255):
 display.show()
 ```
 
-# 多功能应用
+# Multi function application
 
-## OLED实时动画显示双轴摇杆位置
+## OLED real-time animation display of dual-axis joystick position
 
-基于前文 [ADC输入，读取双轴摇杆坐标](#adc输入读取双轴摇杆坐标)与[下载安装CircuitPython库，驱动ssd1306 oled屏幕](#下载安装circuitpython库驱动ssd1306-oled屏幕) 章节，可设计一个使OLED实时动画显示双轴摇杆位置的程序。
+Based on the previous chapters :
 
-**接线参考**
+[ADC input, use a dual-axis joystick](#adc-input-use-a-dual-axis-joystick)
+
+[Download and install the CircuitPython library to drive the ssd1306 oled display module](#download-and-install-the-circuitpython-library-to-drive-the-ssd1306-oled-display-module)
+
+A program can be designed to make the OLED real-time animation display the position of the dual-axis joystick.
+
+**Wiring Reference**
 
 | ssd1306 | BPI-PicoW-S3 |
 | :----: | :----: |
@@ -729,7 +749,7 @@ display.show()
 | SCL  | GP0 |
 | SDA  | GP1 |
 
-| 双轴摇杆 | BPI-PicoW-S3 |
+| Joystick | BPI-PicoW-S3 |
 | :----: | :----: |
 | GND  | GND |
 | +5V  | 3V3 |
