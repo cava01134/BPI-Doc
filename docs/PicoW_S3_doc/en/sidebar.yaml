@@ -3,8 +3,6 @@ items:
     items:
     -   label: Introduction of PicoW-S3
         file: Unboxing/Introduction.md
-    -   label: get started quickly (for the first time, please see here)
-        file: Unboxing/Gettingstart.md
 -   label: 2. Code with CircuitPython
     items:
     -   label: Supported by CircuitPython
