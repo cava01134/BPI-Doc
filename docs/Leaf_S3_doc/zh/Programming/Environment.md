@@ -1,6 +1,8 @@
-# Micropython 运行环境搭建
+# MicroPython 使用环境搭建
 
-Micropython运行环境依赖于Python，所以在使用前我们需要先安装Python，这里我们使用的IDE是Thonny。
+MicroPython的使用并不依赖于特定的开发工具，只要能与开发板建立串口通信，即可获得 MicroPython的交互式解释器（REPL），而各种第三方工具则是以此为基础，提供一些其他的便利功能。
+
+比如多数IDE或编辑器都可以提供代码补全功能，一些工具则提供上传或下载文件的功能。
 
 ## 安装Python环境
 

@@ -69,13 +69,13 @@ pip install -U esptool
 通过以下命令清除flash，需要修改COM接口为对应的接口，此处为COM22。
 
 ```shell
-python -m esptool --chip esp32s3 --port COM22 erase_flash
+python -m esptool --chip esp32s3 --port COM1 erase_flash
 ```
 
 通过以下命令烧录固件，需要修改固件文件名为当前对应需要烧录的文件名。
 
 ```shell
-python -m esptool --chip esp32s3 --port com22 --baud 460800 --before=default_reset --after=hard_reset write_flash -z 0x0 firmware_name.bin
+python -m esptool --chip esp32s3 --port COM1 --baud 460800 --before=usb_reset --after=no_reset write_flash 0x0 GENERIC_S3_SPIRAM-20220618-v1.19.1.bin
 ```
 
 如果是通过USB烧录，完成后按一次RESET键复位，使开发板进入普通使用模式。

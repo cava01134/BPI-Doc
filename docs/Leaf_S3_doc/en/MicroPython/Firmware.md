@@ -36,7 +36,7 @@ At this point, you need to set the development board to firmware download mode.
 
 Under the condition that the chip is in the firmware download mode, modify the COM interface to the corresponding interface in the FLASH download tool window, here is COM22.
 
-Add MicroPython firmware, set the flash start address to `0x0000` for ESP32-S3 chip.
+Add MicroPython firmware, set the flash start address to `0x0` for ESP32-S3 chip.
 
 ![](../assets/images/Micropython_operating_env_8.png)
 
@@ -69,13 +69,13 @@ At this time, you need to set the development board to firmware download mode, s
 To clear the flash through the following commands, you need to modify the COM interface to the corresponding interface, here is COM22.
 
 ```shell
-python -m esptool --chip esp32s3 --port COM22 erase_flash
+python -m esptool --chip esp32s3 --port COM1 erase_flash
 ````
 
 To burn the firmware through the following commands, you need to modify the firmware file name corresponding to the current file name to be burned.
 
 ```shell
-python -m esptool --chip esp32s3 --port com22 --baud 460800 --before=default_reset --after=hard_reset write_flash -z 0x0 firmware_name.bin
+python -m esptool --chip esp32s3 --port COM1 --baud 460800 --before=usb_reset --after=no_reset write_flash 0x0 GENERIC_S3_SPIRAM-20220618-v1.19.1.bin
 ````
 
 If it is burned through USB, press the RESET button once to reset after completion, so that the development board enters the normal use mode.
