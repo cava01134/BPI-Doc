@@ -1,0 +1,21 @@
+items:
+-   label: 1. Unpacking Centi-S3 development board
+    items:
+    -   label: Introduction of Centi-S3
+        file: Unboxing/Introduction.md
+    -   label: get started quickly (for the first time, please see here)
+        file: Unboxing/Gettingstart.md
+-   label: 2. Code with MicroPython
+    items:
+    -   label: MicroPython environment construction
+        file: MicroPython/Environment.md
+    -   label: Micropython firmware download and burning
+        file: MicroPython/Firmware.md
+    -   label: basic function usage
+        file: MicroPython/Basic.md
+-   label: 3. Code with Arduino
+    items:
+    -   label: Arduino environment construction
+        file: Arduino/Environment.md
+    -   label: basic function usage
+        file: Arduino/Basic.md
