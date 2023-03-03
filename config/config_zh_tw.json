@@ -41,6 +41,11 @@
                 "position": "left"
             },
             {
+                "url": "/Centi_S3_doc/zh_tw/",
+                "label": "Centi-S3",
+                "position": "left"
+            },
+            {
                 "url": "/Leaf_S3_doc/zh_tw/",
                 "label": "Leaf-S3",
                 "position": "left"

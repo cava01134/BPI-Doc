@@ -14,6 +14,7 @@
             "/WebBit_doc/zh/": "docs/WebBit_doc/zh",
             "/Bit_S2_doc/zh/": "docs/Bit_S2_doc/zh",
             "/WebAI/zh/": "docs/WebAI/zh",
+            "/Centi_S3_doc/zh/": "docs/Centi_S3_doc/zh",
             "/Leaf_S3_doc/zh/": "docs/Leaf_S3_doc/zh",
             "/PicoW_S3_doc/zh/": "docs/PicoW_S3_doc/zh",
             "/Pico_RP2040_doc/zh/": "docs/Pico_RP2040_doc/zh",
@@ -26,6 +27,7 @@
         "assets": {
             "/static/": "static",
             "/Q-Car/zh/assets/":"docs/Q-Car/zh/assets",
+            "/Centi_S3_doc/zh/assets/":"docs/Centi_S3_doc/zh/assets",
             "/Leaf_S3_doc/zh/assets/":"docs/Leaf_S3_doc/zh/assets",
             "/PicoW_S3_doc/zh/assets/":"docs/PicoW_S3_doc/zh/assets",
             "/Pico_RP2040_doc/zh/assets/":"docs/Pico_RP2040_doc/zh/assets",
@@ -60,6 +62,16 @@
                 {
                     "url": "/Triode-Car/en/",
                     "src": "docs/Triode-Car/en"
+                }
+            ],
+            "/Centi_S3_doc/zh/": [
+                {
+                    "url": "/Centi_S3_doc/zh_tw/",
+                    "src": "docs/Centi_S3_doc/zh_tw"
+                },
+                {
+                    "url": "/Centi_S3_doc/en/",
+                    "src": "docs/Centi_S3_doc/en"
                 }
             ],
             "/Leaf_S3_doc/zh/": [
