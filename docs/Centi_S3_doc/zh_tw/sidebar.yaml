@@ -4,16 +4,6 @@ items:
 -   label: 二、開箱上手
     file: Unboxing.md
 -   label: 三、使用 MicroPython 快速上手
-    items:
-    -   label: 配置MicroPython環境
-        file: Programming/Environment.md
-    -   label: Micropython 固件下載與燒錄
-        file: Programming/Firmware.md
-    -   label: 基礎功能使用
-        file: Programming/Basic.md
+    file: MicroPython.md
 -   label: 四、使用 Arduino 快速上手
-    items:
-    -   label: 配置Arduino環境
-        file: Arduino/Environment.md
-    -   label: 基礎功能使用
-        file: Arduino/Basic.md
+    file: Arduino.md

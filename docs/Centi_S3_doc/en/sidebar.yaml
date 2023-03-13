@@ -4,16 +4,6 @@ items:
 -   label: 2. Unboxing
     file: Unboxing.md   
 -   label: 3. Getting started with MicroPython
-    items:
-    -   label: Configure MicroPython environment
-        file: MicroPython/Environment.md
-    -   label: Micropython firmware download and burning
-        file: MicroPython/Firmware.md
-    -   label: Basic Use Case
-        file: MicroPython/Basic.md
+    file: MicroPython.md
 -   label: 4. Getting started with Arduino
-    items:
-    -   label: Configure Arduino environment
-        file: Arduino/Environment.md
-    -   label: Basic Use Case
-        file: Arduino/Basic.md
+    file: Arduino.md

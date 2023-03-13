@@ -1,19 +1,9 @@
 items:
--   label: 一、Centi-S3 README
+-   label: 一、Centi-S3 自述
     file: README.md
 -   label: 二、开箱上手
     file: Unboxing.md
 -   label: 三、使用 MicroPython 快速上手
-    items:
-    -   label: 配置MicroPython环境
-        file: Programming/Environment.md
-    -   label: Micropython 固件下载与烧录
-        file: Programming/Firmware.md
-    -   label: 基础功能使用
-        file: Programming/Basic.md
+    file: MicroPython.md
 -   label: 四、使用 Arduino 快速上手
-    items:
-    -   label: 配置Arduino环境
-        file: Arduino/Environment.md
-    -   label: 基础功能使用
-        file: Arduino/Basic.md
+    file: Arduino.md
