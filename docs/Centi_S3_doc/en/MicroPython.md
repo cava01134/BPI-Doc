@@ -207,4 +207,3 @@ Every sync, mpbridge will automatically perform these file operations:
 1. Pull the files that are not in the local but exist in the device to the local.
 2. Push files that are not in the device but exist locally to the device.
 3. Check the hash of the files both in the local and the device,and then push the different files from the local to the device.
-
