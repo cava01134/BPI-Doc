@@ -184,13 +184,27 @@ PS C:\Users\Wind> cd D:\temp\temp
 PS D:\temp\temp>
 ```
 
-Now you can use the mpbridge tool to synchronize files, the command is as follows:
+Command to list all serial interfaces using mpbridge tool:
+```
+mpbridge list
+```
+
+Use the mpbridge tool to synchronize files, the command is as follows, pay attention to modify `COM1` to the actual corresponding serial port of the development board:
 ```
 mpbridge dev --auto-reset hard COM1
 ```
 
 ![](assets\images\vscode_terminal_mpbridge.png)
 
-When the synchronization is complete, you will be prompted to press the `Enter` key to enter the REPL.
+When the synchronization is completed, you will be prompted to press the `Enter` key. 
+
+After pressing the key, the development board will be hard reset, and the terminal will enter the MicroPython REPL.
 
 After pressing the keyboard shortcut `ctrl + ]` to exit the REPL, the file will be synchronized again immediately. At this time, you can choose to press `ctrl + C` to exit.
+
+Every sync, mpbridge will automatically perform these file operations:
+
+1. Pull the files that are not in the local but exist in the device to the local.
+2. Push files that are not in the device but exist locally to the device.
+3. Check the hash of the files both in the local and the device,and then push the different files from the local to the device.
+

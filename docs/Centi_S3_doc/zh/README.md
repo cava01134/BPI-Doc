@@ -22,14 +22,19 @@ BPI-Centi-S3 是一个板载1.9英寸彩屏的小尺寸ESP32-S3开发板，适�
 * 2 * JST SH 1mm 6-Pin
 * 1 * USB Type-C
 * 1 * MX 1.25mm 2-Pin 电池连接座，支持充电
+* 2 * M3螺丝孔
 
 ## 硬件
 
+### 硬件接口示意图
+
+![](assets\images\BPI-Centi-S3-V0.2-IO-1920-white.png)
+
 ### 硬件规格
 
-|   BPI-Centi-S3 规格表  |                                            |
+|                        |                                            |
 |:----------------------:|:------------------------------------------:|
-| SoC 主控芯片           | ESP32-S3，Xtensa® 32 位 LX7 双核处理器     |
+| SoC 主控芯片           | ESP32-S3，Xtensa® 32 位 LX7 双核处理器       |
 | 主频                   | 240MHz MAX                                 |
 | 片上 ROM               | 384 KB                                     |
 | 片上 SRAM              | 320 KB                                     |
@@ -38,21 +43,21 @@ BPI-Centi-S3 是一个板载1.9英寸彩屏的小尺寸ESP32-S3开发板，适�
 | WIFI                   | IEEE 802.11 b/g/n ，2.4Ghz频带，150Mbps    |
 | 蓝牙                   | Bluetooth 5 ，Bluetooth mesh               |
 | 外部晶振               | 40Mhz                                      |
-| RTC 和低功耗管理       | 电源管理单元 (PMU)+ 超低功耗协处理器 (ULP) |
+| RTC 和低功耗管理       | 电源管理单元 (PMU)+ 超低功耗协处理器 (ULP)   |
 | GPIO                   | 已引出9个可用GPIO到JST SH 插座             |
 | 支持外设               | I2C, SPI, PWM, UART, RMT, I2S, SD          |
-| JST SH 1mm 插座        | 1 x 4Pin，2 x 6Pin                         |
-| USB                    | 1 x 全速USB 2.0 OTG，Type-C母口            |
+| JST SH 1mm 插座        | 1 * 4Pin，2 * 6Pin                         |
+| USB                    | 1 * 全速USB 2.0 OTG，Type-C母口            |
 | USB Serial/JTAG 控制器 | 1，USB 全速标准，CDC-ACM ，JTAG            |
 | 屏幕尺寸               | 1.9 英寸                                   |
-| 屏幕分辨率             | 170 x 320 RGB                              |
+| 屏幕分辨率             | 170 * 320 RGB                              |
 | 屏幕控制芯片           | ST7789V3                                   |
 | 屏幕接口               | 8bit 8080 并口                             |
-| 编码器                 | 1 x 增量型旋转编码器，支持按压功能            |
+| 编码器                 | 1 * 增量型旋转编码器，支持按压功能            |
 | 蜂鸣器                 | 1                                          |
-| 彩色LED                | 1 x WS2812 2020                            |
+| 彩色LED                | 1 * WS2812 2020                            |
 | 按钮                   | RST 按钮，BOOT按钮                          |
-| 整机工作温度           | -20℃ ~ +60℃                                |
+| 整机工作温度           | -20℃ ~ +60℃                               |
 | 工作电压               | 3.3V                                       |
 | USB输入电压            | 3.3V~5.5V                                  |
 | 最大放电电流           | 2A@3.3V DC/DC                              |
@@ -62,9 +67,40 @@ BPI-Centi-S3 是一个板载1.9英寸彩屏的小尺寸ESP32-S3开发板，适�
 
 ### 硬件尺寸
 
-| BPI-Centi-S3 尺寸表 |                                 |
-|:-------------------:|:-------------------------------:|
-| 安装孔间距          |                                 |
-| 安装孔尺寸          |                                 |
-| 主板尺寸            | 26 × 63(mm)/1.02 x 2.48(inches) |
+![](assets\images\BPI-Centi-S3-V0.2_Dimensions.jpg)
 
+### 屏幕接线定义
+
+|      |                                                           |
+|:---------------------------:|:---------------------------------------------------------:|
+| ESP_LCD_BLK                 | GPIO2                                                     |
+| ESP_LCD_RES                 | GPIO3                                                     |
+| ESP_LCD_CS                  | GPIO4                                                     |
+| ESP_LCD_D/C                 | GPIO5                                                     |
+| ESP_LCD_WR                  | GPIO6                                                     |
+| ESP_LCD_RD                  | GPIO7                                                     |
+| ESP_LCD_D0                  | GPIO8                                                     |
+| ESP_LCD_D1                  | GPIO9                                                     |
+| ESP_LCD_D2                  | GPIO10                                                    |
+| ESP_LCD_D3                  | GPIO11                                                    |
+| ESP_LCD_D4                  | GPIO12                                                    |
+| ESP_LCD_D5                  | GPIO13                                                    |
+| ESP_LCD_D6                  | GPIO14                                                    |
+| ESP_LCD_D7                  | GPIO15                                                    |
+| ESP_TP_RESET                | GPIO16                                                    |
+| II2C_SCL                    | GPIO17                                                    |
+| II2C_SDA                    | GPIO18                                                    |
+| ESP_TP_INT                  | GPIO21                                                    |
+
+### 外设接线定义
+
+|                      |              |
+|:--------------------:|:------------:|
+| RST按键              | RST(CHIP_PU) |
+| BOOT按键             | GPIO0        |
+| BAT_ADC 电池电压检测 | GPIO1        |
+| 蜂鸣器               | GPIO36       |
+| EC_KEY 旋转编码器    | GPIO35       |
+| EC_A 旋转编码器      | GPIO37       |
+| EC_B 旋转编码器      | GPIO47       |
+| WS2812B-2020         | GPIO48       |
