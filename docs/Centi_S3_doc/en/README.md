@@ -28,7 +28,7 @@ Support USB and external 3.7V lithium battery power supply, can realize automati
 
 ### Hardware Interface Schematic Diagram
 
-![](assets\images\BPI-Centi-S3-V0.2-IO-1920-white.png)
+![](assets/images/BPI-Centi-S3-V0.2-IO-1920-white.png)
 
 ### Hardware Specifications
 
@@ -68,7 +68,7 @@ Support USB and external 3.7V lithium battery power supply, can realize automati
 
 ### Hardware Dimensions
 
-![](assets\images\BPI-Centi-S3-V0.2_Dimensions.jpg)
+![](assets/images/BPI-Centi-S3-V0.2_Dimensions.jpg)
 
 ### LCD Wiring Definition
 

@@ -1,6 +1,6 @@
 ## What is MicroPython?
 
-![](assets\images\Mircopython.png)
+![](assets/images/Mircopython.png)
 
 [MicroPython](https://micropython.org/) is a lean and efficient implementation of the Python 3 programming language that includes a small subset of the Python standard library and is optimised to run on microcontrollers and in constrained environments.
 
@@ -137,7 +137,7 @@ Click the Terminal/terminal of VScode to create a new terminal window and enter 
 
 If you are using other editors, or only use the local terminal of the system, you can also use it directly.
 
-![](assets\images\vscode_terminal.png)
+![](assets/images/vscode_terminal.png)
 
 `--help` can view all available commands of mpremote:
 ```
@@ -169,13 +169,13 @@ The main function of the mpbridge tool is to synchronize a local folder with the
 
 Create a new folder in a location you think is suitable locally on the PC, or select a folder, and then open the folder in VScode.
 
-![](assets\images\vscode_open_folder.png)
+![](assets/images/vscode_open_folder.png)
 
-![](assets\images\vscode_open_folder2.png)
+![](assets/images/vscode_open_folder2.png)
 
 Then open a terminal in VScode, and you can enter the path where this folder is located in the terminal.
 
-![](assets\images\vscode_terminal2.png)
+![](assets/images/vscode_terminal2.png)
 
 If you are using the default terminal, you can enter this path with `cd [absolute path to target folder]`.
 
@@ -194,7 +194,7 @@ Use the mpbridge tool to synchronize files, the command is as follows, pay atten
 mpbridge dev --auto-reset hard COM1
 ```
 
-![](assets\images\vscode_terminal_mpbridge.png)
+![](assets/images/vscode_terminal_mpbridge.png)
 
 When the synchronization is completed, you will be prompted to press the `Enter` key. 
 
