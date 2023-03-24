@@ -22,7 +22,9 @@ ESP-IDF是一个面向ESP32系列的官方开发框架，用于开发嵌入式�
 ## 安装前的准备
 
 ### 必备硬件
-* BPI-Leaf-S3开发板：[购买链接](https://item.taobao.com/item.htm?id=677287234553)（其他板子也可以）
+* BPI-Leaf-S3开发板：[购买链接](https://item.taobao.com/item.htm?id=677287234553)（其他ESP32板子也可以）
+
+![](../assets/Leaf-S3.png)
 
 * USB 数据线 (USB-A 转 Type-C)
 
@@ -121,3 +123,7 @@ sudo port install ccache
 安装结束之后，会如图显示All settings have been configured. You can close this window.
 
 ![](../assets/ESP-IDF_Configure_4.png)
+
+## 总结
+
+ESP-IDF的安装不难，主要是网络问题，国内用户可能会反复安装好几次，其他的不会有什么大的问题。
