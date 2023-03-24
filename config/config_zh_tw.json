@@ -85,8 +85,8 @@
                 ]
             },
             {
-                "url": "/About/zh_tw/",
-                "label": "關於我們",
+                "url": "/news/",
+                "label": "動態",
                 "position": "left"
             },
             {

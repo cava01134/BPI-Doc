@@ -85,8 +85,8 @@
                 ]
             },
             {
-                "url": "/About/zh/",
-                "label": "关于我们",
+                "url": "/news/",
+                "label": "动态",
                 "position": "left"
             },
             {

@@ -85,8 +85,8 @@
                 ]
             },
             {
-                "url": "/About/en/",
-                "label": "About us",
+                "url": "/news/",
+                "label": "news",
                 "position": "left"
             },
             {
