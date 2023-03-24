@@ -36,7 +36,8 @@
             "/WebAI/zh/assets/": "docs/WebAI/zh/assets",
             "/WebBit_dev/zh/assets/": "docs/WebBit_dev/zh/assets",
             "/WebBit_doc/zh/assets/": "docs/WebBit_doc/zh/assets",
-            "/Bit_S2_doc/zh/assets/": "docs/Bit_S2_doc/zh/assets"
+            "/Bit_S2_doc/zh/assets/": "docs/Bit_S2_doc/zh/assets",
+            "/news/assets/": "news/assets"
         },
         "blog": {
             "/news/": "news"
