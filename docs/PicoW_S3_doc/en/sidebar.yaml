@@ -12,7 +12,7 @@ items:
     -   label: How to update CircuitPython firmware
         file: CircuitPython/update_circuitpython.md
     -   label: How to upload tinyUF2 firmware
-        file: CircuitPython/update_circuitpython.md
+        file: CircuitPython/flash_tinyuf2.md
     -   label: Basic function usage
         file: CircuitPython/Basic.md
 -   label: 3. Code with Arduino
