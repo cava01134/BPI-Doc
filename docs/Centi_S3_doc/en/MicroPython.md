@@ -207,3 +207,115 @@ Every sync, mpbridge will automatically perform these file operations:
 1. Pull the files that are not in the local but exist in the device to the local.
 2. Push files that are not in the device but exist locally to the device.
 3. Check the hash of the files both in the local and the device,and then push the different files from the local to the device.
+
+## Basic use case
+
+preparing
+
+###LCD Screen
+
+There is a 1.9-inch TFT LCD color screen on the front of BPI-Centi-S3 with a resolution of 170*320. The driver chip is ST7789V3, which is connected to the ESP32S3 chip through an 8-bit parallel interface.
+
+The ST7789 C module driver has been integrated in the factory firmware, from:
+
+[russhughes/st7789s3_esp_lcd](https://github.com/russhughes/st7789s3_esp_lcd), The MIT License
+
+Thanks to russhughes for the open source, you can check the compilation method and all API interfaces in his GitHub README.
+
+#### Initialize, light up the screen
+
+Create a main.py in the local folder, copy the code below into it, and save the file.
+
+> Use the `ctrl + S` shortcut to save the file in the current window.
+
+```py
+""" BPI-Centi-S3 170x320 ST7789 display """
+
+import st7789
+from machine import freq
+
+
+def config(rotation=0, options=0):
+
+     return st7789.ST7789(
+         170,
+         320,
+         15, 14, 13, 12, 11, 10, 9, 8,
+         wr=6,
+         rd=7,
+         reset=3,
+         dc=5,
+         cs=4,
+         backlight=2,
+         power=2,
+         rotation=rotation,
+         options=options)
+
+
+freq(240_000_000) # Set esp32s3 cpu frequency to 240MHz
+tft = config(rotation=0, options=0)
+tft.init() # Initialize
+tft.fill(st7789.RED)
+tft. show(True)
+tft.deinit() # Deinitialize the display or it will cause a crash on the next run
+
+```
+
+Use mpbridge to synchronize files to the development board.
+> [install mpbridge](#install-the-mpbridge-tool) | [use mpbridge](#use-mpbridge-in-terminal)
+
+When the synchronization is complete, the BPI-Centi-S3 screen will be full-screen red.
+
+#### Separate configuration files
+
+We can place the code for initializing and configuring ST7789 in a python script file, and then import and use it anywhere else, including in the REPL, which can enhance code reusability.
+
+Create a separate configuration file tft_config.py , copy the code below into it, and save the file.
+
+```py
+""" BPI-Centi-S3 170x320 ST7789 display """
+
+import st7789
+from machine import freq
+
+
+def config(rotation=0, options=0):
+
+     return st7789.ST7789(
+         170,
+         320,
+         15, 14, 13, 12, 11, 10, 9, 8,
+         wr=6,
+         rd=7,
+         reset=3,
+         dc=5,
+         cs=4,
+         backlight=2,
+         power=2,
+         rotation=rotation,
+         options=options)
+
+freq(240_000_000) # Set esp32s3 cpu frequency to 240MHz
+
+```
+
+Modify main.py to the following code:
+
+```py
+""" BPI-Centi-S3 170x320 ST7789 display """
+
+import st7789
+import tft_config
+
+tft = tft_config.config(rotation=0, options=0)
+tft.init()
+tft.fill(st7789.RED)
+tft. show(True)
+tft.deinit() # Deinitialize the display or it will cause a crash on the next run
+
+```
+
+Use mpbridge to synchronize files to the development board.
+> [install mpbridge](#install-the-mpbridge-tool) | [use mpbridge](#use-mpbridge-in-terminal)
+
+Later we can simply import and initialize the screen like this.
