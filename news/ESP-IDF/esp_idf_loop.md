@@ -34,7 +34,7 @@ tags: ESP-IDF, 入门, 开源, ESP32-S3
 
 * VS Code
 
-## 设置串口
+## 创建循环
 
 在Arduino中，如果想要不停循环输出，只需把想要循环的内容放到loop里面就行，如下面例子所示，每1秒会输出一次Hello World：
 
