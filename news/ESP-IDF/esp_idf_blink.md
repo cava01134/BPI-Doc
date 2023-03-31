@@ -155,9 +155,9 @@ void app_main(void)
 }
 ```
 
-下面是最终效果：
+下载到板子上面后，这个是最终效果：
 
-![](../assets/blink_with_idf_9.mp4)
+<video src="../assets/blink_with_idf_9.mp4" controls="controls" preload="auto">your brower not support play video</video>
 
 ## 总结
 
