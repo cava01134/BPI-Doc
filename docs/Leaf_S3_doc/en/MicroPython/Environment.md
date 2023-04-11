@@ -36,19 +36,19 @@ Pip is a Python package management tool. First, confirm whether pip is the lates
 
 ```shell
 pip install -U pip
-````
+```
 
 Install Thonny with the following command:
 
 ```shell
 pip install thonnyapp
-````
+```
 
 If needed in the future, Thonny can be upgraded with the following command:
 
 ```shell
 pip install -U thonnyapp
-````
+```
 
 Thonny can be found quickly with Windows Search, or in the Start menu bar.
 
@@ -70,7 +70,7 @@ A new COM port will be added to the list (COM21 in the example image).
 
 ## Burn MicroPython firmware
 
-The default factory firmware of Leaf-S3 development board is MicroPython. If you need to burn the firmware, you can [refer to here](Firmware.md)
+The default factory firmware of Leaf-S3 development board is MicroPython. If you need to burn the firmware, you can refer to [Micropython firmware download and burning](Firmware.md).
 
 ## Configure Thonny IDE
 

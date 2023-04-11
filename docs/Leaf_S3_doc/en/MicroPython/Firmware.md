@@ -52,13 +52,13 @@ Install esptool with the following command:
 
 ```shell
 pip install esptool
-````
+```
 
 If needed in the future, you can upgrade esptool with the following command:
 
 ```shell
 pip install -U esptool
-````
+```
 
 Go into the directory where the firmware is located in PowerShell via a command or other method.
 
@@ -66,17 +66,17 @@ A PowerShell window can be opened in this folder by holding down the shift key a
 
 At this time, you need to set the development board to firmware download mode, see above for details.
 
-To clear the flash through the following commands, you need to modify the COM interface to the corresponding interface, here is COM22.
+To clear the flash through the following commands, you need to modify the COM interface to the corresponding interface, here is COM1.
 
 ```shell
 python -m esptool --chip esp32s3 --port COM1 erase_flash
-````
+```
 
 To burn the firmware through the following commands, you need to modify the firmware file name corresponding to the current file name to be burned.
 
 ```shell
 python -m esptool --chip esp32s3 --port COM1 --baud 460800 --before=usb_reset --after=no_reset write_flash 0x0 GENERIC_S3_SPIRAM-20220618-v1.19.1.bin
-````
+```
 
 If it is burned through USB, press the RESET button once to reset after completion, so that the development board enters the normal use mode.
 
