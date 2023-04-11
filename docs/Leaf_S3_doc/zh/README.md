@@ -2,7 +2,7 @@
 
 ## 介绍
 
-![](assets/images/BPI-Leaf-S3_banner.jpg)
+![](assets/images/BPI-Leaf-S3.jpg)
 
 香蕉派Leaf系列是专为物联网设计的低功耗微控制器开发板。
 

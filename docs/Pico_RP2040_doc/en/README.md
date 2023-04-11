@@ -2,7 +2,7 @@
 
 ## introduce
 
-![](assets/images/BPI-Pico-RP2040_banner.png)
+![](assets/images/BPI-Pico-RP2040.jpg)
 
 The Banana Pi Pico series is a low-power microcontroller development board designed for the Internet of Things.
 

@@ -2,7 +2,7 @@
 
 ## 介绍
 
-![](assets/images/BPI-Pico-RP2040_banner.png)
+![](assets/images/BPI-Pico-RP2040.jpg)
 
 香蕉派Pico系列是专为物联网设计的低功耗微控制器开发板。
 

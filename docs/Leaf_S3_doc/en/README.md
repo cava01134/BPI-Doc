@@ -2,7 +2,7 @@
 
 ## introduce
 
-![](assets/images/BPI-Leaf-S3_banner.jpg)
+![](assets/images/BPI-Leaf-S3.jpg)
 
 The Banana Pi Leaf series is a low-power microcontroller development board designed for the Internet of Things.
 

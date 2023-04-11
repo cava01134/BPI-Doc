@@ -2,7 +2,7 @@
 
 ## 介绍
 
-![](assets/images/BPI-PicoW-S3_banner.png)
+![](assets/images/BPI-PicoW-S3.jpg)
 
 香蕉派BPI-PicoW是一款低功耗微控制器，专为物联网开发和Maker DIY设计的开发板。与 Raspberry Pi Pico 板尺寸相同，支持 2.4 GHz Wi-Fi 和 Bluetooth® LE 双模无线通信， 外设兼容低功耗硬件设计，深度睡眠模式下功耗仅为10uA。编程方面，PicoW-S3支持ESP-IDF、Arduino、micropython、CircuitPython 等多种方式。
 
