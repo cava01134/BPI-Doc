@@ -1,5 +1,7 @@
 ## Introduction
 
+![](assets/images/BPI-Centi-S3.jpg)
+
 BPI-Centi-S3 is a small-sized ESP32-S3 development board with a 1.9-inch LCD onboard, suitable for the development of comprehensive Internet of Things application projects such as color display, interactive control, wireless communication, and sensor data acquisition.
 
 Using the Espressif ESP32-S3 chip, it supports 2.4 GHz Wi-Fi and Bluetooth® Low Energy (Bluetooth® LE) dual-mode wireless communication.

@@ -1,5 +1,7 @@
 ## 介绍
 
+![](assets/images/BPI-Centi-S3.jpg)
+
 BPI-Centi-S3 是一个板载1.9英寸彩屏的小尺寸ESP32-S3开发板，适合用于彩色显示，交互控制，无线通信，传感器数据采集等物联网综合应用项目的开发。
 
 使用Espressif ESP32-S3芯片，支持 2.4 GHz Wi-Fi 和低功耗蓝牙 (Bluetooth® LE) 双模无线通信。
