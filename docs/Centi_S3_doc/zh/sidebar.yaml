@@ -1,7 +1,7 @@
 items:
--   label: 一、Centi-S3 自述
+-   label: 一、Centi-S3 主页
     file: README.md
--   label: 二、开箱上手
+-   label: 二、开箱
     file: Unboxing.md
 -   label: 三、使用 MicroPython 快速上手
     file: MicroPython.md
