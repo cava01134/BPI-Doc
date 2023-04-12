@@ -88,6 +88,7 @@ Leaf-S3开发板默认出厂固件是MicroPython，如果您需要烧录固件�
 
 ![](../assets/images/Micropython_operating_env_11.png)
 
+确认设置后，就在Shell中打开了MicroPython REPL。
 
 ![](../assets/images/Micropython_operating_env_12.png)
 
