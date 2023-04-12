@@ -116,7 +116,7 @@ It can be seen that when the development board is powered on and working normall
 
 In the program, by detecting the trigger mode of the GPIO interrupt, you can design a set of interrupt program that records the number of times the button is pressed, and control the color of the colored light by judging the number of times that the button has been pressed.
 
-<iframe src="//player.bilibili.com/player.html?aid=345819290&bvid=BV1Nd4y1M7oW&cid=841776119&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen=" true"> </iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PQ2x4PayFPc?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ```python
 from machine import Pin

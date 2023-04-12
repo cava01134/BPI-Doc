@@ -11,7 +11,7 @@ items:
         file: MicroPython/Environment.md
     -   label: Micropython firmware download and burning
         file: MicroPython/Firmware.md
-    -   label: basic function usage
+    -   label: Basic use case
         file: MicroPython/Basic.md
 -   label: 3. Code with Arduino
     items:
