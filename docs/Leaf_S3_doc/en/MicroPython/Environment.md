@@ -1,6 +1,6 @@
-# Micropython runtime environment setup
+# MicroPython runtime environment setup
 
-The Micropython operating environment depends on Python, so we need to install Python before using it. The IDE we use here is Thonny.
+The MicroPython operating environment depends on Python, so we need to install Python before using it. The IDE we use here is Thonny.
 
 ## Install Python environment
 

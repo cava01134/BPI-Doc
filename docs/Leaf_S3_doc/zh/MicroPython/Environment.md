@@ -1,6 +1,6 @@
-# Micropython 运行环境设置
+# MicroPython 运行环境设置
 
-Micropython的运行环境依赖于Python，所以我们在使用之前需要先安装Python。 我们这里使用的 IDE 是 Thonny。
+MicroPython的运行环境依赖于Python，所以我们在使用之前需要先安装Python。 我们这里使用的 IDE 是 Thonny。
 
 ## 安装Python环境
 
