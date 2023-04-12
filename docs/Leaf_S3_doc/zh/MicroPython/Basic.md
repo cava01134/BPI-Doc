@@ -1,4 +1,4 @@
-# 基础功能使用
+# 基础用例
 
 >[GitHub BPI-Leaf-S3 例程](https://github.com/BPI-STEAM/BPI-Leaf-S3-Doc/tree/main/Example/MicroPython-zh/02.Use_Peripherals)
 
@@ -89,8 +89,8 @@ def rainbow(num=1,level=25,delay=100):
             write_all(num,delay,red,green,blue)
             
 
-pin_48 = Pin(48, Pin.OUT)
-np = NeoPixel(pin_48, 1,bpp=3, timing=1)
+
+np = NeoPixel(Pin(48, Pin.OUT), 1,bpp=3, timing=1)
 
 while True:
     rainbow(num=1,level=25,delay=10)
@@ -98,7 +98,7 @@ while True:
 ```
 此例程可适用于任意长度的ws2812灯带。
 
-修改 `NeoPixel(pin_48, 1,bpp=3, timing=1)` 中第一个参数至任意想要串接灯带的GPIO管脚，修改其第二个参数为灯带上对应灯珠的数量。
+修改 `NeoPixel(Pin(48, Pin.OUT), 1,bpp=3, timing=1)` 中第一个参数至任意想要串接灯带的GPIO管脚。
 
 修改 `rainbow(num=1,level=25,delay=100)` 中的num参数为灯带上对应灯珠的数量。
 

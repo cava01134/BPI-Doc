@@ -8,11 +8,11 @@ items:
 -   label: 二、使用MicroPython编程
     items:
     -   label: MicroPython环境搭建
-        file: Programming/Environment.md
+        file: MicroPython/Environment.md
     -   label: Micropython 固件下载与烧录
-        file: Programming/Firmware.md
-    -   label: 基础功能使用
-        file: Programming/Basic.md
+        file: MicroPython/Firmware.md
+    -   label: 基础用例
+        file: MicroPython/Basic.md
 -   label: 三、使用 Arduino 编程
     items:
     -   label: Arduino环境搭建

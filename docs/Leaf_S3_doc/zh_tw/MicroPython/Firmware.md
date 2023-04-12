@@ -1,82 +1,83 @@
-# Micropython固件下載與燒錄
+# Micropython 固件下載與燒錄
 
-支持ESP32S3芯片的固件可以在 [MicroPython官網 ESP32S3固件下載區](https://micropython.org/download/GENERIC_S3/) 找到。
+在[MicroPython官網](https://micropython.org/)可以找到支持ESP32S3芯片的固件 https://micropython.org/download/GENERIC_S3/
 
-點擊鏈接進入頁面後，可以看到下方幾個固件下載地址，選擇一個.bin後綴的文件下載到本地即可。
+點擊連接進入頁面後即可在下方看到幾個固件的下載地址，選擇一個.bin 後綴的文件下載到本地即可。
 
 ![](../assets/images/Micropython_operating_env_6.png)
 
-注意固件名稱中標註的日期，越接近當前時間，功能越新。
+注意固件名中標註的日期，離當前時間越近的功能越新。
 
-燒錄固件可以使用兩種工具，樂鑫官方FLASH下載工具或者esptool，兩者任選其一。
+可以用兩種工具來燒錄固件，樂鑫科技官方的FLASH下載工具或esptool ，二選其一即可。
 
 ## 設置固件下載模式
 
 有兩種操作方法：
 
-1、通過USB連接電腦，按住BOOT鍵，然後按下RESET鍵再鬆開，最後鬆開BOOT鍵。
+1.通過USB連接到電腦，按住BOOT鍵，再按一下RESET鍵並鬆開，最後鬆開BOOT鍵。
 
-2、在斷電狀態下按住BOOT鍵，然後通過USB連接電腦，最後鬆開BOOT鍵。
+2.在斷開供電的條件下按住BOOT鍵，再通過USB連接到電腦，最後鬆開BOOT鍵。
 
-由此可見，芯片通過BOOT鍵控制的GPIO0選擇復位或重新上電時的啟動方式。
+由此可知，芯片是通過BOOT鍵所控制的GPIO0來選擇復位或重新上電時的啟動模式。
 
-在設備管理器中確認 COM 接口。固件下載模式和普通模式下的COM接口序列號通常是不同的。
+在設備管理器中確認COM接口，固件下載模式與普通模式下的com接口序號通常是不一樣的。
 
 ![](../assets/images/Micropython_operating_env_5.png)
 
-## Windows FLASH download tool
+## Windows FLASH下載工具
 
-下載解壓：[FLASH download tool download address](https://www.espressif.com/zh-hans/support/download/other-tools)
+下載並解壓：[FLASH下載工具下載地址](https://www.espressif.com/zh-hans/support/download/other-tools)
 
-打開軟件選擇芯片型號為ESP32S3，設置下載方式為usb：
+打開軟件並選擇芯片型號為ESP32S3,將下載模式設置為usb：
+
 ![](../assets/images/Micropython_operating_env_7.png)
 
-此時需要將開發板設置為固件下載模式。
+此時需要設置開發板為固件下載模式。
 
-在芯片處於固件下載模式的情況下，將COM接口修改為FLASH下載工具窗口中對應的接口，此處為COM22。
+在芯片處於固件下載模式的條件下，在FLASH下載工具窗口中修改COM接口為對應的接口，此處為COM22。
 
-添加MicroPython固件，將ESP32-S3芯片的flash起始地址設置為`0x0`。
+添加MicroPython固件，對於ESP32-S3芯片要設置flash起始地址為 `0x0000` 。
 
 ![](../assets/images/Micropython_operating_env_8.png)
 
-首先點擊ERASE按鈕清除flash上的數據，然後點擊START將固件燒錄到flash中。
+先點擊ERASE按鈕清除flash上的數據，再點擊START燒寫固件到flash中。
 
-燒錄完成後，按一次RESET鍵，使開發板進入正常使用模式。
+燒錄完成後按一次RESET鍵，使開發板進入普通使用模式。
 
 ## esptool
 
 以Windows PowerShell的具體操作步驟為例。
 
-使用以下命令安裝 esptool：
+使用以下命令安裝esptool：
 
 ```shell
 pip install esptool
 ```
 
-如果將來需要，您可以使用以下命令升級 esptool：
+如果未來有需要，則可以使用以下命令升級esptool：
 
 ```shell
 pip install -U esptool
 ```
 
-通過命令或其他方法進入 PowerShell 中固件所在的目錄。
+通過命令或其他方法在PowerShell中進入固件所在的目錄。
 
-通過按住 shift 鍵並在 Windows 文件夾窗口中單擊鼠標右鍵，可以在此文件夾中打開 PowerShell 窗口。
+可以在Windows文件夾窗口中以按住shift鍵再單擊右鍵的方式在此文件夾中打開PowerShell窗口。
 
-此時需要將開發板設置為固件下載模式，詳見上文。
+此時需要設置開發板為固件下載模式，詳見上文。
 
-通過以下命令清除flash，需要將COM接口修改為對應的接口，這裡是COM1。
-
-```shell
-python -m esptool --chip esp32s3 --port COM1 erase_flash
-```
-
-通過以下命令燒錄固件，需要修改當前待燒錄文件名對應的固件文件名。
+通過以下命令清除flash，需要修改COM接口為對應的接口，此處為COM1。
 
 ```shell
-python -m esptool --chip esp32s3 --port COM1 --baud 460800 --before=usb_reset --after=no_reset write_flash 0x0 GENERIC_S3_SPIRAM-20220618-v1.19.1.bin
+python -m esptool --chip esp32s3 --port COM22 erase_flash
 ```
 
-如果是通過USB燒錄，完成後按一次RESET鍵復位，使開發板進入正常使用模式。
+通過以下命令燒錄固件，需要修改固件文件名為當前對應需要燒錄的文件名。
 
-如果通過UART編程，完成後會自動復位。
+```shell
+python -m esptool --chip esp32s3 --port com22 --baud 460800 --before=default_reset --after=hard_reset write_flash -z 0x0 firmware_name.bin
+```
+
+如果是通過USB燒錄，完成後按一次RESET鍵復位，使開發板進入普通使用模式。
+
+如果是通過UART燒錄，則會在完成後自動復位。
