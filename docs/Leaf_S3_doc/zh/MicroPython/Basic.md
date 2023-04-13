@@ -407,6 +407,7 @@ while True:
 |VCC|3V3|
 |S|14|
 
+
 |TB6612FNG|BPI-Leaf-S3|
 |---|---|
 |PWMA|11|
@@ -416,6 +417,7 @@ while True:
 |VM|5V|
 |VCC|3.3V|
 |GND|GND|
+
 
 |TB6612FNG|Motor|
 |---|---|
@@ -626,6 +628,7 @@ if __name__ == "__main__":
 |GND|GND|
 |VCC|3V3|
 |S|GPIO1|
+
 
 |SSD1306 OLED|Board|
 |---|---|

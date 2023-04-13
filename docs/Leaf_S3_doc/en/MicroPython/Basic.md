@@ -208,17 +208,17 @@ A TB6612FNG module, a 3.3~5V DC motor.
 
 ### connection method
 
-TB6612FNG | BPI-Leaf-S3
-:---:|:---:
-PWMA | 11
-AIN2 | 13
-AIN1 | 12
-STBY | 10
-VM | 5V
-VCC | 3.3V
-GND | GND
-AO1 | Motor N pole
-AO2 | Motor S pole
+|TB6612FNG | BPI-Leaf-S3|
+|:---:|:---:|
+|PWMA | 11|
+|AIN2 | 13|
+|AIN1 | 12|
+|STBY | 10|
+|VM | 5V|
+|VCC | 3.3V|
+|GND | GND|
+|AO1 | Motor N pole|
+|AO2 | Motor S pole|
 
 > The connection sequence between AO1/AO2 and the motor can be exchanged arbitrarily to change the direction of rotation.
 
@@ -407,6 +407,7 @@ while True:
 |VCC|3V3|
 |S|14|
 
+
 |TB6612FNG|BPI-Leaf-S3|
 |---|---|
 |PWMA|11|
@@ -416,6 +417,7 @@ while True:
 |VM|5V|
 |VCC|3.3V|
 |GND|GND|
+
 
 |TB6612FNG|Motor|
 |---|---|
@@ -626,6 +628,7 @@ Continue to use the method of using the ADC to detect the voltage of the potenti
 |GND|GND|
 |VCC|3V3|
 |S|GPIO1|
+
 
 |SSD1306 OLED|Board|
 |---|---|
