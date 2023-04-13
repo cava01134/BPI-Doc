@@ -388,3 +388,73 @@ while True:
     print(adc1_read,adc1_read_u16,adc1_read_mv,"mv",count[0],color)
     time.sleep(0.1)
 ```
+
+## 使用ADC測量電位器，用以調整電機轉速
+
+### 外部硬件需求
+
+* 電位器 x 1
+* TB6612FNG電機驅動模塊 x 1
+* 5v直流電機 x 1
+* 一些連接線材
+
+### 連接方法
+
+|Potentiometer|BPI-Leaf-S3|
+|---|---|
+|GND|GND|
+|VCC|3V3|
+|S|14|
+
+|TB6612FNG|BPI-Leaf-S3|
+|---|---|
+|PWMA|11|
+|AIN2|13|
+|AIN1|12|
+|STBY|10|
+|VM|5V|
+|VCC|3.3V|
+|GND|GND|
+
+|TB6612FNG|Motor|
+|---|---|
+|AO1|Motor N pole|
+|AO2|Motor S pole|
+
+### 運行效果
+
+開發板將間隔100ms在REPL輸出ADC讀取到的電壓值，單位為mv，以及對應控制的PWM佔空比。
+
+用手調整電位器，改變其輸出電壓，電壓越大，開發板輸出的PWM佔空比越高，電機轉速越快。
+
+<iframe width="720" height="405" frameborder="0" src="https://www.ixigua.com/iframe/7094798929295835681?autoplay=0" referrerpolicy="unsafe-url" allowfullscreen></iframe>
+
+### Code
+```py
+from machine import Pin,ADC,PWM
+import time
+
+adc14 = ADC(Pin(14),atten=ADC.ATTN_11DB)
+
+PWM_A = PWM(Pin(11)) #Set PWM output pin
+PWM_A.freq(20000) #Set PWM frequency
+PWM_A.duty(0) #Set PWM duty cycle
+AIN1 = Pin(12,Pin.OUT)
+AIN2 = Pin(13,Pin.OUT)
+STBY = Pin(10,Pin.OUT)
+AIN1.on() #MOTOR forward
+AIN2.off()
+STBY.on() #When STBY pin is at high level, TB6612FNG starts.
+
+while True:
+    read_mv=adc14.read_uv()//1000
+    if read_mv <= 3000:
+        duty_set = int(1023/3000 * read_mv)
+    else:
+        duty_set = 1023
+    PWM_A.duty(duty_set)
+    Duty_cycle = int(duty_set/1023*100)
+    print("ADC_read={0}mv,Duty_cycle={1}%".format(read_mv,Duty_cycle))
+    time.sleep_ms(100)
+
+```
