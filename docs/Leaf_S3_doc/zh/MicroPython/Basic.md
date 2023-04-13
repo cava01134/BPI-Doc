@@ -177,7 +177,7 @@ while True:
 
 一个可以在3.3v电压下工作的LED灯。
 
-### 连接方法
+### 接线参考
 
 例程中使用的是GPIO13管脚，将LED灯正极与GPIO13管脚连接，负极与GND连接。
 
@@ -207,7 +207,7 @@ while True:
 
 一个TB6612FNG模块，一个3.3~5V直流电机。
 
-### 连接方法
+### 接线参考
 
 TB6612FNG | BPI-Leaf-S3    
 :---:|:---:
@@ -284,7 +284,7 @@ ESP32-S3芯片内部集成了两个**ADC模数转换器** ，测量范围 0mV-31
 
 两个ADC模数转换器各有10个测量通道，ADC1为GPIO1 ~ 10,ADC2为GPIO11 ~ 20 。
 
-### 连接方法
+### 接线参考
 
 GND接GND，VCC接3V3，S输出端接GPIO11管脚，使用的是ADC2的通道1进行测量。
 
@@ -399,7 +399,7 @@ while True:
 * 5v直流电机 x 1
 * 一些连接线材
 
-### 连接方法
+### 接线参考
 
 |Potentiometer|BPI-Leaf-S3|
 |---|---|
@@ -459,3 +459,222 @@ while True:
     time.sleep_ms(100)
 
 ```
+
+## UART 串口数据读写
+
+### 外部硬件需求
+
+USB转UART模块（CH340，CP2102等）。
+
+### 软件需求
+
+一个串口调试软件例如[PuTTY](https://putty.org/)，以及USB转UART模块所需驱动。
+
+### 接线参考
+
+将BPI-Leaf-S3开发板通过USB连接电脑，USB转UART模块的RX接GPIO17（BPI-Leaf-S3的TX），TX接GPIO18（BPI-Leaf-S3的RX），GND接GND（共地），USB转UART模块的USB接口连接电脑，可以是连接BPI-Leaf-S3的同一台电脑，也可以是不同的两台电脑。
+
+### 运行效果
+
+在BPI-Leaf-S3所在电脑的MicroPython REPL中将间隔一秒输出一次从USB转UART模块中接收到的数据。
+
+而在USB转UART模块所在的电脑的串口调试软件窗口中则可以看到，每间隔一秒输出一行由BPI-Leaf-S3发送的字符 `Hello World!` 。
+
+### Code
+```
+from machine import UART
+import time
+
+uart1 = UART(1, tx=17, rx=18)
+# Select the UART interface and specify the pins used by TX and RX
+
+uart1.init(115200, bits=8, parity=None, stop=1)
+# Initialization, set the baud rate, set the number of characters, set the parity, set the stop bit
+
+
+def test():
+    for i in range(50):
+        uart1.write('Hello World!')  # write data
+        time.sleep(0.5)
+        print(uart1.read())  # read data
+        time.sleep(0.5)
+
+
+test()
+
+```
+
+## I²C，SSD1306 OLED 显示
+
+SSD1306 OLED屏幕模块是一个很常见的可以使用I2C通信协议的屏幕模块，最大输出128*64 bit的图像，无灰阶，单颗像素仅有亮灭两个状态，控制逻辑相对简单，很适合入门学习单片机驱动屏幕显示的项目。
+
+### 外部硬件需求
+
+一块具备I²C接口的SSD1306 OLED屏幕模块，最好为128*64像素的。
+
+### 驱动库下载
+
+[micropython/ssd1306.py 驱动](https://github.com/micropython/micropython-lib/blob/master/micropython/drivers/display/ssd1306/ssd1306.py)
+
+将 ssd1306.py 下载到本地后，再上传到MicroPython设备中。
+
+### 接线参考
+|SSD1306 OLED|Board|
+|---|---|
+|GND|GND|
+|VCC|3V3|
+|SCL|16|
+|SDA|15|
+
+### 扫描I²C地址
+
+```py
+from machine import I2C,Pin
+
+sda_pin=Pin(15,Pin.PULL_UP)
+scl_pin=Pin(16,Pin.PULL_UP)
+
+i2c = I2C(1,sda=sda_pin, scl=scl_pin, freq=400_000)
+i2c_list=i2c.scan()
+i2c_total=len(i2c_list)
+print("Total num:",i2c_total)
+j=0
+for i in i2c_list:
+    j=j+1
+    print("NO.{0},address:{1}".format(j,hex(i)))
+```
+
+通常SSD1306的地址为0x3c。
+
+### 显示字符
+
+[MicroPython framebuf 文档](https://docs.micropython.org/en/latest/library/framebuf.html#module-framebuf)
+
+```py
+from machine import I2C, Pin
+from ssd1306 import SSD1306_I2C
+
+sda_pin = Pin(15, Pin.PULL_UP)
+scl_pin = Pin(16, Pin.PULL_UP)
+
+i2c = I2C(1, sda=sda_pin, scl=scl_pin, freq=800_000)
+print(i2c.scan())
+oled = SSD1306_I2C(128, 64, i2c, addr=0x3c)
+
+
+def display():
+    # The framebuf library only supports ASCII printing characters encoded as 32~126
+    oled.text(" !\"#$%&'()*+,-./", 0,  0)
+    oled.text("0123456789:;<=>?", 0,  8)
+    oled.text("@ABCDEFGHIJKLMNO", 0, 16)
+    oled.text("PQRSTUVWXYZ[\]^_", 0,  24)
+    oled.text("`abcdefghijklmno", 0, 32)
+    oled.text("pqrstuvwxyz{|}~", 0, 40)
+    oled.show()
+
+
+def testAscii():
+    # The return value of chr() is the ASCII character corresponding to the current integer
+    Ascii = ''
+    for i in range(32, 127):
+        Ascii = Ascii + chr(i)
+    for i in range(128, 256):
+        Ascii = Ascii + chr(i)
+    return Ascii
+
+
+def display_Ascii():
+    # The framebuf library only supports ASCII printing characters encoded as 32~126
+    oled.text(testAscii()[0:16], 0,  0)
+    oled.text(testAscii()[16:32], 0,  8)
+    oled.text(testAscii()[32:48], 0, 16)
+    oled.text(testAscii()[48:64], 0, 24)
+    oled.text(testAscii()[64:80], 0, 32)
+    oled.text(testAscii()[80:95], 0, 40)
+    oled.show()
+
+
+if __name__ == "__main__":
+    display()
+    # print(testAscii())
+    # display_Ascii()
+
+# ASCII printing characters (character encoding: 32-127)
+# 32~126 (95 in total) are characters: 32 is a space, among which 48~57 are ten Arabic numerals from 0 to 9,
+# 65～90 are 26 uppercase English letters,
+# 97~122 are 26 lowercase English letters,
+# The rest are some punctuation marks, operation symbols, etc.
+# The 127th character represents the delete command on the keyboard.
+# ASCII extension code (character encoding: 128-255)
+# The last 128 are called extended ASCII codes.
+# Many x86-based systems support the use of extended (or "high") ASCII.
+# The extended ASCII code allows the 8th bit of each character 
+# to be used to determine additional 128 special symbol characters, foreign language letters and graphic symbols.
+
+```
+
+## OLED显示电位器电压与实时进度条
+
+继续使用[用电位器无极调控彩灯亮度](#用电位器无极调控彩灯亮度) 章节中中用ADC检测电位器电压的方法，可以设计一个让OLED屏幕显示电位器电压与实时进度条的程序。
+
+<iframe src="//player.bilibili.com/player.html?aid=730872804&bvid=BV1MD4y1179T&cid=841775129&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+### 接线参考
+
+|Potentiometer|Board|
+|---|---|
+|GND|GND|
+|VCC|3V3|
+|S|GPIO1|
+
+|SSD1306 OLED|Board|
+|---|---|
+|GND|GND|
+|VCC|3V3|
+|SCL|16|
+|SDA|15|
+
+### Code
+
+```py
+from machine import Pin,ADC,I2C
+from ssd1306 import SSD1306_I2C
+import time
+
+adc1 = ADC(Pin(1),atten=ADC.ATTN_11DB)
+
+sda_pin=Pin(15,Pin.PULL_UP)
+scl_pin=Pin(16,Pin.PULL_UP)
+
+i2c = I2C(1,sda=sda_pin, scl=scl_pin, freq=800_000)
+print(i2c.scan())
+oled = SSD1306_I2C(128, 64, i2c, addr=0x3c)
+
+#Init, white background
+oled.fill(1)
+oled.rect(0,32,128,10,0)
+
+while True:
+    #Read ADC
+    adc1_read = adc1.read() # 12bit
+    adc1_read_mv = adc1.read_uv()//1000
+    adc1_read_u16 = adc1.read_u16() # 16bit
+    
+    #Set progress bar
+    bar_width = round (adc1_read / 4095 * 128)
+    oled.fill_rect(bar_width,33,128-bar_width,8,0)
+    oled.fill_rect(0,33,bar_width,8,1)
+    
+    #Set ADC text, centered
+    text_adc1 = str(adc1_read_mv) + " mV"
+    start_x_text_adc1 = 64 - len(text_adc1)*4
+    oled.fill_rect(36,24,56,8,1)
+    oled.text(text_adc1,start_x_text_adc1,24,0)
+    
+    #Show
+    oled.show()
+    
+    print(adc1_read,adc1_read_u16,adc1_read_mv,"mv",bar_width,"width")
+    time.sleep(0.05)
+```
+
