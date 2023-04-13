@@ -200,13 +200,13 @@ while True:
     
 ```
 
-# TB6612FNG module PWM drive motor
+## TB6612FNG module PWM drive motor
 
-## External hardware requirements
+### External hardware requirements
 
 A TB6612FNG module, a 3.3~5V DC motor.
 
-## connection method
+### connection method
 
 TB6612FNG | BPI-Leaf-S3
 :---:|:---:
@@ -222,7 +222,7 @@ AO2 | Motor S pole
 
 > The connection sequence between AO1/AO2 and the motor can be exchanged arbitrarily to change the direction of rotation.
 
-## running result
+### running result
 
 The motor will start to rotate in one direction and gradually accelerate to the maximum speed achievable by the current current within 7 seconds, then gradually decelerate to stop within 5 seconds, then reverse the rotation and repeat the process.
 
