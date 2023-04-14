@@ -252,7 +252,7 @@ def config(rotation=0, options=0):
 
 
 freq(240_000_000)  # Set esp32s3 cpu frequency to 240MHz
-tft = config(rotation=0, options=0)
+tft = config(rotation=1, options=0)
 tft.init() # Initialize
 tft.fill(st7789.RED) 
 tft.show(True)
@@ -306,7 +306,7 @@ freq(240_000_000)  # Set esp32s3 cpu frequency to 240MHz
 import st7789
 import tft_config
 
-tft = tft_config.config(rotation=0, options=0)
+tft = tft_config.config(rotation=1, options=0)
 tft.init()
 tft.fill(st7789.RED) 
 tft.show(True)
@@ -318,3 +318,66 @@ tft.deinit()  # Deinitialize the display or it will cause a crash on the next ru
 > [安裝mpbridge](#安裝mpbridge工具) | [使用mpbridge](#在終端中使用mpbridge)
 
 後續我們就可以像這樣簡單的導入然後初始化屏幕了。
+
+#### 顯示jpg圖片
+
+sst7789驅動庫內有一個顯示jpg格式圖片的方法，這對於初次上手學習的我們非常友好。
+
+##### jpg 方法
+
+`jpg(jpg_filename, x, y)`
+
+在給定的 x 和 y 坐標處繪製一個 JPG 文件，坐標為圖片的左上角。
+
+此方法需要額外的 3100 字節內存用於其工作緩衝區。
+
+##### 準備合適大小的jpg文件
+
+任選自己喜歡的圖片，裁切為長320像素，寬170像素，或小於此尺寸的圖片。
+
+圖片編輯工具在各種智能終端設備中和各種操作系統中都有大量可選的，可任意使用自己喜歡的工具來編輯。
+
+這裡隨意推荐一個能免費使用的 Web 在線圖片編輯工具，[Pixlr X](https://pixlr.com/cn/x/) 。
+
+將裁切好的圖片放入我們本地的MicroPython工作文件夾中，重命名為 `pic_1.jpg` ，上傳圖片到MicroPython設備中的方法參考 [在終端中使用mpbridge](#在終端中使用mpbridge) 。
+
+這裡已準備一張已裁切好尺寸的圖片。
+
+![](assets/images/pic_1.jpg)
+
+#### 
+
+在 main.py 腳本中使用 jpg 方法。
+
+```py
+""" BPI-Centi-S3 170x320 ST7789 display """
+
+import st7789
+import tft_config
+import time
+import gc
+
+def main():
+    try:
+        tft = tft_config.config(rotation=1)
+        tft.init()
+        tft.jpg("pic_1.jpg", 0, 0)
+        tft.show()
+        gc.collect()
+
+    except BaseException as err:
+        err_type = err.__class__.__name__
+        print('Err type:', err_type)
+        from sys import print_exception
+        print_exception(err)
+
+    finally:
+        tft.deinit()
+        print("tft deinit")
+
+
+main()
+
+```
+
+上傳 main.py 後，將設備復位，即可在屏幕上看到圖片。
