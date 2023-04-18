@@ -345,7 +345,7 @@ sst7789驱动库内有一个显示jpg格式图片的方法，这对于初次上�
 
 ![](assets/images/pic_1.jpg)
 
-#### 
+##### jpg 方法用例
 
 在 main.py 脚本中使用 jpg 方法。
 
@@ -354,7 +354,6 @@ sst7789驱动库内有一个显示jpg格式图片的方法，这对于初次上�
 
 import st7789
 import tft_config
-import time
 import gc
 
 def main():
@@ -381,3 +380,47 @@ main()
 ```
 
 上传 main.py 后，将设备复位，即可在屏幕上看到图片。
+
+我们再多准备几个合适大小的jpg文件，即可设计一个循环，像播放幻灯片一样在BPI-Centi-S3的屏幕上轮播图片了。
+
+![](assets/images/pic_2.jpg)
+![](assets/images/pic_3.jpg)
+![](assets/images/pic_4.jpg)
+![](assets/images/pic_5.jpg)
+
+```py
+""" BPI-Centi-S3 170x320 ST7789 display """
+
+import st7789
+import tft_config
+import gc
+import time
+
+pic_list = ["pic_1.jpg", "pic_2.jpg", "pic_3.jpg", "pic_4.jpg", "pic_5.jpg"]
+
+
+def main():
+    try:
+        tft = tft_config.config(rotation=1)
+        tft.init()
+        while True:
+            for pic in pic_list:
+                tft.jpg(pic, 0, 0)
+                tft.show()
+                gc.collect()
+                time.sleep(1)
+
+    except BaseException as err:
+        err_type = err.__class__.__name__
+        print('Err type:', err_type)
+        from sys import print_exception
+        print_exception(err)
+
+    finally:
+        tft.deinit()
+        print("tft deinit")
+
+
+main()
+
+```

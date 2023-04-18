@@ -208,11 +208,11 @@ Every sync, mpbridge will automatically perform these file operations:
 2. Push files that are not in the device but exist locally to the device.
 3. Check the hash of the files both in the local and the device,and then push the different files from the local to the device.
 
-## Basic use case
+## Basic use cases
 
 preparing
 
-###LCD Screen
+### LCD Screen
 
 There is a 1.9-inch TFT LCD color screen on the front of BPI-Centi-S3 with a resolution of 170*320. The driver chip is ST7789V3, which is connected to the ESP32S3 chip through an 8-bit parallel interface.
 
@@ -340,13 +340,13 @@ There are a large number of optional picture editing tools in various smart term
 
 Here is a random web online image editing tool that can be used for free, [Pixlr X](https://pixlr.com/cn/x/).
 
-Put the cropped picture into our local MicroPython working folder, rename it to `pic_1.jpg`, and refer to the method of uploading the picture to the MicroPython device [Use mpbridge in the terminal](#Use mpbridge in the terminal) .
+Put the cropped picture into our local MicroPython working folder, rename it to `pic_1.jpg`, and refer to the method of uploading the picture to the MicroPython device [Use mpbridge in the terminal](#use-mpbridge-in-terminal) .
 
 A cropped image is prepared here.
 
 ![](assets/images/pic_1.jpg)
 
-####
+##### jpg method use case
 
 Use the jpg method in the main.py script.
 
@@ -355,7 +355,6 @@ Use the jpg method in the main.py script.
 
 import st7789
 import tft_config
-import time
 import gc
 
 def main():
@@ -382,3 +381,48 @@ main()
 ```
 
 After uploading main.py, reset the device and you can see the picture on the screen.
+
+Let's prepare a few more jpg files of appropriate size, and then we can design a loop, and play the pictures on the screen of BPI-Centi-S3 in a loop like a slide show.
+
+![](assets/images/pic_2.jpg)
+![](assets/images/pic_3.jpg)
+![](assets/images/pic_4.jpg)
+![](assets/images/pic_5.jpg)
+
+```py
+""" BPI-Centi-S3 170x320 ST7789 display """
+
+import st7789
+import tft_config
+import gc
+import time
+
+pic_list = ["pic_1.jpg", "pic_2.jpg", "pic_3.jpg", "pic_4.jpg", "pic_5.jpg"]
+
+
+def main():
+    try:
+        tft = tft_config.config(rotation=1)
+        tft.init()
+        while True:
+            for pic in pic_list:
+                tft.jpg(pic, 0, 0)
+                tft.show()
+                gc.collect()
+                time.sleep(1)
+
+    except BaseException as err:
+        err_type = err.__class__.__name__
+        print('Err type:', err_type)
+        from sys import print_exception
+        print_exception(err)
+
+    finally:
+        tft.deinit()
+        print("tft deinit")
+
+
+main()
+
+```
+
