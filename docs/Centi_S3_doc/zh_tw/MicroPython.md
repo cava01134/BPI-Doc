@@ -209,8 +209,6 @@ mpbridge dev --auto-reset hard COM1
 
 ## 基礎用例
 
-Preparing
-
 ### 荧幕
 
 BPI-Centi-S3正面有一塊1.9英寸TFT LCD彩屏，分辯率是170*320，驅動晶片為ST7789V3，採用8bit平行介面與ESP32S3晶片連接。
@@ -222,6 +220,8 @@ BPI-Centi-S3正面有一塊1.9英寸TFT LCD彩屏，分辯率是170*320，驅動
 感謝russhughes的開源，在他的GitHub README中可以查閱編譯方法和所有API介面。
 
 #### 初始化，點亮荧幕
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YANtoaNBQw4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 在本地檔案夾中創建一個 main.py ，將下方代碼拷貝進去，保存檔案。
 
@@ -320,6 +320,8 @@ tft.deinit()  # Deinitialize the display or it will cause a crash on the next ru
 後續我們就可以像這樣簡單的導入然後初始化荧幕了。
 
 #### 顯示jpg圖片
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jR3LpkfWWy8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 sst7789驅動庫內有一個顯示jpg格式圖片的方法，這對於初次上手學習的我們非常友好。
 

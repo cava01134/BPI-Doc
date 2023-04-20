@@ -210,8 +210,6 @@ Every sync, mpbridge will automatically perform these file operations:
 
 ## Basic use cases
 
-preparing
-
 ### LCD Screen
 
 There is a 1.9-inch TFT LCD color screen on the front of BPI-Centi-S3 with a resolution of 170*320. The driver chip is ST7789V3, which is connected to the ESP32S3 chip through an 8-bit parallel interface.
@@ -223,6 +221,8 @@ The ST7789 C module driver has been integrated in the factory firmware, from:
 Thanks to russhughes for the open source, you can check the compilation method and all API interfaces in his GitHub README.
 
 #### Initialize, light up the screen
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YANtoaNBQw4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Create a main.py in the local folder, copy the code below into it, and save the file.
 
@@ -322,6 +322,8 @@ Later we can simply import and initialize the screen like this.
 
 #### Display jpg images
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jR3LpkfWWy8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 The sst7789 driver library has a method to display pictures in jpg format, which is very friendly to us who are learning for the first time.
 
 ##### jpg method
@@ -338,7 +340,7 @@ Choose any picture you like, and crop it to a picture with a length of 320 pixel
 
 There are a large number of optional picture editing tools in various smart terminal devices and various operating systems, and you can use your favorite tools for editing.
 
-Here is a random web online image editing tool that can be used for free, [Pixlr X](https://pixlr.com/cn/x/).
+Here is a random web online image editing tool that can be used for free, [Pixlr X](https://pixlr.com/x/).
 
 Put the cropped picture into our local MicroPython working folder, rename it to `pic_1.jpg`, and refer to the method of uploading the picture to the MicroPython device [Use mpbridge in the terminal](#use-mpbridge-in-terminal) .
 
