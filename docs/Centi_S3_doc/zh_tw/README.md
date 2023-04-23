@@ -20,8 +20,8 @@ BPI-Centi-S3 是一個板載1.9英寸彩屏的小尺寸ESP32-S3開發板，適�
 * 1 * 旋轉編碼器
 * 1 * 蜂鳴器
 * 1 * 全彩色LED
-* 1 * JST SH 1mm 4-Pin I2C連接座
-* 2 * JST SH 1mm 6-Pin
+* 1 * SH 1mm 4-Pin I2C連接座
+* 2 * SH 1mm 6-Pin
 * 1 * USB Type-C
 * 1 * MX 1.25mm 2-Pin 電池連接座，支持充電
 * 2 * M3螺絲孔
@@ -46,9 +46,9 @@ BPI-Centi-S3 是一個板載1.9英寸彩屏的小尺寸ESP32-S3開發板，適�
 | 藍牙                   | Bluetooth 5 ，Bluetooth mesh               |
 | 外部晶振               | 40Mhz                                      |
 | RTC 和低功耗管理       | 電源管理單元 (PMU)+ 超低功耗協處理器 (ULP)   |
-| GPIO                   | 已引出9個可用GPIO到JST SH 插座             |
+| GPIO                   | 已引出9個可用GPIO到SH 插座             |
 | 支持外設               | I2C, SPI, PWM, UART, RMT, I2S, SD          |
-| JST SH 1mm 插座        | 1 * 4Pin，2 * 6Pin                         |
+| SH 1mm 插座        | 1 * 4Pin，2 * 6Pin                         |
 | USB                    | 1 * 全速USB 2.0 OTG，Type-C母口            |
 | USB Serial/JTAG 控制器 | 1，USB 全速標準，CDC-ACM ，JTAG            |
 | 屏幕尺寸               | 1.9 英寸                                   |

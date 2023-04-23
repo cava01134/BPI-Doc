@@ -20,8 +20,8 @@ Support USB and external 3.7V lithium battery power supply, can realize automati
 * 1 * Rotary Encoder
 * 1 * Buzzer
 * 1 * full color LED
-* 1 * JST SH 1mm 4-Pin I2C connector
-* 2 * JST SH 1mm 6-Pin
+* 1 * SH 1mm 4-Pin I2C connector
+* 2 * SH 1mm 6-Pin
 * 1 * USB Type-C
 * 1 * MX 1.25mm 2-Pin battery connector, support charging
 * 2 * M3 Screw Holes
@@ -46,9 +46,9 @@ Support USB and external 3.7V lithium battery power supply, can realize automati
 | bluetooth                    | Bluetooth 5, Bluetooth mesh                                      |
 | External crystal oscillator  | 40Mhz                                                            |
 | RTC and Low­Power Management | Power Management Unit (PMU) + Ultra-­Low-­Power Coprocessor(ULP) |
-| GPIO                         | 9 available GPIOs have been exported to the JST SH socket        |
+| GPIO                         | 9 available GPIOs have been exported to the SH socket        |
 | Support Peripherals          | I2C, SPI, PWM, UART, RMT, I2S, SD                                |
-| JST SH 1mm socket            | 1 * 4Pin, 2 * 6Pin                                               |
+| SH 1mm socket            | 1 * 4Pin, 2 * 6Pin                                               |
 | USB                          | 1 * Full Speed USB 2.0 OTG, Type-C Female                        |
 | USB Serial/JTAG Controller   | 1, USB full speed standard, CDC-ACM, JTAG                        |
 | TFT LCD size                  | 1.9 inches                                                       |
