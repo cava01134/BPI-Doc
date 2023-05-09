@@ -1,9 +1,7 @@
 items:
 -   label: 1. Centi-S3 Homepage
-    file: README.md
--   label: 2. Unboxing
-    file: Unboxing.md   
--   label: 3. Getting started with MicroPython
+    file: README.md 
+-   label: 2. Getting started with MicroPython
     file: MicroPython.md
--   label: 4. Getting started with Arduino
+-   label: 3. Getting started with Arduino
     file: Arduino.md
