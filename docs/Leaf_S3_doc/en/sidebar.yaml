@@ -13,6 +13,8 @@ items:
         file: MicroPython/Firmware.md
     -   label: Basic use case
         file: MicroPython/Basic.md
+    -   label: ESP-NOW use case
+        file: MicroPython/ESPNOW.md
 -   label: 3. Code with Arduino
     items:
     -   label: Arduino environment construction

@@ -13,6 +13,8 @@ items:
         file: MicroPython/Firmware.md
     -   label: 基础用例
         file: MicroPython/Basic.md
+    -   label: ESP-NOW 用例
+        file: MicroPython/ESPNOW.md
 -   label: 三、使用 Arduino 编程
     items:
     -   label: Arduino环境搭建
