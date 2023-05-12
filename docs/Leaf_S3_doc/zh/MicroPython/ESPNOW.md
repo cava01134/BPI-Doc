@@ -15,7 +15,7 @@ ESP-NOW 是基于数据链路层的无线通信协议，它将五层 OSI 上层�
 
 MicroPython 已将 ESP-NOW 的功能支持合并入GitHub master ，[#6515](https://github.com/micropython/micropython/pull/6515)。
 
-[MicroPython ESP-NOW API 文档](https://docs.micropython.org/en/latest/library/espnow.html)
+> [MicroPython ESP-NOW API 文档](https://docs.micropython.org/en/latest/library/espnow.html)
 
 ## 实现一个最简单的无线通信，点亮彩灯
 

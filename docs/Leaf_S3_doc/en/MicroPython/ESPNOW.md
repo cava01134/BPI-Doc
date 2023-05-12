@@ -15,7 +15,7 @@ ESP-NOW is a wireless communication protocol based on the data-link layer, which
 
 MicroPython has merged feature support for ESP-NOW into GitHub master, [#6515](https://github.com/micropython/micropython/pull/6515).
 
-[MicroPython ESP-NOW API Documentation](https://docs.micropython.org/en/latest/library/espnow.html)
+> [MicroPython ESP-NOW API Documentation](https://docs.micropython.org/en/latest/library/espnow.html)
 
 ## Realize the simplest wireless communication, light up NeoPixel
 
