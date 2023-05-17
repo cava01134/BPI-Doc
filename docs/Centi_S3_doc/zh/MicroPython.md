@@ -221,7 +221,7 @@ BPI-Centi-S3 正面有一块1.9英寸TFT LCD彩屏，分辨率是170*320，驱�
 
 #### 初始化，点亮屏幕
 
-<iframe src="//player.bilibili.com/player.html?aid=269437418&bvid=BV1hc4115786&cid=1078595731&page=1&autoplay=0" autoplay=0 scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe src="//player.bilibili.com/player.html?aid=269437418&bvid=BV1hc4115786&cid=1078595731&page=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 在本地文件夹中创建一个 main.py ，将下方代码拷贝进去，保存文件。
 
