@@ -1,29 +1,3 @@
-## What is MicroPython?
-
-![](assets/images/Mircopython.png)
-
-[MicroPython](https://micropython.org/) is a lean and efficient implementation of the Python 3 programming language that includes a small subset of the Python standard library and is optimised to run on microcontrollers and in constrained environments.
-
-Crowdfunded and open sourced in 2013 by [Damien P. George](https://dpgeorge.net/).
-
-The most obvious difference between it and the use of C programs to develop microcontrollers is that there is no need for lengthy compilation when verifying code.
-
-Using serial communication software, enter commands through the REPL(read-eval-print-loop) to control the microcontroller, just like Python's REPL.
-
-It is also possible to use some tools to upload a python script file to run inside the microcontroller.
-
-Its implementation of Python3 includes the _thread library that supports multithreading and the asyncio library for writing concurrent code.
-
-MicroPython aims to be as compatible with normal Python as possible to allow you to transfer code with ease from the desktop to a microcontroller or embedded system.
-
-At the same time it also has some libraries specific for microcontrollers in order to take full advantage of the hardware features inside the microcontroller chip, such as timers, hardware interrupts, WiFi, etc., depending on the specific hardware.
-
-While having the above features, it is compact enough to fit and run within just 256k of code space and 16k of RAM.
-
-If you know Python you already know MicroPython.
-
-On the other hand, the more you learn about MicroPython the better you become at Python.
-
 ## Configure the development environment
 
 ### System Environment Requirements
@@ -39,7 +13,7 @@ Open [Python official website](https://www.python.org/).
 
 For the Windows system, the most convenient way to download the installation package is to click the icon shown in the figure below on the homepage of the official website to download.
 
-![](assets/images/Micropython_operating_env_1.png)
+![](../assets/images/Micropython_operating_env_1.png)
 
 Other operating systems or other distributions can be selected in the Downloads option bar.
 
@@ -47,7 +21,7 @@ It is recommended to use a version above python 3.7.
 
 Be sure to check Add Python 3.x to PATH when you start the installation, so that you can avoid adding it to PATH manually.
 
-![](assets/images/Micropython_operating_env_2.png)
+![](../assets/images/Micropython_operating_env_2.png)
 
 Follow the installation prompts step by step to complete the installation smoothly.
 
@@ -137,7 +111,7 @@ Click the Terminal/terminal of VScode to create a new terminal window and enter 
 
 If you are using other editors, or only use the local terminal of the system, you can also use it directly.
 
-![](assets/images/vscode_terminal.png)
+![](../assets/images/vscode_terminal.png)
 
 `--help` can view all available commands of mpremote:
 ```
@@ -169,13 +143,13 @@ The main function of the mpbridge tool is to synchronize a local folder with the
 
 Create a new folder in a location you think is suitable locally on the PC, or select a folder, and then open the folder in VScode.
 
-![](assets/images/vscode_open_folder.png)
+![](../assets/images/vscode_open_folder.png)
 
-![](assets/images/vscode_open_folder2.png)
+![](../assets/images/vscode_open_folder2.png)
 
 Then open a terminal in VScode, and you can enter the path where this folder is located in the terminal.
 
-![](assets/images/vscode_terminal2.png)
+![](../assets/images/vscode_terminal2.png)
 
 If you are using the default terminal, you can enter this path with `cd [absolute path to target folder]`.
 
@@ -194,7 +168,7 @@ Use the mpbridge tool to synchronize files, the command is as follows, pay atten
 mpbridge dev --auto-reset hard COM1
 ```
 
-![](assets/images/vscode_terminal_mpbridge.png)
+![](../assets/images/vscode_terminal_mpbridge.png)
 
 When the synchronization is completed, you will be prompted to press the `Enter` key. 
 
@@ -346,7 +320,7 @@ Put the cropped picture into our local MicroPython working folder, rename it to 
 
 A cropped image is prepared here.
 
-![](assets/images/pic_1.jpg)
+![](../assets/images/pic_1.jpg)
 
 ##### jpg method use case
 
@@ -386,10 +360,10 @@ After uploading main.py, reset the device and you can see the picture on the scr
 
 Let's prepare a few more jpg files of appropriate size, and then we can design a loop, and play the pictures on the screen of BPI-Centi-S3 in a loop like a slide show.
 
-![](assets/images/pic_2.jpg)
-![](assets/images/pic_3.jpg)
-![](assets/images/pic_4.jpg)
-![](assets/images/pic_5.jpg)
+![](../assets/images/pic_2.jpg)
+![](../assets/images/pic_3.jpg)
+![](../assets/images/pic_4.jpg)
+![](../assets/images/pic_5.jpg)
 
 ```py
 """ BPI-Centi-S3 170x320 ST7789 display """

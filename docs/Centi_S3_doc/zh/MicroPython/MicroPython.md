@@ -1,6 +1,6 @@
 ## 什么是 MicroPython？
 
-![](assets/images/Mircopython.png)
+![](../assets/images/Mircopython.png)
 
 [MicroPython](https://micropython.org/)是Python 3编程语言的精益高效实现，包括 Python 标准库的一小部分，并且经过优化，可在微控制器和有限的硬件资源中运行。
 
@@ -39,7 +39,7 @@
 
 对于Windows 系统来说，最便捷的安装包下载方法就是在官网首页点击如下图所示的图标进行下载。
 
-![](assets/images/Micropython_operating_env_1.png)
+![](../assets/images/Micropython_operating_env_1.png)
 
 其他操作系统或是其他发行版本则可以在 Downloads 选项栏中进行选择。
 
@@ -47,7 +47,7 @@
 
 开始安装时一定要记得勾选Add Python 3.x to PATH，这样可以免除再手动添加进PATH。
 
-![](assets/images/Micropython_operating_env_2.png)
+![](../assets/images/Micropython_operating_env_2.png)
 
 按照安装提示逐步操作即可顺利完成安装 。
 
@@ -138,7 +138,7 @@ python -m esptool --chip esp32s3 --port COM1 --baud 460800 --before=usb_reset --
 
 如果使用的是其他编辑器，或是仅使用系统本地终端，亦可直接使用。
 
-![](assets/images/vscode_terminal.png)
+![](../assets/images/vscode_terminal.png)
 
 `--help`可查看所有mpremote的可用命令:
 ```
@@ -170,13 +170,13 @@ mpbridge工具最主要的功能就是将本地一个文件夹与开发板中的
 
 在PC本地某个你认为合适的位置新建一个文件夹，或是选择一个文件夹，然后在VScode中打开此文件夹。
 
-![](assets/images/vscode_open_folder.png)
+![](../assets/images/vscode_open_folder.png)
 
-![](assets/images/vscode_open_folder2.png)
+![](../assets/images/vscode_open_folder2.png)
 
 然后在VScode打开一个终端，即可在终端中进入此文件夹所在的路径。
 
-![](assets/images/vscode_terminal2.png)
+![](../assets/images/vscode_terminal2.png)
 
 如果你使用的是默认终端，则可使用 `cd [目标文件夹绝对路径]`进入此路径。
 
@@ -195,7 +195,7 @@ mpbridge list
 mpbridge dev --auto-reset hard COM1
 ```
 
-![](assets/images/vscode_terminal_mpbridge.png)
+![](../assets/images/vscode_terminal_mpbridge.png)
 
 当同步完成后，会提示按`Enter`键，按下后开发板硬件复位，终端将进入MicroPython REPL。
 
@@ -345,7 +345,7 @@ sst7789驱动库内有一个显示jpg格式图片的方法，这对于初次上�
 
 这里已准备一张已裁切好尺寸的图片。
 
-![](assets/images/pic_1.jpg)
+![](../assets/images/pic_1.jpg)
 
 ##### jpg 方法用例
 
@@ -385,10 +385,10 @@ main()
 
 我们再多准备几个合适大小的jpg文件，即可设计一个循环，像播放幻灯片一样在BPI-Centi-S3的屏幕上轮播图片了。
 
-![](assets/images/pic_2.jpg)
-![](assets/images/pic_3.jpg)
-![](assets/images/pic_4.jpg)
-![](assets/images/pic_5.jpg)
+![](../assets/images/pic_2.jpg)
+![](../assets/images/pic_3.jpg)
+![](../assets/images/pic_4.jpg)
+![](../assets/images/pic_5.jpg)
 
 ```py
 """ BPI-Centi-S3 170x320 ST7789 display """
