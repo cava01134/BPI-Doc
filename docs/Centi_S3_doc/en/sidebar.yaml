@@ -1,8 +1,21 @@
 items:
 -   label: 1. Centi-S3 Homepage
     file: README.md 
--   label: 2. Getting started with MicroPython
-    file: MicroPython/What_is_MicroPython.md
-    file: MicroPython/MicroPython.md
--   label: 3. Getting started with Arduino
-    file: Arduino.md
+-   label: 2. Code with MicroPython
+    items:
+    -   label: 2.1 What is MicroPython?
+        file: MicroPython/What_is_MicroPython.md
+    -   label: 2.2 Configure the development environment
+        file: MicroPython/environment.md
+    -   label: 2.3 Burn firmware
+        file: MicroPython/Burn_firmware.md
+    -   label: 2.4 Connect to the development board
+        file: MicroPython/Connect.md
+    -   label: 2.5 LCD Screen init
+        file: MicroPython/lcd_init.md
+    -   label: 2.6 LCD Display jpg images
+        file: MicroPython/Display_jpg_images.md
+-   label: 3. Code with Arduino
+    items:
+    -   label: Getting started with Arduino
+        file: Arduino/Arduino.md
