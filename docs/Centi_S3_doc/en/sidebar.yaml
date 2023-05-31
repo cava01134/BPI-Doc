@@ -3,19 +3,25 @@ items:
     file: README.md 
 -   label: 2. Code with MicroPython
     items:
-    -   label: 2.1 What is MicroPython?
+    -   label: What is MicroPython?
         file: MicroPython/What_is_MicroPython.md
-    -   label: 2.2 Configure the development environment
+    -   label: Configure the development environment
         file: MicroPython/environment.md
-    -   label: 2.3 Burn firmware
+    -   label: Burn firmware
         file: MicroPython/Burn_firmware.md
-    -   label: 2.4 Connect to the development board
+    -   label: Connect to the development board
         file: MicroPython/Connect.md
-    -   label: 2.5 LCD Screen init
+    -   label: LCD Screen init
         file: MicroPython/lcd_init.md
-    -   label: 2.6 LCD Display jpg images
+    -   label: LCD Display jpg images
         file: MicroPython/Display_jpg_images.md
 -   label: 3. Code with Arduino
     items:
-    -   label: 3.1 Install and configure the environment
+    -   label: Install and configure the environment
         file: Arduino/Environment.md
+    -   label: Connect, Upload
+        file: Arduino/Environment.md
+    -   label: Install Arduino GFX library
+        file: Arduino/Arduino_GFX_Install.md
+    -   label: Arduino GFX, show characters
+        file: Arduino/Arduino_GFX_show_characters.md

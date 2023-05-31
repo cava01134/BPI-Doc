@@ -3,19 +3,25 @@ items:
     file: README.md
 -   label: 二、使用 MicroPython 快速上手
     items:
-    -   label: 2.1 什么是 MicroPython
+    -   label: 什么是 MicroPython
         file: MicroPython/What_is_MicroPython.md
-    -   label: 2.2 配置开发环境
+    -   label: 配置开发环境
         file: MicroPython/environment.md
-    -   label: 2.3 烧录固件
+    -   label: 烧录固件
         file: MicroPython/Burn_firmware.md
-    -   label: 2.4 连接开发板
+    -   label: 连接开发板
         file: MicroPython/Connect.md
-    -   label: 2.5 屏幕初始化
+    -   label: 屏幕初始化
         file: MicroPython/lcd_init.md
-    -   label: 2.6 显示jpg图片
+    -   label: 显示jpg图片
         file: MicroPython/Display_jpg_images.md
 -   label: 三、使用 Arduino 快速上手
     items:
-    -   label: 3.1 安装与配置环境
+    -   label: 安装与配置环境
         file: Arduino/Environment.md
+    -   label: 连接, 上传
+        file: Arduino/Arduino_upload.md 
+    -   label: 安装Arduino GFX库
+        file: Arduino/Arduino_GFX_Install.md
+    -   label: Arduino GFX, 显示字符
+        file: Arduino/Arduino_GFX_show_characters.md
