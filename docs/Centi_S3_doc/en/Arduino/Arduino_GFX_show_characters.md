@@ -5,6 +5,8 @@ This is the most basic routine of the Arduino GFX library, which displays `Hello
 [GitHub Source code](https://github.com/BPI-STEAM/BPI-Centi-S3-Doc/blob/main/arduino_example/01_show_characters_helloworld/HelloWorld.ino)
 
 .. details:: Source code, click to expand
+    :open: true
+
     ```c
     #include <Arduino_GFX_Library.h>
 

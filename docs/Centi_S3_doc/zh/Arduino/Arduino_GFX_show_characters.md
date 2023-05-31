@@ -5,6 +5,8 @@
 [GitHub 源码](https://github.com/BPI-STEAM/BPI-Centi-S3-Doc/blob/main/arduino_example/01_show_characters_helloworld/HelloWorld.ino)
 
 .. details:: 源码，点击展开
+    :open: true
+
     ```c
     #include <Arduino_GFX_Library.h>
 
