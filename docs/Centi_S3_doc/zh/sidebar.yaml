@@ -17,5 +17,5 @@ items:
         file: MicroPython/Display_jpg_images.md
 -   label: 三、使用 Arduino 快速上手
     items:
-    -   label: 2.2 配置开发环境
+    -   label: 3.1 安装与配置环境
         file: Arduino/Environment.md

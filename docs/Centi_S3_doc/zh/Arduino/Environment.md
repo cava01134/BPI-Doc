@@ -1,11 +1,11 @@
-# 环境搭建
+## 环境搭建
 
 这篇文章将会指引您安装Centi-S3的Arduino支持。
 ![](../assets/images/logo_arduino.png)
 
 > 参考[arduino-esp32 DOC Getting Started » Installing](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html)
 
-## 使用Arduino IDE安装支持
+### 使用Arduino IDE安装支持
 
 这是直接从 Arduino IDE 安装 Arduino-ESP32 的方法。
 
@@ -25,11 +25,11 @@ Arduino IDE 下载地址：https://www.arduino.cc/en/software
 
 - 稳定版链接：
 ```
-https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+https://espressif.github.io/arduino-esp32/package_esp32_index.json
 ```
 - 开发版链接：
 ```
-https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_dev_index.json
+https://espressif.github.io/arduino-esp32/package_esp32_dev_index.json
 ```
 - 在Additional Board Manager URLs后面输入上述发布链接之一。您可以添加多个 URL，一行一个。
 
@@ -41,14 +41,32 @@ https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32
 
 重启arduino IDE之后可以看到在开发板选项中多了ESP32 Arduino选项。
 
-选择 `ESP32S3 Dev Module` 这个型号，再参照下图所示的内容进行配置一遍即可，配置不当是无法使用的，请一定要参照下图所示的内容进行配置！
+选择 `ESP32S3 Dev Module` 这个型号，再参照下图所示的内容进行配置一遍即可，配置不当可能是无法使用的，请一定要参照下图所示的内容进行配置！
 
-![](../assets/images/Board_chose.jpg)
+| Setting                  | Value                            |
+| :----------------------- | :------------------------------- |
+| USB CDC On Boot          | Enabled                          |
+| CPU Frequency            | 240MHz (WiFi)                    |
+| Core Debug Level         | None                             |
+| USB DFU On Boot          | Enabled (Requires USB-OTG Mode)  |
+| Erase All Flash Before Sketch Upload | Disabled             |
+| Events Run On            | Core 1                           |
+| Flash Mode               | QIO 80MHz                        |
+| Flash Size               | 8MB (64Mb)                       |
+| JTAG Adapter             | Integrated USB JTAG              |
+| Arduino Runs On          | Core 1                           |
+| USB Firmware MSC On Boot | Disabled                         |
+| Partition Scheme         | 8M with spiffs (3MB APP/1.5MB SPIFFS) |
+| PSRAM                    | QSPI PSRAM                       |
+| Upload Mode              | UARTO / Hardware CDC             |
+| Upload Speed             | 921600                           |
+| USB Mode                 | Hardware CDC and JTAG            |
 
-# 从GitHub下载或克隆arduino-esp32仓库，手动安装
+或直接选择 `BPI-Leaf-S3` 这个型号，默认设置即可直接使用。
+
+### 从GitHub下载或克隆arduino-esp32仓库，手动安装
 
 > 仅限Windows系统。
-> 2022/10/26 master分支已合并BPI-Leaf-S3板型，预计年底更新后可以直接从Board Manager中添加并使用此板形。
 
 - 打开GitHub页面：https://github.com/espressif/arduino-esp32
 - 点击`Code`按钮,点击`Download ZIP`即可用最简单的方式将仓库下载到本地，建议初学者使用此方法。

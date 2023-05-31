@@ -17,5 +17,5 @@ items:
         file: MicroPython/Display_jpg_images.md
 -   label: 3. Code with Arduino
     items:
-    -   label: Getting started with Arduino
-        file: Arduino/Arduino.md
+    -   label: 3.1 Install and configure the environment
+        file: Arduino/Environment.md
