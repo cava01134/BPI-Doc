@@ -20,7 +20,7 @@ items:
     -   label: Install and configure the environment
         file: Arduino/Environment.md
     -   label: Connect, Upload
-        file: Arduino/Environment.md
+        file: Arduino/Arduino_upload.md
     -   label: Install Arduino GFX library
         file: Arduino/Arduino_GFX_Install.md
     -   label: Arduino GFX, show characters
