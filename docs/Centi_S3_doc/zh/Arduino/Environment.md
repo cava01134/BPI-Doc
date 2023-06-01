@@ -1,4 +1,4 @@
-## 环境搭建
+## 安装与配置环境
 
 这篇文章将会指引您安装Centi-S3的Arduino支持。
 ![](../assets/images/logo_arduino.png)
