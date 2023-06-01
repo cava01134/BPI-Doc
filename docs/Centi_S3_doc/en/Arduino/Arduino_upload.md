@@ -1,4 +1,4 @@
-## Upload
+## Connect, Upload
 
 Before uploading, make sure you have selected the port corresponding to your development board in Tools > Port.
 
