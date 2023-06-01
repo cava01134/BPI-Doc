@@ -5,7 +5,7 @@ items:
     items:
     -   label: What is MicroPython?
         file: MicroPython/What_is_MicroPython.md
-    -   label: Configure the development environment
+    -   label: Install and configure the environment
         file: MicroPython/environment.md
     -   label: Burn firmware
         file: MicroPython/Burn_firmware.md
