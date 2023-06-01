@@ -1,4 +1,4 @@
-## Install support using Arduino IDE
+## Install and configure the environment
 
 > Reference [arduino-esp32 DOC Getting Started » Installing](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html)
 
