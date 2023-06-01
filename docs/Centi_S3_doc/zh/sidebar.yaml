@@ -5,7 +5,7 @@ items:
     items:
     -   label: 什么是 MicroPython
         file: MicroPython/What_is_MicroPython.md
-    -   label: 配置开发环境
+    -   label: 安装与配置环境
         file: MicroPython/environment.md
     -   label: 烧录固件
         file: MicroPython/Burn_firmware.md
