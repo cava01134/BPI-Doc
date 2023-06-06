@@ -6,7 +6,7 @@
             "alt": "Banana Pi logo",
             "src": "/static/image/logo.png"
         },
-        "home_url": "/",
+        "home_url": "/zh/",
         "items": [
             {
                 "url": "/zh/",
