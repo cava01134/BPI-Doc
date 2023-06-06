@@ -8,17 +8,17 @@
     "source": "https://github.com/BPI-STEAM/BPI-Doc/blob/main",
     "route": {
         "docs": {
-            "/Q-Car/zh/": "docs/Q-Car/zh",
-            "/Triode-Car/zh/": "docs/Triode-Car/zh",
-            "/WebBit_dev/zh/": "docs/WebBit_dev/zh",
-            "/WebBit_doc/zh/": "docs/WebBit_doc/zh",
-            "/Bit_S2_doc/zh/": "docs/Bit_S2_doc/zh",
-            "/WebAI/zh/": "docs/WebAI/zh",
-            "/Centi_S3_doc/zh/": "docs/Centi_S3_doc/zh",
-            "/Leaf_S3_doc/zh/": "docs/Leaf_S3_doc/zh",
-            "/PicoW_S3_doc/zh/": "docs/PicoW_S3_doc/zh",
-            "/Pico_RP2040_doc/zh/": "docs/Pico_RP2040_doc/zh",
-            "/About/zh/": "docs/About/zh"
+            "/Q-Car/en/": "docs/Q-Car/en",
+            "/Triode-Car/en/": "docs/Triode-Car/en",
+            "/WebBit_dev/en/": "docs/WebBit_dev/en",
+            "/WebBit_doc/en/": "docs/WebBit_doc/en",
+            "/Bit_S2_doc/en/": "docs/Bit_S2_doc/en",
+            "/WebAI/en/": "docs/WebAI/en",
+            "/Centi_S3_doc/en/": "docs/Centi_S3_doc/en",
+            "/Leaf_S3_doc/en/": "docs/Leaf_S3_doc/en",
+            "/PicoW_S3_doc/en/": "docs/PicoW_S3_doc/en",
+            "/Pico_RP2040_doc/en/": "docs/Pico_RP2040_doc/en",
+            "/About/en/": "docs/About/en"
             
         },
         "pages": {
@@ -26,17 +26,16 @@
         },
         "assets": {
             "/static/": "static",
-            "/Q-Car/zh/assets/":"docs/Q-Car/zh/assets",
-            "/Centi_S3_doc/zh/assets/":"docs/Centi_S3_doc/zh/assets",
-            "/Leaf_S3_doc/zh/assets/":"docs/Leaf_S3_doc/zh/assets",
-            "/PicoW_S3_doc/zh/assets/":"docs/PicoW_S3_doc/zh/assets",
-            "/Pico_RP2040_doc/zh/assets/":"docs/Pico_RP2040_doc/zh/assets",
-            "/Triode-Car/zh/assets/": "docs/Triode-Car/zh/assets",
-            "/WebAI/zh_tw/assets/": "docs/WebAI/zh_tw/assets",
-            "/WebAI/zh/assets/": "docs/WebAI/zh/assets",
-            "/WebBit_dev/zh/assets/": "docs/WebBit_dev/zh/assets",
-            "/WebBit_doc/zh/assets/": "docs/WebBit_doc/zh/assets",
-            "/Bit_S2_doc/zh/assets/": "docs/Bit_S2_doc/zh/assets",
+            "/Q-Car/en/assets/":"docs/Q-Car/en/assets",
+            "/Centi_S3_doc/en/assets/":"docs/Centi_S3_doc/en/assets",
+            "/Leaf_S3_doc/en/assets/":"docs/Leaf_S3_doc/en/assets",
+            "/PicoW_S3_doc/en/assets/":"docs/PicoW_S3_doc/en/assets",
+            "/Pico_RP2040_doc/en/assets/":"docs/Pico_RP2040_doc/en/assets",
+            "/Triode-Car/en/assets/": "docs/Triode-Car/en/assets",
+            "/WebAI/en/assets/": "docs/WebAI/en/assets",
+            "/WebBit_dev/en/assets/": "docs/WebBit_dev/en/assets",
+            "/WebBit_doc/en/assets/": "docs/WebBit_doc/en/assets",
+            "/Bit_S2_doc/en/assets/": "docs/Bit_S2_doc/en/assets",
             "/news/assets/": "news/assets"
         },
         "blog": {
@@ -45,14 +44,14 @@
     },
     "translate": {
         "docs": {
-            "/Q-Car/zh/": [
+            "/Q-Car/en/": [
                 {
                     "url": "/Q-Car/zh_tw/",
                     "src": "docs/Q-Car/zh_tw"
                 },
                 {
-                    "url": "/Q-Car/en/",
-                    "src": "docs/Q-Car/en"
+                    "url": "/Q-Car/zh/",
+                    "src": "docs/Q-Car/zh"
                 }
             ],
             "/Triode-Car/en/": [
