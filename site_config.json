@@ -47,12 +47,12 @@
         "docs": {
             "/Q-Car/en/": [
                 {
-                    "url": "/Q-Car/zh/",
-                    "src": "docs/Q-Car/zh"
-                },
-                {
                     "url": "/Q-Car/zh_tw/",
                     "src": "docs/Q-Car/zh_tw"
+                },
+                {
+                    "url": "/Q-Car/zh/",
+                    "src": "docs/Q-Car/zh"
                 }
             ],
             "/Triode-Car/en/": [
