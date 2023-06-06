@@ -45,114 +45,114 @@
     },
     "translate": {
         "docs": {
-            "/Q-Car/en/": [
+            "/Q-Car/zh/": [
                 {
-                    "url": "/Q-Car/zh/",
-                    "src": "docs/Q-Car/zh"
+                    "url": "/Q-Car/en/",
+                    "src": "docs/Q-Car/en"
                 },
                 {
                     "url": "/Q-Car/zh_tw/",
                     "src": "docs/Q-Car/zh_tw"
                 }
             ],
-            "/Triode-Car/en/": [
+            "/Triode-Car/zh/": [
                 {
                     "url": "/Triode-Car/zh_tw/",
                     "src": "docs/Triode-Car/zh_tw"
                 },
                 {
-                    "url": "/Triode-Car/zh/",
-                    "src": "docs/Triode-Car/zh"
+                    "url": "/Triode-Car/en/",
+                    "src": "docs/Triode-Car/en"
                 }
             ],
-            "/Centi_S3_doc/en/": [
+            "/Centi_S3_doc/zh/": [
                 {
                     "url": "/Centi_S3_doc/zh_tw/",
                     "src": "docs/Centi_S3_doc/zh_tw"
                 },
                 {
-                    "url": "/Centi_S3_doc/zh/",
-                    "src": "docs/Centi_S3_doc/zh"
+                    "url": "/Centi_S3_doc/en/",
+                    "src": "docs/Centi_S3_doc/en"
                 }
             ],
-            "/Leaf_S3_doc/en/": [
+            "/Leaf_S3_doc/zh/": [
                 {
                     "url": "/Leaf_S3_doc/zh_tw/",
                     "src": "docs/Leaf_S3_doc/zh_tw"
                 },
                 {
-                    "url": "/Leaf_S3_doc/zh/",
-                    "src": "docs/Leaf_S3_doc/zh"
+                    "url": "/Leaf_S3_doc/en/",
+                    "src": "docs/Leaf_S3_doc/en"
                 }
             ],
-            "/PicoW_S3_doc/en/": [
+            "/PicoW_S3_doc/zh/": [
                 {
                     "url": "/PicoW_S3_doc/zh_tw/",
                     "src": "docs/PicoW_S3_doc/zh_tw"
                 },
                 {
-                    "url": "/PicoW_S3_doc/zh/",
-                    "src": "docs/PicoW_S3_doc/zh"
+                    "url": "/PicoW_S3_doc/en/",
+                    "src": "docs/PicoW_S3_doc/en"
                 }
             ],
-            "/Pico_RP2040_doc/en/": [
+            "/Pico_RP2040_doc/zh/": [
                 {
                     "url": "/Pico_RP2040_doc/zh_tw/",
                     "src": "docs/Pico_RP2040_doc/zh_tw"
                 },
                 {
-                    "url": "/Pico_RP2040_doc/zh/",
-                    "src": "docs/Pico_RP2040_doc/zh"
+                    "url": "/Pico_RP2040_doc/en/",
+                    "src": "docs/Pico_RP2040_doc/en"
                 }
             ],
-            "/WebBit_dev/en/": [
+            "/WebBit_dev/zh/": [
                 {
                     "url": "/WebBit_dev/zh_tw/",
                     "src": "docs/WebBit_dev/zh_tw"
                 },
                 {
-                    "url": "/WebBit_dev/zh/",
-                    "src": "docs/WebBit_dev/zh"
+                    "url": "/WebBit_dev/en/",
+                    "src": "docs/WebBit_dev/en"
                 }
             ],
-            "/WebBit_doc/en/": [
+            "/WebBit_doc/zh/": [
                 {
                     "url": "/WebBit_doc/zh_tw/",
                     "src": "docs/WebBit_doc/zh_tw"
                 },
                 {
-                    "url": "/WebBit_doc/zh/",
-                    "src": "docs/WebBit_doc/zh"
+                    "url": "/WebBit_doc/en/",
+                    "src": "docs/WebBit_doc/en"
                 }
             ],
-            "/Bit_S2_doc/en/": [
+            "/Bit_S2_doc/zh/": [
                 {
                     "url": "/Bit_S2_doc/zh_tw/",
                     "src": "docs/Bit_S2_doc/zh_tw"
                 },
                 {
-                    "url": "/Bit_S2_doc/zh/",
-                    "src": "docs/Bit_S2_doc/zh"
+                    "url": "/Bit_S2_doc/en/",
+                    "src": "docs/Bit_S2_doc/en"
                 }
             ],
-            "/WebAI/en/": [
+            "/WebAI/zh/": [
                 {
                     "url": "/WebAI/zh_tw/",
                     "src": "docs/WebAI/zh_tw"
                 },
                 {
-                    "url": "/WebAI/zh/",
-                    "src": "docs/WebAI/zh"
+                    "url": "/WebAI/en/",
+                    "src": "docs/WebAI/en"
                 }
             ],
-            "/About/en/": [
+            "/About/zh/": [
                 {
                     "url": "/About/zh_tw/",
                     "src": "docs/About/zh_tw"
                 },
                 {
-                    "url": "/About/zh/",
-                    "src": "docs/About/zh"
+                    "url": "/About/en/",
+                    "src": "docs/About/en"
                 }
             ]
         },
@@ -163,8 +163,8 @@
                     "src": "pages/index/zh_tw"
                 },
                 {
-                    "url": "/zh/",
-                    "src": "pages/index/zh"
+                    "url": "/en/",
+                    "src": "pages/index/en"
                 }
             ]
         }
