@@ -22,7 +22,7 @@
             
         },
         "pages": {
-            "/": "pages/index/en"
+            "/": "pages/index/zh"
         },
         "assets": {
             "/static/": "static",
