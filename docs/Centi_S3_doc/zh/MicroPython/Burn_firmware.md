@@ -6,6 +6,18 @@
 
 [BPI-Centi-S3 micropython固件，github存档](https://github.com/BPI-STEAM/BPI-Centi-S3-Doc/tree/main/micropython_st7789s3_firmware)
 
+### 设置固件下载模式
+
+有两种操作方法：
+
+1.通过USB连接到电脑，按住BOOT键，再按一下RESET键并松开，最后松开BOOT键。
+
+2.在断开供电的条件下按住BOOT键，再通过USB连接到电脑，最后松开BOOT键。
+
+由此可知，芯片是通过BOOT键所控制的GPIO0来选择复位或重新上电时的启动模式。
+
+在设备管理器中确认COM接口，固件下载模式与普通模式下的com接口序号通常是不一样的。
+
 ### 安装esptool工具
 
 在终端中输入以下命令安装 esptool。
