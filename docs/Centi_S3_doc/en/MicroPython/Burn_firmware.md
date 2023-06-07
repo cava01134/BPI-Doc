@@ -6,6 +6,18 @@ If you have an unexpected vicious BUG during development that prevents the devel
 
 [BPI-Centi-S3 micropython firmware, github archive](https://github.com/BPI-STEAM/BPI-Centi-S3-Doc/tree/main/micropython_st7789s3_firmware)
 
+## Firmware info
+
+1. micropython1.19.1_esp32s3_qspram_st7789s3.bin
+    * micropython 1.19.1 release tag
+    * esp32s3, Quad SPIRAM, 8M flash
+    * russhughes/st7789s3_esp_lcd
+2. micropython1.20.0dev_esp32s3_qspram_st7789s3.bin
+    * micropython 1.20.0 master dev, until June 6, 2023(mip, espnow)
+    * esp32s3, Quad SPIRAM, 8M flash
+    * russhughes/st7789s3_esp_lcd
+
+
 ### Set firmware download mode
 
 There are two methods of operation:

@@ -6,6 +6,17 @@
 
 [BPI-Centi-S3 micropython固件，github存档](https://github.com/BPI-STEAM/BPI-Centi-S3-Doc/tree/main/micropython_st7789s3_firmware)
 
+## 固件信息
+
+1. micropython1.19.1_esp32s3_qspram_st7789s3.bin
+    * micropython 1.19.1 release tag
+    * esp32s3, Quad SPIRAM, 8M flash
+    * russhughes/st7789s3_esp_lcd
+2. micropython1.20.0dev_esp32s3_qspram_st7789s3.bin
+    * micropython 1.20.0 master dev, 直到2023/06/06(mip, espnow)
+    * esp32s3, Quad SPIRAM, 8M flash
+    * russhughes/st7789s3_esp_lcd
+
 ### 设置固件下载模式
 
 有两种操作方法：
