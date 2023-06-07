@@ -4,6 +4,18 @@ Before uploading, make sure you have selected the port corresponding to your dev
 
 If it is the first time to upload the Arduino program, you need to put the development board in bootloader mode first.
 
-Make sure there is a type-c data cable, one end is connected to the PC, pick up the development board, keep it free of any connection or peripheral hardware, press and hold the Boot button, connect the type-c data cable to the development board, release the Boot button, Select the newly-appeared port in Tools > Port.
-
 Click Upload to compile and upload the code to the development board.
+
+### Set firmware download mode
+
+There are two methods of operation:
+
+1. Connect to the computer via USB, press and hold the BOOT button, then press the RESET button and release it, and finally release the BOOT button.
+
+2. Press and hold the BOOT button when the power supply is disconnected, then connect to the computer via USB, and finally release the BOOT button.
+
+It can be seen from this that the chip selects the startup mode when reset or re-powered through the GPIO0 controlled by the BOOT key.
+
+Confirm the COM interface in the device manager. The serial number of the COM interface in the firmware download mode and the normal mode is usually different.
+
+Select the newly-appeared port in Tools > Port.
